@@ -7,7 +7,6 @@ set mouse=a
 set clipboard=unnamed
 set modifiable
 
-
 " Plugin
 call plug#begin()
 Plug 'neovim/nvim-lspconfig'
