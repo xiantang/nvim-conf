@@ -65,3 +65,4 @@ let g:copilot_enable = 1
 let NERDTreeShowHidden=1
 
 
+echo 'read config good now'
