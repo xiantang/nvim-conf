@@ -6,6 +6,7 @@ set hlsearch
 set mouse=a
 set clipboard=unnamed
 set modifiable
+set sessionoptions-=blank
 
 " Plugin
 call plug#begin()
@@ -64,6 +65,7 @@ noremap  <Leader>r :GoRename<CR>
 noremap  <C-f> :Rg<CR>
 noremap  <Leader>p :CtrlP<CR>
 noremap  <Leader>P :CtrlPLine<CR>
+noremap  <Leader>Q :mks! ~/wks<CR> :wqa<CR>
 
 
 inoremap " ""<left>
@@ -83,7 +85,10 @@ let g:copilot_enable = 1
 " "      \ 'go': v:true,
 " "        \ }
 
-let NERDTreeShowHidden=1
+" "let NERDTreeShowHidden=1
+au VimEnter *  NERDTree
+
+
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
