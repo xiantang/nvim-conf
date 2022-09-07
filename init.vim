@@ -8,8 +8,12 @@ set clipboard=unnamed
 set modifiable
 set sessionoptions-=blank
 
+
+lang en_US.UTF-8
+
 " Plugin
 call plug#begin()
+Plug 'vim-scripts/vim-gitgutter'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-scripts/ctrlp.vim'
@@ -58,6 +62,7 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 
 
 
+let NERDTreeShowHidden=1
 " leader
 let mapleader=" "
 noremap 0 ^
@@ -84,14 +89,16 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
+tnoremap <Esc> <C-\><C-n>
+
 " copilot
 let g:copilot_enable = 1
 " copilot enable markdown autocom
-" "let g:copilot_filetypes = {
-" "      \ 'markdown': v:true,
-" "      \ 'yaml': v:true,
-" "      \ 'go': v:true,
-" "        \ }
+let g:copilot_filetypes = {
+      \ 'markdown': v:true,
+      \ 'yaml': v:true,
+      \ 'go': v:true,
+        \ }
 
 " "let NERDTreeShowHidden=1
 au VimEnter *  NERDTree
