@@ -8,6 +8,7 @@ set clipboard=unnamed
 set modifiable
 set sessionoptions-=blank
 
+au BufEnter leetcode.cn_*.txt set filetype=go
 
 lang en_US.UTF-8
 
@@ -17,6 +18,7 @@ Plug 'vim-scripts/vim-gitgutter'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-scripts/ctrlp.vim'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -32,6 +34,8 @@ call plug#end()
 lua require("lsp_config")
 set omnifunc=syntaxcomplete#Complete
 
+" disable copilot "
+let g:copilot_enabled = 0
 
 " vim-go "
 " disable gopls
@@ -80,6 +84,13 @@ noremap  <Leader>p :CtrlP<CR>
 noremap  <Leader>P :CtrlPLine<CR>
 noremap  <Leader>Q :mks! ~/wks<CR> :wqa<CR>
 
+" use contrl + hjkl to move between windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+
 
 inoremap " ""<left>
 inoremap ' ''<left>
@@ -101,11 +112,19 @@ let g:copilot_filetypes = {
         \ }
 
 " "let NERDTreeShowHidden=1
-au VimEnter *  NERDTree
+" "au VimEnter *  NERDTree
 
 
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+
+if exists('g:started_by_firenvim')
+  set guifont=Consolas:h25
+  echo 'nvim good'
+else
+  set laststatus=2
+endif
 
 echo 'read config good now'
