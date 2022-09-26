@@ -37,8 +37,6 @@ call plug#end()
 lua require("lsp_config")
 set omnifunc=syntaxcomplete#Complete
 
-" disable copilot "
-let g:copilot_enabled = 0
 
 " vim-go "
 " disable gopls
@@ -111,7 +109,7 @@ let g:copilot_enable = 1
 let g:copilot_filetypes = {
       \ 'markdown': v:true,
       \ 'yaml': v:true,
-      \ 'go': v:true,
+      \ 'go': v:false,
         \ }
 
 " "let NERDTreeShowHidden=1
