@@ -14,14 +14,11 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
-Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'vim-scripts/vim-gitgutter'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-scripts/ctrlp.vim'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-Plug 'tpope/vim-surround'
-Plug 'vim-scripts/argtextobj.vim'
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -122,21 +119,14 @@ let g:copilot_filetypes = {
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-""let g:firenvim_config = {
-""    \ 'localSettings': {
-""        \ '.*': {
-""            \ 'filename': '/tmp/{hostname}_{pathname%10}.{extension}',
-""    \ }
-""\ }
-
 
 let g:firenvim_config = {
-      \ 'localSettings' : {
-        \ '.*' : {
-            \ 'filename' : '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.go',
-          \   },
+    \ 'localSettings': {
+        \ '.*': {
+         \ 'filename': '/tmp/{hostname}_{pathname%10}.{extension}',
     \ }
-\}
+\ }
+
 
 
 
