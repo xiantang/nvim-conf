@@ -20,6 +20,7 @@ Plug 'vim-scripts/vim-gitgutter'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-scripts/ctrlp.vim'
+Plug 'plasticboy/vim-markdown'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/argtextobj.vim'
