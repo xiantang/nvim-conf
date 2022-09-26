@@ -14,6 +14,7 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'sirver/ultisnips'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'vim-scripts/vim-gitgutter'
 Plug 'neovim/nvim-lspconfig'
@@ -52,6 +53,7 @@ let g:go_highlight_function_parameters = 1
 let g:go_highlight_variable_assignments=1
 let g:go_fmt_command = "goimports"
 
+let g:go_snippet_engine = "automatic"
 
 
 inoremap <silent><expr> <TAB>
