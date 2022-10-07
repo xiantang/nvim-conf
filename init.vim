@@ -8,6 +8,7 @@ set clipboard=unnamed
 set modifiable
 set sessionoptions-=blank
 
+
 au BufEnter leetcode.cn_*.txt set filetype=go
 
 lang en_US.UTF-8
@@ -57,17 +58,13 @@ let g:go_fmt_command = "goimports"
 let g:go_snippet_engine = "automatic"
 
 
-""""inoremap <silent><expr> <TAB>
-""      \ coc#pum#visible() ? coc#pum#next(1) :
-""      \ CheckBackspace() ? "\<Tab>" :
-""      \ coc#refresh()
-""inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-""
-""" Make <CR> to accept selected completion item or notify coc.nvim to format
-""" <C-g>u breaks current undo, please make your own choice.
-""inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-""                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-""
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 
 
 let NERDTreeShowHidden=1
@@ -106,18 +103,41 @@ inoremap {;<CR> {<CR>};<ESC>O
 
 tnoremap <Esc> <C-\><C-n>
 
+
+let g:UltiSnipsExpandTrigger = "<nop>"
+
 " copilot
 let g:copilot_enable = 1
+imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
+let g:copilot_no_tab_map = v:true
 " copilot enable markdown autocom
 let g:copilot_filetypes = {
       \ 'markdown': v:true,
       \ 'yaml': v:true,
-      \ 'go': v:false,
+      \ 'go': v:true,
         \ }
 
 " "let NERDTreeShowHidden=1
 " "au VimEnter *  NERDTree
 
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+
+
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 
 let g:ctrlp_map = '<c-p>'
@@ -144,8 +164,13 @@ let g:firenvim_config = {
 
 if exists('g:started_by_firenvim')
   set guifont=Consolas:h22
+  let g:copilot_enable = 0
+  let g:copilot_filetypes = {
+      \ 'markdown': v:true,
+      \ 'yaml': v:true,
+      \ 'go': v:false,
+        \ }
   echo 'nvim good'
-
 else
   set laststatus=2
 endif
