@@ -15,6 +15,8 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 's1n7ax/nvim-terminal'
+Plug 'folke/persistence.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'glepnir/dashboard-nvim'
@@ -43,6 +45,14 @@ call plug#end()
 
 lua require("lsp_config")
 lua require("start")
+
+lua << EOF
+  require("persistence").setup {
+  dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
+  options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
+  }
+EOF
+
 set omnifunc=syntaxcomplete#Complete
 
 
@@ -68,7 +78,6 @@ let g:go_snippet_engine = "automatic"
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 
-" let NERDTreeShowHidden=1
 " leader
 let mapleader=" "
 
@@ -129,10 +138,13 @@ let g:copilot_filetypes = {
       \ 'go': v:true,
         \ }
 
-" "let NERDTreeShowHidden=1
 let NERDTreeShowBookmarks=1
+let NERDTreeShowHidden=1
+
+
 au VimEnter *  NERDTree
 au VimEnter *  wincmd p
+""au BufEnter * lua NTGlobal["terminal"]:open(1)
 
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1):
