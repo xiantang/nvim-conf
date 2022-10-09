@@ -4,6 +4,7 @@ set ts=2 sts=2 sw=2
 set cursorline
 set hlsearch
 set mouse=a
+set splitright
 set clipboard=unnamed
 set modifiable
 " "set sessionoptions-=blank
@@ -15,7 +16,7 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
-Plug 's1n7ax/nvim-terminal'
+""Plug 's1n7ax/nvim-terminal'
 Plug 'folke/persistence.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
@@ -58,9 +59,12 @@ set omnifunc=syntaxcomplete#Complete
 
 " vim-go "
 " disable gopls
+let g:go_debug=['shell-commands']
 let g:go_gopls_enabled = 0
 let g:test_verbose = 1
 let g:go_term_enabled = 1
+let g:go_term_close_on_exit = 0
+let g:go_term_reuse = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -111,7 +115,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " golang test"
-noremap <Leader>rt :GoTestFunc<CR>
+noremap <Leader>rt :GoTestFunc -v<CR>
 
 
 inoremap " ""<left>
@@ -140,11 +144,12 @@ let g:copilot_filetypes = {
 
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
+let g:NERDTreeChDirMode = 2
+noremap <Leader>l :NERDTreeFind<CR>
 
 
 au VimEnter *  NERDTree
 au VimEnter *  wincmd p
-""au BufEnter * lua NTGlobal["terminal"]:open(1)
 
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1):
