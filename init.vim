@@ -44,6 +44,8 @@ set omnifunc=syntaxcomplete#Complete
 " vim-go "
 " disable gopls
 let g:go_gopls_enabled = 0
+let g:test_verbose = 1
+let g:go_term_enabled = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -61,9 +63,18 @@ let g:go_snippet_engine = "automatic"
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 
-let NERDTreeShowHidden=1
+" let NERDTreeShowHidden=1
 " leader
 let mapleader=" "
+
+
+" resize current buffer by +/- 5
+" vertical resize +5 
+noremap <silent> <C-Left> :vertical resize +5<CR>
+noremap <silent> <C-Right> :vertical resize -5<CR>
+noremap <silent> <C-Up> :resize +5<CR>
+noremap <silent> <C-Down> :resize -5<CR>
+
 noremap 0 ^
 noremap <Leader>q :wq<CR>
 noremap <Leader>t :NERDTree<CR>
@@ -85,6 +96,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" golang test"
+noremap <Leader>rt :GoTestFunc<CR>
 
 
 inoremap " ""<left>
@@ -112,7 +125,9 @@ let g:copilot_filetypes = {
         \ }
 
 " "let NERDTreeShowHidden=1
-" "au VimEnter *  NERDTree
+let NERDTreeShowBookmarks=1
+au VimEnter *  NERDTree
+au VimEnter *  wincmd p
 
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1):
