@@ -19,6 +19,7 @@ lang en_US.UTF-8
 " Plugin
 call plug#begin()
 Plug 'bkad/CamelCaseMotion'
+Plug 'junegunn/vim-emoji'
 Plug 's1n7ax/nvim-terminal'
 Plug 'folke/persistence.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -220,6 +221,14 @@ let g:firenvim_config = {
 highlight GitGutterAdd    guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+silent! if emoji#available()
+  let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+  let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+  let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+  let g:gitgutter_sign_modified_removed = emoji#for('collision')
+endif
+
 set signcolumn=number
 
 if exists('g:started_by_firenvim')
