@@ -6,7 +6,7 @@ set hlsearch
 set mouse=a
 set clipboard=unnamed
 set modifiable
-set sessionoptions-=blank
+" "set sessionoptions-=blank
 
 
 au BufEnter leetcode.cn_*.txt set filetype=go
@@ -15,6 +15,10 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'glepnir/dashboard-nvim'
+Plug 'liuchengxu/vim-clap'
 Plug 'sirver/ultisnips'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'vim-scripts/vim-gitgutter'
@@ -38,6 +42,7 @@ Plug 'github/copilot.vim'
 call plug#end()
 
 lua require("lsp_config")
+lua require("start")
 set omnifunc=syntaxcomplete#Complete
 
 
@@ -168,7 +173,6 @@ let g:firenvim_config = {
           \   },
     \ }
 \}
-
 
 
 if exists('g:started_by_firenvim')
