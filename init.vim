@@ -171,7 +171,7 @@ let g:NERDTreeChDirMode = 2
 noremap <Leader>l :NERDTreeFind<CR>
 
 
-au VimEnter *  NERDTree
+au VimEnter * if !exists('g:started_by_firenvim') | NERDTree | endif
 au WinEnter NERDTree
 
 au VimEnter *  wincmd p
@@ -232,6 +232,7 @@ endif
 set signcolumn=number
 
 if exists('g:started_by_firenvim')
+  let g:NERDTreeHijackNetrw=0
   set guifont=Consolas:h22
   let g:copilot_enable = 0
   let g:copilot_filetypes = {
