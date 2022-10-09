@@ -6,11 +6,13 @@ set hlsearch
 set mouse=a
 set clipboard=unnamed
 set modifiable
+set smartcase
+set ignorecase
 " "set sessionoptions-=blank
 
 
 au BufEnter leetcode.cn_*.txt set filetype=go
-au BufWinEnter,WinEnter term://* startinsert
+" au BufWinEnter,WinEnter term://* startinsert
 
 lang en_US.UTF-8
 
@@ -61,7 +63,7 @@ set omnifunc=syntaxcomplete#Complete
 
 " vim-go "
 " disable gopls
-let g:go_debug=['shell-commands']
+" "let g:go_debug=['shell-commands']
 let g:go_gopls_enabled = 0
 let g:test_verbose = 1
 let g:go_term_enabled = 1
@@ -136,12 +138,18 @@ map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
 map <silent> e <Plug>CamelCaseMotion_e
 map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+
 omap <silent> iw <Plug>CamelCaseMotion_iw
 xmap <silent> iw <Plug>CamelCaseMotion_iw
 omap <silent> ib <Plug>CamelCaseMotion_ib
 xmap <silent> ib <Plug>CamelCaseMotion_ib
 omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
+
 
 
 let g:UltiSnipsExpandTrigger = "<nop>"
@@ -164,6 +172,8 @@ noremap <Leader>l :NERDTreeFind<CR>
 
 
 au VimEnter *  NERDTree
+au WinEnter NERDTree
+
 au VimEnter *  wincmd p
 
 inoremap <silent><expr> <TAB>
