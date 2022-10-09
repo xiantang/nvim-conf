@@ -4,19 +4,19 @@ set ts=2 sts=2 sw=2
 set cursorline
 set hlsearch
 set mouse=a
-set splitright
 set clipboard=unnamed
 set modifiable
 " "set sessionoptions-=blank
 
 
 au BufEnter leetcode.cn_*.txt set filetype=go
+au BufWinEnter,WinEnter term://* startinsert
 
 lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
-""Plug 's1n7ax/nvim-terminal'
+Plug 's1n7ax/nvim-terminal'
 Plug 'folke/persistence.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
@@ -46,6 +46,7 @@ call plug#end()
 
 lua require("lsp_config")
 lua require("start")
+au VimEnter * lua require("term").setup()
 
 lua << EOF
   require("persistence").setup {
@@ -92,6 +93,7 @@ noremap <silent> <C-Left> :vertical resize +5<CR>
 noremap <silent> <C-Right> :vertical resize -5<CR>
 noremap <silent> <C-Up> :resize +5<CR>
 noremap <silent> <C-Down> :resize -5<CR>
+
 
 noremap 0 ^
 noremap <Leader>q :wq<CR>
