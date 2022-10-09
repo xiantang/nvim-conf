@@ -151,7 +151,6 @@ omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 
-
 let g:UltiSnipsExpandTrigger = "<nop>"
 
 " copilot
@@ -216,6 +215,13 @@ let g:firenvim_config = {
     \ }
 \}
 
+
+" git gutter
+let g:gitgutter_override_sign_column_highlight = 0
+highlight clear SignColumn
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
 if exists('g:started_by_firenvim')
   set guifont=Consolas:h22
