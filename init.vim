@@ -29,6 +29,7 @@ Plug 'liuchengxu/vim-clap'
 Plug 'sirver/ultisnips'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'vim-scripts/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-scripts/ctrlp.vim'
@@ -101,6 +102,7 @@ noremap <silent> <C-Down> :resize -5<CR>
 
 noremap 0 ^
 noremap <Leader>q :wq<CR>
+noremap <Leader>gb :Git blame<CR>
 noremap <Leader>t :NERDTree<CR>
 noremap <Leader>s :vsp<CR>
 noremap <Leader>w :w<CR>
@@ -123,6 +125,8 @@ nnoremap <C-l> <C-w>l
 " golang test"
 noremap <Leader>rt :GoTestFunc -v<CR>
 
+" git diffview
+nnoremap <Leader>d :DiffviewOpen<CR>
 
 inoremap " ""<left>
 inoremap ' ''<left>
