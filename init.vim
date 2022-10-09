@@ -112,7 +112,7 @@ noremap  <Leader>r :GoRename<CR>
 noremap  <C-f> :Rg<CR>
 noremap  <Leader>p :CtrlP<CR>
 noremap  <Leader>P :CtrlPLine<CR>
-noremap  <Leader>Q :mks! ~/wks<CR> :wqa<CR>
+noremap  <Leader>Q :wa<CR> :qa<CR>
 
 " use contrl + hjkl to move between windows
 nnoremap <C-h> <C-w>h
@@ -134,7 +134,6 @@ inoremap {;<CR> {<CR>};<ESC>O
 
 tnoremap <Esc> <C-\><C-n>
 
-let g:camelcasemotion_key = '<leader>'
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
 map <silent> e <Plug>CamelCaseMotion_e
