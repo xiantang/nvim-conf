@@ -231,9 +231,16 @@ endif
 
 set signcolumn=number
 
+function! SetFontSizeFirenvim(timer)
+    set guifont=UbuntuMono:h18
+endfunction
+
+
+" https://github.com/glacambre/firenvim/issues/1006#issuecomment-1126785734
 if exists('g:started_by_firenvim')
+  let g:dashboard_disable_at_vimenter=1
   let g:NERDTreeHijackNetrw=0
-  set guifont=Consolas:h22
+  call timer_start(3000, function("SetFontSizeFirenvim"))
   let g:copilot_enable = 0
   let g:copilot_filetypes = {
       \ 'markdown': v:true,
