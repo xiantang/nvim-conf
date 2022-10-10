@@ -35,7 +35,6 @@ Plug 'vim-scripts/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-scripts/ctrlp.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'tpope/vim-surround'
@@ -106,7 +105,7 @@ noremap <silent> <C-Down> :resize -5<CR>
 noremap 0 ^
 noremap <Leader>q :wq<CR>
 noremap <Leader>gb :Git blame<CR>
-noremap <Leader>t :NERDTree<CR>
+noremap <Leader>t :NERDTreeToggle<CR>
 noremap <Leader>s :vsp<CR>
 noremap <Leader>w :w<CR>
 noremap <Leader>e :split ~/.config/nvim/init.vim<CR>
@@ -205,8 +204,6 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
 
 ""let g:firenvim_config = {
 ""    \ 'localSettings': {
