@@ -18,6 +18,7 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
 Plug 'junegunn/vim-emoji'
 Plug 's1n7ax/nvim-terminal'
@@ -100,6 +101,8 @@ noremap <silent> <C-Right> :vertical resize -5<CR>
 noremap <silent> <C-Up> :resize +5<CR>
 noremap <silent> <C-Down> :resize -5<CR>
 
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 noremap 0 ^
 noremap <Leader>q :wq<CR>
