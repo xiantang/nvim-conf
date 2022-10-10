@@ -68,6 +68,7 @@ set omnifunc=syntaxcomplete#Complete
 " "let g:go_debug=['shell-commands']
 let g:go_gopls_enabled = 0
 let g:test_verbose = 1
+let g:go_term_mode = 'split'
 let g:go_term_enabled = 1
 let g:go_term_close_on_exit = 0
 let g:go_term_reuse = 1
@@ -112,8 +113,8 @@ nnoremap <Leader>[  <C-O>
 nnoremap <Leader>]  <C-I>
 noremap  <Leader>r :GoRename<CR>
 noremap  <C-f> :Rg<CR>
-noremap  <Leader>p :CtrlP<CR>
-noremap  <Leader>P :CtrlPLine<CR>
+noremap  <Leader>p :Telescope find_files find_command=rg,--hidden,--files<CR>
+noremap  <Leader>P :Telescope live_grep<CR>
 noremap  <Leader>Q :wa<CR> :qa<CR>
 
 " use contrl + hjkl to move between windows
