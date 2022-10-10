@@ -15,9 +15,11 @@ au BufEnter leetcode.cn_*.txt set filetype=go
 " au BufWinEnter,WinEnter term://* startinsert
 
 lang en_US.UTF-8
+au FileType go call rainbow#load()
 
 " Plugin
 call plug#begin()
+Plug 'frazrepo/vim-rainbow'
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
 Plug 'junegunn/vim-emoji'
@@ -101,9 +103,6 @@ noremap <silent> <C-Right> :vertical resize -5<CR>
 noremap <silent> <C-Up> :resize +5<CR>
 noremap <silent> <C-Down> :resize -5<CR>
 
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-
 noremap 0 ^
 noremap <Leader>q :wq<CR>
 noremap <Leader>gb :Git blame<CR>
@@ -115,7 +114,10 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>[  <C-O>
 nnoremap <Leader>]  <C-I>
 noremap  <Leader>r :GoRename<CR>
-noremap  <C-f> :Rg<CR>
+
+noremap <C-f> <Plug>(easymotion-bd-f)
+noremap <C-f> <Plug>(easymotion-overwin-f)
+
 noremap  <Leader>p :Telescope find_files find_command=rg,--hidden,--files<CR>
 noremap  <Leader>P :Telescope live_grep<CR>
 noremap  <Leader>Q :wa<CR> :qa<CR>
