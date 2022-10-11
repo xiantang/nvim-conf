@@ -90,6 +90,9 @@ set omnifunc=syntaxcomplete#Complete
 " vim-go "
 " disable gopls
 " "let g:go_debug=['shell-commands']
+let g:go_debug_windows = {
+      \ 'vars':  'rightbelow 60vnew',
+\ }
 let g:go_debug_commands="/usr/bin/arch -arch arm64 /Users/jingdizhu/.gvm/pkgsets/go1.17.1/global/bin/dlv"
 let g:go_gopls_enabled = 0
 let g:test_verbose = 1
