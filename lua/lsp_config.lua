@@ -11,14 +11,14 @@ function _G.cur_func()
   local line_str = vim.api.nvim_buf_get_lines(0, line-1, line, false)[1]
   -- get function name if not find, try to find in previous line
   -- for loop
-  while not string.find(line_str, "func%s+(%w+)") do
+  while not string.find(line_str, "func%s+([%w_]+)") do
     line = line - 1
     line_str = vim.api.nvim_buf_get_lines(0, line-1, line, false)[1]
     if not line_str then
       return nil
     end
   end
-  local func_name = string.match(line_str, "func%s+(%w+)")
+  local func_name = string.match(line_str, "func%s+([%w_]+)")
   return func_name
 end
 
