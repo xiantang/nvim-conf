@@ -19,6 +19,8 @@ au FileType go call rainbow#load()
 
 " Plugin
 call plug#begin()
+Plug 'nvim-telescope/telescope-frecency.nvim'
+Plug 'kkharji/sqlite.lua'
 Plug 'frazrepo/vim-rainbow'
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
@@ -53,6 +55,26 @@ call plug#end()
 
 lua require("lsp_config")
 lua require("start")
+lua << EOF
+  require('telescope').setup{
+    extensions = {
+    frecency = {
+      show_scores = true,
+      show_unindexed = true,
+      ignore_patterns = {"*.git/*", "*/tmp/*"},
+      disable_devicons = false,
+      workspaces = {
+        ["conf"]    = "/home/my_username/.config",
+        ["data"]    = "/home/my_username/.local/share",
+        ["project"] = "/home/my_username/projects",
+        ["wiki"]    = "/home/my_username/wiki"
+      }
+    }
+  },
+}
+EOF
+
+lua require("telescope").load_extension("frecency")
 au VimEnter * lua require("term").setup()
 
 lua << EOF
@@ -68,6 +90,7 @@ set omnifunc=syntaxcomplete#Complete
 " vim-go "
 " disable gopls
 " "let g:go_debug=['shell-commands']
+let g:go_debug_commands="/usr/bin/arch -arch arm64 /Users/jingdizhu/.gvm/pkgsets/go1.17.1/global/bin/dlv"
 let g:go_gopls_enabled = 0
 let g:test_verbose = 1
 let g:go_term_mode = 'split'
@@ -129,6 +152,12 @@ nnoremap <C-l> <C-w>l
 
 " golang test"
 noremap <Leader>rt :GoTestFunc -v<CR>
+noremap <Leader>dd :GoDebugTestFunc<CR> 
+noremap <Leader>dc :GoDebugContinue<CR>
+noremap <Leader>ds :GoDebugStop<CR>
+noremap <Leader>dn :GoDebugNext<CR>
+noremap <Leader>de :GoDebugBreakpoint<CR>
+
 
 " git diffview
 nnoremap <Leader>d :DiffviewOpen<CR>
@@ -158,6 +187,8 @@ omap <silent> ib <Plug>CamelCaseMotion_ib
 xmap <silent> ib <Plug>CamelCaseMotion_ib
 omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
+
+noremap <C-e> :Telescope frecency workspace=CWD<CR>
 
 
 let g:UltiSnipsExpandTrigger = "<nop>"
