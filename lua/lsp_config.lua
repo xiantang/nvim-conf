@@ -40,7 +40,7 @@ function _G.debug_cur_test_func()
   vim.defer_fn(function()
     -- run vim command GoDebugContinue
     vim.cmd("GoDebugContinue")
-  end, 2000)
+  end, 3000)
 end
 
 
