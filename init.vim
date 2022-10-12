@@ -8,14 +8,16 @@ set clipboard=unnamed
 set modifiable
 set smartcase
 set ignorecase
-" "set sessionoptions-=blank
+set sessionoptions-=blank
 
 
 au BufEnter leetcode.cn_*.txt set filetype=go
-" au BufWinEnter,WinEnter term://* startinsert
 
 lang en_US.UTF-8
 au FileType go call rainbow#load()
+
+nnoremap <silent><Leader>; <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><Leader>; <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 " Plugin
 call plug#begin()
@@ -25,7 +27,8 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
 Plug 'junegunn/vim-emoji'
-Plug 's1n7ax/nvim-terminal'
+""Plug 's1n7ax/nvim-terminal'
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'folke/persistence.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
@@ -55,6 +58,7 @@ call plug#end()
 
 lua require("lsp_config")
 lua require("start")
+lua require("toggleterm").setup{}
 lua << EOF
   require('telescope').setup{
     extensions = {
@@ -75,7 +79,7 @@ lua << EOF
 EOF
 
 lua require("telescope").load_extension("frecency")
-au VimEnter * lua require("term").setup()
+" au VimEnter * lua require("term").setup()
 
 lua << EOF
   require("persistence").setup {
@@ -93,6 +97,30 @@ set omnifunc=syntaxcomplete#Complete
 let g:go_debug_windows = {
       \ 'vars':  'rightbelow 60vnew',
 \ }
+
+
+command! -bar DuplicateTabpane
+      \ let s:sessionoptions = &sessionoptions |
+      \ try |
+      \   let &sessionoptions = 'blank,help,folds,winsize,localoptions' |
+      \   execute 'NERDTreeClose' |
+      \   let s:file = tempname() |
+      \   execute 'mksession! ' . s:file |
+      \   tabnew |
+      \   execute 'source ' . s:file |
+      \ finally |
+      \   silent call delete(s:file) |
+      \   let &sessionoptions = s:sessionoptions |
+      \   unlet! s:file s:sessionoptions |
+      \ endtry
+
+let g:go_debug_mappings = {
+  \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
+  \ '(go-debug-stop)': {'key': 'q'},
+  \ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
+  \ '(go-debug-step)': {'key': 's'},
+  \ '(go-debug-stepout)': {'key': 'o'},
+\}
 let g:go_debug_commands="/usr/bin/arch -arch arm64 /Users/jingdizhu/.gvm/pkgsets/go1.17.1/global/bin/dlv"
 let g:go_gopls_enabled = 0
 let g:test_verbose = 1
