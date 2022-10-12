@@ -30,6 +30,8 @@ function _G.debug_cur_test_func()
     return
   end
   -- run vim command GoDebugTest 
+  --  DuplicateTabpane
+  vim.cmd("DuplicateTabpane")
   -- sprintf -test.run TestOnRsyncAndWatch
   cmd = string.format("GoDebugTest -test.run %s$", func_name)
   print("run command: " .. cmd)
