@@ -16,8 +16,6 @@ au BufEnter leetcode.cn_*.txt set filetype=go
 lang en_US.UTF-8
 au FileType go call rainbow#load()
 
-nnoremap <silent><Leader>; <Cmd>exe v:count1 . "ToggleTerm"<CR>
-inoremap <silent><Leader>; <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 " Plugin
 call plug#begin()
@@ -27,7 +25,6 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
 Plug 'junegunn/vim-emoji'
-""Plug 's1n7ax/nvim-terminal'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'folke/persistence.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -58,7 +55,13 @@ call plug#end()
 
 lua require("lsp_config")
 lua require("start")
-lua require("toggleterm").setup{}
+lua << EOF
+require("toggleterm").setup{
+  start_in_insert = false,
+}
+EOF
+
+
 lua << EOF
   require('telescope').setup{
     extensions = {
@@ -222,6 +225,8 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 noremap <C-e> :Telescope frecency workspace=CWD<CR>
 
 
+nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <Leader>; <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 let g:UltiSnipsExpandTrigger = "<nop>"
 
 " copilot
