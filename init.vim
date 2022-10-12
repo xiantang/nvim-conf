@@ -55,41 +55,7 @@ call plug#end()
 
 lua require("lsp_config")
 lua require("start")
-lua << EOF
-require("toggleterm").setup{
-  start_in_insert = false,
-}
-EOF
-
-
-lua << EOF
-  require('telescope').setup{
-    extensions = {
-    frecency = {
-      show_scores = true,
-      show_unindexed = true,
-      ignore_patterns = {"*.git/*", "*/tmp/*"},
-      disable_devicons = false,
-      workspaces = {
-        ["conf"]    = "/home/my_username/.config",
-        ["data"]    = "/home/my_username/.local/share",
-        ["project"] = "/home/my_username/projects",
-        ["wiki"]    = "/home/my_username/wiki"
-      }
-    }
-  },
-}
-EOF
-
 lua require("telescope").load_extension("frecency")
-" au VimEnter * lua require("term").setup()
-
-lua << EOF
-  require("persistence").setup {
-  dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
-  options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
-  }
-EOF
 
 set omnifunc=syntaxcomplete#Complete
 
@@ -324,5 +290,41 @@ if exists('g:started_by_firenvim')
 else
   set laststatus=2
 endif
+
+
+lua << EOF
+require("toggleterm").setup{
+  start_in_insert = false,
+}
+EOF
+
+
+lua << EOF
+  require('telescope').setup{
+    extensions = {
+    frecency = {
+      show_scores = true,
+      show_unindexed = true,
+      ignore_patterns = {"*.git/*", "*/tmp/*"},
+      disable_devicons = false,
+      workspaces = {
+        ["conf"]    = "/home/my_username/.config",
+        ["data"]    = "/home/my_username/.local/share",
+        ["project"] = "/home/my_username/projects",
+        ["wiki"]    = "/home/my_username/wiki"
+      }
+    }
+  },
+}
+EOF
+
+
+lua << EOF
+  require("persistence").setup {
+  dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
+  options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
+  }
+EOF
+
 
 echo 'read config good now'
