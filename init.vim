@@ -19,9 +19,13 @@ au FileType go call rainbow#load()
 
 " Plugin
 call plug#begin()
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'kkharji/sqlite.lua'
 Plug 'frazrepo/vim-rainbow'
+" jump"
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
 Plug 'junegunn/vim-emoji'
@@ -82,6 +86,7 @@ command! -bar DuplicateTabpane
       \   let &sessionoptions = s:sessionoptions |
       \   unlet! s:file s:sessionoptions |
       \ endtry
+let g:EasyMotion_keys = 'sdfjklghalqiwe'
 
 let g:go_debug_mappings = {
   \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
@@ -137,8 +142,18 @@ nnoremap <Leader>[  <C-O>
 nnoremap <Leader>]  <C-I>
 noremap  <Leader>r :GoRename<CR>
 
-noremap <C-f> <Plug>(easymotion-bd-f)
-noremap <C-f> <Plug>(easymotion-overwin-f)
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzyword#converter()],
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <C-f> incsearch#go(<SID>config_easyfuzzymotion())
+tnoremap <silent><expr> <C-f> incsearch#go(<SID>config_easyfuzzymotion())
 
 noremap  <Leader>p :Telescope find_files find_command=rg,--hidden,--files<CR>
 noremap  <Leader>P :Telescope live_grep<CR>
