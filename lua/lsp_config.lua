@@ -4,7 +4,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- get function name in body of golang function
-function _G.cur_func()
+function _G.get_cur_go_func_name()
   -- get current line number
   local line = vim.api.nvim_win_get_cursor(0)[1]
   -- get current line
@@ -25,7 +25,7 @@ end
 
 --- debug current function for golang
 function _G.debug_cur_test_func()
-  local func_name = _G.cur_func()
+  local func_name = _G.get_cur_go_func_name()
   if not func_name then
     return
   end
