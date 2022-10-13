@@ -107,21 +107,8 @@ let g:go_term_mode = 'split'
 let g:go_term_enabled = 1
 let g:go_term_close_on_exit = 0
 let g:go_term_reuse = 1
-""let g:go_highlight_types = 1
-""let g:go_highlight_fields = 1
-""let g:go_highlight_functions = 1
-""let g:go_highlight_function_calls = 1
-""let g:go_highlight_operators = 1
-""let g:go_highlight_extra_types = 1
-""let g:go_highlight_generate_tags = 1
-""let g:go_highlight_function_parameters = 1
-""let g:go_highlight_function_calls = 1
-""let g:go_highlight_types = 1
-""let g:go_highlight_string_spellcheck = 1
-""let g:go_highlight_variable_declarations = 1
-
+let g:go_light_variable_declarations = 1
 let g:go_fmt_command = "goimports"
-
 let g:go_snippet_engine = "automatic"
 
 
