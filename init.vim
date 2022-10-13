@@ -307,6 +307,9 @@ else
 endif
 
 
+
+" "https://github.com/nvim-telescope/telescope.nvim/issues/2145
+hi NormalFloat ctermfg=LightGrey
 lua << EOF
 require("toggleterm").setup{
   start_in_insert = false,
@@ -332,7 +335,6 @@ lua << EOF
   },
 }
 EOF
-hi NormalFloat ctermfg=LightGrey
 
 
 lua << EOF
