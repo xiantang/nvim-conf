@@ -41,6 +41,8 @@ Plug 'liuchengxu/vim-clap'
 Plug 'sirver/ultisnips'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'vim-scripts/vim-gitgutter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" "Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -105,18 +107,18 @@ let g:go_term_mode = 'split'
 let g:go_term_enabled = 1
 let g:go_term_close_on_exit = 0
 let g:go_term_reuse = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_types = 1
-let g:go_highlight_string_spellcheck = 1
-let g:go_highlight_variable_declarations = 1
+""let g:go_highlight_types = 1
+""let g:go_highlight_fields = 1
+""let g:go_highlight_functions = 1
+""let g:go_highlight_function_calls = 1
+""let g:go_highlight_operators = 1
+""let g:go_highlight_extra_types = 1
+""let g:go_highlight_generate_tags = 1
+""let g:go_highlight_function_parameters = 1
+""let g:go_highlight_function_calls = 1
+""let g:go_highlight_types = 1
+""let g:go_highlight_string_spellcheck = 1
+""let g:go_highlight_variable_declarations = 1
 
 let g:go_fmt_command = "goimports"
 
@@ -362,6 +364,18 @@ lua << EOF
   dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
   options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
   }
+EOF
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup{
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    },
+    indent = {
+        enable = true,
+    },
+}
 EOF
 
 
