@@ -332,6 +332,7 @@ lua << EOF
   },
 }
 EOF
+hi NormalFloat ctermfg=LightGrey
 
 
 lua << EOF
