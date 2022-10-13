@@ -1,4 +1,5 @@
 syntax on
+set termguicolors
 set nu ru et
 set ts=2 sts=2 sw=2
 set cursorline
@@ -15,6 +16,8 @@ au BufEnter leetcode.cn_*.txt set filetype=go
 
 lang en_US.UTF-8
 au FileType go call rainbow#load()
+let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 
 " Plugin
@@ -110,7 +113,11 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_function_parameters = 1
-let g:go_highlight_variable_assignments=1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_variable_declarations = 1
+
 let g:go_fmt_command = "goimports"
 
 let g:go_snippet_engine = "automatic"
