@@ -319,6 +319,8 @@ endif
 hi NormalFloat ctermfg=darkcyan
 highlight CocFloating ctermbg=Magenta ctermfg=black
 
+hi CursorLine  cterm=underline  guibg=Black
+
 lua << EOF
 require("toggleterm").setup{
   start_in_insert = false,
