@@ -142,6 +142,16 @@ nnoremap <Leader>[  <C-O>
 nnoremap <Leader>]  <C-I>
 noremap  <Leader>r :GoRename<CR>
 
+noremap <Leader>1 :1ToggleTerm<CR>
+noremap <Leader>2 :2ToggleTerm<CR>
+noremap <Leader>3 :3ToggleTerm<CR>
+noremap <Leader>4 :4ToggleTerm<CR>
+noremap <Leader>5 :5ToggleTerm<CR>
+noremap <Leader>6 :6ToggleTerm<CR>
+noremap <Leader>7 :7ToggleTerm<CR>
+noremap <Leader>8 :8ToggleTerm<CR>
+noremap <Leader>9 :9ToggleTerm<CR>
+
 function! s:config_easyfuzzymotion(...) abort
   return extend(copy({
   \   'converters': [incsearch#config#fuzzyword#converter()],
