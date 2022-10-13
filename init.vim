@@ -317,7 +317,7 @@ endif
 ""https://github.com/nvim-telescope/telescope.nvim/issues/2145
 ""hi NormalFloat ctermfg=LightGrey
 hi NormalFloat ctermfg=darkcyan
-highlight CocFloating ctermbg=Magenta ctermfg=white
+highlight CocFloating ctermbg=Magenta ctermfg=black
 
 lua << EOF
 require("toggleterm").setup{
