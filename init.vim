@@ -68,6 +68,7 @@ lua require("telescope").load_extension("frecency")
 lua require('gitsigns').setup()
 lua require('term')
 lua require('syntex')
+lua require('tele')
 
 set omnifunc=syntaxcomplete#Complete
 
@@ -307,28 +308,6 @@ hi NormalFloat ctermfg=darkcyan
 hi CocFloating ctermbg=Magenta ctermfg=black
 hi CursorLine  cterm=underline  guibg=Black
 hi SignColumn  ctermfg=14 ctermbg=242 guifg=Cyan guibg=black
-
-
-
-lua << EOF
-  require('telescope').setup{
-    extensions = {
-    frecency = {
-      show_scores = true,
-      show_unindexed = true,
-      ignore_patterns = {"*.git/*", "*/tmp/*"},
-      disable_devicons = false,
-      workspaces = {
-        ["conf"]    = "/home/my_username/.config",
-        ["data"]    = "/home/my_username/.local/share",
-        ["project"] = "/home/my_username/projects",
-        ["wiki"]    = "/home/my_username/wiki"
-      }
-    }
-  },
-}
-EOF
-
 
 lua << EOF
   require("persistence").setup {
