@@ -66,6 +66,8 @@ lua require("lsp_config")
 lua require("start")
 lua require("telescope").load_extension("frecency")
 lua require('gitsigns').setup()
+lua require('term')
+lua require('syntex')
 
 set omnifunc=syntaxcomplete#Complete
 
@@ -302,16 +304,10 @@ endif
 
 "" https://github.com/nvim-telescope/telescope.nvim/issues/2145
 hi NormalFloat ctermfg=darkcyan
-highlight SignColumn guibg=bg
-highlight CocFloating ctermbg=Magenta ctermfg=black
-
+hi CocFloating ctermbg=Magenta ctermfg=black
 hi CursorLine  cterm=underline  guibg=Black
+hi SignColumn  ctermfg=14 ctermbg=242 guifg=Cyan guibg=black
 
-lua << EOF
-require("toggleterm").setup{
-  start_in_insert = false,
-}
-EOF
 
 
 lua << EOF
@@ -339,18 +335,6 @@ lua << EOF
   dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
   options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
   }
-EOF
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup{
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-    indent = {
-        enable = true,
-    },
-}
 EOF
 
 
