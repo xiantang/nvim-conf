@@ -11,7 +11,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-
 require('nvim-lsp-installer').on_server_ready(
   function(server)
     local config = {
@@ -26,8 +25,6 @@ require('nvim-lsp-installer').on_server_ready(
     server:setup(config)
   end
 )
-
-
 
 require'lspconfig'.sumneko_lua.setup {
   settings = {
