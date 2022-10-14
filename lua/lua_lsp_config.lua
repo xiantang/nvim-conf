@@ -1,3 +1,4 @@
+local nvim_lsp = require('lspconfig')
 require'lspconfig'.sumneko_lua.setup {
   settings = {
     Lua = {
@@ -7,7 +8,7 @@ require'lspconfig'.sumneko_lua.setup {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = {'vim','love'},
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -20,3 +21,16 @@ require'lspconfig'.sumneko_lua.setup {
     },
   },
 }
+
+-- on_attach
+local on_attach = function (client,bufnr)
+end
+
+local servers = {"sumneko_lua"}
+
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+  }
+end
+
