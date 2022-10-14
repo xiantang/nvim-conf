@@ -41,9 +41,8 @@ Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-clap'
 Plug 'sirver/ultisnips'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
-Plug 'vim-scripts/vim-gitgutter'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" "Plug 'lewis6991/gitsigns.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -66,6 +65,7 @@ call plug#end()
 lua require("lsp_config")
 lua require("start")
 lua require("telescope").load_extension("frecency")
+lua require('gitsigns').setup()
 
 set omnifunc=syntaxcomplete#Complete
 
@@ -278,20 +278,6 @@ let g:firenvim_config = {
 \}
 
 
-" git gutter
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-
-silent! if emoji#available()
-  let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-  let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-  let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-  let g:gitgutter_sign_modified_removed = emoji#for('collision')
-endif
-
-set signcolumn=number
-
 function! SetFontSizeFirenvim(timer)
     set guifont=UbuntuMono:h18
 endfunction
@@ -314,10 +300,9 @@ else
 endif
 
 
-
-""https://github.com/nvim-telescope/telescope.nvim/issues/2145
-""hi NormalFloat ctermfg=LightGrey
+"" https://github.com/nvim-telescope/telescope.nvim/issues/2145
 hi NormalFloat ctermfg=darkcyan
+highlight SignColumn guibg=bg
 highlight CocFloating ctermbg=Magenta ctermfg=black
 
 hi CursorLine  cterm=underline  guibg=Black
