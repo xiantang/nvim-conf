@@ -69,6 +69,7 @@ lua require('gitsigns').setup()
 lua require('term')
 lua require('syntex')
 lua require('tele')
+lua require('session')
 
 set omnifunc=syntaxcomplete#Complete
 
@@ -308,13 +309,5 @@ hi NormalFloat ctermfg=darkcyan
 hi CocFloating ctermbg=Magenta ctermfg=black
 hi CursorLine  cterm=underline  guibg=Black
 hi SignColumn  ctermfg=14 ctermbg=242 guifg=Cyan guibg=black
-
-lua << EOF
-  require("persistence").setup {
-  dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
-  options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
-  }
-EOF
-
 
 echo 'read config good now'
