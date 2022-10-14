@@ -62,7 +62,7 @@ Plug 'sindrets/diffview.nvim'
 Plug 'github/copilot.vim'
 call plug#end()
 
-lua require("lsp_config")
+lua require("go_lsp_config")
 lua require("start")
 lua require("telescope").load_extension("frecency")
 lua require('gitsign')
