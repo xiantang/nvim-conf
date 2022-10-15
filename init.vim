@@ -64,6 +64,9 @@ Plug 'github/copilot.vim'
 call plug#end()
 
 lua require("go_lsp_config")
+" silent"
+autocmd BufWritePost *.go silent lua  gofumpt(1000)
+
 lua require('lua_lsp_config')
 lua require("start")
 lua require("telescope").load_extension("frecency")
@@ -216,7 +219,7 @@ xmap <silent> ib <Plug>CamelCaseMotion_ib
 omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
-noremap <C-e> :Telescope frecency workspace=CWD<CR>
+noremap <C-e> :Telescope frecency <CR>
 
 
 nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm"<CR>

@@ -112,6 +112,14 @@ nvim_lsp.gopls.setup{
 	on_attach = on_attach,
 }
 
+  function gofumpt(timeoutms)
+    -- get current file path
+    local file_path = vim.api.nvim_buf_get_name(0)
+    local command = string.format("!gofumpt -w %s", file_path)
+   -- run cmd in background
+    vim.cmd(command)
+  end
+
   function goimports(timeoutms)
     local context = { source = { organizeImports = true } }
     vim.validate { context = { context, "t", true } }
@@ -131,9 +139,9 @@ nvim_lsp.gopls.setup{
     -- is a CodeAction, it can have either an edit, a command or both. Edits
     -- should be executed first.
     if action.edit or type(action.command) == "table" then
---    if action.edit then
---      vim.lsp.util.apply_workspace_edit(action.edit)
---    end
+      if action.edit then
+        vim.lsp.util.apply_workspace_edit(action.edit)
+      end
       if type(action.command) == "table" then
         vim.lsp.buf.execute_command(action.command)
       end
