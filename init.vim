@@ -71,6 +71,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'github/copilot.vim'
+Plug 'tpope/vim-commentary'
 call plug#end()
 colorscheme base16-gruvbox-dark-soft
 
@@ -81,10 +82,11 @@ lua require("start")
 " set telescope frecency show_scores
 lua require('tele')
 lua require("telescope").load_extension("frecency")
-lua require('gitsign')
+lua require('git')
 lua require('term')
 lua require('syntex')
 lua require('session')
+lua require('swp_window')
 
 " silent"
 autocmd BufWritePost *.go silent lua  gofumpt(1000)
