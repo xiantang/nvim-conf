@@ -78,6 +78,7 @@ colorscheme base16-gruvbox-dark-soft
 lua require("go_lsp_config")
 lua require('lua_lsp_config')
 lua require("start")
+" set telescope frecency show_scores
 lua require('tele')
 lua require("telescope").load_extension("frecency")
 lua require('gitsign')
