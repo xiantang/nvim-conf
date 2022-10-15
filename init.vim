@@ -1,4 +1,5 @@
 syntax on
+set encoding=utf8
 set termguicolors
 set nu ru et
 set ts=2 sts=2 sw=2
@@ -10,6 +11,7 @@ set modifiable
 set smartcase
 set ignorecase
 set sessionoptions-=blank
+
 
 
 au BufEnter leetcode.cn_*.txt set filetype=go
@@ -31,6 +33,8 @@ Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'kkharji/sqlite.lua'
 Plug 'frazrepo/vim-rainbow'
 " jump"
+" vimicon
+Plug 'ryanoasis/vim-devicons'
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
 Plug 'junegunn/vim-emoji'
