@@ -21,10 +21,15 @@ au FileType go call rainbow#load()
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
+let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'c' ],
+    \ ['z','error', 'warning']
+    \ ]
 
 " Plugin
 call plug#begin()
 Plug 'RRethy/nvim-base16'
+Plug 'vim-airline/vim-airline'
 Plug 'mbbill/undotree'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
