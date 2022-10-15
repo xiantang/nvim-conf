@@ -78,11 +78,11 @@ colorscheme base16-gruvbox-dark-soft
 lua require("go_lsp_config")
 lua require('lua_lsp_config')
 lua require("start")
+lua require('tele')
 lua require("telescope").load_extension("frecency")
 lua require('gitsign')
 lua require('term')
 lua require('syntex')
-lua require('tele')
 lua require('session')
 
 " silent"
