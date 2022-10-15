@@ -22,6 +22,7 @@ let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 " Plugin
 call plug#begin()
+Plug 'RRethy/nvim-base16'
 Plug 'mbbill/undotree'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
@@ -62,11 +63,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'github/copilot.vim'
 call plug#end()
+colorscheme base16-gruvbox-dark-soft
+
 
 lua require("go_lsp_config")
-" silent"
-autocmd BufWritePost *.go silent lua  gofumpt(1000)
-
 lua require('lua_lsp_config')
 lua require("start")
 lua require("telescope").load_extension("frecency")
@@ -76,6 +76,8 @@ lua require('syntex')
 lua require('tele')
 lua require('session')
 
+" silent"
+autocmd BufWritePost *.go silent lua  gofumpt(1000)
 set omnifunc=syntaxcomplete#Complete
 
 
@@ -310,9 +312,9 @@ endif
 
 
 "" https://github.com/nvim-telescope/telescope.nvim/issues/2145
-hi NormalFloat ctermfg=darkcyan
-hi CocFloating ctermbg=Magenta ctermfg=black
-hi CursorLine  cterm=underline  guibg=Black
-hi SignColumn  ctermfg=14 ctermbg=242 guifg=Cyan guibg=black
+""hi NormalFloat ctermfg=darkcyan
+""hi CocFloating ctermbg=Magenta ctermfg=black
+""hi CursorLine  cterm=underline  guibg=Black
+""hi SignColumn  ctermfg=14 ctermbg=242 guifg=Cyan guibg=black
 
 echo 'read config good now'
