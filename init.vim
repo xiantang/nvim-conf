@@ -115,22 +115,8 @@ command! -bar DuplicateTabpane
       \   let &sessionoptions = s:sessionoptions |
       \   unlet! s:file s:sessionoptions |
       \ endtry
+
 let g:EasyMotion_keys = 'sdfjklghalqiwe'
-
-if has("persistent_undo")
-   let target_path = expand('~/.undodir')
-
-    " create the directory and any parent directories
-    " if the location does not exist.
-    if !isdirectory(target_path)
-        call mkdir(target_path, "p", 0700)
-    endif
-
-    let &undodir=target_path
-    set undofile
-endif
-
-
 let g:go_debug_mappings = {
   \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
   \ '(go-debug-stop)': {'key': 'q'},
@@ -251,7 +237,6 @@ noremap <C-e> :Telescope frecency <CR>
 
 
 nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm"<CR>
-inoremap <Leader>; <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 let g:UltiSnipsExpandTrigger = "<nop>"
 
 " copilot
