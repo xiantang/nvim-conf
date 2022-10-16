@@ -181,11 +181,9 @@ function! s:config_easyfuzzymotion(...) abort
   \   'is_stay': 1
   \ }), get(a:, 1, {}))
 endfunction
-
 noremap <silent><expr> <C-f> incsearch#go(<SID>config_easyfuzzymotion())
-tnoremap <silent><expr> <C-f> incsearch#go(<SID>config_easyfuzzymotion())
 
-noremap  <Leader>p :Telescope find_files find_command=rg,--hidden,--files<CR>
+noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
 noremap  <Leader>P :Telescope live_grep<CR>
 noremap  <Leader>Q :wa<CR> :qa<CR>
 
@@ -319,6 +317,18 @@ if exists('g:started_by_firenvim')
   echo 'nvim good'
 else
   set laststatus=2
+endif
+
+if has("persistent_undo")
+   let target_path = expand('~/.undodir')
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call mkdir(target_path, "p", 0700)
+    endif
+
+    let &undodir=target_path
+    set undofile
 endif
 
 
