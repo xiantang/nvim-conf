@@ -33,7 +33,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'mbbill/undotree'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
-Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'xiantang/incsearch-easymotion.vim', {'branch': 'master'}
 Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'kkharji/sqlite.lua'
 Plug 'frazrepo/vim-rainbow'
@@ -181,7 +181,7 @@ function! s:config_easyfuzzymotion(...) abort
   \   'is_stay': 1
   \ }), get(a:, 1, {}))
 endfunction
-noremap <silent><expr> <C-f> incsearch#go(<SID>config_easyfuzzymotion())
+noremap <expr> <C-f> incsearch#go(<SID>config_easyfuzzymotion())
 
 noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
 noremap  <Leader>P :Telescope live_grep<CR>
