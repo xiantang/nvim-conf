@@ -51,7 +51,7 @@ Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-clap'
 Plug 'sirver/ultisnips'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'neovim/nvim-lspconfig'
@@ -84,7 +84,7 @@ lua require('tele')
 lua require("telescope").load_extension("frecency")
 lua require('git')
 lua require('term')
-lua require('syntex')
+""lua require('syntex')
 lua require('session')
 lua require('swp_window')
 
