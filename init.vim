@@ -17,9 +17,9 @@ set sessionoptions-=blank
 au BufEnter leetcode.cn_*.txt set filetype=go
 
 lang en_US.UTF-8
-au FileType go call rainbow#load()
-let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
-let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+""au FileType go call rainbow#load()
+""let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+""let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 let g:airline#extensions#default#layout = [
     \ [ 'a', 'b', 'c' ],
@@ -73,7 +73,7 @@ Plug 'sindrets/diffview.nvim'
 Plug 'github/copilot.vim'
 Plug 'tpope/vim-commentary'
 call plug#end()
-colorscheme base16-gruvbox-dark-soft
+colorscheme base16-tender
 
 
 lua require("go_lsp_config")
