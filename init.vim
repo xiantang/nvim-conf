@@ -12,6 +12,9 @@ set smartcase
 set ignorecase
 set sessionoptions-=blank
 
+" leader
+let mapleader=" "
+
 
 
 au BufEnter leetcode.cn_*.txt set filetype=go
@@ -76,6 +79,7 @@ call plug#end()
 colorscheme base16-tender
 
 
+lua require('conf')
 lua require("go_lsp_config")
 lua require('lua_lsp_config')
 lua require("start")
@@ -86,7 +90,7 @@ lua require('git')
 lua require('term')
 ""lua require('syntex')
 lua require('session')
-lua require('swp_window')
+
 
 " silent"
 autocmd BufWritePost *.go silent lua  gofumpt(1000)
@@ -139,8 +143,6 @@ let g:go_snippet_engine = "automatic"
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 
-" leader
-let mapleader=" "
 
 
 " resize current buffer by +/- 5
@@ -157,7 +159,6 @@ noremap <Leader>t :NERDTreeToggle<CR>
 noremap <Leader>s :sp<CR>
 noremap <Leader>v :vsp<CR>
 noremap <Leader>w :w<CR>
-noremap <Leader>e :split ~/.config/nvim/init.vim<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>[  <C-O>
 nnoremap <Leader>]  <C-I>
