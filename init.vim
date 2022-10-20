@@ -236,7 +236,7 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 noremap <C-e> :Telescope frecency <CR>
 
 
-nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm"<CR>
+nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm size=10"<CR>
 let g:UltiSnipsExpandTrigger = "<nop>"
 
 " copilot
