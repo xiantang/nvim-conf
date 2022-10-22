@@ -172,6 +172,7 @@ local common_servers = {
   "bashls",
   "prosemd_lsp",
   "vimls",
+  "yamlls",
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
