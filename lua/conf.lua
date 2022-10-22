@@ -16,12 +16,12 @@ end
 
 
 function ToggleNote()
-  if vim.fn.bufwinnr("todo.md") ~= -1 then
+  if vim.fn.bufwinnr("note.md") ~= -1 then
     vim.cmd("q")
     return
   end
   -- edit the config file
-  vim.cmd("split ~/todo.md")
+  vim.cmd("split ~/note.md")
 end
 
 

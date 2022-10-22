@@ -81,7 +81,6 @@ colorscheme base16-tender
 
 lua require('conf')
 lua require("go_lsp_config")
-lua require('lua_lsp_config')
 lua require("start")
 " set telescope frecency show_scores
 lua require('tele')

@@ -95,22 +95,6 @@ local on_attach = function(client, bufnr)
   end
 end
 
-nvim_lsp.gopls.setup{
-	cmd = {'gopls'},
-	-- for postfix snippets and analyzers
-	capabilities = capabilities,
-	    settings = {
-	      gopls = {
-		      experimentalPostfixCompletions = true,
-		      analyses = {
-		        unusedparams = true,
-		        shadow = true,
-		     },
-		     staticcheck = true,
-		    },
-	    },
-	on_attach = on_attach,
-}
 
   function gofumpt(timeoutms)
     -- get current file path
@@ -164,7 +148,70 @@ if not configs.golangcilsp then
 		};
 	}
 end
+
+
+
+-- set up lspconfig
+require("nvim-lsp-installer").setup({
+    automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+    ui = {
+        icons = {
+            server_installed = "✓",
+            server_pending = "➜",
+            server_uninstalled = "✗"
+        }
+    }
+})
+
+nvim_lsp.pyright.setup{
+  on_attach = on_attach,
+}
+
 nvim_lsp.golangci_lint_ls.setup {
 	filetypes = {'go','gomod'}
+}
+
+
+
+nvim_lsp.sumneko_lua.setup{
+  on_attach = on_attach,
+    settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  }
+}
+
+
+nvim_lsp.gopls.setup{
+	cmd = {'gopls'},
+	-- for postfix snippets and analyzers
+	capabilities = capabilities,
+	    settings = {
+	      gopls = {
+		      experimentalPostfixCompletions = true,
+		      analyses = {
+		        unusedparams = true,
+		        shadow = true,
+		     },
+		     staticcheck = true,
+		    },
+	    },
+	on_attach = on_attach,
 }
 
