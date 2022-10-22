@@ -168,6 +168,7 @@ require("nvim-lsp-installer").setup({
 
 
 local common_servers = {
+  "jsonls",
   "pyright",
   "dockerls",
   "bashls",
