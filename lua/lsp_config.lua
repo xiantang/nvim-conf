@@ -255,7 +255,11 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       local copilot_keys = vim.fn['copilot#Accept']()
       if cmp.visible() then
-        cmp.select_next_item()
+        if luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        else
+          cmp.select_next_item()
+        end
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       elseif copilot_keys ~= '' and type(copilot_keys) == 'string' then

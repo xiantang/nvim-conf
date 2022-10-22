@@ -157,6 +157,7 @@ noremap <Leader>q :wq<CR>
 noremap <Leader>gb :Git blame<CR>
 noremap <Leader>t :NERDTreeToggle<CR>
 noremap <Leader>s :sp<CR>
+noremap <Leader>ss :source ~/.config/nvim/init.vim<CR>
 noremap <Leader>v :vsp<CR>
 noremap <Leader>w :w<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
