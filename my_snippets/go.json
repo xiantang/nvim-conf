@@ -8,5 +8,15 @@
     "prefix":"logd",
     "body": "logutils.Logger().WithCtx($1).WithField(\"$2\",$3).Debug(\"$4\")",
      "description": "log debug"
+  },
+  "if error Wrap":{
+    "prefix":"iferr",
+    "body": "if err := $1; err != nil {\n\treturn  errors.Wrap(err, \"$2\")\n}",
+     "description": "if error Wrap"
+  },
+  "Use the statement before the if condition":{
+    "prefix":"iferrf",
+    "body": "if err := $1; err != nil {\n\treturn  errors.Wrapf(err, \"$2\", $3)\n}",
+     "description": "Use the statement before the if condition"
   }
 }
