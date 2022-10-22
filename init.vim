@@ -28,6 +28,7 @@ let g:airline#extensions#default#layout = [
 
 " Plugin
 call plug#begin()
+Plug 'rafamadriz/friendly-snippets'
 Plug 'RRethy/nvim-base16'
 Plug 'vim-airline/vim-airline'
 Plug 'mbbill/undotree'
@@ -59,7 +60,6 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'williamboman/nvim-lsp-installer'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'plasticboy/vim-markdown'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'tpope/vim-surround'
@@ -80,6 +80,7 @@ colorscheme base16-tender
 
 
 lua require('conf')
+lua require("luasnip.loaders.from_vscode").lazy_load()
 lua require("go_lsp_config")
 lua require("start")
 " set telescope frecency show_scores
@@ -139,7 +140,6 @@ let g:go_fmt_command = "goimports"
 let g:go_snippet_engine = "automatic"
 
 
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 
 
@@ -250,24 +250,11 @@ au WinEnter NERDTree
 
 au VimEnter *  wincmd p
 
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1):
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(0) : "\<C-h>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-
-
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 
 let g:vim_markdown_folding_disabled = 1
