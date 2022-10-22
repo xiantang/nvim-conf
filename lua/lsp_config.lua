@@ -131,11 +131,11 @@ function goimports(timeoutms)
     end
   end
 
-local configs = require 'lspconfig/configs'
+local lsp_configs = require 'lspconfig/configs'
 
 
-if not configs.golangcilsp then
- 	configs.golangcilsp = {
+if not lsp_configs.golangcilsp then
+ 	lsp_configs.golangcilsp = {
 		default_config = {
 			cmd = {'golangci-lint-langserver'},
 			root_dir = nvim_lsp.util.root_pattern('.git', 'go.mod'),
@@ -152,19 +152,20 @@ nvim_lsp.golangci_lint_ls.setup {
 	filetypes = {'go','gomod'}
 }
 -- set up lspconfig
-require("nvim-lsp-installer").setup({
-    automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+require("mason").setup {
     ui = {
         icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
+            package_installed = "✓"
         }
     }
-})
+}
+require("mason-lspconfig").setup {
+    ensure_installed = { "sumneko_lua" },
+}
 
 
 local common_servers = {
+  "sqlls",
   "jsonls",
   "pyright",
   "dockerls",
