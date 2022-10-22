@@ -81,7 +81,7 @@ colorscheme base16-tender
 
 lua require('conf')
 lua require("luasnip.loaders.from_vscode").lazy_load()
-lua require("go_lsp_config")
+lua require("lsp_config")
 lua require("start")
 " set telescope frecency show_scores
 lua require('tele')

@@ -232,6 +232,11 @@ local luasnip = require 'luasnip'
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
+
+if cmp == nil then
+  return
+end
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -248,10 +253,10 @@ cmp.setup {
     },
     ['<Tab>'] = cmp.mapping(function(fallback)
       local copilot_keys = vim.fn['copilot#Accept']()
-      if luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif cmp.visible() then
+      if cmp.visible() then
         cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       elseif copilot_keys ~= '' and type(copilot_keys) == 'string' then
         vim.api.nvim_feedkeys(copilot_keys, 'i', true)
       else
