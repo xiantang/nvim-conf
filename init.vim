@@ -49,7 +49,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-clap'
-Plug 'sirver/ultisnips'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 " "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'lewis6991/gitsigns.nvim'
@@ -57,6 +56,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'plasticboy/vim-markdown'
@@ -237,16 +238,6 @@ noremap <C-e> :Telescope frecency <CR>
 nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm size=10"<CR>
 let g:UltiSnipsExpandTrigger = "<nop>"
 
-" copilot
-let g:copilot_enable = 1
-imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
-let g:copilot_no_tab_map = v:true
-" copilot enable markdown autocom
-let g:copilot_filetypes = {
-      \ 'markdown': v:true,
-      \ 'yaml': v:true,
-      \ 'go': v:true,
-        \ }
 
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
@@ -322,6 +313,20 @@ if has("persistent_undo")
     let &undodir=target_path
     set undofile
 endif
+
+" copilot
+let g:copilot_enable = 1
+imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
+let g:copilot_no_tab_map = v:true
+let g:copilot_assume_mapped = v:true
+
+""
+" copilot enable markdown autocom
+let g:copilot_filetypes = {
+      \ 'markdown': v:true,
+      \ 'yaml': v:true,
+      \ 'go': v:true,
+        \ }
 
 
 echo 'read config good now'
