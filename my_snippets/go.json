@@ -18,5 +18,20 @@
     "prefix":"iferrf",
     "body": "if err := $1; err != nil {\n\treturn  errors.Wrapf(err, \"$2\", $3)\n}",
      "description": "Use the statement before the if condition"
+  },
+  "struct":{
+    "prefix":"stru",
+    "body": "type $1 struct {\n\t$2\n}",
+     "description": "struct"
+  },
+  "interface":{
+    "prefix":"inter",
+    "body": "type $1 interface {\n\t$2\n}",
+     "description": "interface"
+  },
+  "slice literal":{
+    "prefix":"sli",
+    "body": "$1 := []$2{$3}",
+     "description": "slice literal"
   }
 }
