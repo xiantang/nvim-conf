@@ -20,9 +20,6 @@ let mapleader=" "
 au BufEnter leetcode.cn_*.txt set filetype=go
 
 lang en_US.UTF-8
-""au FileType go call rainbow#load()
-""let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
-""let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 let g:airline#extensions#default#layout = [
     \ [ 'a', 'b', 'c' ],
@@ -280,14 +277,6 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 
-
-""let g:firenvim_config = {
-""    \ 'localSettings': {
-""        \ '.*': {
-""            \ 'filename': '/tmp/{hostname}_{pathname%10}.{extension}',
-""    \ }
-""\ }
-
 let g:vim_markdown_folding_disabled = 1
 
 let g:firenvim_config = {
@@ -332,11 +321,5 @@ if has("persistent_undo")
     set undofile
 endif
 
-
-"" https://github.com/nvim-telescope/telescope.nvim/issues/2145
-""hi NormalFloat ctermfg=darkcyan
-""hi CocFloating ctermbg=Magenta ctermfg=black
-""hi CursorLine  cterm=underline  guibg=Black
-""hi SignColumn  ctermfg=14 ctermbg=242 guifg=Cyan guibg=black
 
 echo 'read config good now'
