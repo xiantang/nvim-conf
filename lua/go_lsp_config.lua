@@ -1,7 +1,7 @@
 local nvim_lsp = require('lspconfig')
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local golang_capabilities = vim.lsp.protocol.make_client_capabilities()
+golang_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- get function name in body of golang function
 function _G.get_cur_go_func_name()
@@ -175,9 +175,12 @@ local common_servers = {
   "vimls",
 }
 
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 for _, server in pairs(common_servers) do
     nvim_lsp[server].setup {
         on_attach = on_attach,
+        capabilities = capabilities,
     }
 end
 
@@ -210,7 +213,7 @@ nvim_lsp.sumneko_lua.setup{
 nvim_lsp.gopls.setup{
 	cmd = {'gopls'},
 	-- for postfix snippets and analyzers
-	capabilities = capabilities,
+	capabilities = golang_capabilities,
 	    settings = {
 	      gopls = {
 		      experimentalPostfixCompletions = true,
