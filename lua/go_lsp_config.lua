@@ -167,13 +167,13 @@ require("nvim-lsp-installer").setup({
 })
 
 
-
 -- common langservers 
 local common_servers = {
   "pyright",
   "dockerls",
   "bashls",
-  "prosemd_lsp"
+  "prosemd_lsp",
+  "vimls",
 }
 
 for _, server in pairs(common_servers) do
