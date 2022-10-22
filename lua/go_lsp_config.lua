@@ -167,7 +167,6 @@ require("nvim-lsp-installer").setup({
 })
 
 
--- common langservers 
 local common_servers = {
   "pyright",
   "dockerls",
