@@ -33,7 +33,7 @@ function _G.debug_cur_test_func()
   --  DuplicateTabpane
   vim.cmd("DuplicateTabpane")
   -- sprintf -test.run TestOnRsyncAndWatch
-  cmd = string.format("GoDebugTest -test.run %s$", func_name)
+  local cmd = string.format("GoDebugTest -test.run %s$", func_name)
   print("run command: " .. cmd)
   vim.cmd(cmd)
   -- waiting for debug start
@@ -96,7 +96,7 @@ local on_attach = function(client, bufnr)
 end
 
 
-  function gofumpt(timeoutms)
+function gofumpt(timeoutms)
     -- get current file path
     local file_path = vim.api.nvim_buf_get_name(0)
     local command = string.format("!gofumpt -w %s", file_path)
@@ -104,7 +104,7 @@ end
     vim.cmd(command)
   end
 
-  function goimports(timeoutms)
+function goimports(timeoutms)
     local context = { source = { organizeImports = true } }
     vim.validate { context = { context, "t", true } }
 
@@ -151,6 +151,9 @@ end
 
 
 
+nvim_lsp.golangci_lint_ls.setup {
+	filetypes = {'go','gomod'}
+}
 -- set up lspconfig
 require("nvim-lsp-installer").setup({
     automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
@@ -163,14 +166,21 @@ require("nvim-lsp-installer").setup({
     }
 })
 
-nvim_lsp.pyright.setup{
-  on_attach = on_attach,
+
+
+-- common langservers 
+local common_servers = {
+  "pyright",
+  "dockerls",
+  "bashls",
+  "prosemd_lsp"
 }
 
-nvim_lsp.golangci_lint_ls.setup {
-	filetypes = {'go','gomod'}
-}
-
+for _, server in pairs(common_servers) do
+    nvim_lsp[server].setup {
+        on_attach = on_attach,
+    }
+end
 
 
 nvim_lsp.sumneko_lua.setup{
