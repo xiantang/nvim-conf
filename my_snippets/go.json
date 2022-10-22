@@ -1,0 +1,12 @@
+{
+  "log info":{
+    "prefix":"logi",
+    "body": "logutils.Logger().WithCtx($1).WithField(\"$2\",$3).Info(\"$4\")",
+     "description": "log info"
+  },
+  "log debug":{
+    "prefix":"logd",
+    "body": "logutils.Logger().WithCtx($1).WithField(\"$2\",$3).Debug(\"$4\")",
+     "description": "log debug"
+  }
+}
