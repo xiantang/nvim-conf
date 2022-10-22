@@ -81,6 +81,7 @@ colorscheme base16-tender
 
 lua require('conf')
 lua require("luasnip.loaders.from_vscode").lazy_load()
+lua require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
 lua require("lsp_config")
 lua require("start")
 " set telescope frecency show_scores
