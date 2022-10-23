@@ -150,7 +150,7 @@ local function go_test_func(bufnr, command)
                   else
                     print(string.format("%d/%d tests passed", passed, passed + failed))
                   end
-                  -- print(string.format("%d/%d tests passed", passed, passed + failed))
+                  print(string.format("%d/%d tests passed", passed, passed + failed))
               end,
           })
 end
