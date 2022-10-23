@@ -8,12 +8,12 @@ function _G.get_cur_go_func_name()
   -- get current line number
   local line = vim.api.nvim_win_get_cursor(0)[1]
   -- get current line
-  local line_str = vim.api.nvim_buf_get_lines(0, line-1, line, false)[1]
+  local line_str = vim.api.nvim_buf_get_lines(0, line - 1, line, false)[1]
   -- get function name if not find, try to find in previous line
   -- for loop
   while not string.find(line_str, "func%s+([%w_]+)") do
     line = line - 1
-    line_str = vim.api.nvim_buf_get_lines(0, line-1, line, false)[1]
+    line_str = vim.api.nvim_buf_get_lines(0, line - 1, line, false)[1]
     if not line_str then
       return nil
     end
@@ -22,14 +22,13 @@ function _G.get_cur_go_func_name()
   return func_name
 end
 
-
 --- debug current function for golang
 function _G.debug_cur_test_func()
   local func_name = _G.get_cur_go_func_name()
   if not func_name then
     return
   end
-  -- run vim command GoDebugTest 
+  -- run vim command GoDebugTest
   --  DuplicateTabpane
   vim.cmd("DuplicateTabpane")
   -- sprintf -test.run TestOnRsyncAndWatch
@@ -43,23 +42,22 @@ function _G.debug_cur_test_func()
   end, 3000)
 end
 
-
-
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
   buf_set_keymap('n', '<space>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<space>dt','<cmd>lua debug_cur_test_func()<CR>', opts)
+  buf_set_keymap('n', '<space>dt', '<cmd>lua debug_cur_test_func()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -70,7 +68,8 @@ local on_attach = function(client, bufnr)
   -- if current buff end with _test.go, then set keymap for error
   local buf_name = vim.api.nvim_buf_get_name(bufnr)
   if string.find(buf_name, "_test.go$") then
-    buf_set_keymap('n', 'ge', '<cmd>lua vim.diagnostic.goto_next({severity = { min = vim.diagnostic.severity.ERROR }})<CR>', opts)
+    buf_set_keymap('n', 'ge',
+      '<cmd>lua vim.diagnostic.goto_next({severity = { min = vim.diagnostic.severity.ERROR }})<CR>', opts)
   else
     buf_set_keymap('n', 'ge', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   end
@@ -100,73 +99,74 @@ end
 
 
 function gofumpt(timeoutms)
-    -- get current file path
-    local file_path = vim.api.nvim_buf_get_name(0)
-    local command = string.format("!gofumpt -w %s", file_path)
-   -- run cmd in background
-    vim.cmd(command)
-  end
+  -- get current file path
+  local file_path = vim.api.nvim_buf_get_name(0)
+  local command = string.format("!gofumpt -w %s", file_path)
+  -- run cmd in background
+  vim.cmd(command)
+end
 
 function goimports(timeoutms)
-    local context = { source = { organizeImports = true } }
-    vim.validate { context = { context, "t", true } }
+  local context = { source = { organizeImports = true } }
+  vim.validate { context = { context, "t", true } }
 
-    local params = vim.lsp.util.make_range_params()
-    params.context = context
+  local params = vim.lsp.util.make_range_params()
+  params.context = context
 
-    -- See the implementation of the textDocument/codeAction callback
-    -- (lua/vim/lsp/handler.lua) for how to do this properly.
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeoutms)
-    if not result or next(result) == nil then return end
-    local actions = result[1].result
-    if not actions then return end
-    local action = actions[1]
+  -- See the implementation of the textDocument/codeAction callback
+  -- (lua/vim/lsp/handler.lua) for how to do this properly.
+  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeoutms)
+  if not result or next(result) == nil then return end
+  local actions = result[1].result
+  if not actions then return end
+  local action = actions[1]
 
-    -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
-    -- is a CodeAction, it can have either an edit, a command or both. Edits
-    -- should be executed first.
-    if action.edit or type(action.command) == "table" then
-      if action.edit then
-        vim.lsp.util.apply_workspace_edit(action.edit)
-      end
-      if type(action.command) == "table" then
-        vim.lsp.buf.execute_command(action.command)
-      end
-    else
-      vim.lsp.buf.execute_command(action)
+  -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
+  -- is a CodeAction, it can have either an edit, a command or both. Edits
+  -- should be executed first.
+  if action.edit or type(action.command) == "table" then
+    if action.edit then
+      vim.lsp.util.apply_workspace_edit(action.edit)
     end
+    if type(action.command) == "table" then
+      vim.lsp.buf.execute_command(action.command)
+    end
+  else
+    vim.lsp.buf.execute_command(action)
   end
+end
 
 local lsp_configs = require 'lspconfig/configs'
 
 
 if not lsp_configs.golangcilsp then
- 	lsp_configs.golangcilsp = {
-		default_config = {
-			cmd = {'golangci-lint-langserver'},
-			root_dir = nvim_lsp.util.root_pattern('.git', 'go.mod'),
-			init_options = {
-					command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json", "--issues-exit-code=1" };
-			}
-		};
-	}
+  lsp_configs.golangcilsp = {
+    default_config = {
+      cmd = { 'golangci-lint-langserver' },
+      root_dir = nvim_lsp.util.root_pattern('.git', 'go.mod'),
+      init_options = {
+        command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json",
+          "--issues-exit-code=1" };
+      }
+    };
+  }
 end
 
 
 
 nvim_lsp.golangci_lint_ls.setup {
-	filetypes = {'go','gomod'}
+  filetypes = { 'go', 'gomod' }
 }
 -- set up lspconfig
 require("mason").setup {
-    ui = {
-        icons = {
-            package_installed = "✓"
-        }
+  ui = {
+    icons = {
+      package_installed = "✓"
     }
+  }
 }
 require("mason-lspconfig").setup {
-    ensure_installed = { "sumneko_lua" },
+  ensure_installed = { "sumneko_lua" },
 }
 
 
@@ -185,16 +185,16 @@ local common_servers = {
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 for _, server in pairs(common_servers) do
-    nvim_lsp[server].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    }
+  nvim_lsp[server].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
 end
 
 
-nvim_lsp.sumneko_lua.setup{
+nvim_lsp.sumneko_lua.setup {
   on_attach = on_attach,
-    settings = {
+  settings = {
     Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -202,7 +202,7 @@ nvim_lsp.sumneko_lua.setup{
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -217,21 +217,21 @@ nvim_lsp.sumneko_lua.setup{
 }
 
 
-nvim_lsp.gopls.setup{
-	cmd = {'gopls'},
-	-- for postfix snippets and analyzers
-	capabilities = golang_capabilities,
-	    settings = {
-	      gopls = {
-		      experimentalPostfixCompletions = true,
-		      analyses = {
-		        unusedparams = true,
-		        shadow = true,
-		     },
-		     staticcheck = true,
-		    },
-	    },
-	on_attach = on_attach,
+nvim_lsp.gopls.setup {
+  cmd = { 'gopls' },
+  -- for postfix snippets and analyzers
+  capabilities = golang_capabilities,
+  settings = {
+    gopls = {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+      staticcheck = true,
+    },
+  },
+  on_attach = on_attach,
 }
 
 
@@ -260,7 +260,7 @@ cmp.setup {
     },
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-          cmp.select_next_item()
+        cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
@@ -280,6 +280,6 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name =  'path'},
+    { name = 'path' },
   },
 }
