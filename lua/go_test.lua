@@ -61,7 +61,7 @@ local state = {
       tests = {},
   }
 
-local function go_test(bufnr, command, isFunc)
+local function go_test(bufnr, command)
     state.bufnr = bufnr
     -- change directory to the directory of the filetypes
     local dir = vim.fn.expand("%:p:h")
@@ -142,18 +142,16 @@ local function go_test(bufnr, command, isFunc)
                   end
 
                   vim.diagnostic.set(ns, bufnr, test_results, {})
-                  if isFunc then
                     -- check test pased
                     -- create new split window
-                     if failed >0 then
-                      vim.cmd('split')
-                      local win = vim.api.nvim_get_current_win()
-                      local buf = vim.api.nvim_create_buf(true, true)
-                      vim.api.nvim_win_set_buf(win, buf)
-                      for _, test in pairs(state.tests) do
-                        if test.success == false then
-                          vim.api.nvim_buf_set_lines(buf, 0, -1, false, test.output)
-                        end
+                   if failed >0 then
+                    vim.cmd('split')
+                    local win = vim.api.nvim_get_current_win()
+                    local buf = vim.api.nvim_create_buf(true, true)
+                    vim.api.nvim_win_set_buf(win, buf)
+                    for _, test in pairs(state.tests) do
+                      if test.success == false then
+                        vim.api.nvim_buf_set_lines(buf, 0, -1, false, test.output)
                       end
                      end
 
@@ -182,7 +180,6 @@ vim.api.nvim_create_user_command("GoTestFun", function ()
     end
     local func_name = get_cur_go_func_name()
     local bufnr = vim.api.nvim_get_current_buf()
-    local isFunc = true
     go_test(bufnr, {
         "go",
         "test",
@@ -190,7 +187,8 @@ vim.api.nvim_create_user_command("GoTestFun", function ()
         func_name,
         "-v",
         "-json",
-      }, isFunc)
+        "-count=1",
+      })
 end, {})
 
 
@@ -210,5 +208,6 @@ vim.api.nvim_create_user_command("GoTestFile", function()
         dir,
         "-v",
         "-json",
-      },false)
+        "-count=1",
+      })
 end, {})
