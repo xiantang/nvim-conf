@@ -56,12 +56,13 @@ function dump(o)
 end
 
 
+local state = {
+      bufnr = -1,
+      tests = {},
+  }
 
-local function go_test_func(bufnr, command)
-    local state = {
-          bufnr = bufnr,
-          tests = {},
-      }
+local function go_test(bufnr, command, isFunc)
+    state.bufnr = bufnr
     -- change directory to the directory of the filetypes
     local dir = vim.fn.expand("%:p:h")
     -- get pwd
@@ -141,8 +142,24 @@ local function go_test_func(bufnr, command)
                   end
 
                   vim.diagnostic.set(ns, bufnr, test_results, {})
+                  if isFunc then
+                    -- check test pased
+                    -- create new split window
+                     if failed >0 then
+                      vim.cmd('split')
+                      local win = vim.api.nvim_get_current_win()
+                      local buf = vim.api.nvim_create_buf(true, true)
+                      vim.api.nvim_win_set_buf(win, buf)
+                      for _, test in pairs(state.tests) do
+                        if test.success == false then
+                          vim.api.nvim_buf_set_lines(buf, 0, -1, false, test.output)
+                        end
+                      end
+                     end
+
+                  end
                   -- print failed tests
-                  if failed > 0 then
+                  if failed > 0  then
                     print("failed tests:")
                     -- string join 
                     local failed_tests_str = table.concat(failed_tests, ",")
@@ -150,7 +167,6 @@ local function go_test_func(bufnr, command)
                   else
                     print(string.format("%d/%d tests passed", passed, passed + failed))
                   end
-                  print(string.format("%d/%d tests passed", passed, passed + failed))
               end,
           })
 end
@@ -165,16 +181,16 @@ vim.api.nvim_create_user_command("GoTestFun", function ()
         return
     end
     local func_name = get_cur_go_func_name()
-    print(func_name)
     local bufnr = vim.api.nvim_get_current_buf()
-    go_test_func(bufnr, {
+    local isFunc = true
+    go_test(bufnr, {
         "go",
         "test",
         "-run",
         func_name,
         "-v",
         "-json",
-      })
+      }, isFunc)
 end, {})
 
 
@@ -188,34 +204,11 @@ vim.api.nvim_create_user_command("GoTestFile", function()
     end
     local bufnr = vim.api.nvim_get_current_buf()
     local dir = vim.fn.expand("%:p:h")
-    go_test_func(bufnr, {
+    go_test(bufnr, {
         "go",
         "test",
         dir,
         "-v",
         "-json",
-      })
+      },false)
 end, {})
-
-
-vim.api.nvim_create_user_command("GoTestOnSave", function()
-      if
-          vim.bo.filetype ~= "go"
-          or string.find(vim.fn.expand("%"), "_test") == nil
-      then
-          print("Not a go test file")
-          return
-      end
-      -- get current buffer file name
-      local bufnr = vim.api.nvim_get_current_buf()
-      -- get current dir 
-      local dir = vim.fn.expand("%:p:h")
-      -- get file name
-      go_test_func(bufnr, {
-        "go",
-        "test",
-        dir,
-        "-v",
-        "-json",
-      })
-end,{})
