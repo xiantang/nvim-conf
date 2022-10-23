@@ -55,84 +55,6 @@ function dump(o)
    end
 end
 
-local function attach_to_buffer(bufnr, command)
-  local state = {
-        bufnr = bufnr,
-        tests = {},
-    }
-    -- print table
-
-    vim.api.nvim_buf_create_user_command(bufnr, "GoTestLineDiag", function()
-        local line = vim.fn.line(".") - 1
-        for _, test in pairs(state.tests) do
-            if test.line == line then
-                local buf = vim.api.nvim_create_buf(false, true)
-                vim.api.nvim_buf_set_lines(buf, 0, -1, false, test.output)
-            end
-        end
-    end, {})
-    vim.api.nvim_create_autocmd("BufWritePost", {
-          group = group,
-          pattern = "*.go",
-          callback = function ()
-            vim.fn.jobstart(command,{
-                  stdout_buffered = true,
-                on_stdout = function(_, data, _)
-                 if not data then
-                        print("No data")
-                        return
-                    end
-                 for _, line in ipairs(data) do
-                   local decoded = vim.json.decode(line)
-                    if decoded.Action == "run" then
-                        add_golang_test(state, decoded)
-                    elseif decoded.Action == "output" then
-                        if not decoded.Test then
-                            return
-                        end
-
-                        add_golang_output(state, decoded)
-                    elseif
-                        decoded.Action == "pass"
-                        or decoded.Action == "fail"
-                    then
-                        mark_success(state, decoded)
-                    elseif
-                        decoded.Action == "pause"
-                        or decoded.Action == "cont"
-                    then
-                        skip()
-                    else
-                        error("Failed to handle " .. vim.inspect(data))
-                    end
-                 end
-                end,
-
-                  on_exit = function()
-                      local test_results = {}
-                      for _, test in pairs(state.tests) do
-                          if test.line then
-                              table.insert(test_results, {
-                                  bufnr = bufnr,
-                                  lnum = test.line,
-                                  col = 0,
-                                  severity = test.success
-                                          and vim.diagnostic.severity.INFO
-                                      or vim.diagnostic.severity.ERROR,
-                                  source = "go-test",
-                                  message = test.success and "Test Passed"
-                                      or "Test Failed",
-                                  user_data = {},
-                              })
-                          end
-                      end
-
-                      vim.diagnostic.set(ns, bufnr, test_results, {})
-                  end,
-              })
-          end
-        })
-end
 
 
 local function go_test_func(bufnr, command)
@@ -140,6 +62,11 @@ local function go_test_func(bufnr, command)
           bufnr = bufnr,
           tests = {},
       }
+    -- change directory to the directory of the filetypes
+    local dir = vim.fn.expand("%:p:h")
+    -- get pwd
+    local pwd = vim.fn.getcwd()
+    vim.fn.chdir(dir)
      vim.fn.jobstart(command,{
             stdout_buffered = true,
             on_stdout = function(_, data, _)
@@ -183,9 +110,21 @@ local function go_test_func(bufnr, command)
             end,
 
               on_exit = function()
+                  vim.fn.chdir(pwd)
                   local test_results = {}
+                  local passed = 0
+                  local failed = 0
+                  local failed_tests = {}
+
                   for _, test in pairs(state.tests) do
                       if test.line then
+                        if test.success == false then
+                          failed = failed + 1
+                          local str = string.format("%s:%s", test.name, test.line)
+                          table.insert(failed_tests, str)
+                        else
+                          passed = passed + 1
+                        end
                           table.insert(test_results, {
                               bufnr = bufnr,
                               lnum = test.line,
@@ -202,6 +141,16 @@ local function go_test_func(bufnr, command)
                   end
 
                   vim.diagnostic.set(ns, bufnr, test_results, {})
+                  -- print failed tests
+                  if failed > 0 then
+                    print("failed tests:")
+                    -- string join 
+                    local failed_tests_str = table.concat(failed_tests, ",")
+                    print(string.format("%d/%d tests passed, failed test name %s", passed, passed + failed, failed_tests_str))
+                  else
+                    print(string.format("%d/%d tests passed", passed, passed + failed))
+                  end
+                  -- print(string.format("%d/%d tests passed", passed, passed + failed))
               end,
           })
 end
@@ -262,7 +211,7 @@ vim.api.nvim_create_user_command("GoTestOnSave", function()
       -- get current dir 
       local dir = vim.fn.expand("%:p:h")
       -- get file name
-      attach_to_buffer(bufnr, {
+      go_test_func(bufnr, {
         "go",
         "test",
         dir,
