@@ -138,11 +138,19 @@ function goimports(timeoutms)
   end
 end
 
--- for lua file run format after saved
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = "*.lua",
-  command = "lua vim.lsp.buf.format { async = true } ",
-})
+local auto_format_regrexs = {
+  "*.lua",
+  "*.json",
+  "*.dockerfile",
+}
+
+for _, regrex in ipairs(auto_format_regrexs) do
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = regrex,
+    command = "lua vim.lsp.buf.format { async = true } ",
+  })
+end
+
 
 local lsp_configs = require 'lspconfig/configs'
 
