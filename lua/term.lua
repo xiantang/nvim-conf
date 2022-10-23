@@ -1,4 +1,3 @@
-require("toggleterm").setup{
+require("toggleterm").setup {
   start_in_insert = false,
 }
-

@@ -147,7 +147,7 @@ local auto_format_regrexs = {
 for _, regrex in ipairs(auto_format_regrexs) do
   vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = regrex,
-    command = "lua vim.lsp.buf.format { async = true } ",
+    command = "lua vim.lsp.buf.format { async = false} ",
   })
 end
 
