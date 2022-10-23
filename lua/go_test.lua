@@ -170,7 +170,7 @@ local function go_test(bufnr, command)
 end
 
 
-vim.api.nvim_create_user_command("GoTestFun", function ()
+vim.api.nvim_create_user_command("GoRunTestFun", function ()
     if
         vim.bo.filetype ~= "go"
         or string.find(vim.fn.expand("%"), "_test") == nil
@@ -192,7 +192,7 @@ vim.api.nvim_create_user_command("GoTestFun", function ()
 end, {})
 
 
-vim.api.nvim_create_user_command("GoTestFile", function()
+vim.api.nvim_create_user_command("GoRunTestFile", function()
     if
         vim.bo.filetype ~= "go"
         or string.find(vim.fn.expand("%"), "_test") == nil
