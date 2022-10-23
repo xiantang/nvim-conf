@@ -201,8 +201,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " golang test"
-noremap <Leader>rt :GoTestFun<CR>
-noremap <Leader>rf :GoTestFile<CR>
+noremap <Leader>rt :GoRunTestFun<CR>
+noremap <Leader>rf :GoRunTestFile<CR>
 noremap <Leader>dd :GoDebugTestFunc<CR> 
 noremap <Leader>dc :GoDebugContinue<CR>
 noremap <Leader>ds :GoDebugStop<CR>
