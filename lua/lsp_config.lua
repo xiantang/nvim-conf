@@ -67,7 +67,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   -- buf_set_keymap('n', '<space>f', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', 'ge', '<cmd>lua vim.diagnostic.goto_next({severity = { min = vim.diagnostic.severity.WARN }})<CR>', opts)
+  buf_set_keymap('n', 'ge', '<cmd>lua vim.diagnostic.goto_next({severity = { min = vim.diagnostic.severity.ERROR }})<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
