@@ -166,7 +166,7 @@ require("mason-lspconfig").setup {
 
 local common_servers = {
   "sqlls",
-  "jsonls",
+  "json-lsp",
   "pyright",
   "dockerls",
   "bashls",
