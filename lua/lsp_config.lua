@@ -98,6 +98,8 @@ local on_attach = function(client, bufnr)
 end
 
 
+-- auto cmd
+
 function gofumpt(timeoutms)
   -- get current file path
   local file_path = vim.api.nvim_buf_get_name(0)
@@ -135,6 +137,12 @@ function goimports(timeoutms)
     vim.lsp.buf.execute_command(action)
   end
 end
+
+-- for lua file run format after saved
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "*.lua",
+  command = "lua vim.lsp.buf.format { async = true } ",
+})
 
 local lsp_configs = require 'lspconfig/configs'
 
