@@ -28,6 +28,7 @@ let g:airline#extensions#default#layout = [
 
 " Plugin
 call plug#begin()
+Plug 'RRethy/vim-illuminate'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'hrsh7th/cmp-path'
 Plug 'rafamadriz/friendly-snippets'
