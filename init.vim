@@ -52,6 +52,7 @@ Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-clap'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'neovim/nvim-lspconfig'
@@ -85,6 +86,7 @@ lua require('glow').setup()
 lua require("lualine_setup")
 lua require("luasnip.loaders.from_vscode").lazy_load()
 lua require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
+lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/my_snippets/lua/"})
 lua require("lsp_config")
 lua require("go_test")
 lua require("start")
