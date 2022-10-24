@@ -49,6 +49,13 @@ local on_attach = function(client, bufnr)
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+
+
+  -- change hold time 
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "single", focusable = false, max_width = 80, max_height = 20})
+  -- cousor hold for 3 seconds, show signature helper
+  vim.api.nvim_command [[autocmd CursorHold <buffer> lua vim.lsp.buf.hover() ]]
+
   -- Mappings.
   local opts = { noremap = true, silent = true }
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
