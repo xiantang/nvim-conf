@@ -69,7 +69,7 @@ local on_attach = function(client, bufnr)
   local buf_name = vim.api.nvim_buf_get_name(bufnr)
   if string.find(buf_name, "_test.go$") then
     buf_set_keymap('n', 'ge',
-      '<cmd>lua vim.diagnostic.goto_next({severity = { min = vim.diagnostic.severity.ERROR }})<CR>', opts)
+      '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   else
     buf_set_keymap('n', 'ge', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   end

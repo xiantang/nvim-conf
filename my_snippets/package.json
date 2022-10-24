@@ -13,6 +13,12 @@
           "lua"
         ],
         "path": "./lua.json"
+      },
+      {
+        "language": [
+          "bash", "sh"
+        ],
+        "path": "./bash.json"
       }
     ]
   }
