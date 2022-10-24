@@ -25,6 +25,16 @@ local add_golang_test = function(state, entry)
   }
 end
 
+local add_golang_elapsed = function(state, entry)
+  local key = make_key(entry)
+  local test = state.tests[key]
+  if not test then
+    return
+  end
+  test.elapsed = entry.Elapsed
+end
+
+
 local add_golang_output = function(state, entry)
   assert(state.tests, vim.inspect(state))
   table.insert(state.tests[make_key(entry)].output, vim.trim(entry.Output))
@@ -95,6 +105,9 @@ local function go_test(bufnr, command)
         elseif decoded.Action == "pass"
             or decoded.Action == "fail"
         then
+          if decoded.Elapsed ~= nil then
+            add_golang_elapsed(state, decoded)
+          end
           mark_success(state, decoded)
         elseif decoded.Action == "pause"
             or decoded.Action == "cont"
@@ -122,6 +135,15 @@ local function go_test(bufnr, command)
           else
             passed = passed + 1
           end
+
+          local message = ""
+          if test.success then
+            message = string.format("Test Passed in %s s", test.elapsed)
+          else
+            message = string.format("Test Failed in %s s: %s", test.elapsed, table.concat(test.output, "\n"))
+          end
+
+
           table.insert(test_results, {
             bufnr = bufnr,
             lnum = test.line,
@@ -130,8 +152,7 @@ local function go_test(bufnr, command)
                 and vim.diagnostic.severity.INFO
                 or vim.diagnostic.severity.ERROR,
             source = "go-test",
-            message = test.success and "Test Passed"
-                or "Test Failed",
+            message = message,
             user_data = {},
           })
         end
@@ -199,7 +220,6 @@ vim.api.nvim_create_user_command("GoRunTestFile", function()
     "go",
     "test",
     dir,
-    "-v",
     "-json",
     "-count=1",
   })
