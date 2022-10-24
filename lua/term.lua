@@ -1,6 +1,6 @@
 require("toggleterm").setup {
   start_in_insert = false,
-  on_open = function(term)
+  on_open = function(_)
     -- check nerdtree is visible
     --   -- g:NERDTree.IsOpen()
     -- get buffwinr
