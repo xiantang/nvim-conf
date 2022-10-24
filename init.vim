@@ -209,6 +209,7 @@ noremap <Leader>dc :GoDebugContinue<CR>
 noremap <Leader>ds :GoDebugStop<CR>
 noremap <Leader>dn :GoDebugNext<CR>
 noremap <Leader>de :GoDebugBreakpoint<CR>
+noremap <Leader>ut :UndotreeToggle<CR>
 
 
 " git diffview
