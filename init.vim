@@ -1,4 +1,5 @@
 syntax on
+set updatetime=1500
 set encoding=utf8
 set termguicolors
 set nu ru et
