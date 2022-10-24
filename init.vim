@@ -23,6 +23,7 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'uga-rosa/translate.nvim'
 Plug 'ellisonleao/glow.nvim'
 Plug 'RRethy/vim-illuminate'
 Plug 'vim-scripts/ReplaceWithRegister'
