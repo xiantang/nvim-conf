@@ -51,11 +51,16 @@ local on_attach = function(client, bufnr)
 
 
 
-  -- change hold time 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "single", focusable = false, max_width = 80, max_height = 20})
+  -- change hold time
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover,
+    { border = "single",
+      focusable = false,
+      max_width = 80,
+      max_height = 20 }
+  )
   -- cousor hold for 3 seconds, show signature helper
-  vim.api.nvim_command [[autocmd CursorHold <buffer> lua vim.lsp.buf.hover() ]]
-
+  -- silent
+  vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.hover() ]]
   -- Mappings.
   local opts = { noremap = true, silent = true }
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -75,7 +80,8 @@ local on_attach = function(client, bufnr)
   -- if current buff end with _test.go, then set keymap for error
   local buf_name = vim.api.nvim_buf_get_name(bufnr)
   if string.find(buf_name, "_test.go$") then
-    buf_set_keymap('n', 'ge', '<cmd>lua vim.diagnostic.goto_next({severity = { min = vim.diagnostic.severity.WARN}})<CR>', opts)
+    buf_set_keymap('n', 'ge', '<cmd>lua vim.diagnostic.goto_next({severity = { min = vim.diagnostic.severity.WARN}})<CR>'
+      , opts)
   else
     buf_set_keymap('n', 'ge',
       '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
