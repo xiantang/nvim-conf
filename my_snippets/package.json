@@ -16,7 +16,8 @@
       },
       {
         "language": [
-          "bash", "sh"
+          "bash",
+          "sh"
         ],
         "path": "./bash.json"
       }
