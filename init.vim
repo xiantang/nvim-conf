@@ -146,10 +146,6 @@ let g:go_fmt_command = "goimports"
 let g:go_snippet_engine = "automatic"
 
 
-
-
-
-
 " resize current buffer by +/- 5
 " vertical resize +5 
 noremap <silent> <C-Left> :vertical resize +5<CR>
@@ -245,7 +241,7 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 noremap <C-e> :Telescope frecency <CR>
 
 
-nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm size=10"<CR>
+nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm"<CR>
 let g:UltiSnipsExpandTrigger = "<nop>"
 
 
