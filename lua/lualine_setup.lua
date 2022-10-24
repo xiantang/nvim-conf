@@ -1,4 +1,5 @@
 local colors = {
+  white    = '#abb2bf',
   bg       = '#202328',
   fg       = '#bbc2cf',
   yellow   = '#ECBE7B',
@@ -10,6 +11,7 @@ local colors = {
   magenta  = '#c678dd',
   blue     = '#51afef',
   red      = '#ec5f67',
+  grey     = '#3e4452',
 }
 require('lualine').setup({
   options = {
@@ -40,9 +42,9 @@ require('lualine').setup({
         c = { fg = '#000000', bg = colors.green },
       },
       inactive = {
-        a = { fg = '#000000', bg = '#ffffff', gui = 'bold' },
-        b = { fg = '#000000', bg = '#ffffff' },
-        c = { fg = '#000000', bg = '#ffffff' },
+        a = { fg = '#000000', bg = colors.white, gui = 'bold' },
+        b = { fg = '#000000', bg = colors.white },
+        c = { fg = '#000000', bg = colors.white },
       },
     },
   },
