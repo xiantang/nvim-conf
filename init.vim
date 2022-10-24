@@ -21,20 +21,16 @@ au BufEnter leetcode.cn_*.txt set filetype=go
 
 lang en_US.UTF-8
 
-let g:airline#extensions#default#layout = [
-    \ [ 'a', 'b', 'c' ],
-    \ ['z','error', 'warning']
-    \ ]
-
 " Plugin
 call plug#begin()
+Plug 'ellisonleao/glow.nvim'
 Plug 'RRethy/vim-illuminate'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'hrsh7th/cmp-path'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'RRethy/nvim-base16'
-Plug 'vim-airline/vim-airline'
 Plug 'mbbill/undotree'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'xiantang/incsearch-easymotion.vim', {'branch': 'master'}
@@ -84,6 +80,8 @@ colorscheme base16-tender
 
 
 lua require('conf')
+lua require('glow').setup()
+lua require("lualine_setup")
 lua require("luasnip.loaders.from_vscode").lazy_load()
 lua require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
 lua require("lsp_config")
@@ -100,6 +98,7 @@ lua require('session')
 
 " silent"
 autocmd BufWritePost *.go silent lua  gofumpt(1000)
+au CursorHold,CursorHoldI * checktime
 set omnifunc=syntaxcomplete#Complete
 
 
@@ -164,6 +163,7 @@ noremap <Leader>t :NERDTreeToggle<CR>
 noremap <Leader>s :sp<CR>
 noremap <Leader>ss :source ~/.config/nvim/init.vim<CR>
 noremap <Leader>v :vsp<CR>
+noremap <Leader>vm :Glow!<CR>
 noremap <Leader>w :w<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>[  <C-O>
@@ -261,12 +261,6 @@ au WinEnter NERDTree
 au VimEnter *  wincmd p
 
 
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-
 let g:vim_markdown_folding_disabled = 1
 
 let g:firenvim_config = {
@@ -299,6 +293,9 @@ else
   set laststatus=2
 endif
 
+
+" buff enter"
+function Undotree_pr() abort
 if has("persistent_undo")
    let target_path = expand('~/.undodir')
     " create the directory and any parent directories
@@ -310,6 +307,10 @@ if has("persistent_undo")
     let &undodir=target_path
     set undofile
 endif
+endfunction
+
+autocmd BufEnter * call Undotree_pr()
+
 
 " copilot
 let g:copilot_enable = 1
