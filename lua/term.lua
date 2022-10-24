@@ -11,10 +11,10 @@ require("toggleterm").setup {
       -- NerdTree
       -- async running
       vim.defer_fn(function()
-        local cmd = string.format("NERDTreeToggle %s | wincmd p", pwd)
+        local cmd = string.format("NERDTreeToggle %s ", pwd)
         vim.cmd(cmd)
-        local cmd = string.format("NERDTreeToggle %s | 1 | wincmd p", pwd)
-        vim.cmd(cmd)
+        local cmd_retoggle = string.format("NERDTreeToggle %s | 1 | wincmd p", pwd)
+        vim.cmd(cmd_retoggle)
       end, 100)
 
 
