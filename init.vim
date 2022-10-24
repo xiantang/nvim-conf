@@ -248,6 +248,9 @@ let g:UltiSnipsExpandTrigger = "<nop>"
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
 let g:NERDTreeChDirMode = 2
+" width"
+let g:NERDTreeWinSize = 25
+
 " https://github.com/preservim/nerdtree/issues/1321
 let g:NERDTreeMinimalMenu=1
 noremap <Leader>l :NERDTreeFind<CR>
