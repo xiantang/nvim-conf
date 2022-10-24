@@ -68,11 +68,12 @@ local on_attach = function(client, bufnr)
   -- if current buff end with _test.go, then set keymap for error
   local buf_name = vim.api.nvim_buf_get_name(bufnr)
   if string.find(buf_name, "_test.go$") then
+    buf_set_keymap('n', 'ge', '<cmd>lua vim.diagnostic.goto_next({severity = { min = vim.diagnostic.severity.WARN}})<CR>', opts)
+  else
     buf_set_keymap('n', 'ge',
       '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  else
-    buf_set_keymap('n', 'ge', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   end
+
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
