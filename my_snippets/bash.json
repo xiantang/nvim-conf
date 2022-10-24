@@ -1,0 +1,7 @@
+{
+  "setx": {
+    "prefix": "setx",
+    "body": "[[ -v debug ]] && set -x",
+    "description": "set -x if debug is set"
+  }
+}
