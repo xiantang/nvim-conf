@@ -26,7 +26,6 @@ lang en_US.UTF-8
 call plug#begin()
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'uga-rosa/translate.nvim'
 Plug 'ellisonleao/glow.nvim'
 Plug 'RRethy/vim-illuminate'
 Plug 'vim-scripts/ReplaceWithRegister'
