@@ -15,3 +15,5 @@ require('syntex')
 require('session')
 require('indent')
 require("nvim-autopairs").setup {}
+require('dap-go').setup()
+require("dap_set")
