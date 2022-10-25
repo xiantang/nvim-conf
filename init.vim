@@ -24,6 +24,8 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'windwp/nvim-autopairs'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'uga-rosa/translate.nvim'
 Plug 'ellisonleao/glow.nvim'
 Plug 'RRethy/vim-illuminate'
@@ -98,7 +100,8 @@ lua require('git')
 lua require('term')
 ""lua require('syntex')
 lua require('session')
-
+lua require('indent')
+lua require("nvim-autopairs").setup {}
 
 " silent"
 autocmd BufWritePost *.go silent lua  gofumpt(1000)
@@ -215,13 +218,6 @@ noremap <Leader>ut :UndotreeToggle<CR>
 " git diffview
 nnoremap <Leader>d :DiffviewOpen<CR>
 
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
 
 tnoremap <Esc> <C-\><C-n>
 
