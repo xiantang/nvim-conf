@@ -24,6 +24,7 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'romainl/vim-cool'
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ellisonleao/glow.nvim'
