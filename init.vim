@@ -24,6 +24,9 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'leoluz/nvim-dap-go'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'mfussenegger/nvim-dap'
 Plug 'romainl/vim-cool'
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -192,11 +195,7 @@ nnoremap <C-l> <C-w>l
 " golang test"
 noremap <Leader>rt :GoRunTestFun<CR>
 noremap <Leader>rf :GoRunTestFile<CR>
-noremap <Leader>dd :GoDebugTestFunc<CR> 
-noremap <Leader>dc :GoDebugContinue<CR>
-noremap <Leader>ds :GoDebugStop<CR>
-noremap <Leader>dn :GoDebugNext<CR>
-noremap <Leader>de :GoDebugBreakpoint<CR>
+noremap <Leader>de :lua require'dap'.toggle_breakpoint()<CR>
 noremap <Leader>ut :UndotreeToggle<CR>
 
 
