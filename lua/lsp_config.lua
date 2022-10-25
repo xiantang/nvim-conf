@@ -53,10 +53,12 @@ local on_attach = function(client, bufnr)
 
   -- change hold time
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover,
-    { border = "single",
+    {
+      border = "single",
       focusable = false,
       max_width = 80,
-      max_height = 20 }
+      max_height = 20,
+    }
   )
   -- cousor hold for 3 seconds, show signature helper
   -- silent
