@@ -86,25 +86,7 @@ let g:plug_window = 'botright 40vnew'
 
 colorscheme base16-tender
 
-
-lua require('conf')
-lua require('glow').setup()
-lua require("lualine_setup")
-lua require("luasnip.loaders.from_vscode").lazy_load()
-lua require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
-lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/my_snippets/lua/"})
-lua require("lsp_config")
-lua require("go_test")
-lua require("start")
-" set telescope frecency show_scores
-lua require('tele')
-lua require("telescope").load_extension("frecency")
-lua require('git')
-lua require('term')
-""lua require('syntex')
-lua require('session')
-lua require('indent')
-lua require("nvim-autopairs").setup {}
+lua require('config')
 
 " silent"
 autocmd BufWritePost *.go silent lua  gofumpt(1000)
