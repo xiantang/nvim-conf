@@ -235,10 +235,6 @@ let g:NERDTreeChDirMode = 2
 " width"
 let g:NERDTreeWinSize = 25
 
-" auto fresh NERDTree"
-autocmd CursorHold,CursorHoldI * call NERDTreeFocus() | call g:NERDTree.ForCurrentTab().getRoot().refresh() | call g:NERDTree.ForCurrentTab().render() 
-" https://github.com/preservim/nerdtree/issues/1321
-let g:NERDTreeMinimalMenu=1
 noremap <Leader>l :NERDTreeFind<CR>
 
 
