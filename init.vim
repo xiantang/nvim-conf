@@ -81,6 +81,9 @@ Plug 'sindrets/diffview.nvim'
 Plug 'github/copilot.vim'
 Plug 'tpope/vim-commentary'
 call plug#end()
+
+let g:plug_window = 'botright 40vnew'
+
 colorscheme base16-tender
 
 
