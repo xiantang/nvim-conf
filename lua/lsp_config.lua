@@ -1,5 +1,12 @@
 local nvim_lsp = require('lspconfig')
 
+
+function _G.extract()
+  -- select the text to extract
+  local range_arg = vim.lsp.util.make_range_params()
+  vim.lsp.buf.code_action({ arguments = { range_arg } })
+end
+
 local golang_capabilities = vim.lsp.protocol.make_client_capabilities()
 golang_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -68,6 +75,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  -- coode action for extract function or variable
+  buf_set_keymap('v', 'ga', '<Cmd> lua extract()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
   buf_set_keymap('n', '<space>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
@@ -78,6 +87,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  -- extract value  refactor.extract.variable
+  buf_set_keymap('n', '<space>ev',
+    '<cmd>lua vim.lsp.buf.execute_command({command = "gopls.refactor.extract", arguments = {vim.api.nvim_buf_get_lines(0, vim.fn.line("v"), vim.fn.line("v"), false)[1]}})<CR>'
+    , opts)
   -- buf_set_keymap('n', '<space>f', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
   -- if current buff end with _test.go, then set keymap for error
   local buf_name = vim.api.nvim_buf_get_name(bufnr)
