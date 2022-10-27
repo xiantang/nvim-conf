@@ -47,6 +47,7 @@ Plug 'frazrepo/vim-rainbow'
 " jump"
 " vimicon
 Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
 Plug 'junegunn/vim-emoji'
