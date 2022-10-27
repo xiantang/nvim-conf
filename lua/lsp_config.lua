@@ -1,10 +1,30 @@
 local nvim_lsp = require('lspconfig')
 
 
+function _G.console(value)
+  -- check existing console
+  local buf = 0
+  if vim.fn.bufwinnr('LSP Console') ~= -1 then
+    buf = vim.fn.bufnr('LSP Console')
+
+  else
+    -- split a new buffer with new window
+    vim.cmd('vsplit')
+    local win = vim.api.nvim_get_current_win()
+    buf = vim.api.nvim_create_buf(true, true)
+    vim.api.nvim_win_set_buf(win, buf)
+    -- set buffer name
+    vim.api.nvim_buf_set_name(buf, 'LSP Console')
+  end
+  -- append value to buffer
+  vim.api.nvim_buf_set_lines(buf, -1, -1, false, { value })
+
+end
+
 function _G.extract()
-  -- select the text to extract
-  local range_arg = vim.lsp.util.make_range_params()
-  vim.lsp.buf.code_action({ arguments = { range_arg } })
+  local range = vim.lsp.util.make_range_params()
+  -- get end position of range
+  vim.lsp.buf.code_action({ arguments = { range } })
 end
 
 local golang_capabilities = vim.lsp.protocol.make_client_capabilities()
