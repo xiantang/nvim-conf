@@ -233,7 +233,7 @@ let g:NERDTreeChDirMode = 2
 " width"
 let g:NERDTreeWinSize = 25
 " mini 
-let NERDTreeMinimalUI = 1
+let g:NERDTreeMinimalMenu=1
 
 noremap <Leader>l :NERDTreeFind<CR>
 
