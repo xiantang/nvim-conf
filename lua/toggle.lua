@@ -1,7 +1,6 @@
 local map = require("utils").map
 
 
-
 function ToggleConfig()
   if vim.fn.bufwinnr("init.vim") ~= -1 then
     vim.cmd("q")
