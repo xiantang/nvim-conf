@@ -93,20 +93,20 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   local opts = { noremap = true, silent = true }
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>Telescope lsp_definitions<CR>', opts)
   buf_set_keymap('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   -- coode action for extract function or variable
   buf_set_keymap('v', 'ga', '<Cmd> lua extract()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
-  buf_set_keymap('n', '<space>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<space>gi', '<cmd>Telescope lsp_implementations<CR>', opts)
   buf_set_keymap('n', '<space>dt', "<cmd>lua require('dap-go').debug_test()<CR>", opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>gr', '<cmd>Telescope lsp_references<CR>', opts)
   -- extract value  refactor.extract.variable
   buf_set_keymap('n', '<space>ev',
     '<cmd>lua vim.lsp.buf.execute_command({command = "gopls.refactor.extract", arguments = {vim.api.nvim_buf_get_lines(0, vim.fn.line("v"), vim.fn.line("v"), false)[1]}})<CR>'
