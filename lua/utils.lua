@@ -1,5 +1,26 @@
 local M = {}
 
+
+function _G.console(str)
+  convert = tostring(str)
+  -- check existing console
+  local buf = 0
+  if vim.fn.bufwinnr('LSP Console') ~= -1 then
+    buf = vim.fn.bufnr('LSP Console')
+
+  else
+    -- split a new buffer with new window
+    vim.cmd('vsplit')
+    local win = vim.api.nvim_get_current_win()
+    buf = vim.api.nvim_create_buf(true, true)
+    vim.api.nvim_win_set_buf(win, buf)
+    -- set buffer name
+    vim.api.nvim_buf_set_name(buf, 'LSP Console')
+  end
+  vim.api.nvim_buf_set_lines(buf, -1, -1, false, { convert })
+
+end
+
 function M.map(mode, lhs, rhs, opts)
   local options = { noremap = true }
   if opts then
