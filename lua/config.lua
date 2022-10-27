@@ -17,3 +17,4 @@ require('indent')
 require("nvim-autopairs").setup {}
 require('dap-go').setup()
 require("dap_set")
+require("nerdtree")
