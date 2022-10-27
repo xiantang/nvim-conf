@@ -225,7 +225,6 @@ noremap <C-e> :Telescope frecency <CR>
 
 
 nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm size=10"<CR>
-let g:UltiSnipsExpandTrigger = "<nop>"
 
 
 let NERDTreeShowBookmarks=1
@@ -234,7 +233,7 @@ let g:NERDTreeChDirMode = 2
 " width"
 let g:NERDTreeWinSize = 25
 " mini 
-let g:NERDTreeMinimalUI = 1
+let NERDTreeMinimalUI = 1
 
 noremap <Leader>l :NERDTreeFind<CR>
 
