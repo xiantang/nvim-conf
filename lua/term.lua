@@ -7,8 +7,6 @@ require("toggleterm").setup {
     local winnr = vim.fn.bufwinnr(name)
     if winnr ~= -1 then
       local pwd = vim.fn.getcwd()
-      -- NerdTree
-      -- async running
       vim.defer_fn(function()
         local cmd = string.format("NERDTreeToggle %s ", pwd)
         vim.cmd(cmd)
