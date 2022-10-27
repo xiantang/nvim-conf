@@ -235,7 +235,7 @@ let g:NERDTreeWinSize = 25
 " mini 
 let g:NERDTreeMinimalMenu=1
 
-noremap <Leader>l :NERDTreeFind<CR>
+noremap <Leader>l :lua NerdSmartLocated()<CR>
 
 
 au VimEnter * if !exists('g:started_by_firenvim') | NERDTree | endif
