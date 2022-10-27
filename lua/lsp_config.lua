@@ -107,10 +107,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>gr', '<cmd>Telescope lsp_references<CR>', opts)
-  -- extract value  refactor.extract.variable
-  buf_set_keymap('n', '<space>ev',
-    '<cmd>lua vim.lsp.buf.execute_command({command = "gopls.refactor.extract", arguments = {vim.api.nvim_buf_get_lines(0, vim.fn.line("v"), vim.fn.line("v"), false)[1]}})<CR>'
-    , opts)
   -- buf_set_keymap('n', '<space>f', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
   -- if current buff end with _test.go, then set keymap for error
   local buf_name = vim.api.nvim_buf_get_name(bufnr)
