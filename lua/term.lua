@@ -1,6 +1,5 @@
 require("toggleterm").setup {
   start_in_insert = false,
-  size = 20,
   on_open = function(_)
     -- check nerdtree is visible
     local name = vim.fn.bufname("NERD_tree_")
