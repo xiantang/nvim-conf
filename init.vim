@@ -235,7 +235,6 @@ let g:NERDTreeWinSize = 25
 " mini 
 let g:NERDTreeMinimalMenu=1
 
-" https://github.com/preservim/nerdtree/issues/132
 noremap <Leader>l :NERDTreeFind<CR>
 
 
