@@ -43,14 +43,10 @@ Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'xiantang/incsearch-easymotion.vim', {'branch': 'master'}
 Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'kkharji/sqlite.lua'
-Plug 'frazrepo/vim-rainbow'
-" jump"
-" vimicon
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
-Plug 'junegunn/vim-emoji'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'folke/persistence.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -73,11 +69,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/argtextobj.vim'
-Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'nvim-lua/plenary.nvim'
