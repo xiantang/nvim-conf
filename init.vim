@@ -19,6 +19,7 @@ let mapleader=" "
 
 
 au BufEnter leetcode.cn_*.txt set filetype=go
+au FileType * set formatoptions-=cro
 
 lang en_US.UTF-8
 
@@ -207,6 +208,7 @@ omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 noremap <C-e> :Telescope frecency <CR>
+noremap <C-g> :Telescope git_branches<CR>
 
 
 nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm size=10"<CR>
