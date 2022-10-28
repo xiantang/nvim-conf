@@ -1,7 +1,4 @@
 -- neovim Script-User Defined Commands
-
-
-
 -- 1. FastMind "FM" commands
 vim.api.nvim_create_user_command("FM", function(opts)
   -- read from the arguments
