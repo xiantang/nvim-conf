@@ -74,7 +74,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
-Plug 'github/copilot.vim'
+Plug 'zbirenbaum/copilot.lua'
 Plug 'tpope/vim-commentary'
 call plug#end()
 
@@ -287,16 +287,6 @@ let g:copilot_enable = 1
 imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
 let g:copilot_no_tab_map = v:true
 let g:copilot_assume_mapped = v:true
-
-""
-" copilot enable markdown autocom
-let g:copilot_filetypes = {
-      \ 'markdown': v:true,
-      \ 'yaml': v:true,
-      \ 'go': v:true,
-        \ }
-
-
 
 echo 'read config good now'
 
