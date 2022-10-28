@@ -113,13 +113,6 @@ command! -bar DuplicateTabpane
       \ endtry
 
 let g:EasyMotion_keys = 'sdfjklghalqiwe'
-let g:go_debug_mappings = {
-  \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
-  \ '(go-debug-stop)': {'key': 'q'},
-  \ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
-  \ '(go-debug-step)': {'key': 's'},
-  \ '(go-debug-stepout)': {'key': 'o'},
-\}
 let g:go_debug_commands="/usr/bin/arch -arch arm64 /Users/jingdizhu/.gvm/pkgsets/go1.17.1/global/bin/dlv"
 let g:go_gopls_enabled = 0
 let g:test_verbose = 1
