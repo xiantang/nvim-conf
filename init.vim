@@ -233,6 +233,7 @@ au VimEnter *  wincmd p
 
 let g:vim_markdown_folding_disabled = 1
 
+
 let g:firenvim_config = {
       \ 'localSettings' : {
         \ '.*' : {
