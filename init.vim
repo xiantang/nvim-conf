@@ -1,5 +1,4 @@
 syntax on
-set relativenumber
 set updatetime=3000
 set encoding=utf8
 set termguicolors
@@ -25,6 +24,7 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'ThePrimeagen/vim-be-good'
 Plug 'leoluz/nvim-dap-go'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'mfussenegger/nvim-dap'
