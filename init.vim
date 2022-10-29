@@ -24,6 +24,7 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'rhysd/clever-f.vim'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'leoluz/nvim-dap-go'
 Plug 'rcarriga/nvim-dap-ui'
@@ -209,6 +210,8 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 noremap <C-e> :Telescope frecency <CR>
 noremap <C-g> :Telescope git_branches<CR>
+map ; <Plug>(clever-f-repeat-forward)
+map , <Plug>(clever-f-repeat-back)
 
 
 nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm size=10"<CR>
