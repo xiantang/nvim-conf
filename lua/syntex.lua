@@ -11,6 +11,7 @@ require 'nvim-treesitter.configs'.setup {
 }
 
 -- override variable  as white
+-- for method caller
 vim.cmd [[
   hi! link TSVariable Normal
 ]]
