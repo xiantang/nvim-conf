@@ -74,12 +74,15 @@ Plug 'vim-scripts/argtextobj.vim'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'zbirenbaum/copilot.lua'
 Plug 'tpope/vim-commentary'
 call plug#end()
+
+
+" alias fugitive
+cnoreabbrev git Git
 
 let g:plug_window = 'botright 40vnew'
 
@@ -93,7 +96,6 @@ au CursorHold,CursorHoldI * checktime
 set omnifunc=syntaxcomplete#Complete
 
 
-" vim-go "
 " disable gopls
 " "let g:go_debug=['shell-commands']
 let g:go_debug_windows = {
