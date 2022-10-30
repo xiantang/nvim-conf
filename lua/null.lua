@@ -26,7 +26,7 @@ local golangci_lint_fix = {
   }),
 }
 
-require("null-ls").setup({
+null_ls.setup({
   -- you can reuse a shared lspconfig on_attach callback here
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
