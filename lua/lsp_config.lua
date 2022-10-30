@@ -2,11 +2,6 @@ local nvim_lsp = require('lspconfig')
 
 
 
-function _G.extract()
-  local range = vim.lsp.util.make_range_params()
-  -- get end position of range
-  vim.lsp.buf.code_action({ arguments = { range } })
-end
 
 local golang_capabilities = vim.lsp.protocol.make_client_capabilities()
 golang_capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -75,7 +70,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', '<Cmd>Telescope lsp_definitions<CR>', opts)
   buf_set_keymap('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   -- coode action for extract function or variable
-  buf_set_keymap('v', 'ga', '<Cmd> lua extract()<CR>', opts)
+  buf_set_keymap('v', 'ga', "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
   buf_set_keymap('n', '<space>gi', '<cmd>Telescope lsp_implementations<CR>', opts)
