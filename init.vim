@@ -54,6 +54,7 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'folke/persistence.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'glepnir/dashboard-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
