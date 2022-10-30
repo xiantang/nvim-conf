@@ -272,7 +272,7 @@ endif
 
 
 " buff enter"
-function Undotree_pr() abort
+function Undotree_record() abort
 if has("persistent_undo")
    let target_path = expand('~/.undodir')
     " create the directory and any parent directories
@@ -286,7 +286,7 @@ if has("persistent_undo")
 endif
 endfunction
 
-autocmd BufEnter * call Undotree_pr()
+autocmd BufEnter * call Undotree_record()
 
 
 " copilot
