@@ -5,7 +5,7 @@ local helpers = require("null-ls.helpers")
 local golangci_lint_fix = {
   methods = null_ls.methods.FORMATTING,
   filetypes = { "go" },
-  generator = helpers.generator_factory {
+  generator = helpers.generator_factory({
     command = "golangci-lint",
     to_stdin = true,
     from_stderr = false,
@@ -23,7 +23,7 @@ local golangci_lint_fix = {
     check_exit_code = function(code)
       return code <= 2
     end,
-  },
+  }),
 }
 
 require("null-ls").setup({
@@ -49,7 +49,8 @@ require("null-ls").setup({
     null_ls.builtins.code_actions.shellcheck,
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.code_actions.refactoring,
-    null_ls.builtins.formatting.stylua
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.formatting.jq,
   },
 })
 
