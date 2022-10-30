@@ -201,10 +201,27 @@ vim.api.nvim_create_user_command("GoRunTestFile", function()
   end
   local bufnr = vim.api.nvim_get_current_buf()
   local dir = vim.fn.expand("%:p:h")
+  -- filename
+  local filename = vim.fn.expand("%:t:r")
+  local test_name = string.format("%s/%s.go", dir, filename)
+
+  -- cat test file and use go test -run to run tests
+
+  -- alias testcases="sed -n 's/func.*\(Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g'"
+
+  --  $(cat coordinator_test.go | sed -n 's/func.*\(Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g'
+  cmd = string.format("cat %s | sed -n 's/func.*\\(Test.*\\)(.*/\\1/p' | xargs | sed 's/ /|/g'", test_name)
+  local handle = io.popen(cmd)
+  local result = handle:read("*a")
+  handle:close()
+  -- remove new line
+  result = string.gsub(result, "\n", "")
+
   go_test(bufnr, {
     "go",
     "test",
-    dir,
+    "-run",
+    result,
     "-json",
     "-count=1",
   })
