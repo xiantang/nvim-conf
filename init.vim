@@ -127,6 +127,9 @@ let g:go_fmt_command = "goimports"
 let g:go_snippet_engine = "automatic"
 
 
+let g:clever_f_across_no_line = 1
+let g:clever_f_ignore_case = 1
+let g:clever_f_smart_case = 1
 " resize current buffer by +/- 5
 " vertical resize +5 
 noremap <silent> <C-Left> :vertical resize +5<CR>
