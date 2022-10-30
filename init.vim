@@ -46,7 +46,6 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'xiantang/incsearch-easymotion.vim', {'branch': 'master'}
 Plug 'nvim-telescope/telescope-frecency.nvim'
-
 Plug 'kkharji/sqlite.lua'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
