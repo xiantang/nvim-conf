@@ -210,8 +210,12 @@ vim.api.nvim_create_user_command("GoRunTestFile", function()
   -- alias testcases="sed -n 's/func.*\(Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g'"
 
   --  $(cat coordinator_test.go | sed -n 's/func.*\(Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g'
-  cmd = string.format("cat %s | sed -n 's/func.*\\(Test.*\\)(.*/\\1/p' | xargs | sed 's/ /|/g'", test_name)
+  local cmd = string.format("cat %s | sed -n 's/func.*\\(Test.*\\)(.*/\\1/p' | xargs | sed 's/ /|/g'", test_name)
   local handle = io.popen(cmd)
+  if handle == nil then
+    print("Failed to run command")
+    return
+  end
   local result = handle:read("*a")
   handle:close()
   -- remove new line
