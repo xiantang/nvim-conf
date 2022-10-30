@@ -51,6 +51,7 @@ require("null-ls").setup({
     null_ls.builtins.code_actions.refactoring,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.jq,
+    null_ls.builtins.diagnostics.hadolint,
   },
 })
 
