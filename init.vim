@@ -1,4 +1,5 @@
 syntax on
+set autoread
 set updatetime=3000
 set encoding=utf8
 set termguicolors
@@ -19,6 +20,7 @@ let mapleader=" "
 
 au BufEnter leetcode.cn_*.txt set filetype=go
 au FileType * set formatoptions-=cro
+au CursorHold * checktime
 
 lang en_US.UTF-8
 
