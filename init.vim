@@ -92,7 +92,6 @@ colorscheme base16-tender
 lua require('config')
 
 " silent"
-autocmd BufWritePost *.go silent lua  gofumpt(1000)
 au CursorHold,CursorHoldI * checktime
 set omnifunc=syntaxcomplete#Complete
 

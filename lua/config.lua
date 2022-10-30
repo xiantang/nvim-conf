@@ -16,7 +16,9 @@ require("null-ls").setup({
     end
   end,
   sources = {
-    require("null-ls").builtins.formatting.goimports
+    require("null-ls").builtins.formatting.goimports,
+    require("null-ls").builtins.formatting.gofumpt,
+    require("null-ls").builtins.formatting.golines
   },
 })
 require('glow').setup()
