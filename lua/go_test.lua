@@ -34,12 +34,6 @@ local add_golang_elapsed = function(state, entry)
   test.elapsed = entry.Elapsed
 end
 
-
-local add_golang_output = function(state, entry)
-  assert(state.tests, vim.inspect(state))
-  table.insert(state.tests[make_key(entry)].output, vim.trim(entry.Output))
-end
-
 local mark_success = function(state, entry)
   state.tests[make_key(entry)].success = entry.Action == "pass"
 end
@@ -50,15 +44,16 @@ local skip = function()
   return
 end
 
-
 function dump(o)
-  if type(o) == 'table' then
-    local s = '{ '
+  if type(o) == "table" then
+    local s = "{ "
     for k, v in pairs(o) do
-      if type(k) ~= 'number' then k = '"' .. k .. '"' end
-      s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
+      if type(k) ~= "number" then
+        k = '"' .. k .. '"'
+      end
+      s = s .. "[" .. k .. "] = " .. dump(v) .. ","
     end
-    return s .. '} '
+    return s .. "} "
   else
     return tostring(o)
   end
@@ -85,7 +80,9 @@ local function go_test(bufnr, command)
       end
       -- check ipairs lentgh
       local count = 0
-      for _ in pairs(data) do count = count + 1 end
+      for _ in pairs(data) do
+        count = count + 1
+      end
       if count < 2 then
         print("you may run test in wrong path")
         return
@@ -100,18 +97,12 @@ local function go_test(bufnr, command)
           if not decoded.Test then
             return
           end
-
-          add_golang_output(state, decoded)
-        elseif decoded.Action == "pass"
-            or decoded.Action == "fail"
-        then
+        elseif decoded.Action == "pass" or decoded.Action == "fail" then
           if decoded.Elapsed ~= nil then
             add_golang_elapsed(state, decoded)
           end
           mark_success(state, decoded)
-        elseif decoded.Action == "pause"
-            or decoded.Action == "cont"
-        then
+        elseif decoded.Action == "pause" or decoded.Action == "cont" then
           skip()
         else
           error("Failed to handle " .. vim.inspect(data))
@@ -140,17 +131,15 @@ local function go_test(bufnr, command)
           if test.success then
             message = string.format("Test Passed in %s s", test.elapsed)
           else
-            message = string.format("Test Failed in %s s: %s", test.elapsed, table.concat(test.output, "\n"))
+            message =
+            string.format("Test Failed in %s s: %s", test.elapsed, table.concat(test.output, "\n"))
           end
-
 
           table.insert(test_results, {
             bufnr = bufnr,
             lnum = test.line,
             col = 0,
-            severity = test.success
-                and vim.diagnostic.severity.INFO
-                or vim.diagnostic.severity.ERROR,
+            severity = test.success and vim.diagnostic.severity.INFO or vim.diagnostic.severity.ERROR,
             source = "go-test",
             message = message,
             user_data = {},
@@ -162,7 +151,7 @@ local function go_test(bufnr, command)
       -- check test pased
       -- create new split window
       if failed > 0 then
-        vim.cmd('split')
+        vim.cmd("split")
         local win = vim.api.nvim_get_current_win()
         local buf = vim.api.nvim_create_buf(true, true)
         vim.api.nvim_win_set_buf(win, buf)
@@ -171,14 +160,15 @@ local function go_test(bufnr, command)
             vim.api.nvim_buf_set_lines(buf, 0, -1, false, test.output)
           end
         end
-
       end
       -- print failed tests
       if failed > 0 then
         print("failed tests:")
         -- string join
         local failed_tests_str = table.concat(failed_tests, ",")
-        print(string.format("%d/%d tests passed, failed test name %s", passed, passed + failed, failed_tests_str))
+        print(
+          string.format("%d/%d tests passed, failed test name %s", passed, passed + failed, failed_tests_str)
+        )
       else
         print(string.format("%d/%d tests passed", passed, passed + failed))
       end
@@ -187,9 +177,7 @@ local function go_test(bufnr, command)
 end
 
 vim.api.nvim_create_user_command("GoRunTestFun", function()
-  if vim.bo.filetype ~= "go"
-      or string.find(vim.fn.expand("%"), "_test") == nil
-  then
+  if vim.bo.filetype ~= "go" or string.find(vim.fn.expand("%"), "_test") == nil then
     print("Not a go test file")
     return
   end
@@ -206,11 +194,8 @@ vim.api.nvim_create_user_command("GoRunTestFun", function()
   })
 end, {})
 
-
 vim.api.nvim_create_user_command("GoRunTestFile", function()
-  if vim.bo.filetype ~= "go"
-      or string.find(vim.fn.expand("%"), "_test") == nil
-  then
+  if vim.bo.filetype ~= "go" or string.find(vim.fn.expand("%"), "_test") == nil then
     print("Not a go test file")
     return
   end
