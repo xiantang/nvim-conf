@@ -26,6 +26,7 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'rhysd/clever-f.vim'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'leoluz/nvim-dap-go'
