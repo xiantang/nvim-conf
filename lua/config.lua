@@ -1,5 +1,7 @@
 require('toggle')
+require('refactoring').setup()
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local null_ls = require("null-ls")
 require("null-ls").setup({
   -- you can reuse a shared lspconfig on_attach callback here
   on_attach = function(client, bufnr)
@@ -16,9 +18,13 @@ require("null-ls").setup({
     end
   end,
   sources = {
-    require("null-ls").builtins.formatting.goimports,
-    require("null-ls").builtins.formatting.gofumpt,
-    require("null-ls").builtins.formatting.golines
+    null_ls.builtins.formatting.goimports,
+    null_ls.builtins.formatting.gofumpt,
+    null_ls.builtins.formatting.golines,
+    null_ls.builtins.formatting.gofmt,
+    null_ls.builtins.code_actions.shellcheck,
+    null_ls.builtins.formatting.shfmt,
+    null_ls.builtins.code_actions.refactoring
   },
 })
 require('glow').setup()
