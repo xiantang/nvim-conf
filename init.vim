@@ -21,12 +21,13 @@ let mapleader=" "
 au BufEnter leetcode.cn_*.txt set filetype=go
 au FileType * set formatoptions-=cro
 au CursorHold * checktime
-autocmd BufWritePost *.go silent lua golines()
+autocmd BufWritePre *.go silent lua golines()
 
 lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'rhysd/clever-f.vim'
 Plug 'ThePrimeagen/vim-be-good'
@@ -83,6 +84,9 @@ Plug 'zbirenbaum/copilot.lua'
 Plug 'tpope/vim-commentary'
 call plug#end()
 
+
+" disable gopls
+let g:go_gopls_enabled = 0
 
 " alias fugitive
 cnoreabbrev git Git
@@ -180,7 +184,7 @@ noremap <expr> <C-f> incsearch#go(<SID>config_easyfuzzymotion())
 
 noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
 noremap  <Leader>P :Telescope live_grep<CR>
-noremap  <Leader>Q :wa<CR> :qa<CR>
+noremap  <Leader>Q :wa<CR>:qa<CR>
 
 " use contrl + hjkl to move between windows
 nnoremap <C-h> <C-w>h
