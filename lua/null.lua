@@ -1,30 +1,5 @@
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local null_ls = require("null-ls")
-local helpers = require("null-ls.helpers")
-
-local golangci_lint_fix = {
-  methods = null_ls.methods.FORMATTING,
-  filetypes = { "go" },
-  generator = helpers.generator_factory({
-    command = "golangci-lint",
-    to_stdin = true,
-    from_stderr = false,
-    ignore_stderr = true,
-    args = {
-      "run",
-      "--fix=true",
-      "--fast",
-      "--out-format=json",
-      "$DIRNAME",
-      "--path-prefix",
-      "$ROOT",
-    },
-    format = "json",
-    check_exit_code = function(code)
-      return code <= 2
-    end,
-  }),
-}
 
 null_ls.setup({
   -- you can reuse a shared lspconfig on_attach callback here
@@ -45,7 +20,6 @@ null_ls.setup({
     null_ls.builtins.formatting.nginx_beautifier,
     null_ls.builtins.formatting.goimports,
     null_ls.builtins.formatting.gofumpt,
-    null_ls.builtins.formatting.golines,
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.code_actions.shellcheck,
     null_ls.builtins.formatting.shfmt,
@@ -55,5 +29,3 @@ null_ls.setup({
     null_ls.builtins.diagnostics.hadolint,
   },
 })
-
-null_ls.register(golangci_lint_fix)

@@ -3,6 +3,14 @@ local nvim_lsp = require("lspconfig")
 local golang_capabilities = vim.lsp.protocol.make_client_capabilities()
 golang_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+function golines(timeoutms)
+  -- get current file path
+  local file_path = vim.api.nvim_buf_get_name(0)
+  local command = string.format("!golines -w --no-reformat-tags %s", file_path)
+  -- run cmd in background
+  vim.cmd(command)
+end
+
 -- get function name in body of golang function
 function _G.get_cur_go_func_name()
   -- get current line number
