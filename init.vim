@@ -21,7 +21,7 @@ let mapleader=" "
 au BufEnter leetcode.cn_*.txt set filetype=go
 au FileType * set formatoptions-=cro
 au CursorHold * checktime
-autocmd BufWritePre *.go silent lua golines()
+autocmd BufWritePre *.go silent! :lua golines()
 
 lang en_US.UTF-8
 
