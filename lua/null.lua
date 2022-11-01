@@ -29,3 +29,11 @@ null_ls.setup({
     null_ls.builtins.diagnostics.hadolint,
   },
 })
+
+function golines(timeoutms)
+  -- get current file path
+  local file_path = vim.api.nvim_buf_get_name(0)
+  local command = string.format("!golines -w --no-reformat-tags %s", file_path)
+  -- run cmd in background
+  vim.cmd(command)
+end
