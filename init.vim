@@ -21,6 +21,7 @@ let mapleader=" "
 au BufEnter leetcode.cn_*.txt set filetype=go
 au FileType * set formatoptions-=cro
 au CursorHold * checktime
+autocmd BufWritePost *.go silent lua golines()
 
 lang en_US.UTF-8
 
@@ -238,7 +239,6 @@ noremap <Leader>l :lua NerdSmartLocated()<CR>
 
 au VimEnter * if !exists('g:started_by_firenvim') | NERDTree | endif
 au WinEnter NERDTree
-
 au VimEnter *  wincmd p
 
 
