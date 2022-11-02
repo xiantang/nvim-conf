@@ -21,13 +21,14 @@ let mapleader=" "
 au BufEnter leetcode.cn_*.txt set filetype=go
 au FileType * set formatoptions-=cro
 au CursorHold * checktime
-autocmd BufWritePre *.go silent! :lua golines()
+au BufWritePre *.go silent! :lua golines()
+au BufNewFile,BufRead */ssh/config  setf sshconfig
+
 
 lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'rhysd/clever-f.vim'
 Plug 'ThePrimeagen/vim-be-good'
@@ -170,6 +171,7 @@ noremap <Leader>6 :6ToggleTerm<CR>
 noremap <Leader>7 :7ToggleTerm<CR>
 noremap <Leader>8 :8ToggleTerm<CR>
 noremap <Leader>9 :9ToggleTerm<CR>
+vnoremap K        k
 
 function! s:config_easyfuzzymotion(...) abort
   return extend(copy({
@@ -308,6 +310,7 @@ let g:copilot_filetypes = {
 imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
 let g:copilot_no_tab_map = v:true
 let g:copilot_assume_mapped = v:true
+
 
 echo 'read config good now'
 
