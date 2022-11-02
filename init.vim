@@ -184,7 +184,7 @@ noremap <expr> <C-f> incsearch#go(<SID>config_easyfuzzymotion())
 
 noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
 noremap  <Leader>P :Telescope live_grep<CR>
-noremap  <Leader>Q :wa<CR>:qa<CR>
+noremap  <Leader>Q :lua require("persistence").save()<CR> :wa<CR>:qa<CR>
 
 " use contrl + hjkl to move between windows
 nnoremap <C-h> <C-w>h
