@@ -1,10 +1,11 @@
-require("toggleterm").setup {
+require("toggleterm").setup({
   start_in_insert = false,
   on_open = function(_)
     -- check nerdtree is visible
     local name = vim.fn.bufname("NERD_tree_")
-    local winnr = vim.fn.bufwinnr(name)
-    if winnr ~= -1 then
+    -- get buff id
+    local id = vim.fn.bufnr(name)
+    if id ~= -1 then
       local pwd = vim.fn.getcwd()
       vim.defer_fn(function()
         local cmd = string.format("NERDTreeToggle %s ", pwd)
@@ -14,4 +15,4 @@ require("toggleterm").setup {
       end, 100)
     end
   end,
-}
+})
