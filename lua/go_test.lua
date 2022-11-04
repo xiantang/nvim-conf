@@ -13,6 +13,11 @@ local make_key = function(entry)
   return string.format("%s/%s", entry.Package, entry.Test)
 end
 
+local function add_golang_output(state, entry)
+  assert(state.tests, vim.inspect(state))
+  table.insert(state.tests[make_key(entry)].output, vim.trim(entry.Output))
+end
+
 local add_golang_test = function(state, entry)
   local key = make_key(entry)
   if state.tests[key] then
@@ -35,11 +40,14 @@ local add_golang_elapsed = function(state, entry)
 end
 
 local mark_success = function(state, entry)
+  if entry.Action == "pass" then
+    -- remove all output
+    state.tests[make_key(entry)].output = {}
+  end
   state.tests[make_key(entry)].success = entry.Action == "pass"
 end
 
 local ns = vim.api.nvim_create_namespace("live-tests")
-local group = vim.api.nvim_create_augroup("run-go", { clear = true })
 local skip = function()
   return
 end
@@ -97,6 +105,7 @@ local function go_test(bufnr, command)
           if not decoded.Test then
             return
           end
+          add_golang_output(state, decoded)
         elseif decoded.Action == "pass" or decoded.Action == "fail" then
           if decoded.Elapsed ~= nil then
             add_golang_elapsed(state, decoded)
