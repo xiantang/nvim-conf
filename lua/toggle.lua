@@ -1,6 +1,5 @@
 local map = require("utils").map
 
-
 function ToggleConfig()
   if vim.fn.bufwinnr("init.vim") ~= -1 then
     vim.cmd("q")
@@ -11,12 +10,8 @@ function ToggleConfig()
 end
 
 function ToggleNote()
-  if vim.fn.bufwinnr("note.md") ~= -1 then
-    vim.cmd("q")
-    return
-  end
   -- edit the config file
-  vim.cmd("split ~/note.md")
+  vim.cmd("split ~/.config/note.md")
 end
 
 map("n", "<leader>e", ":lua ToggleConfig()<CR>,{silent = true}")
