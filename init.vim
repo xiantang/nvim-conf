@@ -195,8 +195,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " golang test"
-noremap <Leader>rt :GoRunTestFun<CR>
-noremap <Leader>rf :GoRunTestFile<CR>
+noremap <Leader>rt :GoTestFunc<CR>
+noremap <Leader>rf :GoTestFile<CR>
 noremap <Leader>de :lua require'dap'.toggle_breakpoint()<CR>
 noremap <Leader>ut :UndotreeToggle<CR>
 
