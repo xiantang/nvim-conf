@@ -1,3 +1,5 @@
+-- speed up
+require("impatient")
 require("toggle")
 require("refactoring").setup()
 require("null")
