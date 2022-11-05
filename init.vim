@@ -23,6 +23,7 @@ au FileType * set formatoptions-=cro
 au CursorHold * checktime
 au BufWritePre *.go silent! :lua golines()
 au BufNewFile,BufRead */ssh/config  setf sshconfig
+au CursorHold,CursorHoldI * checktime
 
 
 lang en_US.UTF-8
@@ -102,48 +103,14 @@ colorscheme base16-tender
 lua require('config')
 
 " silent"
-au CursorHold,CursorHoldI * checktime
-set omnifunc=syntaxcomplete#Complete
-
-
-" disable gopls
-" "let g:go_debug=['shell-commands']
-let g:go_debug_windows = {
-      \ 'vars':  'rightbelow 60vnew',
-\ }
-
-
-command! -bar DuplicateTabpane
-      \ let s:sessionoptions = &sessionoptions |
-      \ try |
-      \   let &sessionoptions = 'blank,help,folds,winsize,localoptions' |
-      \   execute 'NERDTreeClose' |
-      \   let s:file = tempname() |
-      \   execute 'mksession! ' . s:file |
-      \   tabnew |
-      \   execute 'source ' . s:file |
-      \ finally |
-      \   silent call delete(s:file) |
-      \   let &sessionoptions = s:sessionoptions |
-      \   unlet! s:file s:sessionoptions |
-      \ endtry
 
 let g:EasyMotion_keys = 'sdfjklghalqiwe'
-let g:go_debug_commands="/usr/bin/arch -arch arm64 /Users/jingdizhu/.gvm/pkgsets/go1.17.1/global/bin/dlv"
-let g:go_gopls_enabled = 0
-let g:test_verbose = 1
-let g:go_term_mode = 'split'
-let g:go_term_enabled = 1
-let g:go_term_close_on_exit = 0
-let g:go_term_reuse = 1
-let g:go_light_variable_declarations = 1
-let g:go_fmt_command = "goimports"
-let g:go_snippet_engine = "automatic"
 
 
 let g:clever_f_across_no_line = 1
 let g:clever_f_ignore_case = 1
 let g:clever_f_smart_case = 1
+
 " resize current buffer by +/- 5
 " vertical resize +5 
 noremap <silent> <C-Left> :vertical resize +5<CR>
@@ -185,6 +152,7 @@ function! s:config_easyfuzzymotion(...) abort
   \   'is_stay': 1
   \ }), get(a:, 1, {}))
 endfunction
+
 noremap <expr> <C-f> incsearch#go(<SID>config_easyfuzzymotion())
 
 noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
