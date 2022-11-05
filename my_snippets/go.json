@@ -1,13 +1,28 @@
 {
   "log info": {
     "prefix": "logi",
+    "body": "logutils.Logger().WithField(\"$1\",$2).Info(\"$3\")",
+    "description": "log info"
+  },
+  "log error": {
+    "prefix": "loge",
+    "body": "logutils.Logger().WithField(\"$1\",$2).Error(\"$3\")",
+    "description": "log error"
+  },
+  "log context error": {
+    "prefix": "logce",
+    "body": "logutils.Logger().WithCtx($1).WithField(\"$2\",$3).Error(\"$4\")",
+    "description": "log error"
+  },
+  "log context info": {
+    "prefix": "logci",
     "body": "logutils.Logger().WithCtx($1).WithField(\"$2\",$3).Info(\"$4\")",
     "description": "log info"
   },
   "log debug": {
-    "prefix": "logd",
+    "prefix": "logcd",
     "body": "logutils.Logger().WithCtx($1).WithField(\"$2\",$3).Debug(\"$4\")",
-    "description": "log debug"
+    "description": "log context debug"
   },
   "if error Wrap": {
     "prefix": "iferr",
