@@ -1,3 +1,5 @@
+" leader
+let mapleader=" "
 syntax on
 set autoread
 set updatetime=3000
@@ -13,8 +15,6 @@ set smartcase
 set ignorecase
 set sessionoptions-=blank
 
-" leader
-let mapleader=" "
 
 
 
@@ -31,6 +31,7 @@ lang en_US.UTF-8
 " Plugin
 call plug#begin()
 Plug 'ThePrimeagen/refactoring.nvim'
+Plug 'wfxr/minimap.vim'
 Plug 'rhysd/clever-f.vim'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'leoluz/nvim-dap-go'
@@ -90,6 +91,8 @@ Plug 'tpope/vim-commentary'
 call plug#end()
 
 
+let g:minimap_width = 10
+let g:minimap_git_colors = 1
 " disable gopls
 let g:go_gopls_enabled = 0
 
@@ -152,7 +155,6 @@ function! s:config_easyfuzzymotion(...) abort
   \   'is_stay': 1
   \ }), get(a:, 1, {}))
 endfunction
-
 noremap <expr> <C-f> incsearch#go(<SID>config_easyfuzzymotion())
 
 noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>

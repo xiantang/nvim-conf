@@ -1,5 +1,4 @@
-local db = require('dashboard')
-
+local db = require("dashboard")
 
 function RecentlySeesion()
   -- pwd
@@ -12,23 +11,32 @@ function RecentlySeesion()
   vim.cmd(cmd)
   -- move cursor to last position_self
   vim.api.nvim_win_set_cursor(0, cursor)
+  vim.cmd("MinimapToggle")
 end
 
 db.custom_center = {
-  { icon = '** ',
-    desc = 'Recently latest session                  ',
-    shortcut = 'SPC s l',
-    action = 'lua RecentlySeesion()' },
-  { icon = '** ',
-    desc = 'Recently opened files                   ',
-    action = 'Telescope oldfiles',
-    shortcut = 'SPC f h' },
-  { icon = '** ',
-    desc = 'Find  File                              ',
-    action = 'Telescope find_files find_command=rg,--hidden,--files',
-    shortcut = 'SPC f f' },
-  { icon = '** ',
-    desc = 'Find  word                              ',
-    action = 'Telescope live_grep',
-    shortcut = 'SPC f w' },
+  {
+    icon = "** ",
+    desc = "Recently latest session                  ",
+    shortcut = "SPC s l",
+    action = "lua RecentlySeesion()",
+  },
+  {
+    icon = "** ",
+    desc = "Recently opened files                   ",
+    action = "Telescope oldfiles",
+    shortcut = "SPC f h",
+  },
+  {
+    icon = "** ",
+    desc = "Find  File                              ",
+    action = "Telescope find_files find_command=rg,--hidden,--files",
+    shortcut = "SPC f f",
+  },
+  {
+    icon = "** ",
+    desc = "Find  word                              ",
+    action = "Telescope live_grep",
+    shortcut = "SPC f w",
+  },
 }
