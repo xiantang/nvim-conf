@@ -40,10 +40,6 @@ local add_golang_elapsed = function(state, entry)
 end
 
 local mark_success = function(state, entry)
-  if entry.Action == "pass" then
-    -- remove all output
-    state.tests[make_key(entry)].output = {}
-  end
   state.tests[make_key(entry)].success = entry.Action == "pass"
 end
 
@@ -159,16 +155,12 @@ local function go_test(bufnr, command)
       vim.diagnostic.set(ns, bufnr, test_results, {})
       -- check test pased
       -- create new split window
-      if failed > 0 then
-        vim.cmd("split")
-        local win = vim.api.nvim_get_current_win()
-        local buf = vim.api.nvim_create_buf(true, true)
-        vim.api.nvim_win_set_buf(win, buf)
-        for _, test in pairs(state.tests) do
-          if test.success == false then
-            vim.api.nvim_buf_set_lines(buf, 0, -1, false, test.output)
-          end
-        end
+      vim.cmd("split")
+      local win = vim.api.nvim_get_current_win()
+      local buf = vim.api.nvim_create_buf(true, true)
+      vim.api.nvim_win_set_buf(win, buf)
+      for _, test in pairs(state.tests) do
+        vim.api.nvim_buf_set_lines(buf, 0, -1, false, test.output)
       end
       -- print failed tests
       if failed > 0 then
