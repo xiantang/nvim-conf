@@ -91,7 +91,7 @@ Plug 'tpope/vim-commentary'
 call plug#end()
 
 
-let g:minimap_width = 10
+let g:minimap_width = 5
 let g:minimap_git_colors = 1
 " disable gopls
 let g:go_gopls_enabled = 0
