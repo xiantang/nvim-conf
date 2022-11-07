@@ -11,7 +11,7 @@ function RecentlySeesion()
 	vim.cmd(cmd)
 	-- move cursor to last position_self
 	vim.api.nvim_win_set_cursor(0, cursor)
-	-- vim.cmd("MinimapToggle")
+	vim.cmd("MinimapToggle")
 end
 
 db.custom_center = {
