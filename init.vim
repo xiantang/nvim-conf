@@ -30,6 +30,8 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'ray-x/go.nvim'
+Plug 'ray-x/guihua.lua'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'wfxr/minimap.vim'
 Plug 'rhysd/clever-f.vim'
@@ -168,8 +170,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " golang test"
-noremap <Leader>rt :GoTestFunc<CR>
-noremap <Leader>rf :GoTestFile<CR>
+noremap <Leader>rt :GoRunTestFunc<CR>
+noremap <Leader>rf :GoRunTestFile<CR>
 noremap <Leader>de :lua require'dap'.toggle_breakpoint()<CR>
 noremap <Leader>ut :UndotreeToggle<CR>
 
@@ -197,6 +199,7 @@ omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 noremap <C-e> :Telescope frecency <CR>
+noremap <C-q> :Telescope oldfiles <CR>
 noremap <C-g> :Telescope git_branches<CR>
 map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
