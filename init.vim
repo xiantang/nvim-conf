@@ -1,7 +1,6 @@
 " leader
 let mapleader=" "
 syntax on
-set nowrap
 set relativenumber
 set autoread
 set updatetime=3000
@@ -25,12 +24,15 @@ au BufWritePost *.go silent! :lua golines()
 au BufWritePost *.go silent! :lua gofumpt()
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
+autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
 
 
 lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'segeljakt/vim-silicon'
 Plug 'ray-x/go.nvim'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'ray-x/guihua.lua'
@@ -71,6 +73,7 @@ Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'glepnir/dashboard-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
@@ -94,6 +97,10 @@ Plug 'zbirenbaum/copilot.lua'
 Plug 'tpope/vim-commentary'
 call plug#end()
 
+
+
+let g:silicon={}
+let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'
 
 let g:minimap_width = 5
 let g:minimap_git_colors = 1
