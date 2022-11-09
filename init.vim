@@ -1,6 +1,7 @@
 " leader
 let mapleader=" "
 syntax on
+set relativenumber
 set autoread
 set updatetime=3000
 set encoding=utf8
@@ -15,13 +16,12 @@ set smartcase
 set ignorecase
 set sessionoptions-=blank
 
-
-
-
 au BufEnter leetcode.cn_*.txt set filetype=go
+au BufEnter *.conf set filetype=config
 au FileType * set formatoptions-=cro
 au CursorHold * checktime
 au BufWritePre *.go silent! :lua golines()
+au BufWritePre *.go silent! :lua gofumpt()
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
 
