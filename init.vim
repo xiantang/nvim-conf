@@ -1,6 +1,7 @@
 " leader
 let mapleader=" "
 syntax on
+set nowrap
 set relativenumber
 set autoread
 set updatetime=3000
@@ -20,8 +21,8 @@ au BufEnter leetcode.cn_*.txt set filetype=go
 au BufEnter *.conf set filetype=config
 au FileType * set formatoptions-=cro
 au CursorHold * checktime
-au BufWritePre *.go silent! :lua golines()
-au BufWritePre *.go silent! :lua gofumpt()
+au BufWritePost *.go silent! :lua golines()
+au BufWritePost *.go silent! :lua gofumpt()
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
 
@@ -31,6 +32,7 @@ lang en_US.UTF-8
 " Plugin
 call plug#begin()
 Plug 'ray-x/go.nvim'
+Plug 'p00f/nvim-ts-rainbow'
 Plug 'ray-x/guihua.lua'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'wfxr/minimap.vim'
