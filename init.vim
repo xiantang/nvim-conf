@@ -31,7 +31,6 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
-Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'segeljakt/vim-silicon'
 Plug 'ray-x/go.nvim'
 Plug 'p00f/nvim-ts-rainbow'
