@@ -101,7 +101,7 @@ call plug#end()
 let g:silicon={}
 let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'
 
-let g:minimap_width = 5
+let g:minimap_width = 3
 let g:minimap_git_colors = 1
 " disable gopls
 let g:go_gopls_enabled = 0
@@ -154,6 +154,8 @@ noremap <Leader>6 :6ToggleTerm<CR>
 noremap <Leader>7 :7ToggleTerm<CR>
 noremap <Leader>8 :8ToggleTerm<CR>
 noremap <Leader>9 :9ToggleTerm<CR>
+noremap tt :GenReturn<CR>0
+
 vnoremap K        k
 
 function! s:config_easyfuzzymotion(...) abort
