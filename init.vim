@@ -39,7 +39,7 @@ Plug 'ray-x/go.nvim'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'ray-x/guihua.lua'
 Plug 'ThePrimeagen/refactoring.nvim'
-Plug 'wfxr/minimap.vim'
+Plug 'petertriho/nvim-scrollbar'
 Plug 'rhysd/clever-f.vim'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'leoluz/nvim-dap-go'
@@ -106,8 +106,6 @@ call plug#end()
 let g:silicon={}
 let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'
 
-let g:minimap_width = 3
-let g:minimap_git_colors = 1
 " disable gopls
 let g:go_gopls_enabled = 0
 
