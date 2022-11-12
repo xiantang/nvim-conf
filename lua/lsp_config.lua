@@ -287,10 +287,11 @@ cmp.setup({
     end, { "i", "s" }),
   }),
   sources = {
-    { name = "luasnip" },
-    { name = "nvim_lsp" },
-    { name = "path" },
-    { name = "dictionaty", keword_length = 3 },
+    { name = "luasnip", priority = 100 },
+    { name = "nvim_lsp", priority = 90 },
+    { name = "path", priority = 80 },
+    -- disable fuzzy
+    { name = "dictionary", priority = 10, max_item_count = 5, keword_length = 3 },
   },
 })
 
