@@ -324,3 +324,10 @@ require("cmp_dictionary").setup({
   capacity = 5,
   debug = false,
 })
+
+cmp.setup.filetype("gitcommit", {
+  sources = cmp.config.sources({
+    { name = "buffer" },
+    { name = "dictionary", priority = 10, max_item_count = 5, keword_length = 3 },
+  }),
+})
