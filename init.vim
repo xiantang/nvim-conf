@@ -40,6 +40,7 @@ Plug 'p00f/nvim-ts-rainbow'
 Plug 'ray-x/guihua.lua'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'petertriho/nvim-scrollbar'
+Plug 'wakatime/vim-wakatime'
 Plug 'rhysd/clever-f.vim'
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'leoluz/nvim-dap-go'
@@ -153,6 +154,7 @@ let g:clever_f_smart_case = 1
 nnoremap <D-v> "+p
 inoremap <D-v> <Esc>"+p
 tnoremap <D-v> <C-\><C-n>"+p
+cnoremap <D-v> <c-r>+
 noremap <silent> <C-Left> :vertical resize +5<CR>
 noremap <silent> <C-Right> :vertical resize -5<CR>
 noremap <silent> <C-Up> :resize +5<CR>
