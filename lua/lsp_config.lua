@@ -295,12 +295,27 @@ cmp.setup({
   },
 })
 
+require("cmp").setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = "cmdline", keyword_length = 2 },
+    { name = "path" },
+  },
+})
+
+require("cmp").setup.cmdline("/", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = "buffer" },
+  },
+})
+
 require("cmp_dictionary").setup({
   dic = {
     ["*"] = { "/usr/share/dict/words" },
   },
   -- The following are default values.
-  exact = 2,
+  exact = -1,
   first_case_insensitive = false,
   document = false,
   document_command = "wn %s -over",
