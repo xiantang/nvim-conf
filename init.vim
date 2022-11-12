@@ -111,7 +111,7 @@ cnoreabbrev git Git
 
 let g:plug_window = 'botright 40vnew'
 
-silent! colorscheme base16-gruvbox-dark-soft
+silent! colorscheme base16-tender
 
 lua require('config')
 
