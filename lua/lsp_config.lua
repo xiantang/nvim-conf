@@ -131,19 +131,6 @@ function gofumpt(timeoutms)
   vim.cmd(command)
 end
 
--- local auto_format_regrexs = {
---   "*.lua",
---   "*.json",
---   "*.dockerfile",
--- }
-
--- for _, regrex in ipairs(auto_format_regrexs) do
---   vim.api.nvim_create_autocmd("BufWritePost", {
---     pattern = regrex,
---     command = "lua vim.lsp.buf.format { async = false} ",
---   })
--- end
-
 local lsp_configs = require("lspconfig/configs")
 
 if not lsp_configs.golangcilsp then
