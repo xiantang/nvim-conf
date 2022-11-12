@@ -1,5 +1,31 @@
 -- speed up
+require("start")
 require("impatient")
+require("scrollbar.handlers.gitsigns").setup()
+require("scrollbar").setup({
+  set_highlights = true,
+  marks = {
+    GitAdd = {
+      text = "│",
+      priority = 5,
+      color = "green",
+      cterm = nil,
+    },
+    GitChange = {
+      text = "│",
+      priority = 5,
+      color = "yellow",
+      cterm = nil,
+    },
+    GitDelete = {
+      text = "_",
+      priority = 5,
+      color = "red",
+      cterm = nil,
+    },
+  },
+})
+
 require("toggle")
 require("refactoring").setup()
 require("null")
@@ -25,4 +51,3 @@ require("fastmind")
 require("go").setup()
 require("txtobj")
 require("input_method")
-require("start")
