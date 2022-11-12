@@ -1,6 +1,7 @@
 " leader
 let mapleader=" "
 syntax on
+set guifont:DejaVuSansMono\ Nerd\ Font:h16
 set relativenumber
 set autoread
 set updatetime=3000
@@ -70,7 +71,6 @@ Plug 'folke/persistence.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-Plug 'glepnir/dashboard-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
