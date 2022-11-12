@@ -96,6 +96,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'zbirenbaum/copilot.lua'
+Plug 'keaising/im-select.nvim'
 Plug 'tpope/vim-commentary'
 call plug#end()
 
