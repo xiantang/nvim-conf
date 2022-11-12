@@ -327,6 +327,7 @@ require("cmp_dictionary").setup({
 
 cmp.setup.filetype("gitcommit", {
   sources = cmp.config.sources({
+    { name = "luasnip", priority = 100 },
     { name = "buffer" },
     { name = "dictionary", priority = 10, max_item_count = 5, keword_length = 3 },
   }),
