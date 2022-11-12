@@ -290,5 +290,21 @@ cmp.setup({
     { name = "luasnip" },
     { name = "nvim_lsp" },
     { name = "path" },
+    { name = "dictionaty", keword_length = 3 },
   },
+})
+
+require("cmp_dictionary").setup({
+  dic = {
+    ["*"] = { "/usr/share/dict/words" },
+  },
+  -- The following are default values.
+  exact = 2,
+  first_case_insensitive = false,
+  document = false,
+  document_command = "wn %s -over",
+  async = false,
+  max_items = -1,
+  capacity = 5,
+  debug = false,
 })
