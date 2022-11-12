@@ -125,7 +125,10 @@ let g:clever_f_ignore_case = 1
 let g:clever_f_smart_case = 1
 
 " resize current buffer by +/- 5
+
 " vertical resize +5 
+nnoremap <D-v> "+p
+inoremap <D-v> <Esc>"+p
 noremap <silent> <C-Left> :vertical resize +5<CR>
 noremap <silent> <C-Right> :vertical resize -5<CR>
 noremap <silent> <C-Up> :resize +5<CR>
@@ -229,8 +232,6 @@ let g:NERDTreeMinimalMenu=1
 noremap <Leader>l :lua NerdSmartLocated()<CR>
 
 
-au VimEnter * if !exists('g:started_by_firenvim') | NERDTree | endif
-au WinEnter NERDTree
 au VimEnter *  wincmd p
 
 
