@@ -283,11 +283,11 @@ cmp.setup({
 })
 
 require("cmp").setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = "cmdline", keyword_length = 2 },
-    { name = "path" },
-  },
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "cmdline", keyword_length = 2 },
+		{ name = "path" },
+	},
 })
 
 require("cmp").setup.cmdline("/", {
