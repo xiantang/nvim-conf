@@ -1,5 +1,3 @@
-local db = require("dashboard")
-
 function RecentlySeesion()
   -- pwd
   require("persistence").load({ last = true })
@@ -15,31 +13,8 @@ function RecentlySeesion()
   -- buffer enter events
   -- if it's Minimap buffer, wincmd p to move to last buffer
   vim.cmd("autocmd BufEnter * if bufname('%') =~ 'Minimap' | wincmd p | endif")
+  -- file type
 end
 
-db.custom_center = {
-  {
-    icon = "** ",
-    desc = "Recently latest session                  ",
-    shortcut = "SPC s l",
-    action = "lua RecentlySeesion()",
-  },
-  {
-    icon = "** ",
-    desc = "Recently opened files                   ",
-    action = "Telescope oldfiles",
-    shortcut = "SPC f h",
-  },
-  {
-    icon = "** ",
-    desc = "Find  File                              ",
-    action = "Telescope find_files find_command=rg,--hidden,--files",
-    shortcut = "SPC f f",
-  },
-  {
-    icon = "** ",
-    desc = "Find  word                              ",
-    action = "Telescope live_grep",
-    shortcut = "SPC f w",
-  },
-}
+-- https://github.com/neovim/neovim/issues/8136#issuecomment-373082539 nested
+vim.cmd("autocmd VimEnter * nested lua RecentlySeesion()")
