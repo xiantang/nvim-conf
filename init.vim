@@ -33,6 +33,8 @@ lang en_US.UTF-8
 " Plugin
 call plug#begin()
 Plug 'segeljakt/vim-silicon'
+Plug 'ZSaberLv0/ZFVimIM'
+Plug 'ZSaberLv0/ZFVimJob'
 Plug 'ray-x/go.nvim'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'ray-x/guihua.lua'
@@ -113,6 +115,26 @@ cnoreabbrev git Git
 let g:plug_window = 'botright 40vnew'
 
 silent! colorscheme base16-tender
+
+
+let s:repoPath="~/.config/ZFVimIM_pinyin_base"
+function! s:dbInit()
+    let repoPath = s:repoPath
+    let dbFile = '/misc/pinyin.txt'
+    let dbCountFile = '/misc/pinyin_count.txt'
+
+    let db = ZFVimIM_dbInit({
+                \   'name' : 'pinyin',
+                \ })
+    call ZFVimIM_cloudRegister({
+                \   'mode' : 'local',
+                \   'dbId' : db['dbId'],
+                \   'repoPath' : repoPath,
+                \   'dbFile' : dbFile,
+                \   'dbCountFile' : dbCountFile,
+                \ })
+endfunction
+autocmd User ZFVimIM_event_OnDbInit call s:dbInit()
 
 lua require('config')
 
