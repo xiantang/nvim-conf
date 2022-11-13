@@ -241,6 +241,8 @@ if cmp == nil then
 end
 
 cmp.setup({
+  -- https://www.reddit.com/r/neovim/comments/t7jl7p/cmp_autocomplete_in_golang_does_not_autoselect/
+  preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -283,7 +285,6 @@ cmp.setup({
 })
 
 require("cmp").setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = "cmdline", keyword_length = 2 },
     { name = "path" },
@@ -291,7 +292,6 @@ require("cmp").setup.cmdline(":", {
 })
 
 require("cmp").setup.cmdline("/", {
-  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = "buffer" },
   },
