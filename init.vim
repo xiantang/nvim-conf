@@ -33,13 +33,13 @@ lang en_US.UTF-8
 " Plugin
 call plug#begin()
 Plug 'onsails/lspkind.nvim'
+Plug 'glepnir/lspsaga.nvim'
 Plug 'segeljakt/vim-silicon'
 Plug 'ZSaberLv0/ZFVimIM'
 Plug 'ZSaberLv0/ZFVimJob'
 Plug 'ray-x/go.nvim'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'ray-x/guihua.lua'
-Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'petertriho/nvim-scrollbar'
 Plug 'rhysd/clever-f.vim'
 Plug 'leoluz/nvim-dap-go'
