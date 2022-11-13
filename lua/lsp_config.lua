@@ -66,11 +66,11 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   local opts = { noremap = true, silent = true }
   buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  buf_set_keymap("n", "gd", "<Cmd>Telescope lsp_definitions<CR>", opts)
-  buf_set_keymap("n", "ga", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  buf_set_keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+  buf_set_keymap("n", "ga", "<cmd>Lspsaga code_action<CR>", opts)
   -- coode action for extract function or variable
   buf_set_keymap("v", "ga", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", opts)
-  buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 
   buf_set_keymap("n", "<space>gi", "<cmd>Telescope lsp_implementations<CR>", opts)
   buf_set_keymap("n", "<space>dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
@@ -78,18 +78,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
   buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
   buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  buf_set_keymap("n", "<space>gr", "<cmd>Telescope lsp_references<CR>", opts)
+  buf_set_keymap("n", "<space>rn", "<cmd>Lspsaga rename<CR>", opts)
+  buf_set_keymap("n", "<space>gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
+  buf_set_keymap("n", "<space>o", "<cmd>LSoutlineToggle<CR>", opts)
   -- buf_set_keymap('n', '<space>f', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
   -- if current buff end with _test.go, then set keymap for error
   local buf_name = vim.api.nvim_buf_get_name(bufnr)
   if string.find(buf_name, "_test.go$") then
-    buf_set_keymap(
-      "n",
-      "ge",
-      "<cmd>lua vim.diagnostic.goto_next({severity = { min = vim.diagnostic.severity.WARN}})<CR>",
-      opts
-    )
+    buf_set_keymap("n", "ge", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
   else
     buf_set_keymap("n", "ge", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
   end
@@ -231,3 +227,11 @@ nvim_lsp.gopls.setup({
   },
   on_attach = on_attach,
 })
+
+local saga = require("lspsaga")
+saga.init_lsp_saga({
+  -- your configuration
+})
+
+vim.o.updatetime = 250
+vim.cmd [[autocmd! CursorHold,CursorHoldI * Lspsaga show_cursor_diagnostics]]

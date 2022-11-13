@@ -27,7 +27,6 @@ require("scrollbar").setup({
 })
 
 require("toggle")
-require("refactoring").setup()
 require("null")
 require("glow").setup()
 require("lualine_setup")

@@ -65,12 +65,12 @@ local M = {}
 print("lua-cn.lua")
 
 local function sayMyName()
-  print("Hrunkner")
+	print("Hrunkner")
 end
 
 function M.sayHello()
-  print("Hello")
-  sayMyName()
+	print("Hello")
+	sayMyName()
 end
 
 return M
