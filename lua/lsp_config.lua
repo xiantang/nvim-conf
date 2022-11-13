@@ -179,6 +179,7 @@ local common_servers = {
   "vimls",
   "yamlls",
   "grammarly",
+  "cmake",
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -239,8 +240,24 @@ local cmp = require("cmp")
 if cmp == nil then
   return
 end
+local lspkind = require("lspkind")
 
 cmp.setup({
+  -- show source name in menu
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      menu = {
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        dictionary = "[Dictionary]",
+        path = "[Path]",
+      },
+    }),
+  },
+
   -- https://www.reddit.com/r/neovim/comments/t7jl7p/cmp_autocomplete_in_golang_does_not_autoselect/
   preselect = cmp.PreselectMode.None,
   snippet = {
@@ -277,8 +294,9 @@ cmp.setup({
   }),
   sources = {
     { name = "luasnip", priority = 100 },
-    { name = "nvim_lsp", priority = 90 },
-    { name = "path", priority = 80 },
+    { name = "nvim_lsp", priority = 99 },
+    { name = "buffer", priority = 80, max_item_count = 3 },
+    { name = "path", priority = 80, max_item_count = 3 },
     -- disable fuzzy
     { name = "dictionary", priority = 10, max_item_count = 5, keword_length = 3 },
   },
