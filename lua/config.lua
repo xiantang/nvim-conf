@@ -1,4 +1,5 @@
 -- speed up
+vim.notify = require("notify")
 require("start")
 require("impatient")
 require("scrollbar.handlers.gitsigns").setup()
