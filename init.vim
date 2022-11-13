@@ -32,6 +32,8 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'rcarriga/nvim-notify'
+Plug 'onsails/lspkind.nvim'
 Plug 'segeljakt/vim-silicon'
 Plug 'ZSaberLv0/ZFVimIM'
 Plug 'ZSaberLv0/ZFVimJob'
