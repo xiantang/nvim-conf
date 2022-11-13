@@ -32,7 +32,6 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
-Plug 'rcarriga/nvim-notify'
 Plug 'onsails/lspkind.nvim'
 Plug 'segeljakt/vim-silicon'
 Plug 'ZSaberLv0/ZFVimIM'
@@ -43,10 +42,8 @@ Plug 'ray-x/guihua.lua'
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'petertriho/nvim-scrollbar'
 Plug 'rhysd/clever-f.vim'
-Plug 'ThePrimeagen/vim-be-good'
 Plug 'leoluz/nvim-dap-go'
 Plug 'lewis6991/impatient.nvim'
-Plug 'akinsho/git-conflict.nvim', { 'tag': 'v0.1.0'}
 Plug 'dstein64/vim-startuptime'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'mfussenegger/nvim-dap'
@@ -110,8 +107,6 @@ call plug#end()
 let g:silicon={}
 let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'
 
-" disable gopls
-let g:go_gopls_enabled = 0
 
 " alias fugitive
 cnoreabbrev git Git
@@ -329,5 +324,5 @@ let g:copilot_no_tab_map = v:true
 let g:copilot_assume_mapped = v:true
 
 
-echo 'read config good now'
+echo 'neovim be good'
 
