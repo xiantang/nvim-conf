@@ -9,7 +9,9 @@
         "gofumpt",
         "rongyao",
         "jingdi",
-        "jingdi2"
+        "jingdi2",
+        "songjian",
+        "songjian2"
     ],
     "Lua.workspace.checkThirdParty": false
 }
