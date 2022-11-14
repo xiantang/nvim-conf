@@ -26,7 +26,6 @@ require("scrollbar").setup({
 	},
 })
 require("toggle")
-require("null")
 require("glow").setup()
 require("lualine_setup")
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -50,3 +49,4 @@ require("fastmind")
 require("go").setup()
 require("txtobj")
 require("input_method")
+require("null")
