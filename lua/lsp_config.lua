@@ -90,11 +90,7 @@ local on_attach = function(client, bufnr)
 	-- Mappings.
 	local opts = { noremap = true, silent = true }
 	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-<<<<<<< HEAD
 	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-=======
-	buf_set_keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
->>>>>>> fcb7f28 (fix(scope): cannot format code when using null-lsp)
 	buf_set_keymap("n", "ga", "<cmd>Lspsaga code_action<CR>", opts)
 	-- coode action for extract function or variable
 	buf_set_keymap("v", "ga", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", opts)
@@ -112,6 +108,7 @@ local on_attach = function(client, bufnr)
 	-- if current buff end with _test.go, then set keymap for error
 	local buf_name = vim.api.nvim_buf_get_name(bufnr)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	buf_set_keymap("n", "ge", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 =======
 	if string.find(buf_name, "_test.go$") then
@@ -120,6 +117,9 @@ local on_attach = function(client, bufnr)
 		buf_set_keymap("n", "ge", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 	end
 >>>>>>> fcb7f28 (fix(scope): cannot format code when using null-lsp)
+=======
+	buf_set_keymap("n", "ge", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+>>>>>>> 79437b8 (feat(scope): add lsp)
 
 	-- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
