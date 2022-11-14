@@ -5,105 +5,127 @@ golang_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- get function name in body of golang function
 function _G.get_cur_go_func_name()
-  -- get current line number
-  local line = vim.api.nvim_win_get_cursor(0)[1]
-  -- get current line
-  local line_str = vim.api.nvim_buf_get_lines(0, line - 1, line, false)[1]
-  -- get function name if not find, try to find in previous line
-  -- for loop
-  while not string.find(line_str, "func%s+([%w_]+)") do
-    line = line - 1
-    line_str = vim.api.nvim_buf_get_lines(0, line - 1, line, false)[1]
-    if not line_str then
-      return nil
-    end
-  end
-  local func_name = string.match(line_str, "func%s+([%w_]+)")
-  return func_name
+	-- get current line number
+	local line = vim.api.nvim_win_get_cursor(0)[1]
+	-- get current line
+	local line_str = vim.api.nvim_buf_get_lines(0, line - 1, line, false)[1]
+	-- get function name if not find, try to find in previous line
+	-- for loop
+	while not string.find(line_str, "func%s+([%w_]+)") do
+		line = line - 1
+		line_str = vim.api.nvim_buf_get_lines(0, line - 1, line, false)[1]
+		if not line_str then
+			return nil
+		end
+	end
+	local func_name = string.match(line_str, "func%s+([%w_]+)")
+	return func_name
 end
 
 --- debug current function for golang
 function _G.debug_cur_test_func()
-  local func_name = _G.get_cur_go_func_name()
-  if not func_name then
-    return
-  end
-  -- run vim command GoDebugTest
-  --  DuplicateTabpane
-  vim.cmd("DuplicateTabpane")
-  -- sprintf -test.run TestOnRsyncAndWatch
-  local cmd = string.format("GoDebugTest -test.run %s$", func_name)
-  print("run command: " .. cmd)
-  vim.cmd(cmd)
-  -- waiting for debug start
-  vim.defer_fn(function()
-    -- run vim command GoDebugContinue
-    vim.cmd("GoDebugContinue")
-  end, 3000)
+	local func_name = _G.get_cur_go_func_name()
+	if not func_name then
+		return
+	end
+	-- run vim command GoDebugTest
+	--  DuplicateTabpane
+	vim.cmd("DuplicateTabpane")
+	-- sprintf -test.run TestOnRsyncAndWatch
+	local cmd = string.format("GoDebugTest -test.run %s$", func_name)
+	print("run command: " .. cmd)
+	vim.cmd(cmd)
+	-- waiting for debug start
+	vim.defer_fn(function()
+		-- run vim command GoDebugContinue
+		vim.cmd("GoDebugContinue")
+	end, 3000)
 end
 
+-- Avoiding LSP formatting conflicts https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts#neovim-08
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			-- apply whatever logic you want (in this example, we'll only use null-ls)
+			return client.name == "null-ls"
+		end,
+		bufnr = bufnr,
+	})
+end
+
+-- if you want to set up formatting on save, you can use this as a callback
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = bufnr,
+			callback = function()
+				lsp_formatting(bufnr)
+			end,
+		})
+	end
+	local function buf_set_keymap(...)
+		vim.api.nvim_buf_set_keymap(bufnr, ...)
+	end
 
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
-  end
+	local function buf_set_option(...)
+		vim.api.nvim_buf_set_option(bufnr, ...)
+	end
 
-  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-  -- change hold time
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "single",
-    focusable = false,
-    max_width = 80,
-    max_height = 20,
-  })
-  -- cousor hold for 3 seconds, show signature helper
-  -- silent
-  -- vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.hover() ]]
-  -- Mappings.
-  local opts = { noremap = true, silent = true }
-  buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  buf_set_keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
-  buf_set_keymap("n", "ga", "<cmd>Lspsaga code_action<CR>", opts)
-  -- coode action for extract function or variable
-  buf_set_keymap("v", "ga", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", opts)
-  buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+	-- change hold time
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+		border = "single",
+		focusable = false,
+		max_width = 80,
+		max_height = 20,
+	})
+	-- cousor hold for 3 seconds, show signature helper
+	-- silent
+	-- vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.hover() ]]
+	-- Mappings.
+	local opts = { noremap = true, silent = true }
+	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	buf_set_keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+	buf_set_keymap("n", "ga", "<cmd>Lspsaga code_action<CR>", opts)
+	-- coode action for extract function or variable
+	buf_set_keymap("v", "ga", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", opts)
+	buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+	buf_set_keymap("n", "<space>gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+	buf_set_keymap("n", "<space>dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
+	buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+	buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+	buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+	buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+	buf_set_keymap("n", "<space>rn", "<cmd>Lspsaga rename<CR>", opts)
+	buf_set_keymap("n", "<space>gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
+	buf_set_keymap("n", "<space>o", "<cmd>LSoutlineToggle<CR>", opts)
+	-- buf_set_keymap('n', '<space>f', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
+	-- if current buff end with _test.go, then set keymap for error
+	local buf_name = vim.api.nvim_buf_get_name(bufnr)
+	if string.find(buf_name, "_test.go$") then
+		buf_set_keymap("n", "ge", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	else
+		buf_set_keymap("n", "ge", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	end
 
-  buf_set_keymap("n", "<space>gi", "<cmd>Telescope lsp_implementations<CR>", opts)
-  buf_set_keymap("n", "<space>dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
-  buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-  buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-  buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-  buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  buf_set_keymap("n", "<space>rn", "<cmd>Lspsaga rename<CR>", opts)
-  buf_set_keymap("n", "<space>gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
-  buf_set_keymap("n", "<space>o", "<cmd>LSoutlineToggle<CR>", opts)
-  -- buf_set_keymap('n', '<space>f', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
-  -- if current buff end with _test.go, then set keymap for error
-  local buf_name = vim.api.nvim_buf_get_name(bufnr)
-  if string.find(buf_name, "_test.go$") then
-    buf_set_keymap("n", "ge", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-    buf_set_keymap("n", "ge", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-  else
-    buf_set_keymap("n", "ge", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-  end
+	-- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
-  -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+	-- Set some keybinds conditional on server capabilities
+	if client.server_capabilities.document_formatting then
+		buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	elseif client.server_capabilities.document_range_formatting then
+		buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+	end
 
-  -- Set some keybinds conditional on server capabilities
-  if client.server_capabilities.document_formatting then
-    buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.server_capabilities.document_range_formatting then
-    buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  end
-
-  -- Set autocommands conditional on server_capabilities
-  if client.server_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
+	-- Set autocommands conditional on server_capabilities
+	if client.server_capabilities.document_highlight then
+		vim.api.nvim_exec(
+			[[
       hi LspReferenceRead cterm=bold ctermbg=DarkMagenta guibg=LightYellow
       hi LspReferenceText cterm=bold ctermbg=DarkMagenta guibg=LightYellow
       hi LspReferenceWrite cterm=bold ctermbg=DarkMagenta guibg=LightYellow
@@ -112,136 +134,136 @@ local on_attach = function(client, bufnr)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]] ,
-      false
-    )
-  end
+    ]],
+			false
+		)
+	end
 end
 
 -- auto cmd
 
 function gofumpt(timeoutms)
-  -- get current file path
-  local file_path = vim.api.nvim_buf_get_name(0)
-  local command = string.format("!gofumpt -w %s", file_path)
-  -- run cmd in background
-  vim.cmd(command)
+	-- get current file path
+	local file_path = vim.api.nvim_buf_get_name(0)
+	local command = string.format("!gofumpt -w %s", file_path)
+	-- run cmd in background
+	vim.cmd(command)
 end
 
 local lsp_configs = require("lspconfig/configs")
 
 if not lsp_configs.golangcilsp then
-  lsp_configs.golangcilsp = {
-    default_config = {
-      cmd = { "golangci-lint-langserver" },
-      root_dir = nvim_lsp.util.root_pattern(".git", "go.mod"),
-      init_options = {
-        command = {
-          "golangci-lint",
-          "run",
-          "--enable-all",
-          "--disable",
-          "lll",
-          "--out-format",
-          "json",
-          "--issues-exit-code=1",
-        },
-      },
-    },
-  }
+	lsp_configs.golangcilsp = {
+		default_config = {
+			cmd = { "golangci-lint-langserver" },
+			root_dir = nvim_lsp.util.root_pattern(".git", "go.mod"),
+			init_options = {
+				command = {
+					"golangci-lint",
+					"run",
+					"--enable-all",
+					"--disable",
+					"lll",
+					"--out-format",
+					"json",
+					"--issues-exit-code=1",
+				},
+			},
+		},
+	}
 end
 
 nvim_lsp.golangci_lint_ls.setup({
-  filetypes = { "go", "gomod" },
+	filetypes = { "go", "gomod" },
 })
 -- set up lspconfig
 require("mason").setup({
-  ui = {
-    icons = {
-      package_installed = "✓",
-    },
-  },
+	ui = {
+		icons = {
+			package_installed = "✓",
+		},
+	},
 })
 require("mason-lspconfig").setup({
-  ensure_installed = { "sumneko_lua" },
+	ensure_installed = { "sumneko_lua" },
 })
 
 local common_servers = {
-  "sqlls",
-  "jsonls",
-  "pyright",
-  "dockerls",
-  "bashls",
-  "prosemd_lsp",
-  "vimls",
-  "yamlls",
-  "grammarly",
-  "cmake",
+	"sqlls",
+	"jsonls",
+	"pyright",
+	"dockerls",
+	"bashls",
+	"prosemd_lsp",
+	"vimls",
+	"yamlls",
+	"grammarly",
+	"cmake",
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 for _, server in pairs(common_servers) do
--- https://www.reddit.com/r/neovim/comments/mm1h0t/lsp_diagnostics_remain_stuck_can_someone_please/
-  nvim_lsp[server].setup({
-    flags = {
-        allow_incremental_sync = false,
-        debounce_text_changes = 500
-    },
-    on_attach = on_attach,
-    capabilities = capabilities,
-  })
+	-- https://www.reddit.com/r/neovim/comments/mm1h0t/lsp_diagnostics_remain_stuck_can_someone_please/
+	nvim_lsp[server].setup({
+		flags = {
+			allow_incremental_sync = false,
+			debounce_text_changes = 500,
+		},
+		on_attach = on_attach,
+		capabilities = capabilities,
+	})
 end
 
 nvim_lsp.sumneko_lua.setup({
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = "LuaJIT",
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { "vim" },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
 })
 
 nvim_lsp.gopls.setup({
-  cmd = { "gopls" },
-  -- for postfix snippets and analyzers
-  flags = {
-      allow_incremental_sync = false,
-      debounce_text_changes = 500
-  },
-  capabilities = golang_capabilities,
-  settings = {
-    gopls = {
-      experimentalPostfixCompletions = true,
-      analyses = {
-        unusedparams = true,
-        shadow = true,
-      },
-      staticcheck = true,
-    },
-  },
-  on_attach = on_attach,
+	cmd = { "gopls" },
+	-- for postfix snippets and analyzers
+	flags = {
+		allow_incremental_sync = false,
+		debounce_text_changes = 500,
+	},
+	capabilities = golang_capabilities,
+	settings = {
+		gopls = {
+			experimentalPostfixCompletions = true,
+			analyses = {
+				unusedparams = true,
+				shadow = true,
+			},
+			staticcheck = true,
+		},
+	},
+	on_attach = on_attach,
 })
 
-local saga = require("lspsaga")
-saga.init_lsp_saga({
-  -- your configuration
-})
+-- local saga = require("lspsaga")
+-- saga.init_lsp_saga({
+--   -- your configuration
+-- })
 
 vim.o.updatetime = 250
-vim.cmd [[autocmd! CursorHold,CursorHoldI * Lspsaga show_cursor_diagnostics]]
+vim.cmd([[autocmd! CursorHold,CursorHoldI * Lspsaga show_cursor_diagnostics]])
