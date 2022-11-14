@@ -237,7 +237,7 @@ omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 noremap <C-e> :Telescope frecency <CR>
-noremap <C-q> :Telescope oldfiles <CR>
+noremap <C-q> :Telescope buffers<CR>
 noremap <C-g> :Telescope git_branches<CR>
 map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
