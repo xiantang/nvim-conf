@@ -7,6 +7,7 @@
         "vim",
         "defer",
         "gofumpt"
+        "rongyao",
         "jingdi",
     ],
     "Lua.workspace.checkThirdParty": false
