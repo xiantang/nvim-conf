@@ -3,27 +3,27 @@ require("start")
 require("impatient")
 require("scrollbar.handlers.gitsigns").setup()
 require("scrollbar").setup({
-  set_highlights = true,
-  marks = {
-    GitAdd = {
-      text = "│",
-      priority = 5,
-      color = "green",
-      cterm = nil,
-    },
-    GitChange = {
-      text = "│",
-      priority = 5,
-      color = "yellow",
-      cterm = nil,
-    },
-    GitDelete = {
-      text = "_",
-      priority = 5,
-      color = "red",
-      cterm = nil,
-    },
-  },
+	set_highlights = true,
+	marks = {
+		GitAdd = {
+			text = "│",
+			priority = 5,
+			color = "green",
+			cterm = nil,
+		},
+		GitChange = {
+			text = "│",
+			priority = 5,
+			color = "yellow",
+			cterm = nil,
+		},
+		GitDelete = {
+			text = "_",
+			priority = 5,
+			color = "red",
+			cterm = nil,
+		},
+	},
 })
 require("toggle")
 require("glow").setup()
