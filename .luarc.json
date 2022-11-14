@@ -6,9 +6,10 @@
     "Lua.diagnostics.globals": [
         "vim",
         "defer",
-        "gofumpt"
+        "gofumpt",
         "rongyao",
         "jingdi",
+        "jingdi2"
     ],
     "Lua.workspace.checkThirdParty": false
 }
