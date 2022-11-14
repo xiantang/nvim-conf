@@ -182,7 +182,12 @@ local common_servers = {
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 for _, server in pairs(common_servers) do
+-- https://www.reddit.com/r/neovim/comments/mm1h0t/lsp_diagnostics_remain_stuck_can_someone_please/
   nvim_lsp[server].setup({
+    flags = {
+        allow_incremental_sync = false,
+        debounce_text_changes = 500
+    },
     on_attach = on_attach,
     capabilities = capabilities,
   })
@@ -215,6 +220,10 @@ nvim_lsp.sumneko_lua.setup({
 nvim_lsp.gopls.setup({
   cmd = { "gopls" },
   -- for postfix snippets and analyzers
+  flags = {
+      allow_incremental_sync = false,
+      debounce_text_changes = 500
+  },
   capabilities = golang_capabilities,
   settings = {
     gopls = {
