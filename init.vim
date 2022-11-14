@@ -311,7 +311,6 @@ endfunction
 
 autocmd BufEnter * call Undotree_record()
 
-
 " copilot
 let g:copilot_enable = 1
 let g:copilot_filetypes = {
