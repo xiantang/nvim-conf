@@ -151,7 +151,7 @@ let g:clever_f_smart_case = 1
 
 " vertical resize +5 
 nnoremap <D-v> "+p
-inoremap <D-v> <Esc>"+p
+inoremap <D-v> <c-r>+
 tnoremap <D-v> <C-\><C-n>"+p
 cnoremap <D-v> <c-r>+
 noremap <silent> <C-Left> :vertical resize +5<CR>
