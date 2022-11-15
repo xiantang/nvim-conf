@@ -32,6 +32,7 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
+Plug 'folke/trouble.nvim'
 Plug 'onsails/lspkind.nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'segeljakt/vim-silicon'
