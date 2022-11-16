@@ -22,26 +22,6 @@ function _G.get_cur_go_func_name()
 	return func_name
 end
 
---- debug current function for golang
-function _G.debug_cur_test_func()
-	local func_name = _G.get_cur_go_func_name()
-	if not func_name then
-		return
-	end
-	-- run vim command GoDebugTest
-	--  DuplicateTabpane
-	vim.cmd("DuplicateTabpane")
-	-- sprintf -test.run TestOnRsyncAndWatch
-	local cmd = string.format("GoDebugTest -test.run %s$", func_name)
-	print("run command: " .. cmd)
-	vim.cmd(cmd)
-	-- waiting for debug start
-	vim.defer_fn(function()
-		-- run vim command GoDebugContinue
-		vim.cmd("GoDebugContinue")
-	end, 3000)
-end
-
 -- Avoiding LSP formatting conflicts https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts#neovim-08
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
