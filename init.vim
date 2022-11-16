@@ -1,6 +1,9 @@
 " leader
 let mapleader=" "
 syntax on
+set spell
+set spelllang=en,cjk
+set spellsuggest=best,9
 set guifont:DejaVuSansMono\ Nerd\ Font:h16
 set relativenumber
 set autoread
@@ -20,7 +23,7 @@ set sessionoptions-=blank
 au BufEnter leetcode.cn_*.txt set filetype=go
 " https://github.com/kamykn/spelunker.vim/issues/71#issuecomment-1023835797
 " ignore big file more than 1000 lines
-au BufRead * if line('$') > 2000  | let g:enable_spelunker_vim = 0 | endif
+" au BufRead * if line('$') > 2000  | let g:enable_spelunker_vim = 0 | endif
 au BufEnter *.conf set filetype=config
 au FileType * set formatoptions-=cro
 au CursorHold * checktime
@@ -41,7 +44,7 @@ Plug 'glepnir/lspsaga.nvim'
 Plug 'segeljakt/vim-silicon'
 Plug 'ZSaberLv0/ZFVimIM'
 Plug 'ZSaberLv0/ZFVimJob'
-Plug 'kamykn/spelunker.vim'
+" Plug 'kamykn/spelunker.vim'
 Plug 'ray-x/go.nvim'
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'ray-x/guihua.lua'
