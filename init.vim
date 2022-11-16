@@ -20,7 +20,7 @@ set sessionoptions-=blank
 au BufEnter leetcode.cn_*.txt set filetype=go
 " https://github.com/kamykn/spelunker.vim/issues/71#issuecomment-1023835797
 " ignore big file more than 1000 lines
-au BufRead * if line('$') > 1000  | let g:enable_spelunker_vim = 0 | endif
+au BufRead * if line('$') > 2000  | let g:enable_spelunker_vim = 0 | endif
 au BufEnter *.conf set filetype=config
 au FileType * set formatoptions-=cro
 au CursorHold * checktime
