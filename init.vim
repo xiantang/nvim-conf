@@ -18,6 +18,9 @@ set ignorecase
 set sessionoptions-=blank
 
 au BufEnter leetcode.cn_*.txt set filetype=go
+" https://github.com/kamykn/spelunker.vim/issues/71#issuecomment-1023835797
+" ignore big file
+au BufRead * if getfsize(@%) > 60000 | let g:enable_spelunker_vim = 0 | endif
 au BufEnter *.conf set filetype=config
 au FileType * set formatoptions-=cro
 au CursorHold * checktime
