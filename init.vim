@@ -28,7 +28,7 @@ au BufWritePost *.go silent! :lua golines()
 au BufWritePost *.go silent! :lua gofumpt()
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
-autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
+au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
 
 
 lang en_US.UTF-8
@@ -266,10 +266,7 @@ let g:NERDTreeWinSize = 25
 let g:NERDTreeMinimalMenu=1
 
 noremap <Leader>l :lua NerdSmartLocated()<CR>
-
-
 au VimEnter *  wincmd p
-
 
 let g:vim_markdown_folding_disabled = 1
 
