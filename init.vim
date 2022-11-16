@@ -120,7 +120,8 @@ let g:plug_window = 'botright 40vnew'
 
 silent! colorscheme base16-tender
 
-
+let g:ZFVimIM_keymap = 0
+inoremap <expr><silent> ;; ZFVimIME_keymap_toggle_i()
 let s:repoPath="~/.config/ZFVimIM_pinyin_base"
 function! s:dbInit()
     let repoPath = s:repoPath
