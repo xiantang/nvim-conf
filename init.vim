@@ -155,6 +155,13 @@ nnoremap <D-v> "+p
 inoremap <D-v> <c-r>+
 tnoremap <D-v> <C-\><C-n>"+p
 cnoremap <D-v> <c-r>+
+
+"ctrl A to  move to line start when in command mode like in iterm2
+cnoremap <C-a> <Home>
+
+"ctrl E to move to line end when in command mode like in iterm2
+cnoremap <C-e> <End>
+
 noremap <silent> <C-Left> :vertical resize +5<CR>
 noremap <silent> <C-Right> :vertical resize -5<CR>
 noremap <silent> <C-Up> :resize +5<CR>
