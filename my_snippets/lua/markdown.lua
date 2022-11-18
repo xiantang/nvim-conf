@@ -12,3 +12,7 @@ ls.add_snippets("markdown", {
 ls.add_snippets("gitcommit", {
 	ls.parser.parse_snippet("dai", "update daily ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}"),
 })
+
+ls.add_snippets("gitcommit", {
+	ls.parser.parse_snippet("lint", "lint(${1:scope}): ${2:title}"),
+})
