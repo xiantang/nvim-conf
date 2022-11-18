@@ -71,6 +71,7 @@ local on_attach = function(client, bufnr)
 	local opts = { noremap = true, silent = true }
 	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	buf_set_keymap("n", "gv", "<cmd>Lspsaga peek_definition<CR>", opts)
 	buf_set_keymap("n", "ga", "<cmd>Lspsaga code_action<CR>", opts)
 	-- coode action for extract function or variable
 	buf_set_keymap("v", "ga", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", opts)

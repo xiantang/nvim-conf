@@ -10,10 +10,10 @@ null_ls.setup({
 	},
 })
 
-local function golines()
+function _G.golines()
 	-- get current file path
 	local file_path = vim.api.nvim_buf_get_name(0)
-	local command = string.format("!golines -m 400 -w --no-reformat-tags %s", file_path)
+	local command = string.format("!golines -w --no-reformat-tags %s", file_path)
 	-- run cmd in backgroundColor
 	-- run in async
 	vim.cmd(command)
