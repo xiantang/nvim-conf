@@ -61,6 +61,7 @@ Plug 'ellisonleao/glow.nvim'
 Plug 'RRethy/vim-illuminate'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'hrsh7th/cmp-path'
+Plug 'folke/neodev.nvim'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'RRethy/nvim-base16'
 Plug 'mbbill/undotree'
@@ -253,7 +254,6 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 noremap <C-e> :Telescope frecency <CR>
 noremap <C-q> :Telescope oldfiles <CR>
-noremap <C-g> :Telescope git_branches<CR>
 map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
 

@@ -57,3 +57,4 @@ require("zen-mode").setup({
 	-- refer to the configuration section below
 })
 require("symbols-outline").setup()
+require("neodev").setup({})
