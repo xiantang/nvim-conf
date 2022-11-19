@@ -38,7 +38,6 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
-Plug 'folke/zen-mode.nvim'
 Plug 'onsails/lspkind.nvim'
 Plug 'ggandor/leap.nvim'
 Plug 'glepnir/lspsaga.nvim'
