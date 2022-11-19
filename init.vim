@@ -40,6 +40,7 @@ lang en_US.UTF-8
 call plug#begin()
 Plug 'folke/zen-mode.nvim'
 Plug 'onsails/lspkind.nvim'
+Plug 'ggandor/leap.nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'segeljakt/vim-silicon'
 Plug 'ZSaberLv0/ZFVimIM'
@@ -66,14 +67,10 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'RRethy/nvim-base16'
 Plug 'mbbill/undotree'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
-Plug 'xiantang/incsearch-easymotion.vim', {'branch': 'master'}
 Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'kkharji/sqlite.lua'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
-Plug 'easymotion/vim-easymotion'
 Plug 'bkad/CamelCaseMotion'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'folke/persistence.nvim'
@@ -97,7 +94,6 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'plasticboy/vim-markdown'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-Plug 'machakann/vim-sandwich'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -149,7 +145,6 @@ lua require('config')
 
 " silent"
 
-let g:EasyMotion_keys = 'sdfjklghalqiwe'
 
 
 let g:clever_f_across_no_line = 1
@@ -201,17 +196,6 @@ noremap <Leader>9 :9ToggleTerm<CR>
 noremap tt :GenReturn<CR>0
 
 vnoremap K        k
-
-function! s:config_easyfuzzymotion(...) abort
-  return extend(copy({
-  \   'converters': [incsearch#config#fuzzyword#converter()],
-  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
-  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
-  \   'is_expr': 0,
-  \   'is_stay': 1
-  \ }), get(a:, 1, {}))
-endfunction
-noremap <expr> <C-f> incsearch#go(<SID>config_easyfuzzymotion())
 
 noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
 noremap  <Leader>P :Telescope live_grep<CR>

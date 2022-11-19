@@ -1,4 +1,4 @@
-local map = require("utils").map
+local map = require("core").map
 
 function ToggleConfig()
   if vim.fn.bufwinnr("init.vim") ~= -1 then
