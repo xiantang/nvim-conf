@@ -38,7 +38,6 @@ lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
-Plug 'folke/zen-mode.nvim'
 Plug 'onsails/lspkind.nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'segeljakt/vim-silicon'
@@ -106,6 +105,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'zbirenbaum/copilot.lua'
+Plug 'zbirenbaum/copilot-cmp'
 Plug 'keaising/im-select.nvim'
 Plug 'numToStr/Comment.nvim'
 call plug#end()
@@ -323,18 +323,7 @@ endfunction
 
 autocmd BufEnter * call Undotree_record()
 
-" copilot
-let g:copilot_enable = 1
-let g:copilot_filetypes = {
-    \ 'markdown': v:true,
-    \ 'yaml': v:true,
-    \ 'go': v:true,
-    \ 'lua': v:true,
-    \ 'gitcommit': v:true,
-    \ "TelescopePrompt": v:false,
-    \ "frecency": v:false,
-      \ }
-imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
+
 let g:copilot_no_tab_map = v:true
 let g:copilot_assume_mapped = v:true
 

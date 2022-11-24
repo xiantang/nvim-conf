@@ -14,5 +14,5 @@ ls.add_snippets("gitcommit", {
 })
 
 ls.add_snippets("gitcommit", {
-	ls.parser.parse_snippet("lint", "lint(${1:scope}): ${2:title}"),
+	ls.parser.parse_snippet("lint", "lint(code): fix the annoying lint error"),
 })

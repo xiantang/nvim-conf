@@ -51,10 +51,12 @@ require("txtobj")
 require("input_method")
 require("null")
 require("Comment").setup()
-require("zen-mode").setup({
-	-- your configuration comes here
-	-- or leave it empty to use the default settings
-	-- refer to the configuration section below
-})
 require("symbols-outline").setup()
 require("neodev").setup({})
+require("copilot").setup({
+	filetypes = {
+		markdown = true, -- overrides default
+		go = true,
+	},
+})
+require("copilot_cmp").setup()
