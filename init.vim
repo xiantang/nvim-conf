@@ -28,7 +28,7 @@ au BufEnter *.conf set filetype=config
 au FileType * set formatoptions-=cro
 au CursorHold * checktime
 au BufWritePost *.go silent! :lua gofumpt()
-au BufWritePost *.go silent! :lua golines()
+au BufWritePost *.go silent! :lua go_org_imports()
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
 au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
@@ -99,8 +99,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'sindrets/diffview.nvim'
 Plug 'zbirenbaum/copilot.lua'
+Plug 'zbirenbaum/copilot-cmp'
 Plug 'keaising/im-select.nvim'
 Plug 'numToStr/Comment.nvim'
 call plug#end()
@@ -310,12 +310,13 @@ let g:copilot_enable = 1
 let g:copilot_filetypes = {
     \ 'markdown': v:true,
     \ 'yaml': v:true,
-    \ 'go': v:true,
+    \ 'go': v:false,
     \ 'lua': v:true,
     \ 'gitcommit': v:true,
     \ "TelescopePrompt": v:false,
     \ "frecency": v:false,
       \ }
+
 imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
 let g:copilot_no_tab_map = v:true
 let g:copilot_assume_mapped = v:true
