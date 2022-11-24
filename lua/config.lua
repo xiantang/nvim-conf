@@ -53,10 +53,3 @@ require("null")
 require("Comment").setup()
 require("symbols-outline").setup()
 require("neodev").setup({})
-require("copilot").setup({
-	filetypes = {
-		markdown = true, -- overrides default
-		go = true,
-	},
-})
-require("copilot_cmp").setup()

@@ -103,7 +103,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'sindrets/diffview.nvim'
 Plug 'zbirenbaum/copilot.lua'
 Plug 'zbirenbaum/copilot-cmp'
 Plug 'keaising/im-select.nvim'
@@ -323,7 +322,19 @@ endfunction
 
 autocmd BufEnter * call Undotree_record()
 
+" copilot
+let g:copilot_enable = 1
+let g:copilot_filetypes = {
+    \ 'markdown': v:true,
+    \ 'yaml': v:true,
+    \ 'go': v:false,
+    \ 'lua': v:true,
+    \ 'gitcommit': v:true,
+    \ "TelescopePrompt": v:false,
+    \ "frecency": v:false,
+      \ }
 
+imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
 let g:copilot_no_tab_map = v:true
 let g:copilot_assume_mapped = v:true
 
