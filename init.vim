@@ -2,6 +2,7 @@
 let mapleader=" "
 syntax on
 set spell
+set shell=zsh\ -i
 set spelllang=en,cjk
 set spellsuggest=best,9
 set guifont:DejaVuSansMono\ Nerd\ Font:h16

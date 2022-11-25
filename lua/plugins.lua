@@ -1,4 +1,2 @@
 vim.cmd([[packadd packer.nvim]])
-return require("packer").startup(function(use)
-	use("https://gitlab.com/msvechla/cmp-jira.git")
-end)
+return require("packer").startup(function(use) end)
