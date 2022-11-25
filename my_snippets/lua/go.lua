@@ -10,28 +10,28 @@ local s = ls.s
 -- function with comment
 local f = ls.function_node
 local function same(index)
-  return f(function(args)
-    return args[1]
-  end, { index })
+	return f(function(args)
+		return args[1]
+	end, { index })
 end
 
 ls.add_snippets("go", {
-  s(
-    "func",
-    fmt(
-      [[
-    // {}
+	s(
+		"func",
+		fmt(
+			[[
+    // {}...
     func {}({}) {} {{
       {}
     }}
-    ]] ,
-      {
-        same(1),
-        i(1),
-        i(2),
-        i(3),
-        i(4),
-      }
-    )
-  ),
+    ]],
+			{
+				same(1),
+				i(1),
+				i(2),
+				i(3),
+				i(4),
+			}
+		)
+	),
 })

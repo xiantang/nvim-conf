@@ -6,7 +6,8 @@
     "Lua.diagnostics.globals": [
         "vim",
         "defer",
-        "gofumpt"
+        "gofumpt",
+        "core"
     ],
     "Lua.workspace.checkThirdParty": false
 }
