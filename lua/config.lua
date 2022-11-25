@@ -1,4 +1,5 @@
 -- speed up
+require("plugins")
 require("start")
 require("impatient")
 require("scrollbar.handlers.gitsigns").setup()
