@@ -176,7 +176,20 @@ require("mason").setup({
 	},
 })
 require("mason-lspconfig").setup({
-	ensure_installed = { "sumneko_lua" },
+	ensure_installed = {
+		"sumneko_lua",
+		"sqlls",
+		"jsonls",
+		"pyright",
+		"dockerls",
+		"bashls",
+		"prosemd_lsp",
+		"vimls",
+		"yamlls",
+		"grammarly",
+		"cmake",
+		"ansiblels",
+	},
 })
 
 local common_servers = {
