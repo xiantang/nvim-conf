@@ -84,21 +84,6 @@ cmp.setup.cmdline({ "/", "?" }, {
 	},
 })
 
-require("cmp_dictionary").setup({
-	dic = {
-		["*"] = { "/usr/share/dict/words" },
-	},
-	-- The following are default values.
-	exact = -1,
-	first_case_insensitive = false,
-	document = false,
-	document_command = "wn %s -over",
-	async = true,
-	max_items = -1,
-	capacity = 5,
-	debug = false,
-})
---
 cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
 		{ name = "cmp_jira", max_item_count = 5, keyword_length = 2 },
