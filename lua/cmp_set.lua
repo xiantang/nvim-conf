@@ -65,7 +65,7 @@ cmp.setup({
 		{ name = "buffer", priority = 80, max_item_count = 3 },
 		{ name = "path", priority = 80, max_item_count = 3 },
 		-- disable fuzzy
-		{ name = "dictionary", priority = 10, max_item_count = 5, keword_length = 3 },
+		{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 	},
 })
 
@@ -104,6 +104,6 @@ cmp.setup.filetype("gitcommit", {
 		{ name = "cmp_jira", max_item_count = 5 },
 		{ name = "luasnip", priority = 100 },
 		{ name = "buffer" },
-		{ name = "dictionary", priority = 10, max_item_count = 5, keword_length = 3 },
+		{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 	}),
 })
