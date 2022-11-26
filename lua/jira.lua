@@ -1,4 +1,4 @@
-secret = require("secret")
+local secret = require("secret")
 local source = {
 	config = {},
 	filetypes = {},
@@ -16,7 +16,7 @@ function source:is_available()
 	return true
 end
 
-parse_api_response = function(response)
+local parse_api_response = function(response)
 	local ok, parsed = pcall(vim.json.decode, response)
 	if not ok then
 		return false, {}
@@ -38,7 +38,7 @@ parse_api_response = function(response)
 				summary_val = issue.fields.summary
 			end
 			if issue.fields.description then
-				description_val = issue.fields.description
+				local description_val = issue.fields.description
 			end
 		end
 
@@ -55,11 +55,14 @@ end
 local curl = require("plenary.curl")
 function _G.GetItems()
 	local items = {}
-	out = curl.get(secret.JIRA_URL, {
+	local out = curl.get(secret.JIRA_URL, {
 		headers = {
 			Authorization = secret.JIRA_AUTHORIZATION,
 		},
 	})
+	if out == nil then
+		return items
+	end
 	local ok, parsed_issues = parse_api_response(out.body)
 	if not ok then
 		return false
@@ -81,13 +84,12 @@ function _G.GetItems()
 end
 
 function source:complete(_, callback)
-	local items = {}
 	local bufnr = vim.api.nvim_get_current_buf()
 	if self.cache[bufnr] then
 		callback({ items = self.cache[bufnr] })
 		return true
 	end
-	items = _G.GetItems()
+	local items = _G.GetItems()
 	self.cache[bufnr] = items
 	callback({ items = items })
 	return true
