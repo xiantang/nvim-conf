@@ -20,6 +20,7 @@ cmp.setup({
 				nvim_lua = "[Lua]",
 				dictionary = "[Dictionary]",
 				path = "[Path]",
+				cmp_jira = "[Jira]",
 			},
 		}),
 	},
@@ -100,6 +101,7 @@ require("cmp_dictionary").setup({
 
 cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
+		{ name = "cmp_jira", max_item_count = 5 },
 		{ name = "luasnip", priority = 100 },
 		{ name = "buffer" },
 		{ name = "dictionary", priority = 10, max_item_count = 5, keword_length = 3 },
