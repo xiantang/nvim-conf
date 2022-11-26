@@ -75,7 +75,7 @@ function _G.GetItems()
 				kind = "markdown",
 				value = i.description,
 			},
-			insertText = i.key,
+			insertText = "[" .. i.key .. "]",
 			word = i.key,
 		})
 	end
