@@ -81,7 +81,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
 Plug 'lewis6991/gitsigns.nvim'
-Plug 'tpope/vim-fugitive'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -105,6 +104,8 @@ Plug 'zbirenbaum/copilot-cmp'
 Plug 'keaising/im-select.nvim'
 Plug 'numToStr/Comment.nvim'
 call plug#end()
+lua require('config')
+
 
 
 
@@ -141,7 +142,6 @@ function! s:dbInit()
 endfunction
 autocmd User ZFVimIM_event_OnDbInit call s:dbInit()
 
-lua require('config')
 
 " silent"
 
