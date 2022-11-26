@@ -62,8 +62,8 @@ cmp.setup({
 	sources = {
 		{ name = "luasnip", priority = 100 },
 		{ name = "nvim_lsp", priority = 99, max_item_count = 10 },
-		{ name = "buffer", priority = 80, max_item_count = 3 },
-		{ name = "path", priority = 80, max_item_count = 3 },
+		{ name = "buffer", priority = 80, max_item_count = 3, keyword_length = 3 },
+		{ name = "path", priority = 80, max_item_count = 3, keyword_length = 3 },
 		-- disable fuzzy
 		{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 	},
@@ -101,9 +101,9 @@ require("cmp_dictionary").setup({
 
 cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
-		{ name = "cmp_jira", max_item_count = 5 },
+		{ name = "cmp_jira", max_item_count = 5, keyword_length = 2 },
 		{ name = "luasnip", priority = 100 },
-		{ name = "buffer" },
+		{ name = "buffer", keyword_length = 3 },
 		{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 	}),
 })
