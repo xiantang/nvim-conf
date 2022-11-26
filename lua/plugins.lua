@@ -1,8 +1,10 @@
 vim.cmd([[packadd packer.nvim]])
 local secret = require("secret")
 return require("packer").startup(function(use)
+	use("wbthomason/packer.nvim")
 	use("tpope/vim-fugitive")
 	use("shumphrey/fugitive-gitlab.vim")
 	vim.g.fugitive_gitlab_domains = { secret.GITALB_URL }
 	use("tpope/vim-rhubarb")
+	use("dstein64/vim-startuptime")
 end)

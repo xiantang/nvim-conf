@@ -93,12 +93,12 @@ require("cmp_dictionary").setup({
 	first_case_insensitive = false,
 	document = false,
 	document_command = "wn %s -over",
-	async = false,
+	async = true,
 	max_items = -1,
 	capacity = 5,
 	debug = false,
 })
-
+--
 cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
 		{ name = "cmp_jira", max_item_count = 5, keyword_length = 2 },
