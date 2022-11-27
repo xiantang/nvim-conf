@@ -12,7 +12,24 @@ end
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
 	-- git related
-	use("rhysd/conflict-marker.vim")
+	use({
+		"rhysd/conflict-marker.vim",
+		config = function()
+			require("plugins.conflict-marker")
+			vim.cmd([[
+      let g:conflict_marker_highlight_group = ''
+      " Include text after begin and end markers
+      let g:conflict_marker_begin = '^<<<<<<< .*$'
+      let g:conflict_marker_end   = '^>>>>>>> .*$'
+
+      highlight ConflictMarkerBegin guibg=#2f7366
+      highlight ConflictMarkerOurs guibg=#2e5049
+      highlight ConflictMarkerTheirs guibg=#344f69
+      highlight ConflictMarkerEnd guibg=#2f628e
+      highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
+      ]])
+		end,
+	})
 	use({
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
