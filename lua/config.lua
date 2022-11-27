@@ -65,3 +65,10 @@ function Jump()
 	})
 end
 vim.api.nvim_set_keymap("n", "s", ":lua Jump()<CR>", { silent = true })
+
+-- override variable  as white
+-- for method caller
+vim.cmd([[silent! colorscheme base16-tender]])
+vim.cmd([[
+  hi! link TSVariable Normal
+]])

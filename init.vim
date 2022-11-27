@@ -36,6 +36,7 @@ au CursorHold,CursorHoldI * checktime
 au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
 
 
+
 lang en_US.UTF-8
 
 " Plugin
@@ -86,7 +87,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'uga-rosa/cmp-dictionary'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'L3MON4D3/LuaSnip'
@@ -110,6 +110,7 @@ lua require('config')
 
 
 
+
 let g:silicon={}
 let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'
 
@@ -120,7 +121,6 @@ cnoreabbrev gp Git push
 
 let g:plug_window = 'botright 40vnew'
 
-silent! colorscheme base16-tender
 
 let g:ZFVimIM_keymap = 0
 inoremap <expr><silent> ;; ZFVimIME_keymap_toggle_i()
