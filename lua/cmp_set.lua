@@ -91,3 +91,12 @@ cmp.setup.filetype("gitcommit", {
 		{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 	}),
 })
+
+cmp.setup.filetype("markdown", {
+	sources = cmp.config.sources({
+		{ name = "cmp_jira", max_item_count = 5, keyword_length = 2 },
+		{ name = "luasnip", priority = 100 },
+		{ name = "buffer", keyword_length = 3 },
+		{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
+	}),
+})

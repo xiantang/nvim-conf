@@ -1,9 +1,9 @@
 " leader
 let mapleader=" "
 syntax on
-set spell
 set noswapfile
 set shell=zsh\ -i
+set spell
 set spelllang=en,cjk
 set spellsuggest=best,9
 set guifont:DejaVuSansMono\ Nerd\ Font:h16
@@ -166,6 +166,7 @@ noremap <silent> <C-Up> :resize +5<CR>
 noremap <silent> <C-Down> :resize -5<CR>
 noremap 0 ^
 noremap <Leader>q :wq<CR>
+noremap <Leader>g :Git<CR>
 noremap <Leader>gb :Git blame<CR>
 noremap <Leader>t :NERDTreeToggle<CR>
 noremap <Leader>s :sp<CR>
