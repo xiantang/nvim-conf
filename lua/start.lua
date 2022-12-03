@@ -1,4 +1,9 @@
 function RecentlySeesion()
+	-- check filenvim
+	if vim.g.started_by_firenvim == true then
+		-- set font size
+		return
+	end
 	require("persistence").load({ last = true })
 end
 

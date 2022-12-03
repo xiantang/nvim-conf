@@ -159,6 +159,10 @@ cnoremap <C-a> <Home>
 
 "ctrl E to move to line end when in command mode like in iterm2
 cnoremap <C-e> <End>
+noremap <C-d> <C-d>zz
+noremap <C-u> <C-u>zz
+noremap n  nzzzv
+noremap N  Nzzzv
 
 noremap <silent> <C-Left> :vertical resize +5<CR>
 noremap <silent> <C-Right> :vertical resize -5<CR>
@@ -264,7 +268,7 @@ let g:firenvim_config = {
 
 
 function! SetFontSizeFirenvim(timer)
-    set guifont=UbuntuMono:h18
+  set guifont=Fira_Code:h18
 endfunction
 
 

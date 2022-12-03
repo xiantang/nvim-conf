@@ -90,7 +90,7 @@ _G.packer_plugins = {
   },
   ["cmp-dictionary"] = {
     after_files = { "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-dictionary/after/plugin/cmp_dictionary.vim" },
-    config = { "\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24CmpDictionaryUpdate\bcmd\bvim¶\2\1\0\5\0\v\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\b\0B\0\2\0029\1\t\0003\3\n\0B\1\2\1K\0\1\0\0\brun\18plenary.async\bdic\1\0\b\rdocument\2\27first_case_insensitive\1\nexact\3ÿÿÿÿ\15\ndebug\1\rcapacity\3\5\14max_items\3ÿÿÿÿ\15\nasync\2\21document_command\16wn %s -over\6*\1\0\0\1\3\0\0\25~/.config/nvim/words&~/.config/nvim/spell/en.utf-8.add\nsetup\19cmp_dictionary\frequire\0" },
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24CmpDictionaryUpdate\bcmd\bvim¶\2\1\0\5\0\v\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\b\0B\0\2\0029\1\t\0003\3\n\0B\1\2\1K\0\1\0\0\brun\18plenary.async\bdic\1\0\b\nexact\3ÿÿÿÿ\15\rcapacity\3\5\14max_items\3ÿÿÿÿ\15\nasync\2\ndebug\1\21document_command\16wn %s -over\rdocument\2\27first_case_insensitive\1\6*\1\0\0\1\3\0\0\25~/.config/nvim/words&~/.config/nvim/spell/en.utf-8.add\nsetup\19cmp_dictionary\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-dictionary",
@@ -104,8 +104,10 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/cmp-path"
   },
   ["cmp-tabnine"] = {
-    loaded = true,
-    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
+    after_files = { "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-tabnine/after/plugin/cmp-tabnine.lua" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-tabnine",
     url = "https://github.com/tzachar/cmp-tabnine"
   },
   cmp_luasnip = {
@@ -126,8 +128,13 @@ _G.packer_plugins = {
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/fugitive-gitlab.vim",
     url = "https://github.com/shumphrey/fugitive-gitlab.vim"
   },
+  ["iswap.nvim"] = {
+    loaded = true,
+    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/iswap.nvim",
+    url = "https://github.com/mizlan/iswap.nvim"
+  },
   ["nvim-cmp"] = {
-    config = { "\27LJ\2\nÕ\4\0\0\a\0\23\0:6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\0016\0\0\0009\0\1\0'\2\4\0B\0\2\0016\0\0\0009\0\1\0'\2\5\0B\0\2\0016\0\0\0009\0\1\0'\2\6\0B\0\2\0016\0\a\0'\2\b\0B\0\2\0029\0\t\0B\0\1\0016\0\a\0'\2\b\0B\0\2\0029\0\t\0005\2\v\0005\3\n\0=\3\f\2B\0\2\0016\0\a\0'\2\r\0B\0\2\0029\0\14\0005\2\15\0B\0\2\0016\0\a\0'\2\16\0B\0\2\0026\1\a\0'\3\17\0B\1\2\0029\1\18\1'\3\19\0009\4\20\0004\6\0\0B\4\2\0A\1\1\0016\1\a\0'\3\21\0B\1\2\0016\1\a\0'\3\22\0B\1\2\1K\0\1\0\fgo_test\fcmp_set\bnew\rcmp_jira\20register_source\bcmp\tjira\1\0\1\npaths$~/.config/nvim/my_snippets/lua/\tload\29luasnip.loaders.from_lua\npaths\1\0\0\1\2\0\0./Users/jingdizhu/.config/nvim/my_snippets\14lazy_load luasnip.loaders.from_vscode\frequire  PackerLoad cmp-dictionary \29 PackerLoad cmp_luasnip \26 PackerLoad cmp-path \29 PackerLoad cmp-cmdline \28 PackerLoad cmp-buffer \bcmd\bvim\0" },
+    config = { "\27LJ\2\ný\4\0\0\a\0\24\0>6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\0016\0\0\0009\0\1\0'\2\4\0B\0\2\0016\0\0\0009\0\1\0'\2\5\0B\0\2\0016\0\0\0009\0\1\0'\2\6\0B\0\2\0016\0\0\0009\0\1\0'\2\a\0B\0\2\0016\0\b\0'\2\t\0B\0\2\0029\0\n\0B\0\1\0016\0\b\0'\2\t\0B\0\2\0029\0\n\0005\2\f\0005\3\v\0=\3\r\2B\0\2\0016\0\b\0'\2\14\0B\0\2\0029\0\15\0005\2\16\0B\0\2\0016\0\b\0'\2\17\0B\0\2\0026\1\b\0'\3\18\0B\1\2\0029\1\19\1'\3\20\0009\4\21\0004\6\0\0B\4\2\0A\1\1\0016\1\b\0'\3\22\0B\1\2\0016\1\b\0'\3\23\0B\1\2\1K\0\1\0\fgo_test\fcmp_set\bnew\rcmp_jira\20register_source\bcmp\tjira\1\0\1\npaths$~/.config/nvim/my_snippets/lua/\tload\29luasnip.loaders.from_lua\npaths\1\0\0\1\2\0\0./Users/jingdizhu/.config/nvim/my_snippets\14lazy_load luasnip.loaders.from_vscode\frequire\28 PackerLoad cmp-tabnine  PackerLoad cmp-dictionary \29 PackerLoad cmp_luasnip \26 PackerLoad cmp-path \29 PackerLoad cmp-cmdline \28 PackerLoad cmp-buffer \bcmd\bvim\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
