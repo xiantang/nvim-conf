@@ -24,7 +24,6 @@ return require("packer").startup(function(use)
 			vim.cmd([[ PackerLoad cmp-path ]])
 			vim.cmd([[ PackerLoad cmp_luasnip ]])
 			vim.cmd([[ PackerLoad cmp-dictionary ]])
-			vim.cmd([[ PackerLoad cmp-tabnine]])
 			require("luasnip.loaders.from_vscode").lazy_load()
 			require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
 			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/my_snippets/lua/" })
@@ -34,8 +33,6 @@ return require("packer").startup(function(use)
 			require("go_test")
 		end,
 	})
-
-	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp", opt = true })
 
 	use({
 		"hrsh7th/cmp-buffer",
