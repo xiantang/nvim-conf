@@ -58,6 +58,11 @@ function Jump()
 	})
 end
 vim.api.nvim_set_keymap("n", "s", ":lua Jump()<CR>", { silent = true })
+-- disable command Gbrowse in cmdline mode
+
+vim.cmd("cnoreabbrev git Git")
+vim.cmd("cnoreabbrev gp Git push")
+vim.cmd("cnoreabbrev Gbrowse GBrowse")
 
 -- override variable  as white
 -- for method caller

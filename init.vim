@@ -109,10 +109,6 @@ let g:silicon={}
 let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'
 
 
-" alias fugitive
-cnoreabbrev git Git
-cnoreabbrev gp Git push
-
 let g:plug_window = 'botright 40vnew'
 
 
