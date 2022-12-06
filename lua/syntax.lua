@@ -4,7 +4,7 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 		keymaps = {
 			init_selection = "gnn",
-			node_incremental = "gnn",
+			node_incremental = "nn",
 		},
 	},
 	highlight = {
