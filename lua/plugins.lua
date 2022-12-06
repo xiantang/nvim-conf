@@ -11,6 +11,49 @@ end
 
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
+	-- git related
+	use({
+		"rhysd/conflict-marker.vim",
+	})
+	use({
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		config = function()
+			vim.cmd([[ PackerLoad cmp-buffer ]]) -- this loads cmp-buffer
+			vim.cmd([[ PackerLoad cmp-cmdline ]])
+			vim.cmd([[ PackerLoad cmp-path ]])
+			vim.cmd([[ PackerLoad cmp_luasnip ]])
+			vim.cmd([[ PackerLoad cmp-dictionary ]])
+			require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
+			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/my_snippets/lua/" })
+			local source = require("jira")
+			require("cmp").register_source("cmp_jira", source.new({}))
+			require("cmp_set")
+			require("go_test")
+		end,
+	})
+
+	use({
+		"hrsh7th/cmp-buffer",
+		opt = true,
+	})
+
+	use({
+		"hrsh7th/cmp-cmdline",
+		opt = true,
+	})
+
+	use({
+		"hrsh7th/cmp-path",
+		opt = true,
+	})
+
+	use({
+		"saadparwaiz1/cmp_luasnip",
+		opt = true,
+	})
+
 	use("wbthomason/packer.nvim")
 	use("tpope/vim-fugitive")
 	use({
@@ -24,7 +67,6 @@ return require("packer").startup(function(use)
 	use("dstein64/vim-startuptime")
 	use({
 		"uga-rosa/cmp-dictionary",
-		event = { "InsertEnter" },
 		opt = true,
 		config = function()
 			require("cmp_dictionary").setup({

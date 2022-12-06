@@ -1,9 +1,9 @@
 " leader
 let mapleader=" "
 syntax on
-set spell
 set noswapfile
 set shell=zsh\ -i
+set spell
 set spelllang=en,cjk
 set spellsuggest=best,9
 set guifont:DejaVuSansMono\ Nerd\ Font:h16
@@ -67,7 +67,6 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ellisonleao/glow.nvim'
 Plug 'RRethy/vim-illuminate'
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'hrsh7th/cmp-path'
 Plug 'folke/neodev.nvim'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'RRethy/nvim-base16'
@@ -87,10 +86,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
 Plug 'lewis6991/gitsigns.nvim'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-cmdline'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'plasticboy/vim-markdown'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -101,7 +96,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'zbirenbaum/copilot.lua'
-Plug 'zbirenbaum/copilot-cmp'
 Plug 'keaising/im-select.nvim'
 Plug 'numToStr/Comment.nvim'
 call plug#end()
@@ -114,10 +108,6 @@ lua require('config')
 let g:silicon={}
 let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'
 
-
-" alias fugitive
-cnoreabbrev git Git
-cnoreabbrev gp Git push
 
 let g:plug_window = 'botright 40vnew'
 
@@ -165,6 +155,10 @@ cnoremap <C-a> <Home>
 
 "ctrl E to move to line end when in command mode like in iterm2
 cnoremap <C-e> <End>
+noremap <C-d> <C-d>zz
+noremap <C-u> <C-u>zz
+noremap n  nzzzv
+noremap N  Nzzzv
 
 noremap <silent> <C-Left> :vertical resize +5<CR>
 noremap <silent> <C-Right> :vertical resize -5<CR>
@@ -172,6 +166,7 @@ noremap <silent> <C-Up> :resize +5<CR>
 noremap <silent> <C-Down> :resize -5<CR>
 noremap 0 ^
 noremap <Leader>q :wq<CR>
+noremap <Leader>g :Git<CR>
 noremap <Leader>gb :Git blame<CR>
 noremap <Leader>t :NERDTreeToggle<CR>
 noremap <Leader>s :sp<CR>
@@ -269,7 +264,7 @@ let g:firenvim_config = {
 
 
 function! SetFontSizeFirenvim(timer)
-    set guifont=UbuntuMono:h18
+  set guifont=Fira_Code:h18
 endfunction
 
 

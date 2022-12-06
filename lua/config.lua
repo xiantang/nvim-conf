@@ -30,14 +30,7 @@ require("scrollbar").setup({
 require("toggle")
 require("glow").setup()
 require("lualine_setup")
-require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
-require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/my_snippets/lua/" })
 require("lsp_config")
-local source = require("jira")
-require("cmp").register_source("cmp_jira", source.new({}))
-require("cmp_set")
-require("go_test")
 require("tele")
 require("git")
 require("term")
@@ -65,10 +58,28 @@ function Jump()
 	})
 end
 vim.api.nvim_set_keymap("n", "s", ":lua Jump()<CR>", { silent = true })
+-- disable command Gbrowse in cmdline mode
+
+vim.cmd("cnoreabbrev git Git")
+vim.cmd("cnoreabbrev gp Git push")
+vim.cmd("cnoreabbrev Gbrowse GBrowse")
 
 -- override variable  as white
 -- for method caller
 vim.cmd([[silent! colorscheme base16-tender]])
 vim.cmd([[
   hi! link TSVariable Normal
+]])
+
+vim.cmd([[
+      let g:conflict_marker_highlight_group = ''
+      " Include text after begin and end markers
+      let g:conflict_marker_begin = '^<<<<<<< .*$'
+      let g:conflict_marker_end   = '^>>>>>>> .*$'
+
+      highlight ConflictMarkerBegin guibg=#2f7366
+      highlight ConflictMarkerOurs guibg=#2e5049
+      highlight ConflictMarkerTheirs guibg=#344f69
+      highlight ConflictMarkerEnd guibg=#2f628e
+      highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
 ]])

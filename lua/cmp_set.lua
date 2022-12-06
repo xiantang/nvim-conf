@@ -20,6 +20,7 @@ cmp.setup({
 				nvim_lua = "[Lua]",
 				dictionary = "[Dictionary]",
 				path = "[Path]",
+				cmp_tabnine = "[TabNine]",
 				cmp_jira = "[Jira]",
 			},
 		}),
@@ -62,6 +63,7 @@ cmp.setup({
 	sources = {
 		{ name = "luasnip", priority = 100 },
 		{ name = "nvim_lsp", priority = 99, max_item_count = 10 },
+		{ name = "cmp_tabnine", priority = 98, max_item_count = 2, keyword_length = 3 },
 		{ name = "buffer", priority = 80, max_item_count = 3, keyword_length = 3 },
 		{ name = "path", priority = 80, max_item_count = 3, keyword_length = 3 },
 		-- disable fuzzy
@@ -84,6 +86,15 @@ cmp.setup.cmdline({ "/", "?" }, {
 	},
 })
 cmp.setup.filetype("gitcommit", {
+	sources = cmp.config.sources({
+		{ name = "cmp_jira", max_item_count = 5, keyword_length = 2 },
+		{ name = "luasnip", priority = 100 },
+		{ name = "buffer", keyword_length = 3 },
+		{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
+	}),
+})
+
+cmp.setup.filetype("markdown", {
 	sources = cmp.config.sources({
 		{ name = "cmp_jira", max_item_count = 5, keyword_length = 2 },
 		{ name = "luasnip", priority = 100 },
