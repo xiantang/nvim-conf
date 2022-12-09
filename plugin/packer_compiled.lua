@@ -90,7 +90,7 @@ _G.packer_plugins = {
   },
   ["cmp-dictionary"] = {
     after_files = { "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-dictionary/after/plugin/cmp_dictionary.vim" },
-    config = { "\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24CmpDictionaryUpdate\bcmd\bvim¶\2\1\0\5\0\v\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\b\0B\0\2\0029\1\t\0003\3\n\0B\1\2\1K\0\1\0\0\brun\18plenary.async\bdic\1\0\b\ndebug\1\rcapacity\3\5\14max_items\3ÿÿÿÿ\15\nasync\2\21document_command\16wn %s -over\rdocument\2\27first_case_insensitive\1\nexact\3ÿÿÿÿ\15\6*\1\0\0\1\3\0\0\25~/.config/nvim/words&~/.config/nvim/spell/en.utf-8.add\nsetup\19cmp_dictionary\frequire\0" },
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24CmpDictionaryUpdate\bcmd\bvim¶\2\1\0\5\0\v\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\b\0B\0\2\0029\1\t\0003\3\n\0B\1\2\1K\0\1\0\0\brun\18plenary.async\bdic\1\0\b\rcapacity\3\5\14max_items\3ÿÿÿÿ\15\nasync\2\ndebug\1\21document_command\16wn %s -over\rdocument\2\27first_case_insensitive\1\nexact\3ÿÿÿÿ\15\6*\1\0\0\1\3\0\0\25~/.config/nvim/words&~/.config/nvim/spell/en.utf-8.add\nsetup\19cmp_dictionary\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-dictionary",
@@ -134,6 +134,14 @@ _G.packer_plugins = {
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["persistence.nvim"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16persistence\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/persistence.nvim",
+    url = "https://github.com/folke/persistence.nvim"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -152,6 +160,34 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+local module_lazy_loads = {
+  ["^persistence"] = "persistence.nvim"
+}
+local lazy_load_called = {['packer.load'] = true}
+local function lazy_load_module(module_name)
+  local to_load = {}
+  if lazy_load_called[module_name] then return nil end
+  lazy_load_called[module_name] = true
+  for module_pat, plugin_name in pairs(module_lazy_loads) do
+    if not _G.packer_plugins[plugin_name].loaded and string.match(module_name, module_pat) then
+      to_load[#to_load + 1] = plugin_name
+    end
+  end
+
+  if #to_load > 0 then
+    require('packer.load')(to_load, {module = module_name}, _G.packer_plugins)
+    local loaded_mod = package.loaded[module_name]
+    if loaded_mod then
+      return function(modname) return loaded_mod end
+    end
+  end
+end
+
+if not vim.g.packer_custom_loader_enabled then
+  table.insert(package.loaders, 1, lazy_load_module)
+  vim.g.packer_custom_loader_enabled = true
+end
+
 -- Config for: fugitive-gitlab.vim
 time([[Config for fugitive-gitlab.vim]], true)
 try_loadstring("\27LJ\2\ng\0\0\4\0\6\0\n6\0\0\0'\2\1\0B\0\2\0026\1\2\0009\1\3\0014\2\3\0009\3\5\0>\3\1\2=\2\4\1K\0\1\0\15GITALB_URL\28fugitive_gitlab_domains\6g\bvim\vsecret\frequire\0", "config", "fugitive-gitlab.vim")
@@ -160,6 +196,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'persistence.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")

@@ -11,6 +11,13 @@ end
 
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
+	use({
+		"folke/persistence.nvim",
+		module = "persistence",
+		config = function()
+			require("persistence").setup()
+		end,
+	})
 	-- git related
 	use({
 		"rhysd/conflict-marker.vim",

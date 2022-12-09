@@ -78,7 +78,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'bkad/CamelCaseMotion'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
-Plug 'folke/persistence.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
@@ -194,7 +193,7 @@ vnoremap K        k
 
 noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
 noremap  <Leader>P :Telescope live_grep<CR>
-noremap  <Leader>Q :lua require("persistence").save()<CR> :wa<CR>:qa<CR>
+noremap  <Leader>Q :lua require("persistence").save()<CR> :qa<CR>
 
 " use contrl + hjkl to move between windows
 nnoremap <C-h> <C-w>h
