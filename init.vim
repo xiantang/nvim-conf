@@ -193,7 +193,7 @@ vnoremap K        k
 
 noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
 noremap  <Leader>P :Telescope live_grep<CR>
-noremap  <Leader>Q :lua require("persistence").save()<CR> :qa<CR>
+noremap  <Leader>Q :lua require("start").Stop()<CR>
 
 " use contrl + hjkl to move between windows
 nnoremap <C-h> <C-w>h
