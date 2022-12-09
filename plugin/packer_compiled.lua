@@ -90,7 +90,7 @@ _G.packer_plugins = {
   },
   ["cmp-dictionary"] = {
     after_files = { "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-dictionary/after/plugin/cmp_dictionary.vim" },
-    config = { "\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24CmpDictionaryUpdate\bcmd\bvim¶\2\1\0\5\0\v\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\b\0B\0\2\0029\1\t\0003\3\n\0B\1\2\1K\0\1\0\0\brun\18plenary.async\bdic\1\0\b\rcapacity\3\5\14max_items\3ÿÿÿÿ\15\nasync\2\ndebug\1\21document_command\16wn %s -over\rdocument\2\27first_case_insensitive\1\nexact\3ÿÿÿÿ\15\6*\1\0\0\1\3\0\0\25~/.config/nvim/words&~/.config/nvim/spell/en.utf-8.add\nsetup\19cmp_dictionary\frequire\0" },
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24CmpDictionaryUpdate\bcmd\bvim¶\2\1\0\5\0\v\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\b\0B\0\2\0029\1\t\0003\3\n\0B\1\2\1K\0\1\0\0\brun\18plenary.async\bdic\1\0\b\ndebug\1\rcapacity\3\5\14max_items\3ÿÿÿÿ\15\nasync\2\21document_command\16wn %s -over\rdocument\2\27first_case_insensitive\1\nexact\3ÿÿÿÿ\15\6*\1\0\0\1\3\0\0\25~/.config/nvim/words&~/.config/nvim/spell/en.utf-8.add\nsetup\19cmp_dictionary\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-dictionary",
@@ -135,7 +135,7 @@ _G.packer_plugins = {
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["persistence.nvim"] = {
-    config = { "\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16persistence\frequire\0" },
+    config = { "\27LJ\2\nÈ\1\0\0\b\0\r\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\t\0006\3\3\0009\3\4\0039\3\5\0036\5\3\0009\5\4\0059\5\6\5'\a\a\0B\5\2\2'\6\b\0&\5\6\5B\3\2\2=\3\n\0025\3\v\0=\3\f\2B\0\2\1K\0\1\0\foptions\1\4\0\0\vcurdir\rtabpages\fwinsize\bdir\1\0\0\15/sessions/\vconfig\fstdpath\vexpand\afn\bvim\nsetup\16persistence\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -196,7 +196,6 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'persistence.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")

@@ -15,7 +15,10 @@ return require("packer").startup(function(use)
 		"folke/persistence.nvim",
 		module = "persistence",
 		config = function()
-			require("persistence").setup()
+			require("persistence").setup({
+				dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
+				options = { "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
+			})
 		end,
 	})
 	-- git related
