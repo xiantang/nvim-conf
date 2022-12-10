@@ -98,10 +98,6 @@ return require("packer").startup(function(use)
 				capacity = 5,
 				debug = false,
 			})
-			local a = require("plenary.async")
-			a.run(function()
-				vim.cmd([[CmpDictionaryUpdate]])
-			end)
 		end,
 	})
 	if packer_bootstrap then
