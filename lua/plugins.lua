@@ -55,6 +55,13 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		"ray-x/lsp_signature.nvim",
+		config = function()
+			require("lsp_signature").setup()
+		end,
+	})
+
+	use({
 		"hrsh7th/cmp-path",
 		opt = true,
 	})
@@ -86,8 +93,6 @@ return require("packer").startup(function(use)
 				-- The following are default values.
 				exact = -1,
 				first_case_insensitive = false,
-				document = true,
-				document_command = "wn %s -over",
 				async = true,
 				max_items = -1,
 				capacity = 5,

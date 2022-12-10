@@ -90,7 +90,7 @@ _G.packer_plugins = {
   },
   ["cmp-dictionary"] = {
     after_files = { "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-dictionary/after/plugin/cmp_dictionary.vim" },
-    config = { "\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24CmpDictionaryUpdate\bcmd\bvim¶\2\1\0\5\0\v\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\b\0B\0\2\0029\1\t\0003\3\n\0B\1\2\1K\0\1\0\0\brun\18plenary.async\bdic\1\0\b\ndebug\1\rcapacity\3\5\14max_items\3ÿÿÿÿ\15\nasync\2\21document_command\16wn %s -over\rdocument\2\27first_case_insensitive\1\nexact\3ÿÿÿÿ\15\6*\1\0\0\1\3\0\0\25~/.config/nvim/words&~/.config/nvim/spell/en.utf-8.add\nsetup\19cmp_dictionary\frequire\0" },
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24CmpDictionaryUpdate\bcmd\bvim¶\2\1\0\5\0\v\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\0016\0\0\0'\2\b\0B\0\2\0029\1\t\0003\3\n\0B\1\2\1K\0\1\0\0\brun\18plenary.async\bdic\1\0\b\nasync\2\21document_command\16wn %s -over\rdocument\2\27first_case_insensitive\1\nexact\3ÿÿÿÿ\15\ndebug\1\rcapacity\3\5\14max_items\3ÿÿÿÿ\15\6*\1\0\0\1\3\0\0\25~/.config/nvim/words&~/.config/nvim/spell/en.utf-8.add\nsetup\19cmp_dictionary\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-dictionary",
@@ -120,6 +120,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/fugitive-gitlab.vim",
     url = "https://github.com/shumphrey/fugitive-gitlab.vim"
+  },
+  ["lsp_signature.nvim"] = {
+    config = { "\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18lsp_signature\frequire\0" },
+    loaded = true,
+    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
+    url = "https://github.com/ray-x/lsp_signature.nvim"
   },
   ["nvim-cmp"] = {
     config = { "\27LJ\2\nÕ\4\0\0\a\0\23\0:6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\0016\0\0\0009\0\1\0'\2\4\0B\0\2\0016\0\0\0009\0\1\0'\2\5\0B\0\2\0016\0\0\0009\0\1\0'\2\6\0B\0\2\0016\0\a\0'\2\b\0B\0\2\0029\0\t\0B\0\1\0016\0\a\0'\2\b\0B\0\2\0029\0\t\0005\2\v\0005\3\n\0=\3\f\2B\0\2\0016\0\a\0'\2\r\0B\0\2\0029\0\14\0005\2\15\0B\0\2\0016\0\a\0'\2\16\0B\0\2\0026\1\a\0'\3\17\0B\1\2\0029\1\18\1'\3\19\0009\4\20\0004\6\0\0B\4\2\0A\1\1\0016\1\a\0'\3\21\0B\1\2\0016\1\a\0'\3\22\0B\1\2\1K\0\1\0\fgo_test\fcmp_set\bnew\rcmp_jira\20register_source\bcmp\tjira\1\0\1\npaths$~/.config/nvim/my_snippets/lua/\tload\29luasnip.loaders.from_lua\npaths\1\0\0\1\2\0\0./Users/jingdizhu/.config/nvim/my_snippets\14lazy_load luasnip.loaders.from_vscode\frequire  PackerLoad cmp-dictionary \29 PackerLoad cmp_luasnip \26 PackerLoad cmp-path \29 PackerLoad cmp-cmdline \28 PackerLoad cmp-buffer \bcmd\bvim\0" },
@@ -188,6 +194,10 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
+-- Config for: lsp_signature.nvim
+time([[Config for lsp_signature.nvim]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18lsp_signature\frequire\0", "config", "lsp_signature.nvim")
+time([[Config for lsp_signature.nvim]], false)
 -- Config for: fugitive-gitlab.vim
 time([[Config for fugitive-gitlab.vim]], true)
 try_loadstring("\27LJ\2\ng\0\0\4\0\6\0\n6\0\0\0'\2\1\0B\0\2\0026\1\2\0009\1\3\0014\2\3\0009\3\5\0>\3\1\2=\2\4\1K\0\1\0\15GITALB_URL\28fugitive_gitlab_domains\6g\bvim\vsecret\frequire\0", "config", "fugitive-gitlab.vim")
