@@ -92,6 +92,7 @@ return require("packer").startup(function(use)
 				},
 				-- The following are default values.
 				exact = -1,
+				document = false,
 				first_case_insensitive = false,
 				async = true,
 				max_items = -1,
