@@ -57,6 +57,8 @@ function Jump()
 	})
 end
 vim.api.nvim_set_keymap("n", "s", ":lua Jump()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "mm", "mM", { silent = true })
+vim.api.nvim_set_keymap("n", "M", "`M", { silent = true })
 -- disable command Gbrowse in cmdline mode
 
 vim.cmd("cnoreabbrev git Git")
