@@ -12,6 +12,12 @@ end
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
 	use({
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup({})
+		end,
+	})
+	use({
 		"folke/persistence.nvim",
 		module = "persistence",
 		config = function()
