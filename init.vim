@@ -29,12 +29,10 @@ au BufEnter leetcode.cn_*.txt set filetype=go
 au BufEnter *.conf set filetype=config
 au FileType * set formatoptions-=cro
 au CursorHold * checktime
-au BufWritePost *.go silent! :lua gofumpt()
 au BufWritePost *.go silent! :lua go_org_imports()
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
 au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
-
 
 
 lang en_US.UTF-8
@@ -316,7 +314,4 @@ let g:copilot_filetypes = {
 imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
 let g:copilot_no_tab_map = v:true
 let g:copilot_assume_mapped = v:true
-
-
-echo 'neovim be good'
 

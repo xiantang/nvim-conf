@@ -3,6 +3,7 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.nginx_beautifier,
 		-- null_ls.builtins.formatting.goimports,
+		null_ls.builtins.formatting.gofumpt,
 		null_ls.builtins.code_actions.shellcheck,
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.jq,
