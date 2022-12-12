@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master","put_into_docker" ]
   pull_request:
     branches: [ "master" ]
 
