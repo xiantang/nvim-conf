@@ -35,7 +35,7 @@ au CursorHold,CursorHoldI * checktime
 au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
 
 
-lang en_US.UTF-8
+" lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
@@ -56,7 +56,6 @@ Plug 'ray-x/guihua.lua'
 Plug 'petertriho/nvim-scrollbar'
 Plug 'rhysd/clever-f.vim'
 Plug 'leoluz/nvim-dap-go'
-Plug 'lewis6991/impatient.nvim'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'mfussenegger/nvim-dap'
 Plug 'romainl/vim-cool'
@@ -79,17 +78,17 @@ Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'plasticboy/vim-markdown'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'glacambre/firenvim'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'zbirenbaum/copilot.lua'

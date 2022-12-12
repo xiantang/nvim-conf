@@ -188,9 +188,7 @@ require("mason-lspconfig").setup({
 		"prosemd_lsp",
 		"vimls",
 		"yamlls",
-		"grammarly",
 		"cmake",
-		"ansiblels",
 	},
 })
 
@@ -203,9 +201,7 @@ local common_servers = {
 	"prosemd_lsp",
 	"vimls",
 	"yamlls",
-	"grammarly",
 	"cmake",
-	"ansiblels",
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()

@@ -11,6 +11,8 @@ end
 
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
+	-- Plug 'lewis6991/impatient.nvim'
+	use("lewis6991/impatient.nvim")
 	use({
 		"folke/persistence.nvim",
 		module = "persistence",
