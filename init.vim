@@ -186,9 +186,7 @@ noremap <Leader>7 :7ToggleTerm<CR>
 noremap <Leader>8 :8ToggleTerm<CR>
 noremap <Leader>9 :9ToggleTerm<CR>
 noremap tt :GenReturn<CR>0
-
 vnoremap K        k
-
 noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
 noremap  <Leader>P :Telescope live_grep<CR>
 noremap  <Leader>Q :lua require("start").Stop()<CR>
@@ -204,10 +202,6 @@ noremap <Leader>rt :GoRunTestFunc<CR>
 noremap <Leader>rf :GoRunTestFile<CR>
 noremap <Leader>de :lua require'dap'.toggle_breakpoint()<CR>
 noremap <Leader>ut :UndotreeToggle<CR>
-
-
-" git diffview
-nnoremap <Leader>d :DiffviewOpen<CR>
 
 
 tnoremap <Esc> <C-\><C-n>
