@@ -2,7 +2,7 @@
 let mapleader=" "
 syntax on
 set noswapfile
-set shell=zsh\ -i
+" set shell=zsh\ -i
 set spell
 set spelllang=en,cjk
 set spellsuggest=best,9

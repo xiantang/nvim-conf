@@ -185,10 +185,8 @@ require("mason-lspconfig").setup({
 		"pyright",
 		"dockerls",
 		"bashls",
-		"prosemd_lsp",
 		"vimls",
 		"yamlls",
-		"cmake",
 	},
 })
 
@@ -198,10 +196,8 @@ local common_servers = {
 	"pyright",
 	"dockerls",
 	"bashls",
-	"prosemd_lsp",
 	"vimls",
 	"yamlls",
-	"cmake",
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
