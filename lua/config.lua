@@ -28,7 +28,6 @@ require("scrollbar").setup({
 	},
 })
 require("toggle")
-require("glow").setup()
 require("lualine_setup")
 require("lsp_config")
 require("tele")

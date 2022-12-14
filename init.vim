@@ -61,7 +61,6 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'romainl/vim-cool'
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'ellisonleao/glow.nvim'
 Plug 'RRethy/vim-illuminate'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'folke/neodev.nvim'
@@ -168,7 +167,6 @@ noremap <Leader>t :NERDTreeToggle<CR>
 noremap <Leader>s :sp<CR>
 noremap <Leader>ss :source ~/.config/nvim/init.vim<CR>
 noremap <Leader>v :vsp<CR>
-noremap <Leader>vm :Glow!<CR>
 noremap <Leader>w :w<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>[  <C-O>
