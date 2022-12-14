@@ -1,9 +1,16 @@
-require("vim.treesitter.query").set_query("go", "highlight", "")
 require("nvim-treesitter.configs").setup({
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			node_incremental = "v",
+			node_decremental = "<BS>",
+		},
+	},
 	highlight = {
 		-- disable highlight for variable and package in file
 		enable = true,
 		additional_vim_regex_highlighting = false,
+		disable = {},
 	},
 	indent = {
 		enable = true,

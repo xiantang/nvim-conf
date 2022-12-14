@@ -2,7 +2,7 @@
 let mapleader=" "
 syntax on
 set noswapfile
-set shell=zsh\ -i
+" set shell=zsh\ -i
 set spell
 set spelllang=en,cjk
 set spellsuggest=best,9
@@ -29,15 +29,13 @@ au BufEnter leetcode.cn_*.txt set filetype=go
 au BufEnter *.conf set filetype=config
 au FileType * set formatoptions-=cro
 au CursorHold * checktime
-au BufWritePost *.go silent! :lua gofumpt()
 au BufWritePost *.go silent! :lua go_org_imports()
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
 au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
 
 
-
-lang en_US.UTF-8
+" lang en_US.UTF-8
 
 " Plugin
 call plug#begin()
@@ -58,13 +56,11 @@ Plug 'ray-x/guihua.lua'
 Plug 'petertriho/nvim-scrollbar'
 Plug 'rhysd/clever-f.vim'
 Plug 'leoluz/nvim-dap-go'
-Plug 'lewis6991/impatient.nvim'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'mfussenegger/nvim-dap'
 Plug 'romainl/vim-cool'
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'ellisonleao/glow.nvim'
 Plug 'RRethy/vim-illuminate'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'folke/neodev.nvim'
@@ -78,21 +74,20 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'bkad/CamelCaseMotion'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
-Plug 'folke/persistence.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'plasticboy/vim-markdown'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'glacambre/firenvim'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'zbirenbaum/copilot.lua'
@@ -172,7 +167,6 @@ noremap <Leader>t :NERDTreeToggle<CR>
 noremap <Leader>s :sp<CR>
 noremap <Leader>ss :source ~/.config/nvim/init.vim<CR>
 noremap <Leader>v :vsp<CR>
-noremap <Leader>vm :Glow!<CR>
 noremap <Leader>w :w<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>[  <C-O>
@@ -189,12 +183,10 @@ noremap <Leader>7 :7ToggleTerm<CR>
 noremap <Leader>8 :8ToggleTerm<CR>
 noremap <Leader>9 :9ToggleTerm<CR>
 noremap tt :GenReturn<CR>0
-
 vnoremap K        k
-
 noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
 noremap  <Leader>P :Telescope live_grep<CR>
-noremap  <Leader>Q :lua require("persistence").save()<CR> :wa<CR>:qa<CR>
+noremap  <Leader>Q :lua require("start").Stop()<CR>
 
 " use contrl + hjkl to move between windows
 nnoremap <C-h> <C-w>h
@@ -207,10 +199,6 @@ noremap <Leader>rt :GoRunTestFunc<CR>
 noremap <Leader>rf :GoRunTestFile<CR>
 noremap <Leader>de :lua require'dap'.toggle_breakpoint()<CR>
 noremap <Leader>ut :UndotreeToggle<CR>
-
-
-" git diffview
-nnoremap <Leader>d :DiffviewOpen<CR>
 
 
 tnoremap <Esc> <C-\><C-n>
@@ -277,7 +265,7 @@ if exists('g:started_by_firenvim')
   let g:copilot_filetypes = {
       \ 'markdown': v:true,
       \ 'yaml': v:true,
-      \ 'go': v:false,
+      \ 'go': v:true,
         \ }
   echo 'nvim good'
 else
@@ -307,7 +295,7 @@ let g:copilot_enable = 1
 let g:copilot_filetypes = {
     \ 'markdown': v:true,
     \ 'yaml': v:true,
-    \ 'go': v:false,
+    \ 'go': v:true,
     \ 'lua': v:true,
     \ 'gitcommit': v:true,
     \ "TelescopePrompt": v:false,
@@ -317,7 +305,4 @@ let g:copilot_filetypes = {
 imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
 let g:copilot_no_tab_map = v:true
 let g:copilot_assume_mapped = v:true
-
-
-echo 'neovim be good'
 

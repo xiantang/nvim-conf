@@ -37,6 +37,7 @@ end
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
+	require("lsp_signature").on_attach(signature_setup, bufnr)
 	if client.supports_method("textDocument/formatting") then
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 		vim.api.nvim_create_autocmd("BufWritePre", {
@@ -184,12 +185,8 @@ require("mason-lspconfig").setup({
 		"pyright",
 		"dockerls",
 		"bashls",
-		"prosemd_lsp",
 		"vimls",
 		"yamlls",
-		"grammarly",
-		"cmake",
-		"ansiblels",
 	},
 })
 
@@ -199,12 +196,8 @@ local common_servers = {
 	"pyright",
 	"dockerls",
 	"bashls",
-	"prosemd_lsp",
 	"vimls",
 	"yamlls",
-	"grammarly",
-	"cmake",
-	"ansiblels",
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()

@@ -11,6 +11,18 @@ end
 
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
+	-- Plug 'lewis6991/impatient.nvim'
+	use("lewis6991/impatient.nvim")
+	use({
+		"folke/persistence.nvim",
+		module = "persistence",
+		config = function()
+			require("persistence").setup({
+				dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
+				options = { "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
+			})
+		end,
+	})
 	-- git related
 	use({
 		"rhysd/conflict-marker.vim",
@@ -45,6 +57,15 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		"ray-x/lsp_signature.nvim",
+		config = function()
+			require("lsp_signature").setup({
+				doc_lines = 1,
+			})
+		end,
+	})
+
+	use({
 		"hrsh7th/cmp-path",
 		opt = true,
 	})
@@ -59,8 +80,12 @@ return require("packer").startup(function(use)
 	use({
 		"shumphrey/fugitive-gitlab.vim",
 		config = function()
-			local secret = require("secret")
-			vim.g.fugitive_gitlab_domains = { secret.GITALB_URL }
+			-- check operation system
+			local is_mac = vim.fn.has("mac") == 1
+			if is_mac then
+				local secret = require("secret")
+				vim.g.fugitive_gitlab_domains = { secret.GITALB_URL }
+			end
 		end,
 	})
 	use("tpope/vim-rhubarb")
@@ -75,18 +100,13 @@ return require("packer").startup(function(use)
 				},
 				-- The following are default values.
 				exact = -1,
+				document = false,
 				first_case_insensitive = false,
-				document = true,
-				document_command = "wn %s -over",
 				async = true,
 				max_items = -1,
 				capacity = 5,
 				debug = false,
 			})
-			local a = require("plenary.async")
-			a.run(function()
-				vim.cmd([[CmpDictionaryUpdate]])
-			end)
 		end,
 	})
 	if packer_bootstrap then

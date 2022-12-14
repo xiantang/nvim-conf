@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master","put_into_docker" ]
   pull_request:
     branches: [ "master" ]
 
@@ -15,4 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag neovim:$(date +%s)
+      run: docker build . --file Dockerfile --tag neovim
+    - name: run the Docker image
+      run: |
+        docker run -d  --name neovim  neovim tail -f /dev/null 
+        docker exec -i neovim /bin/bash -c "nvim --headless --startuptime log +qa || exit 0"
+        docker exec -i neovim /bin/bash -c "cat log" | tail -n 1 |awk '{print $1}'
