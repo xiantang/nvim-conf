@@ -90,7 +90,7 @@ _G.packer_plugins = {
   },
   ["cmp-dictionary"] = {
     after_files = { "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-dictionary/after/plugin/cmp_dictionary.vim" },
-    config = { "\27LJ\2\nî\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\bdic\1\0\a\14max_items\3ÿÿÿÿ\15\nasync\2\27first_case_insensitive\1\rdocument\1\nexact\3ÿÿÿÿ\15\ndebug\1\rcapacity\3\5\6*\1\0\0\1\3\0\0\25~/.config/nvim/words&~/.config/nvim/spell/en.utf-8.add\nsetup\19cmp_dictionary\frequire\0" },
+    config = { "\27LJ\2\nî\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\bdic\1\0\a\nexact\3ÿÿÿÿ\15\ndebug\1\rcapacity\3\5\14max_items\3ÿÿÿÿ\15\nasync\2\27first_case_insensitive\1\rdocument\1\6*\1\0\0\1\3\0\0\25~/.config/nvim/words&~/.config/nvim/spell/en.utf-8.add\nsetup\19cmp_dictionary\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-dictionary",
@@ -116,7 +116,7 @@ _G.packer_plugins = {
     url = "https://github.com/rhysd/conflict-marker.vim"
   },
   ["fugitive-gitlab.vim"] = {
-    config = { "\27LJ\2\ng\0\0\4\0\6\0\n6\0\0\0'\2\1\0B\0\2\0026\1\2\0009\1\3\0014\2\3\0009\3\5\0>\3\1\2=\2\4\1K\0\1\0\15GITALB_URL\28fugitive_gitlab_domains\6g\bvim\vsecret\frequire\0" },
+    config = { "\27LJ\2\n£\1\0\0\5\0\t\1\0226\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\t€6\1\4\0'\3\5\0B\1\2\0026\2\0\0009\2\6\0024\3\3\0009\4\b\1>\4\1\3=\3\a\2K\0\1\0\15GITALB_URL\28fugitive_gitlab_domains\6g\vsecret\frequire\bmac\bhas\afn\bvim\2\0" },
     loaded = true,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/fugitive-gitlab.vim",
     url = "https://github.com/shumphrey/fugitive-gitlab.vim"
@@ -152,6 +152,11 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/persistence.nvim",
     url = "https://github.com/folke/persistence.nvim"
+  },
+  ["profile.nvim"] = {
+    loaded = true,
+    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/profile.nvim",
+    url = "https://github.com/stevearc/profile.nvim"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -205,7 +210,7 @@ try_loadstring("\27LJ\2\nN\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B
 time([[Config for lsp_signature.nvim]], false)
 -- Config for: fugitive-gitlab.vim
 time([[Config for fugitive-gitlab.vim]], true)
-try_loadstring("\27LJ\2\ng\0\0\4\0\6\0\n6\0\0\0'\2\1\0B\0\2\0026\1\2\0009\1\3\0014\2\3\0009\3\5\0>\3\1\2=\2\4\1K\0\1\0\15GITALB_URL\28fugitive_gitlab_domains\6g\bvim\vsecret\frequire\0", "config", "fugitive-gitlab.vim")
+try_loadstring("\27LJ\2\n£\1\0\0\5\0\t\1\0226\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\t€6\1\4\0'\3\5\0B\1\2\0026\2\0\0009\2\6\0024\3\3\0009\4\b\1>\4\1\3=\3\a\2K\0\1\0\15GITALB_URL\28fugitive_gitlab_domains\6g\vsecret\frequire\bmac\bhas\afn\bvim\2\0", "config", "fugitive-gitlab.vim")
 time([[Config for fugitive-gitlab.vim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]

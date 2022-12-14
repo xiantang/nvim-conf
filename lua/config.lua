@@ -83,3 +83,22 @@ vim.cmd([[
       highlight ConflictMarkerEnd guibg=#2f628e
       highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
 ]])
+
+function toggle_profile()
+	local prof = require("profile")
+	if prof.is_recording() then
+		prof.stop()
+		filename = ".profile.json"
+		print(filename)
+		prof.export(filename)
+		vim.notify(string.format("Wrote %s", filename))
+	else
+		prof.start("*")
+	end
+end
+
+-- create cmd
+
+vim.api.nvim_create_user_command("Profile", function()
+	toggle_profile()
+end, {})

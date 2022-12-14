@@ -50,6 +50,9 @@ return require("packer").startup(function(use)
 		"hrsh7th/cmp-buffer",
 		opt = true,
 	})
+	use({
+		"stevearc/profile.nvim",
+	})
 
 	use({
 		"hrsh7th/cmp-cmdline",
