@@ -188,11 +188,6 @@ noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--fil
 noremap  <Leader>P :Telescope live_grep<CR>
 noremap  <Leader>Q :lua require("start").Stop()<CR>
 
-" use contrl + hjkl to move between windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 " golang test"
 noremap <Leader>rt :GoRunTestFunc<CR>

@@ -1,6 +1,17 @@
 -- speed up
 -- require('config')
+
+-- " use contrl + hjkl to move between windows
+-- nnoremap <C-h> <C-w>h
+-- nnoremap <C-j> <C-w>j
+-- nnoremap <C-k> <C-w>k
+-- nnoremap <C-l> <C-w>l
+
 require("plugins")
+vim.keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
+vim.keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
+vim.keymap.set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>")
+vim.keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
 require("start")
 require("impatient")
 require("scrollbar.handlers.gitsigns").setup()

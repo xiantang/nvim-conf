@@ -23,6 +23,14 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
+
+	use({
+		"numToStr/Navigator.nvim",
+		-- master
+		config = function()
+			require("Navigator").setup()
+		end,
+	})
 	-- git related
 	use({
 		"rhysd/conflict-marker.vim",
