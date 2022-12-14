@@ -267,7 +267,7 @@ if exists('g:started_by_firenvim')
   let g:copilot_filetypes = {
       \ 'markdown': v:true,
       \ 'yaml': v:true,
-      \ 'go': v:false,
+      \ 'go': v:true,
         \ }
   echo 'nvim good'
 else
@@ -297,7 +297,7 @@ let g:copilot_enable = 1
 let g:copilot_filetypes = {
     \ 'markdown': v:true,
     \ 'yaml': v:true,
-    \ 'go': v:false,
+    \ 'go': v:true,
     \ 'lua': v:true,
     \ 'gitcommit': v:true,
     \ "TelescopePrompt": v:false,
