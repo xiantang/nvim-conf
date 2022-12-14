@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag neovim
     - name: run the Docker image
-      run: >
+      run: |
         docker run -dt  --name neovim  neovim tail -f /dev/null 
         docker exec -it neovim /bin/bash -c "nvim --headless --startuptime log +qa"
         docker exec -it neovim /bin/bash -c "cat log" | tail -n 1 |awk '{print $1}'
