@@ -9,6 +9,11 @@ set spellsuggest=best,9
 set guifont:DejaVuSansMono\ Nerd\ Font:h16
 set relativenumber
 set autoread
+" enable vertical cursor when in insert mode
+set guicursor=i:ver1
+
+" enable cursor blinking
+set guicursor+=a:blinkon1
 set updatetime=3000
 set encoding=utf8
 set termguicolors
