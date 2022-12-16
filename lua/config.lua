@@ -1,12 +1,3 @@
--- speed up
--- require('config')
-
--- " use contrl + hjkl to move between windows
--- nnoremap <C-h> <C-w>h
--- nnoremap <C-j> <C-w>j
--- nnoremap <C-k> <C-w>k
--- nnoremap <C-l> <C-w>l
-
 require("plugins")
 vim.keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
 vim.keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
@@ -59,14 +50,14 @@ require("Comment").setup()
 require("symbols-outline").setup()
 require("neodev").setup({})
 core = require("core")
-function Jump()
-	require("leap").leap({
-		target_windows = vim.tbl_filter(function(win)
-			return vim.api.nvim_win_get_config(win).focusable
-		end, vim.api.nvim_tabpage_list_wins(0)),
-	})
-end
-vim.api.nvim_set_keymap("n", "s", ":lua Jump()<CR>", { silent = true })
+-- function Jump()
+-- 	require("leap").leap({
+-- 		target_windows = vim.tbl_filter(function(win)
+-- 			return vim.api.nvim_win_get_config(win).focusable
+-- 		end, vim.api.nvim_tabpage_list_wins(0)),
+-- 	})
+-- end
+-- vim.api.nvim_set_keymap("n", "s", ":lua Jump()<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "m", "mM", { silent = true })
 vim.api.nvim_set_keymap("n", "M", "`M", { silent = true })
 -- disable command Gbrowse in cmdline mode

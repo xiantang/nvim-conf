@@ -11,7 +11,14 @@ end
 
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
-	-- Plug 'lewis6991/impatient.nvim'
+	-- Plug 'ggandor/leap.nvim'
+	use({
+		"ggandor/leap.nvim",
+		config = function()
+			require("leap").add_default_mappings()
+		end,
+	})
+
 	use("lewis6991/impatient.nvim")
 	use({
 		"folke/persistence.nvim",
