@@ -1,5 +1,7 @@
 " leader
 let mapleader=" "
+set background=dark
+set t_Co=256
 syntax on
 set noswapfile
 " set shell=zsh\ -i
@@ -11,7 +13,6 @@ set relativenumber
 set autoread
 " enable vertical cursor when in insert mode
 set guicursor=i:ver1
-
 " enable cursor blinking
 set guicursor+=a:blinkon1
 set updatetime=3000

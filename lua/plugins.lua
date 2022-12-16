@@ -24,6 +24,14 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- use({
+	-- 	"rareitems/hl_match_area.nvim",
+	-- 	config = function()
+	-- 		require("hl_match_area").setup()
+	-- 		vim.api.nvim_set_hl(0, "MatchArea", { bg = "#3e4452" })
+	-- 	end,
+	-- })
+
 	use({
 		"numToStr/Navigator.nvim",
 		-- master
