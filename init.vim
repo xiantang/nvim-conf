@@ -8,7 +8,7 @@ set noswapfile
 set spell
 set spelllang=en,cjk
 set spellsuggest=best,9
-set guifont:DejaVuSansMono\ Nerd\ Font:h16
+set guifont:DejaVuSansMono\ Nerd\ Font:h17
 set relativenumber
 set autoread
 " enable vertical cursor when in insert mode
@@ -166,7 +166,7 @@ noremap <silent> <C-Up> :resize +5<CR>
 noremap <silent> <C-Down> :resize -5<CR>
 noremap 0 ^
 noremap <Leader>q :wq<CR>
-noremap <Leader>g :Git<CR>
+noremap <Leader>gs :Git<CR>
 noremap <Leader>gb :Git blame<CR>
 noremap <Leader>t :NERDTreeToggle<CR>
 noremap <Leader>s :sp<CR>
@@ -223,6 +223,8 @@ noremap <C-e> :Telescope frecency <CR>
 noremap <C-q> :Telescope oldfiles <CR>
 map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
 
 
 nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm size=10"<CR>

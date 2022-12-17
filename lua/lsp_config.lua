@@ -261,8 +261,3 @@ nvim_lsp.gopls.setup({
 	},
 	on_attach = on_attach,
 })
-
--- local saga = require("lspsaga")
--- saga.init_lsp_saga({
---   -- your configuration
--- })
