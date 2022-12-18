@@ -1,8 +1,4 @@
 require("plugins")
-vim.keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
-vim.keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
-vim.keymap.set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>")
-vim.keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
 require("start")
 require("impatient")
 require("scrollbar.handlers.gitsigns").setup()
@@ -41,6 +37,20 @@ require("nvim-autopairs").setup({})
 require("dap-go").setup()
 require("dap_set")
 require("nerdtree")
+vim.cmd([[
+
+let NERDTreeShowBookmarks=1
+let NERDTreeShowHidden=1
+let g:NERDTreeChDirMode = 2
+" width"
+let g:NERDTreeWinSize = 25
+" mini 
+let g:NERDTreeMinimalMenu=1
+
+
+let g:vim_markdown_folding_disabled = 1
+]])
+
 require("fastmind")
 require("go").setup()
 require("txtobj")
@@ -59,8 +69,6 @@ core = require("core")
 -- 	})
 -- end
 -- vim.api.nvim_set_keymap("n", "s", ":lua Jump()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "m", "mM", { silent = true })
-vim.api.nvim_set_keymap("n", "M", "`M", { silent = true })
 -- disable command Gbrowse in cmdline mode
 
 vim.cmd("cnoreabbrev git Git")
@@ -149,6 +157,13 @@ endfunction
 
 " https://github.com/glacambre/firenvim/issues/1006#issuecomment-1126785734
 if exists('g:started_by_firenvim')
+  let g:firenvim_config = {
+        \ 'localSettings' : {
+          \ '.*' : {
+              \ 'filename' : '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.go',
+            \   },
+      \ }
+  \}
   let g:dashboard_disable_at_vimenter=1
   let g:NERDTreeHijackNetrw=0
   call timer_start(3000, function("SetFontSizeFirenvim"))
