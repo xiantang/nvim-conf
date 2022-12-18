@@ -129,7 +129,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use("simrat39/symbols-outline.nvim")
-	use("ray-x/go.nvim")
+	use({ "ray-x/go.nvim" })
 	use("p00f/nvim-ts-rainbow")
 	use("ray-x/guihua.lua")
 	use("petertriho/nvim-scrollbar")
