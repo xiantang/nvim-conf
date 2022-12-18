@@ -175,7 +175,10 @@ return require("packer").startup(function(use)
 	use("junegunn/fzf")
 	use("junegunn/fzf.vim")
 	use("nvim-lua/plenary.nvim")
-	use("zbirenbaum/copilot.lua")
+	use({
+		"zbirenbaum/copilot.lua",
+		config = function() end,
+	})
 	use("keaising/im-select.nvim")
 	use("numToStr/Comment.nvim")
 	use("akinsho/toggleterm.nvim")
