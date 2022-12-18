@@ -11,7 +11,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
-	-- Plug 'ggandor/leap.nvim'
+	--  'ggandor/leap.nvim',
 	use({
 		"ggandor/leap.nvim",
 		config = function()
@@ -36,6 +36,8 @@ return require("packer").startup(function(use)
 			"j-hui/fidget.nvim",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
+			"glepnir/lspsaga.nvim",
+			"onsails/lspkind.nvim",
 		},
 	})
 
@@ -117,8 +119,54 @@ return require("packer").startup(function(use)
 			end
 		end,
 	})
+	use("segeljakt/vim-silicon")
+	use("ZSaberLv0/ZFVimIM")
+	use("ZSaberLv0/ZFVimJob")
+	use("simrat39/symbols-outline.nvim")
+	use("ray-x/go.nvim")
+	use("p00f/nvim-ts-rainbow")
+	use("ray-x/guihua.lua")
+	use("petertriho/nvim-scrollbar")
+	use("rhysd/clever-f.vim")
+	use("leoluz/nvim-dap-go")
+	use("rcarriga/nvim-dap-ui")
+	use("mfussenegger/nvim-dap")
+	use("romainl/vim-cool")
+	use("windwp/nvim-autopairs")
+	use("lukas-reineke/indent-blankline.nvim")
+	use("RRethy/vim-illuminate")
+	use("vim-scripts/ReplaceWithRegister")
+	use("folke/neodev.nvim")
+	use("rafamadriz/friendly-snippets")
+	use("RRethy/nvim-base16")
+	use("mbbill/undotree")
+	use("nvim-lualine/lualine.nvim")
+	use("nvim-telescope/telescope-frecency.nvim")
+	use("kkharji/sqlite.lua")
+	use("ryanoasis/vim-devicons")
+	use("nvim-tree/nvim-web-devicons")
+	use("bkad/CamelCaseMotion")
 	use("tpope/vim-rhubarb")
 	use("dstein64/vim-startuptime")
+	use("jose-elias-alvarez/null-ls.nvim")
+	use("nvim-treesitter/nvim-treesitter")
+	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("nvim-treesitter/playground")
+	use("lewis6991/gitsigns.nvim")
+	use("L3MON4D3/LuaSnip")
+	use("plasticboy/vim-markdown")
+	use("glacambre/firenvim")
+	use("vim-scripts/argtextobj.vim")
+	use("preservim/nerdtree")
+	use("Xuyuanp/nerdtree-git-plugin")
+	use("junegunn/fzf")
+	use("junegunn/fzf.vim")
+	use("nvim-lua/plenary.nvim")
+	use("zbirenbaum/copilot.lua")
+	use("keaising/im-select.nvim")
+	use("numToStr/Comment.nvim")
+	use("akinsho/toggleterm.nvim")
+	use({ "nvim-telescope/telescope.nvim" })
 	use({
 		"uga-rosa/cmp-dictionary",
 		opt = true,
