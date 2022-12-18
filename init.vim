@@ -1,49 +1,3 @@
-" Leader
-let mapleader=" "
-set background=dark
-set t_Co=256
-syntax on
-set noswapfile
-" set shell=zsh\ -i
-set spell
-set spelllang=en,cjk
-set spellsuggest=best,9
-set guifont:DejaVuSansMono\ Nerd\ Font:h17
-set relativenumber
-set autoread
-" enable vertical cursor when in insert mode
-set guicursor=i:ver1
-" enable cursor blinking
-set guicursor+=a:blinkon1
-set updatetime=3000
-set encoding=utf8
-set termguicolors
-set nu ru et
-set ts=2 sts=2 sw=2
-set hlsearch
-set mouse=a
-set clipboard=unnamed
-set modifiable
-set smartcase
-set ignorecase
-set sessionoptions-=blank
-
-au BufEnter leetcode.cn_*.txt set filetype=go
-" https://github.com/kamykn/spelunker.vim/issues/71#issuecomment-1023835797
-" ignore big file more than 1000 lines
-" au BufRead * if line('$') > 2000  | let g:enable_spelunker_vim = 0 | endif
-au BufEnter *.conf set filetype=config
-au FileType * set formatoptions-=cro
-au CursorHold * checktime
-au BufWritePost *.go silent! :lua go_org_imports()
-au BufNewFile,BufRead */ssh/config  setf sshconfig
-au CursorHold,CursorHoldI * checktime
-au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
-
-
-" lang en_US.UTF-8
-
-
 lua require("pre_init")
 
 
@@ -54,35 +8,7 @@ let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'
 
 
 let g:plug_window = 'botright 40vnew'
-
-
-let g:ZFVimIM_keymap = 0
-inoremap <expr><silent> ;; ZFVimIME_keymap_toggle_i()
-let s:repoPath="~/.config/ZFVimIM_pinyin_base"
-function! s:dbInit()
-    let repoPath = s:repoPath
-    let dbFile = '/misc/pinyin.txt'
-    let dbCountFile = '/misc/pinyin_count.txt'
-
-    let db = ZFVimIM_dbInit({
-                \   'name' : 'pinyin',
-                \ })
-    call ZFVimIM_cloudRegister({
-                \   'mode' : 'local',
-                \   'dbId' : db['dbId'],
-                \   'repoPath' : repoPath,
-                \   'dbFile' : dbFile,
-                \   'dbCountFile' : dbCountFile,
-                \ })
-endfunction
-autocmd User ZFVimIM_event_OnDbInit call s:dbInit()
-
-
 " silent"
-
-
-
-
 let g:clever_f_across_no_line = 1
 let g:clever_f_ignore_case = 1
 let g:clever_f_smart_case = 1
@@ -184,7 +110,6 @@ let g:NERDTreeWinSize = 25
 let g:NERDTreeMinimalMenu=1
 
 noremap <Leader>l :lua NerdSmartLocated()<CR>
-au VimEnter *  wincmd p
 
 let g:vim_markdown_folding_disabled = 1
 
