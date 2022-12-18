@@ -96,11 +96,16 @@ _G.packer_plugins = {
   },
   ["cmp-dictionary"] = {
     after_files = { "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-dictionary/after/plugin/cmp_dictionary.vim" },
-    config = { "\27LJ\2\nî\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\bdic\1\0\a\rdocument\1\nexact\3ÿÿÿÿ\15\rcapacity\3\5\ndebug\1\14max_items\3ÿÿÿÿ\15\nasync\2\27first_case_insensitive\1\6*\1\0\0\1\3\0\0\25~/.config/nvim/words&~/.config/nvim/spell/en.utf-8.add\nsetup\19cmp_dictionary\frequire\0" },
+    config = { "\27LJ\2\nî\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\bdic\1\0\a\rcapacity\3\5\14max_items\3ÿÿÿÿ\15\nasync\2\27first_case_insensitive\1\rdocument\1\nexact\3ÿÿÿÿ\15\ndebug\1\6*\1\0\0\1\3\0\0\25~/.config/nvim/words&~/.config/nvim/spell/en.utf-8.add\nsetup\19cmp_dictionary\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-dictionary",
     url = "https://github.com/uga-rosa/cmp-dictionary"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-path"] = {
     after_files = { "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-path/after/plugin/cmp_path.lua" },
@@ -120,6 +125,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/conflict-marker.vim",
     url = "https://github.com/rhysd/conflict-marker.vim"
+  },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
   },
   ["fugitive-gitlab.vim"] = {
     config = { "\27LJ\2\n£\1\0\0\5\0\t\1\0226\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\t€6\1\4\0'\3\5\0B\1\2\0026\2\0\0009\2\6\0024\3\3\0009\4\b\1>\4\1\3=\3\a\2K\0\1\0\15GITALB_URL\28fugitive_gitlab_domains\6g\vsecret\frequire\bmac\bhas\afn\bvim\2\0" },
@@ -144,6 +154,16 @@ _G.packer_plugins = {
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
   },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   ["nvim-cmp"] = {
     config = { "\27LJ\2\nÕ\4\0\0\a\0\23\0:6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\0016\0\0\0009\0\1\0'\2\4\0B\0\2\0016\0\0\0009\0\1\0'\2\5\0B\0\2\0016\0\0\0009\0\1\0'\2\6\0B\0\2\0016\0\a\0'\2\b\0B\0\2\0029\0\t\0B\0\1\0016\0\a\0'\2\b\0B\0\2\0029\0\t\0005\2\v\0005\3\n\0=\3\f\2B\0\2\0016\0\a\0'\2\r\0B\0\2\0029\0\14\0005\2\15\0B\0\2\0016\0\a\0'\2\16\0B\0\2\0026\1\a\0'\3\17\0B\1\2\0029\1\18\1'\3\19\0009\4\20\0004\6\0\0B\4\2\0A\1\1\0016\1\a\0'\3\21\0B\1\2\0016\1\a\0'\3\22\0B\1\2\1K\0\1\0\fgo_test\fcmp_set\bnew\rcmp_jira\20register_source\bcmp\tjira\1\0\1\npaths$~/.config/nvim/my_snippets/lua/\tload\29luasnip.loaders.from_lua\npaths\1\0\0\1\2\0\0./Users/jingdizhu/.config/nvim/my_snippets\14lazy_load luasnip.loaders.from_vscode\frequire  PackerLoad cmp-dictionary \29 PackerLoad cmp_luasnip \26 PackerLoad cmp-path \29 PackerLoad cmp-cmdline \28 PackerLoad cmp-buffer \bcmd\bvim\0" },
     loaded = false,
@@ -151,6 +171,11 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -216,22 +241,22 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
--- Config for: fugitive-gitlab.vim
-time([[Config for fugitive-gitlab.vim]], true)
-try_loadstring("\27LJ\2\n£\1\0\0\5\0\t\1\0226\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\t€6\1\4\0'\3\5\0B\1\2\0026\2\0\0009\2\6\0024\3\3\0009\4\b\1>\4\1\3=\3\a\2K\0\1\0\15GITALB_URL\28fugitive_gitlab_domains\6g\vsecret\frequire\bmac\bhas\afn\bvim\2\0", "config", "fugitive-gitlab.vim")
-time([[Config for fugitive-gitlab.vim]], false)
--- Config for: Navigator.nvim
-time([[Config for Navigator.nvim]], true)
-try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14Navigator\frequire\0", "config", "Navigator.nvim")
-time([[Config for Navigator.nvim]], false)
--- Config for: leap.nvim
-time([[Config for leap.nvim]], true)
-try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\25add_default_mappings\tleap\frequire\0", "config", "leap.nvim")
-time([[Config for leap.nvim]], false)
 -- Config for: lsp_signature.nvim
 time([[Config for lsp_signature.nvim]], true)
 try_loadstring("\27LJ\2\nN\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\14doc_lines\3\1\nsetup\18lsp_signature\frequire\0", "config", "lsp_signature.nvim")
 time([[Config for lsp_signature.nvim]], false)
+-- Config for: Navigator.nvim
+time([[Config for Navigator.nvim]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14Navigator\frequire\0", "config", "Navigator.nvim")
+time([[Config for Navigator.nvim]], false)
+-- Config for: fugitive-gitlab.vim
+time([[Config for fugitive-gitlab.vim]], true)
+try_loadstring("\27LJ\2\n£\1\0\0\5\0\t\1\0226\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\t€6\1\4\0'\3\5\0B\1\2\0026\2\0\0009\2\6\0024\3\3\0009\4\b\1>\4\1\3=\3\a\2K\0\1\0\15GITALB_URL\28fugitive_gitlab_domains\6g\vsecret\frequire\bmac\bhas\afn\bvim\2\0", "config", "fugitive-gitlab.vim")
+time([[Config for fugitive-gitlab.vim]], false)
+-- Config for: leap.nvim
+time([[Config for leap.nvim]], true)
+try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\25add_default_mappings\tleap\frequire\0", "config", "leap.nvim")
+time([[Config for leap.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads

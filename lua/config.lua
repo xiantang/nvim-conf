@@ -49,6 +49,7 @@ require("null")
 require("Comment").setup()
 require("symbols-outline").setup()
 require("neodev").setup({})
+require("fidget").setup()
 core = require("core")
 -- function Jump()
 -- 	require("leap").leap({

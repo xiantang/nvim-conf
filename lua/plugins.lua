@@ -30,14 +30,14 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
-
-	-- use({
-	-- 	"rareitems/hl_match_area.nvim",
-	-- 	config = function()
-	-- 		require("hl_match_area").setup()
-	-- 		vim.api.nvim_set_hl(0, "MatchArea", { bg = "#3e4452" })
-	-- 	end,
-	-- })
+	use({
+		"neovim/nvim-lspconfig",
+		requires = {
+			"j-hui/fidget.nvim",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
+	})
 
 	use({
 		"numToStr/Navigator.nvim",
@@ -67,6 +67,9 @@ return require("packer").startup(function(use)
 			require("cmp_set")
 			require("go_test")
 		end,
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+		},
 	})
 
 	use({

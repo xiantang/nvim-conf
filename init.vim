@@ -47,10 +47,6 @@ au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeo
 call plug#begin()
 Plug 'glepnir/lspsaga.nvim'
 Plug 'onsails/lspkind.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'segeljakt/vim-silicon'
 Plug 'ZSaberLv0/ZFVimIM'
 Plug 'ZSaberLv0/ZFVimJob'
