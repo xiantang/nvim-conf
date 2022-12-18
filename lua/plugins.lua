@@ -119,15 +119,28 @@ return require("packer").startup(function(use)
 			end
 		end,
 	})
-	use("segeljakt/vim-silicon")
-	use("ZSaberLv0/ZFVimIM")
-	use("ZSaberLv0/ZFVimJob")
+	use({
+		"segeljakt/vim-silicon",
+		config = function()
+			vim.cmd([[
+       let g:silicon={}
+       let g:plug_window = 'botright 40vnew'
+			 let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png']])
+		end,
+	})
 	use("simrat39/symbols-outline.nvim")
 	use("ray-x/go.nvim")
 	use("p00f/nvim-ts-rainbow")
 	use("ray-x/guihua.lua")
 	use("petertriho/nvim-scrollbar")
-	use("rhysd/clever-f.vim")
+	use({
+		"rhysd/clever-f.vim",
+		config = function()
+			vim.g.clever_f_across_no_line = 1
+			vim.g.clever_f_ignore_case = 1
+			vim.g.clever_f_smart_case = 1
+		end,
+	})
 	use("leoluz/nvim-dap-go")
 	use("rcarriga/nvim-dap-ui")
 	use("mfussenegger/nvim-dap")

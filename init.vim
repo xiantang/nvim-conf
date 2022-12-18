@@ -1,21 +1,4 @@
 lua require("pre_init")
-
-
-
-
-let g:silicon={}
-let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'
-
-
-let g:plug_window = 'botright 40vnew'
-" silent"
-let g:clever_f_across_no_line = 1
-let g:clever_f_ignore_case = 1
-let g:clever_f_smart_case = 1
-
-" resize current buffer by +/- 5
-
-" vertical resize +5 
 nnoremap <D-v> "+p
 inoremap <D-v> <c-r>+
 tnoremap <D-v> <C-\><C-n>"+p
@@ -26,38 +9,9 @@ cnoremap <C-a> <Home>
 
 "ctrl E to move to line end when in command mode like in iterm2
 cnoremap <C-e> <End>
-noremap <C-d> <C-d>zz
-noremap <C-u> <C-u>zz
-noremap n  nzzzv
-noremap N  Nzzzv
-
-noremap <silent> <C-Left> :vertical resize +5<CR>
-noremap <silent> <C-Right> :vertical resize -5<CR>
-noremap <silent> <C-Up> :resize +5<CR>
-noremap <silent> <C-Down> :resize -5<CR>
-noremap 0 ^
-noremap <Leader>q :wq<CR>
-noremap <Leader>gs :Git<CR>
-noremap <Leader>gb :Git blame<CR>
-noremap <Leader>t :NERDTreeToggle<CR>
-noremap <Leader>s :sp<CR>
-noremap <Leader>ss :source ~/.config/nvim/init.vim<CR>
-noremap <Leader>v :vsp<CR>
-noremap <Leader>w :w<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>[  <C-O>
 nnoremap <Leader>]  <C-I>
-noremap  <Leader>r :GoRename<CR>
-
-noremap <Leader>1 :1ToggleTerm<CR>
-noremap <Leader>2 :2ToggleTerm<CR>
-noremap <Leader>3 :3ToggleTerm<CR>
-noremap <Leader>4 :4ToggleTerm<CR>
-noremap <Leader>5 :5ToggleTerm<CR>
-noremap <Leader>6 :6ToggleTerm<CR>
-noremap <Leader>7 :7ToggleTerm<CR>
-noremap <Leader>8 :8ToggleTerm<CR>
-noremap <Leader>9 :9ToggleTerm<CR>
 noremap tt :GenReturn<CR>0
 vnoremap K        k
 noremap  <Leader>p :Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
@@ -65,11 +19,6 @@ noremap  <Leader>P :Telescope live_grep<CR>
 noremap  <Leader>Q :lua require("start").Stop()<CR>
 
 
-" golang test"
-noremap <Leader>rt :GoRunTestFunc<CR>
-noremap <Leader>rf :GoRunTestFile<CR>
-noremap <Leader>de :lua require'dap'.toggle_breakpoint()<CR>
-noremap <Leader>ut :UndotreeToggle<CR>
 
 
 tnoremap <Esc> <C-\><C-n>
