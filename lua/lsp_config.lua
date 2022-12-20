@@ -1,8 +1,5 @@
 local nvim_lsp = require("lspconfig")
 
-local golang_capabilities = vim.lsp.protocol.make_client_capabilities()
-golang_capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 -- get function name in body of golang function
 function _G.get_cur_go_func_name()
 	-- get current line number
@@ -192,6 +189,7 @@ require("mason-lspconfig").setup({
 
 local common_servers = {
 	"sqlls",
+	"jqls",
 	"jsonls",
 	"pyright",
 	"dockerls",
@@ -248,7 +246,7 @@ nvim_lsp.gopls.setup({
 		allow_incremental_sync = false,
 		debounce_text_changes = 500,
 	},
-	capabilities = golang_capabilities,
+	capabilities = capabilities,
 	settings = {
 		gopls = {
 			experimentalPostfixCompletions = true,

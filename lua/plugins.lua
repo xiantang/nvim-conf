@@ -31,9 +31,8 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({
-		"neovim/nvim-lspconfig",
+		"xiantang/nvim-lspconfig",
 		-- use commit
-		commit = "abe6c99c74",
 		requires = {
 			"j-hui/fidget.nvim",
 			"williamboman/mason.nvim",
