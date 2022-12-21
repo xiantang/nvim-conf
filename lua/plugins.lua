@@ -11,7 +11,14 @@ end
 
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
-	-- Plug 'lewis6991/impatient.nvim'
+	--  'ggandor/leap.nvim',
+	use({
+		"ggandor/leap.nvim",
+		config = function()
+			require("leap").add_default_mappings()
+		end,
+	})
+
 	use("lewis6991/impatient.nvim")
 	use({
 		"folke/persistence.nvim",
@@ -21,6 +28,26 @@ return require("packer").startup(function(use)
 				dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
 				options = { "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
 			})
+		end,
+	})
+	use({
+		"neovim/nvim-lspconfig",
+		-- use commit
+		commit = "abe6c99c74",
+		requires = {
+			"j-hui/fidget.nvim",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"glepnir/lspsaga.nvim",
+			"onsails/lspkind.nvim",
+		},
+	})
+
+	use({
+		"numToStr/Navigator.nvim",
+		-- master
+		config = function()
+			require("Navigator").setup()
 		end,
 	})
 	-- git related
@@ -44,11 +71,17 @@ return require("packer").startup(function(use)
 			require("cmp_set")
 			require("go_test")
 		end,
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+		},
 	})
 
 	use({
 		"hrsh7th/cmp-buffer",
 		opt = true,
+	})
+	use({
+		"stevearc/profile.nvim",
 	})
 
 	use({
@@ -61,6 +94,8 @@ return require("packer").startup(function(use)
 		config = function()
 			require("lsp_signature").setup({
 				doc_lines = 1,
+				debug = true, -- set to true to enable debug logging
+				log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
 			})
 		end,
 	})
@@ -88,8 +123,70 @@ return require("packer").startup(function(use)
 			end
 		end,
 	})
+	use({
+		"segeljakt/vim-silicon",
+		config = function()
+			vim.cmd([[
+       let g:silicon={}
+       let g:plug_window = 'botright 40vnew'
+			 let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png']])
+		end,
+	})
+	use("simrat39/symbols-outline.nvim")
+	use({ "ray-x/go.nvim" })
+	use("p00f/nvim-ts-rainbow")
+	use("ray-x/guihua.lua")
+	use("petertriho/nvim-scrollbar")
+	use({
+		"rhysd/clever-f.vim",
+		config = function()
+			vim.g.clever_f_across_no_line = 1
+			vim.g.clever_f_ignore_case = 1
+			vim.g.clever_f_smart_case = 1
+		end,
+	})
+	use("leoluz/nvim-dap-go")
+	use("rcarriga/nvim-dap-ui")
+	use("mfussenegger/nvim-dap")
+	use("romainl/vim-cool")
+	use("windwp/nvim-autopairs")
+	use("lukas-reineke/indent-blankline.nvim")
+	use("RRethy/vim-illuminate")
+	use("vim-scripts/ReplaceWithRegister")
+	use("folke/neodev.nvim")
+	use("rafamadriz/friendly-snippets")
+	use("RRethy/nvim-base16")
+	use("mbbill/undotree")
+	use("nvim-lualine/lualine.nvim")
+	use("nvim-telescope/telescope-frecency.nvim")
+	use("kkharji/sqlite.lua")
+	use("ryanoasis/vim-devicons")
+	use("nvim-tree/nvim-web-devicons")
+	use("bkad/CamelCaseMotion")
 	use("tpope/vim-rhubarb")
 	use("dstein64/vim-startuptime")
+	use("jose-elias-alvarez/null-ls.nvim")
+	use("nvim-treesitter/nvim-treesitter")
+	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("nvim-treesitter/playground")
+	use("lewis6991/gitsigns.nvim")
+	use({ "L3MON4D3/LuaSnip", commit = "79f647218847b1cd204fede7dd89025e43fd00c3" })
+	use("plasticboy/vim-markdown")
+	use("glacambre/firenvim")
+	use("vim-scripts/argtextobj.vim")
+	use({ "preservim/nerdtree", config = function() end })
+	use("Xuyuanp/nerdtree-git-plugin")
+	use("junegunn/fzf")
+	use("junegunn/fzf.vim")
+	use("nvim-lua/plenary.nvim")
+	use({
+		"zbirenbaum/copilot.lua",
+		config = function() end,
+	})
+	use("keaising/im-select.nvim")
+	use("numToStr/Comment.nvim")
+	use("akinsho/toggleterm.nvim")
+	use({ "nvim-telescope/telescope.nvim" })
 	use({
 		"uga-rosa/cmp-dictionary",
 		opt = true,

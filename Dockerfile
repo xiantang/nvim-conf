@@ -26,6 +26,5 @@ COPY ./ /root/.config/nvim/
 # Install Neovim extensions.
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' || exit 0
 
-RUN nvim --headless +PlugInstall +qall
-
+RUN touch /root/.NERDTreeBookmarks
 RUN nvim --headless +"sleep 60"  +qa || exit 0

@@ -15,6 +15,15 @@ require("nvim-treesitter.configs").setup({
 	indent = {
 		enable = true,
 	},
+	swap = {
+		enable = true,
+		swap_next = {
+			["<leader>a"] = "@parameter.inner",
+		},
+		swap_previous = {
+			["<leader>A"] = "@parameter.inner",
+		},
+	},
 	rainbow = {
 		enable = true,
 		-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
