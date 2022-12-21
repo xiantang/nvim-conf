@@ -59,7 +59,25 @@ vim.keymap.set("", "e", "<Plug>CamelCaseMotion_e", { silent = true })
 vim.keymap.set("", "ge", "<Plug>CamelCaseMotion_ge", { silent = true })
 vim.keymap.set("", "w", "<Plug>CamelCaseMotion_w", { silent = true })
 
-vim.keymap.set("n", "<C-e>", ":Telescope frecency<CR>")
+function search_file_from_bookmarks()
+	local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
+	local choices = {}
+
+	for i, bookmark in ipairs(bookmarks) do
+		local path = vim.split(bookmark, " ")[2]
+		if path ~= nil then
+			table.insert(choices, path)
+		end
+	end
+	-- use telescope to select a bookmark and open it
+	-- put into
+	local actions = require("telescope.actions")
+	require("telescope.builtin").find_files({
+		search_dirs = choices,
+	})
+end
+
+vim.keymap.set("n", "<C-e>", ":lua search_file_from_bookmarks()<CR>", { silent = true })
 vim.keymap.set("n", "<C-q>", ":Telescope oldfiles<CR>")
 vim.keymap.set("n", "<Leader>l", ":lua NerdSmartLocated()<CR>")
 vim.cmd([[

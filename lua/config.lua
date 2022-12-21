@@ -128,7 +128,6 @@ let g:copilot_filetypes = {
     \ 'lua': v:true,
     \ 'gitcommit': v:true,
     \ "TelescopePrompt": v:false,
-    \ "frecency": v:false,
       \ }
 
 imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
