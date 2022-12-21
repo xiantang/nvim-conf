@@ -53,6 +53,16 @@ return require("packer").startup(function(use)
 	use({
 		"rhysd/conflict-marker.vim",
 	})
+
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	})
 	use({
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -160,7 +170,7 @@ return require("packer").startup(function(use)
 	use("kkharji/sqlite.lua")
 	use("ryanoasis/vim-devicons")
 	use("nvim-tree/nvim-web-devicons")
-	use("bkad/CamelCaseMotion")
+	-- use("bkad/CamelCaseMotion")
 	use("tpope/vim-rhubarb")
 	use("dstein64/vim-startuptime")
 	use("jose-elias-alvarez/null-ls.nvim")

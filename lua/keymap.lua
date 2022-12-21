@@ -52,12 +52,12 @@ cnoremap <D-v> <c-r>+
 
 vim.keymap.set("", ",", "<Plug>(clever-f-repeat-back)")
 vim.keymap.set("", ";", "<Plug>(clever-f-repeat-forward)")
-vim.keymap.set("", "b", "<Plug>CamelCaseMotion_b", {
-	silent = true,
-})
-vim.keymap.set("", "e", "<Plug>CamelCaseMotion_e", { silent = true })
-vim.keymap.set("", "ge", "<Plug>CamelCaseMotion_ge", { silent = true })
-vim.keymap.set("", "w", "<Plug>CamelCaseMotion_w", { silent = true })
+-- vim.keymap.set("", "b", "<Plug>CamelCaseMotion_b", {
+-- 	silent = true,
+-- })
+-- vim.keymap.set("", "e", "<Plug>CamelCaseMotion_e", { silent = true })
+-- vim.keymap.set("", "ge", "<Plug>CamelCaseMotion_ge", { silent = true })
+-- vim.keymap.set("", "w", "<Plug>CamelCaseMotion_w", { silent = true })
 
 function search_file_from_bookmarks()
 	local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
@@ -73,6 +73,8 @@ function search_file_from_bookmarks()
 	-- put into
 	local actions = require("telescope.actions")
 	require("telescope.builtin").find_files({
+		-- exclude png files
+		file_ignore_patterns = { "*.png", "*.ttf" },
 		search_dirs = choices,
 	})
 end
@@ -85,13 +87,6 @@ nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm size=10"<CR>
 nnoremap <Leader>[  <C-O>
 nnoremap <Leader>]  <C-I>
 nnoremap <leader>sv :source $MYVIMRC<CR>
-omap <silent> ib <Plug>CamelCaseMotion_ib
-omap <silent> ie <Plug>CamelCaseMotion_ie
-omap <silent> iw <Plug>CamelCaseMotion_iw
-sunmap b
-sunmap e
-sunmap ge
-sunmap w
 tnoremap <D-v> <C-\><C-n>"+p
 tnoremap <Esc> <C-\><C-n>
 vnoremap J :m '>+1<CR>gv=gv
