@@ -91,7 +91,4 @@ tnoremap <D-v> <C-\><C-n>"+p
 tnoremap <Esc> <C-\><C-n>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-xmap <silent> ib <Plug>CamelCaseMotion_ib
-xmap <silent> ie <Plug>CamelCaseMotion_ie
-xmap <silent> iw <Plug>CamelCaseMotion_iw
 ]])

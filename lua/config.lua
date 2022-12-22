@@ -1,5 +1,6 @@
 require("plugins")
 require("start")
+require("neodev").setup()
 require("impatient")
 require("scrollbar.handlers.gitsigns").setup()
 require("scrollbar").setup({

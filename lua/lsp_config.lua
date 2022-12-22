@@ -198,7 +198,8 @@ local common_servers = {
 	"yamlls",
 }
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 for _, server in pairs(common_servers) do
 	-- https://www.reddit.com/r/neovim/comments/mm1h0t/lsp_diagnostics_remain_stuck_can_someone_please/
@@ -226,6 +227,7 @@ nvim_lsp.sumneko_lua.setup({
 				globals = { "vim", "hs" },
 			},
 			workspace = {
+				checkThirdParty = false,
 				-- Make the server aware of Neovim runtime files
 				library = {
 					vim.api.nvim_get_runtime_file("", true),
