@@ -100,13 +100,6 @@ return require("packer").startup(function(use)
 
 	use({
 		"ray-x/lsp_signature.nvim",
-		config = function()
-			require("lsp_signature").setup({
-				doc_lines = 1,
-				debug = true, -- set to true to enable debug logging
-				log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
-			})
-		end,
 	})
 
 	use({
