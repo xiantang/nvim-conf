@@ -30,6 +30,10 @@ function etract_value(mode)
 		return
 	end
 	local var = vim.fn.input("New var: ")
+	if var == "" then
+		vim.api.nvim_echo({ { "empty var", "WarningMsg" } }, true, {})
+		return
+	end
 	cmd = string.format(":lua require'nvim-treesitter.textobjects.select'.select_textobject('@parameter.inner')")
 
 	vim.cmd(cmd)
@@ -48,7 +52,9 @@ function etract_value(mode)
 	vim.fn.setreg("z", newinfo)
 	-- put new content before current line
 	-- maybe include linebreak
-	vim.cmd("normal! O")
+	-- input abc and backspace 3 times
+	vim.cmd("normal! O ")
+
 	vim.cmd('normal! "zp')
 end
 
