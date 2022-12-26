@@ -53,6 +53,7 @@ let g:vim_markdown_folding_disabled = 1
 ]])
 
 require("fastmind")
+require("etract_value")
 require("go").setup()
 require("txtobj")
 require("null")
