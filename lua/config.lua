@@ -60,7 +60,6 @@ require("Comment").setup()
 require("symbols-outline").setup()
 require("neodev").setup({})
 require("fidget").setup()
-require("extract_value").setup()
 core = require("core")
 
 vim.cmd("cnoreabbrev git Git")

@@ -41,7 +41,13 @@ return require("packer").startup(function(use)
 			"onsails/lspkind.nvim",
 		},
 	})
-	use("xiantang/extract-value.nvim")
+	use({
+		"xiantang/extract-value.nvim",
+		config = function()
+			require("extract_value").setup()
+		end,
+		require = { "nvim-treesitter/nvim-treesitter-textobjects" },
+	})
 
 	use({
 		"numToStr/Navigator.nvim",
