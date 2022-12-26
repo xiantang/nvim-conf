@@ -26,6 +26,8 @@ function etract_value(mode)
 	end
 	if not queries.get_query(file_type, "textobjects") then
 		query = nil
+		vim.api.nvim_echo({ { "no textobjects query found", "WarningMsg" } }, true, {})
+		return
 	end
 	local var = vim.fn.input("New var: ")
 	cmd = string.format(":lua require'nvim-treesitter.textobjects.select'.select_textobject('@parameter.inner')")
@@ -37,7 +39,12 @@ function etract_value(mode)
 	vim.cmd("normal! d")
 	vim.cmd("normal! i" .. var)
 	--
-	newinfo = string.format("%s := %s ", var, vim.fn.getreg("z"))
+	local stored = vim.fn.getreg("z")
+	if file_type == "go" then
+		newinfo = string.format("%s := %s ", var, stored)
+	elseif file_type == "lua" then
+		newinfo = string.format("%s = %s ", var, stored)
+	end
 	vim.fn.setreg("z", newinfo)
 	-- put new content before current line
 	-- maybe include linebreak
