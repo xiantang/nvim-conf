@@ -53,7 +53,6 @@ let g:vim_markdown_folding_disabled = 1
 ]])
 
 require("fastmind")
-require("etract_value")
 require("go").setup()
 require("txtobj")
 require("null")
@@ -61,6 +60,7 @@ require("Comment").setup()
 require("symbols-outline").setup()
 require("neodev").setup({})
 require("fidget").setup()
+require("extract_value").setup()
 core = require("core")
 
 vim.cmd("cnoreabbrev git Git")
@@ -92,7 +92,6 @@ function toggle_profile()
 	if prof.is_recording() then
 		prof.stop()
 		filename = ".profile.json"
-		print(filename)
 		prof.export(filename)
 		vim.notify(string.format("Wrote %s", filename))
 	else

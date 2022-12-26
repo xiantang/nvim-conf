@@ -41,6 +41,7 @@ return require("packer").startup(function(use)
 			"onsails/lspkind.nvim",
 		},
 	})
+	use("xiantang/extract-value.nvim")
 
 	use({
 		"numToStr/Navigator.nvim",
@@ -168,7 +169,7 @@ return require("packer").startup(function(use)
 	use("dstein64/vim-startuptime")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("nvim-treesitter/nvim-treesitter")
-	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use({ "nvim-treesitter/nvim-treesitter-textobjects", commit = "a60af980b6f0a6e7ee239ffb9d1d519aaaa1de58" })
 	use("nvim-treesitter/playground")
 	use("lewis6991/gitsigns.nvim")
 	use({ "L3MON4D3/LuaSnip", commit = "79f647218847b1cd204fede7dd89025e43fd00c3" })

@@ -14,5 +14,5 @@ function ToggleNote()
 	vim.cmd("split ~/.config/note.md")
 end
 
-map("n", "<leader>e", ":lua ToggleConfig()<CR>,{silent = true}")
+-- map("n", "<leader>e", ":lua ToggleConfig()<CR>,{silent = true}")
 map("n", "<leader>n", ":lua ToggleNote()<CR>,{silent = true}")
