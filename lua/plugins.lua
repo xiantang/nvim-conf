@@ -42,9 +42,9 @@ return require("packer").startup(function(use)
 		},
 	})
 	use({
-		"xiantang/extract-value.nvim",
+		"/Users/jingdizhu/project/extract-value.nvim",
 		config = function()
-			require("extract_value").setup()
+			require("extract_variable").setup()
 		end,
 		require = { "nvim-treesitter/nvim-treesitter-textobjects" },
 	})
@@ -167,7 +167,6 @@ return require("packer").startup(function(use)
 	use("RRethy/nvim-base16")
 	use("mbbill/undotree")
 	use("nvim-lualine/lualine.nvim")
-	use("kkharji/sqlite.lua")
 	use("ryanoasis/vim-devicons")
 	use("nvim-tree/nvim-web-devicons")
 	-- use("bkad/CamelCaseMotion")
