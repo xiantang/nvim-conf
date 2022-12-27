@@ -62,8 +62,8 @@ cmp.setup({
 	}),
 
 	sources = {
-		{ name = "nvim_lsp", priority = 100 },
-		{ name = "luasnip", priority = 90 },
+		{ name = "luasnip", priority = 100 },
+		{ name = "nvim_lsp", priority = 90 },
 		-- { name = "cmp_tabnine", priority = 98, max_item_count = 2, keyword_length = 3 },
 		{ name = "buffer", priority = 80, max_item_count = 3, keyword_length = 5 },
 		{ name = "path", priority = 80, max_item_count = 3, keyword_length = 3 },

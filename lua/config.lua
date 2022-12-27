@@ -160,7 +160,7 @@ if exists('g:started_by_firenvim')
   let g:copilot_filetypes = {
       \ 'markdown': v:true,
       \ 'yaml': v:true,
-      \ 'go': v:true,
+      \ 'go': v:false,
         \ }
   echo 'nvim good'
 else
