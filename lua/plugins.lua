@@ -79,7 +79,9 @@ return require("packer").startup(function(use)
 			vim.cmd([[ PackerLoad cmp-path ]])
 			vim.cmd([[ PackerLoad cmp_luasnip ]])
 			vim.cmd([[ PackerLoad cmp-dictionary ]])
-			require("luasnip.loaders.from_vscode").load({ include = { "go", "python", "bash", "json", "lua" } })
+			require("luasnip.loaders.from_vscode").load({
+				include = { "go", "python", "bash", "json", "lua", "gitcommit" },
+			})
 			require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
 			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/my_snippets/lua/" })
 			local source = require("jira")
