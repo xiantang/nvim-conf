@@ -1,4 +1,3 @@
-require("plugins")
 require("start")
 require("neodev").setup()
 require("impatient")
@@ -140,7 +139,7 @@ vim.cmd([[
 
 
 function! SetFontSizeFirenvim(timer)
-  set guifont=Fira_Code:h18
+  set guifont=Fira_Code:h22
 endfunction
 
 
@@ -155,7 +154,7 @@ if exists('g:started_by_firenvim')
   \}
   let g:dashboard_disable_at_vimenter=1
   let g:NERDTreeHijackNetrw=0
-  call timer_start(3000, function("SetFontSizeFirenvim"))
+  " call timer_start(3000, function("SetFontSizeFirenvim"))
   let g:copilot_enable = 0
   let g:copilot_filetypes = {
       \ 'markdown': v:true,

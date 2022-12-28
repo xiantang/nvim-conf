@@ -8,7 +8,7 @@ set.spell = true
 set.spelllang = "en,cjk"
 set.spellsuggest = "best,9"
 -- set guifont:DejaVuSansMono\ Nerd\ Font:h17
-set.guifont = "DejaVuSansMono Nerd Font:h17"
+-- set.guifont = "DejaVuSansMono Nerd Font:h17"
 set.number = true
 set.relativenumber = true
 set.autoread = true

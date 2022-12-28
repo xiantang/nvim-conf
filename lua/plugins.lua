@@ -11,6 +11,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
+	use("lewis6991/impatient.nvim")
 	--  'ggandor/leap.nvim',
 	use({
 		"ggandor/leap.nvim",
@@ -19,7 +20,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use("lewis6991/impatient.nvim")
 	use({
 		"folke/persistence.nvim",
 		module = "persistence",
@@ -192,6 +192,7 @@ return require("packer").startup(function(use)
 		"zbirenbaum/copilot.lua",
 		config = function() end,
 	})
+	use({ "michaelb/sniprun", run = "bash ./install.sh" })
 	use("keaising/im-select.nvim")
 	use("numToStr/Comment.nvim")
 	use("akinsho/toggleterm.nvim")

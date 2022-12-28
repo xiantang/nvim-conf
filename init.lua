@@ -1,4 +1,5 @@
 require("global")
 require("autocmd")
 require("keymap")
+require("plugins")
 require("config")
