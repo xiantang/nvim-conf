@@ -14,9 +14,11 @@ return require("packer").startup(function(use)
 	use("lewis6991/impatient.nvim")
 	--  'ggandor/leap.nvim',
 	use({
-		"ggandor/leap.nvim",
+		"phaazon/hop.nvim",
+		branch = "v2", -- optional but strongly recommended
 		config = function()
-			require("leap").add_default_mappings()
+			-- you can configure Hop the way you like here; see :h hop-config
+			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		end,
 	})
 

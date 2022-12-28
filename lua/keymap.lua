@@ -41,6 +41,7 @@ vim.keymap.set("n", "<Leader>p", ":Telescope find_files find_command=rg,--ignore
 vim.api.nvim_set_keymap("n", "<space>fb", ":Telescope file_browser<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>P", ":Telescope live_grep<CR>")
 vim.keymap.set("n", "<Leader>Q", ':lua require("start").Stop()<CR>')
+vim.keymap.set("n", "s", ":HopWord<CR>")
 vim.cmd([[
 "ctrl A to  move to line start when in command mode like in iterm2
 "ctrl E to move to line end when in command mode like in iterm2
