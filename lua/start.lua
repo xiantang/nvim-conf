@@ -1,5 +1,11 @@
 M = {}
 function RecentlySeesion()
+	-- get parameters from nvim start commands
+	local args = vim.api.nvim_get_vvar("argv")
+	if #args > 1 then
+		return
+	end
+
 	-- check filenvim
 	if vim.g.started_by_firenvim == true then
 		-- set font size
@@ -12,6 +18,10 @@ end
 vim.cmd("silent! autocmd VimEnter *  nested lua RecentlySeesion()")
 
 function M.Stop()
+	local args = vim.api.nvim_get_vvar("argv")
+	if #args > 1 then
+		return
+	end
 	require("persistence").save()
 	local messages = vim.api.nvim_exec("messages", true)
 	-- write and append to file
