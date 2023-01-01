@@ -23,22 +23,16 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		cmd = "ObsidianToday",
-		"epwalsh/obsidian.nvim",
-		note_frontmatter_func = function(note)
-			-- remove .md from node.id
-			print(vim.inspect(note))
-			local id = note.id:sub(1, -4)
-			local out = { id = id, aliases = note.aliases, tags = note.tags }
-			-- `note.metadata` contains any manually added fields in the frontmatter.
-			-- So here we just make sure those fields are kept in the frontmatter.
-			if note.metadata ~= nil and util.table_length(note.metadata) > 0 then
-				for k, v in pairs(note.metadata) do
-					out[k] = v
-				end
-			end
-			return out
+		"/Users/jingdizhu/project/extract-value.nvim",
+		config = function()
+			require("extract_variable").setup()
 		end,
+		require = { "nvim-treesitter/nvim-treesitter-textobjects" },
+	})
+
+	use({
+		cmd = "ObsidianToday",
+		"/Users/jingdizhu/project/obsidian.nvim",
 		config = function()
 			require("obsidian").setup({
 				dir = "/Users/jingdizhu/Documents/my-vault",
@@ -69,13 +63,6 @@ return require("packer").startup(function(use)
 			"glepnir/lspsaga.nvim",
 			"onsails/lspkind.nvim",
 		},
-	})
-	use({
-		"/Users/jingdizhu/project/extract-value.nvim",
-		config = function()
-			require("extract_variable").setup()
-		end,
-		require = { "nvim-treesitter/nvim-treesitter-textobjects" },
 	})
 
 	use({
