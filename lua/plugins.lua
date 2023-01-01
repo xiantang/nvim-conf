@@ -23,6 +23,33 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		cmd = "ObsidianToday",
+		"epwalsh/obsidian.nvim",
+		note_frontmatter_func = function(note)
+			-- remove .md from node.id
+			print(vim.inspect(note))
+			local id = note.id:sub(1, -4)
+			local out = { id = id, aliases = note.aliases, tags = note.tags }
+			-- `note.metadata` contains any manually added fields in the frontmatter.
+			-- So here we just make sure those fields are kept in the frontmatter.
+			if note.metadata ~= nil and util.table_length(note.metadata) > 0 then
+				for k, v in pairs(note.metadata) do
+					out[k] = v
+				end
+			end
+			return out
+		end,
+		config = function()
+			require("obsidian").setup({
+				dir = "/Users/jingdizhu/Documents/my-vault",
+				completion = {
+					nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
+				},
+			})
+		end,
+	})
+
+	use({
 		"folke/persistence.nvim",
 		module = "persistence",
 		config = function()
@@ -63,6 +90,12 @@ return require("packer").startup(function(use)
 		"rhysd/conflict-marker.vim",
 	})
 
+	-- use({
+	-- 	"lvimuser/lsp-inlayhints.nvim",
+	-- 	config = function()
+	-- 		require("lsp-inlayhints").setup()
+	-- 	end,
+	-- })
 	use({
 		"kylechui/nvim-surround",
 		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -78,11 +111,11 @@ return require("packer").startup(function(use)
 		config = function()
 			vim.cmd([[ PackerLoad cmp-buffer ]]) -- this loads cmp-buffer
 			vim.cmd([[ PackerLoad cmp-cmdline ]])
-			vim.cmd([[ PackerLoad cmp-path ]])
+			vim.cmd([[PackerLoad cmp-path ]])
 			vim.cmd([[ PackerLoad cmp_luasnip ]])
 			vim.cmd([[ PackerLoad cmp-dictionary ]])
 			require("luasnip.loaders.from_vscode").load({
-				include = { "go", "python", "bash", "json", "lua", "gitcommit" },
+				include = { "go", "python", "sh", "json", "lua", "gitcommit" },
 			})
 			require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
 			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/my_snippets/lua/" })
@@ -182,7 +215,7 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/playground")
 	use("lewis6991/gitsigns.nvim")
 	use({ "L3MON4D3/LuaSnip", commit = "79f647218847b1cd204fede7dd89025e43fd00c3" })
-	use("plasticboy/vim-markdown")
+	use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
 	use("glacambre/firenvim")
 	use("vim-scripts/argtextobj.vim")
 	use({ "preservim/nerdtree", config = function() end })
@@ -192,11 +225,21 @@ return require("packer").startup(function(use)
 	use("nvim-lua/plenary.nvim")
 	use({
 		"zbirenbaum/copilot.lua",
-		config = function() end,
+		config = function()
+			require("copilot").setup({})
+		end,
 	})
 	use({ "michaelb/sniprun", run = "bash ./install.sh" })
 	use("keaising/im-select.nvim")
 	use("numToStr/Comment.nvim")
+	use({
+		"ianding1/leetcode.vim",
+		commit = "11d9a4b36faa0996ddeee2f7994021ca3c4656ca",
+		config = function()
+			vim.g.leetcode_browser = "chrome"
+			vim.g.leetcode_solution_filetype = "golang"
+		end,
+	})
 	use("akinsho/toggleterm.nvim")
 	use({ "nvim-telescope/telescope.nvim" })
 	use({

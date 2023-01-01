@@ -98,3 +98,46 @@ tnoremap <Esc> <C-\><C-n>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 ]])
+
+vim.keymap.set("n", "gd", function()
+	if require("obsidian").util.cursor_on_markdown_link() then
+		return "<cmd>ObsidianFollowLink<CR>"
+	else
+		return "gd"
+	end
+end, { noremap = false, expr = true })
+
+vim.keymap.set("n", "<Leader>gr", function()
+	if require("obsidian").util.cursor_on_markdown_link() then
+		return "<cmd>ObsidianFollowBackLink<CR>"
+	else
+		return "<cmd>ObsidianBacklinks<CR>"
+	end
+end, { noremap = false, expr = true })
+
+vim.keymap.set("n", "<Leader>n", function()
+	-- open new split
+	return "<cmd>ObsidianToday<CR>"
+end, { noremap = false, expr = true })
+--map("n", "<leader>n", ":ObsidianToday")
+
+vim.keymap.set("i", "qq", "<Esc>", { silent = true })
+-- map c-e to copilt Accept
+-- and fallback to the default <C-e> mapping
+-- vim.keymap.set("i", "<C-e>", "copilot#Accept('<CR>')", { silent = true, expr = true })
+
+local function t(str)
+	return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+function _G.smart_ctrl_e()
+	ret = vim.api.nvim_eval("copilot#GetDisplayedSuggestion()")
+	if ret.text ~= "" then
+		return ret.text
+	else
+		return t("<esc>A")
+	end
+end
+
+vim.keymap.set("i", "<C-e>", "v:lua.smart_ctrl_e()", { expr = true, noremap = true, replace_keycodes = false })
+vim.keymap.set("i", "<C-a>", "<esc>I", { noremap = true })
