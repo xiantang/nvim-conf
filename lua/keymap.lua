@@ -131,7 +131,7 @@ local function t(str)
 end
 
 function _G.smart_ctrl_e()
-	ret = vim.api.nvim_eval("copilot#GetDisplayedSuggestion()")
+	local ret = vim.api.nvim_eval("copilot#GetDisplayedSuggestion()")
 	if ret.text ~= "" then
 		return ret.text
 	else
