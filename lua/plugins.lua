@@ -77,12 +77,13 @@ return require("packer").startup(function(use)
 		"rhysd/conflict-marker.vim",
 	})
 
-	-- use({
-	-- 	"lvimuser/lsp-inlayhints.nvim",
-	-- 	config = function()
-	-- 		require("lsp-inlayhints").setup()
-	-- 	end,
-	-- })
+	use({
+		"lvimuser/lsp-inlayhints.nvim",
+		branch = "anticonceal",
+		config = function()
+			require("lsp-inlayhints").setup()
+		end,
+	})
 	use({
 		"kylechui/nvim-surround",
 		tag = "*", -- Use for stability; omit to use `main` branch for the latest features

@@ -75,6 +75,10 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
+hi LspInlayHint guifg=#d8d8d8 guibg=#3a3a3a
+]])
+
+vim.cmd([[
       let g:conflict_marker_highlight_group = ''
       " Include text after begin and end markers
       let g:conflict_marker_begin = '^<<<<<<< .*$'

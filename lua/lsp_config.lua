@@ -34,7 +34,7 @@ end
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
-	-- require("lsp-inlayhints").on_attach(client, bufnr)
+	require("lsp-inlayhints").on_attach(client, bufnr)
 	require("lsp_signature").on_attach({
 		doc_lines = 1,
 		hint_prefix = "",
