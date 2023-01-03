@@ -31,19 +31,6 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		cmd = "ObsidianToday",
-		"/Users/jingdizhu/project/obsidian.nvim",
-		config = function()
-			require("obsidian").setup({
-				dir = "/Users/jingdizhu/Documents/my-vault",
-				completion = {
-					nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
-				},
-			})
-		end,
-	})
-
-	use({
 		"folke/persistence.nvim",
 		module = "persistence",
 		config = function()
@@ -93,9 +80,23 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
+
+	use({
+		after = "nvim-cmp",
+		"/Users/jingdizhu/project/obsidian.nvim",
+		config = function()
+			require("obsidian").setup({
+				dir = "/Users/jingdizhu/Documents/my-vault",
+				completion = {
+					nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
+				},
+			})
+		end,
+	})
 	use({
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
+		cmd = "ObsidianToday",
 		config = function()
 			vim.cmd([[ PackerLoad cmp-buffer ]]) -- this loads cmp-buffer
 			vim.cmd([[ PackerLoad cmp-cmdline ]])
@@ -206,7 +207,13 @@ return require("packer").startup(function(use)
 	use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
 	use("glacambre/firenvim")
 	use("vim-scripts/argtextobj.vim")
-	use({ "preservim/nerdtree", config = function() end })
+	use({
+		"preservim/nerdtree",
+		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind" },
+		opt = true,
+		config = function() end,
+		requires = "Xuyuanp/nerdtree-git-plugin",
+	})
 	use("Xuyuanp/nerdtree-git-plugin")
 	use("junegunn/fzf")
 	use("junegunn/fzf.vim")
