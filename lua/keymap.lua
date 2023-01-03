@@ -1,5 +1,13 @@
 vim.keymap.set("n", "<C-d>", "<C-d>zz", {})
 vim.keymap.set("n", "<C-u>", "<C-u>zz", {})
+
+vim.keymap.set("n", "j", "gj", {})
+vim.keymap.set("n", "k", "gk", {})
+vim.keymap.set("n", "o", "o", {})
+vim.keymap.set("n", "n", "n", {})
+vim.keymap.set("n", "c", "c", {})
+vim.keymap.set("n", "r", "r", {})
+vim.keymap.set("n", "q", "q", {})
 -- vim.keymap.set("n", "n ", "nzzzv")
 -- vim.keymap.set("n", "N ", "Nzzzv")
 vim.keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>", {})
