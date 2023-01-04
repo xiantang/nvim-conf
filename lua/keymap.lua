@@ -1,3 +1,4 @@
+vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", {})
 vim.keymap.set("n", "<C-u>", "<C-u>zz", {})
 
@@ -127,12 +128,6 @@ vim.keymap.set("n", "<Leader>n", function()
 	-- open new split
 	return "<cmd>ObsidianToday<CR>"
 end, { noremap = false, expr = true })
---map("n", "<leader>n", ":ObsidianToday")
-
-vim.keymap.set("i", "qq", "<Esc>", { silent = true })
--- map c-e to copilt Accept
--- and fallback to the default <C-e> mapping
--- vim.keymap.set("i", "<C-e>", "copilot#Accept('<CR>')", { silent = true, expr = true })
 
 local function t(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)

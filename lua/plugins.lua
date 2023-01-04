@@ -82,8 +82,8 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		after = "nvim-cmp",
 		"/Users/jingdizhu/project/obsidian.nvim",
+		after = "nvim-cmp",
 		config = function()
 			require("obsidian").setup({
 				dir = "/Users/jingdizhu/Documents/my-vault",
