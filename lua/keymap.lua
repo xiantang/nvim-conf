@@ -1,4 +1,6 @@
+vim.keymap.set("i", "<Esc>", "<nop>", { noremap = true, silent = true })
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
+vim.keymap.set("i", "kj", "<Esc>", { noremap = true })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", {})
 vim.keymap.set("n", "<C-u>", "<C-u>zz", {})
 
