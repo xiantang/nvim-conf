@@ -1,6 +1,3 @@
-vim.keymap.set("i", "<Esc>", "<nop>", { noremap = true, silent = true })
-vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
-vim.keymap.set("i", "kj", "<Esc>", { noremap = true })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", {})
 vim.keymap.set("n", "<C-u>", "<C-u>zz", {})
 
@@ -67,12 +64,6 @@ cnoremap <D-v> <c-r>+
 
 vim.keymap.set("", ",", "<Plug>(clever-f-repeat-back)", {})
 vim.keymap.set("", ";", "<Plug>(clever-f-repeat-forward)", {})
--- vim.keymap.set("", "b", "<Plug>CamelCaseMotion_b", {
--- 	silent = true,
--- })
--- vim.keymap.set("", "e", "<Plug>CamelCaseMotion_e", { silent = true })
--- vim.keymap.set("", "ge", "<Plug>CamelCaseMotion_ge", { silent = true })
--- vim.keymap.set("", "w", "<Plug>CamelCaseMotion_w", { silent = true })
 
 function search_file_from_bookmarks()
 	local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
