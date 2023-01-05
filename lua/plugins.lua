@@ -202,6 +202,26 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter")
 	use({ "nvim-treesitter/nvim-treesitter-textobjects", commit = "a60af980b6f0a6e7ee239ffb9d1d519aaaa1de58" })
 	use("nvim-treesitter/playground")
+	use({
+		"keaising/im-select.nvim",
+		config = function()
+			-- check is macos
+			local is_mac = vim.fn.has("mac") == 1
+			if is_mac then
+				require("im_select").setup({
+					-- IM will be set to `default_im_select` in `normal` mode(`EnterVim` or `InsertLeave`)
+					-- For Windows/WSL, default: "1033", aka: English US Keyboard
+					-- For macOS, default: "com.apple.keylayout.ABC", aka: US
+					-- You can use `im-select` in cli to get the IM name of you preferred
+					default_im_select = "com.apple.keylayout.ABC",
+
+					-- Set to 1 if you don't want restore IM status when `InsertEnter`
+					disable_auto_restore = 0,
+				})
+			end
+		end,
+	})
+
 	use("lewis6991/gitsigns.nvim")
 	use({ "L3MON4D3/LuaSnip", commit = "79f647218847b1cd204fede7dd89025e43fd00c3" })
 	use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
@@ -225,7 +245,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({ "michaelb/sniprun", run = "bash ./install.sh" })
-	use("keaising/im-select.nvim")
 	use("numToStr/Comment.nvim")
 	use({
 		"ianding1/leetcode.vim",
