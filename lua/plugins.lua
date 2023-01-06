@@ -248,14 +248,6 @@ return require("packer").startup(function(use)
 	})
 	lock_use({ "michaelb/sniprun", run = "bash ./install.sh" })
 	lock_use({ "numToStr/Comment.nvim" })
-	lock_use({
-		"ianding1/leetcode.vim",
-		commit = "11d9a4b36faa0996ddeee2f7994021ca3c4656ca",
-		config = function()
-			vim.g.leetcode_browser = "chrome"
-			vim.g.leetcode_solution_filetype = "golang"
-		end,
-	})
 	lock_use({ "akinsho/toggleterm.nvim" })
 	lock_use({ "nvim-telescope/telescope.nvim" })
 	lock_use({
