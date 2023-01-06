@@ -11,9 +11,10 @@ end
 
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
-	use("lewis6991/impatient.nvim")
+	use({ "lewis6991/impatient.nvim", lock = true })
 	--  'ggandor/leap.nvim',
 	use({
+		lock = true,
 		"phaazon/hop.nvim",
 		branch = "v2", -- optional but strongly recommended
 		config = function()
@@ -23,6 +24,7 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		lock = true,
 		"/Users/jingdizhu/project/extract-value.nvim",
 		config = function()
 			require("extract_variable").setup()
@@ -31,6 +33,7 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		lock = true,
 		"folke/persistence.nvim",
 		module = "persistence",
 		config = function()
@@ -41,6 +44,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({
+		lock = true,
 		"xiantang/nvim-lspconfig",
 		-- use commit
 		requires = {
@@ -53,6 +57,7 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		lock = true,
 		"numToStr/Navigator.nvim",
 		-- master
 		config = function()
@@ -61,10 +66,12 @@ return require("packer").startup(function(use)
 	})
 	-- git related
 	use({
+		lock = true,
 		"rhysd/conflict-marker.vim",
 	})
 
 	use({
+		lock = true,
 		"lvimuser/lsp-inlayhints.nvim",
 		branch = "anticonceal",
 		config = function()
@@ -72,6 +79,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({
+		lock = true,
 		"kylechui/nvim-surround",
 		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
 		config = function()
@@ -82,6 +90,7 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		lock = true,
 		"/Users/jingdizhu/project/obsidian.nvim",
 		after = "nvim-cmp",
 		config = function()
@@ -94,6 +103,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({
+		lock = true,
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		cmd = "ObsidianToday",
@@ -119,28 +129,34 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		lock = true,
 		"hrsh7th/cmp-buffer",
 		opt = true,
 	})
 	use({
+		lock = true,
 		"stevearc/profile.nvim",
 	})
 
 	use({
+		lock = true,
 		"hrsh7th/cmp-cmdline",
 		opt = true,
 	})
 
 	use({
+		lock = true,
 		"ray-x/lsp_signature.nvim",
 	})
 
 	use({
+		lock = true,
 		"hrsh7th/cmp-path",
 		opt = true,
 	})
 
 	use({
+		lock = true,
 		"saadparwaiz1/cmp_luasnip",
 		opt = true,
 	})
@@ -148,6 +164,7 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("tpope/vim-fugitive")
 	use({
+		lock = true,
 		"shumphrey/fugitive-gitlab.vim",
 		config = function()
 			-- check operation system
@@ -159,6 +176,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({
+		lock = true,
 		"segeljakt/vim-silicon",
 		config = function()
 			vim.cmd([[
@@ -173,6 +191,7 @@ return require("packer").startup(function(use)
 	use("ray-x/guihua.lua")
 	use("petertriho/nvim-scrollbar")
 	use({
+		lock = true,
 		"rhysd/clever-f.vim",
 		config = function()
 			vim.g.clever_f_across_no_line = 1
@@ -203,6 +222,7 @@ return require("packer").startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter-textobjects", commit = "a60af980b6f0a6e7ee239ffb9d1d519aaaa1de58" })
 	use("nvim-treesitter/playground")
 	use({
+		lock = true,
 		"keaising/im-select.nvim",
 		config = function()
 			-- check is macos
@@ -228,6 +248,7 @@ return require("packer").startup(function(use)
 	use("glacambre/firenvim")
 	use("vim-scripts/argtextobj.vim")
 	use({
+		lock = true,
 		"preservim/nerdtree",
 		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind" },
 		opt = true,
@@ -239,6 +260,7 @@ return require("packer").startup(function(use)
 	use("junegunn/fzf.vim")
 	use("nvim-lua/plenary.nvim")
 	use({
+		lock = true,
 		"zbirenbaum/copilot.lua",
 		config = function()
 			require("copilot").setup({})
@@ -247,6 +269,7 @@ return require("packer").startup(function(use)
 	use({ "michaelb/sniprun", run = "bash ./install.sh" })
 	use("numToStr/Comment.nvim")
 	use({
+		lock = true,
 		"ianding1/leetcode.vim",
 		commit = "11d9a4b36faa0996ddeee2f7994021ca3c4656ca",
 		config = function()
@@ -257,6 +280,7 @@ return require("packer").startup(function(use)
 	use("akinsho/toggleterm.nvim")
 	use({ "nvim-telescope/telescope.nvim" })
 	use({
+		lock = true,
 		"uga-rosa/cmp-dictionary",
 		opt = true,
 		config = function()
