@@ -85,7 +85,7 @@ _G.packer_plugins = {
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["Navigator.nvim"] = {
-    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14Navigator\frequire\0" },
+    config = { "\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14Navigator\frequire\0" },
     loaded = true,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/Navigator.nvim",
     url = "https://github.com/numToStr/Navigator.nvim"
@@ -499,26 +499,6 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
--- Config for: lsp-inlayhints.nvim
-time([[Config for lsp-inlayhints.nvim]], true)
-try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19lsp-inlayhints\frequire\0", "config", "lsp-inlayhints.nvim")
-time([[Config for lsp-inlayhints.nvim]], false)
--- Config for: vim-silicon
-time([[Config for vim-silicon]], true)
-try_loadstring("\27LJ\2\nµ\1\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0•\1       let g:silicon={}\n       let g:plug_window = 'botright 40vnew'\n\t\t\t let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'\bcmd\bvim\0", "config", "vim-silicon")
-time([[Config for vim-silicon]], false)
--- Config for: fugitive-gitlab.vim
-time([[Config for fugitive-gitlab.vim]], true)
-try_loadstring("\27LJ\2\n£\1\0\0\5\0\t\1\0226\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\t€6\1\4\0'\3\5\0B\1\2\0026\2\0\0009\2\6\0024\3\3\0009\4\b\1>\4\1\3=\3\a\2K\0\1\0\15GITALB_URL\28fugitive_gitlab_domains\6g\vsecret\frequire\bmac\bhas\afn\bvim\2\0", "config", "fugitive-gitlab.vim")
-time([[Config for fugitive-gitlab.vim]], false)
--- Config for: clever-f.vim
-time([[Config for clever-f.vim]], true)
-try_loadstring("\27LJ\2\n‚\1\0\0\2\0\5\0\r6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\3\0006\0\0\0009\0\1\0)\1\1\0=\1\4\0K\0\1\0\24clever_f_smart_case\25clever_f_ignore_case\28clever_f_across_no_line\6g\bvim\0", "config", "clever-f.vim")
-time([[Config for clever-f.vim]], false)
--- Config for: im-select.nvim
-time([[Config for im-select.nvim]], true)
-try_loadstring("\27LJ\2\n¿\1\0\0\4\0\b\1\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\6€6\1\4\0'\3\5\0B\1\2\0029\1\6\0015\3\a\0B\1\2\1K\0\1\0\1\0\2\22default_im_select\28com.apple.keylayout.ABC\25disable_auto_restore\3\0\nsetup\14im_select\frequire\bmac\bhas\afn\bvim\2\0", "config", "im-select.nvim")
-time([[Config for im-select.nvim]], false)
 -- Config for: hop.nvim
 time([[Config for hop.nvim]], true)
 try_loadstring("\27LJ\2\nQ\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tkeys\24dfgjkalwertyuizxcnm\nsetup\bhop\frequire\0", "config", "hop.nvim")
@@ -529,12 +509,32 @@ try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K
 time([[Config for extract-value.nvim]], false)
 -- Config for: Navigator.nvim
 time([[Config for Navigator.nvim]], true)
-try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14Navigator\frequire\0", "config", "Navigator.nvim")
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14Navigator\frequire\0", "config", "Navigator.nvim")
 time([[Config for Navigator.nvim]], false)
 -- Config for: nvim-surround
 time([[Config for nvim-surround]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
 time([[Config for nvim-surround]], false)
+-- Config for: lsp-inlayhints.nvim
+time([[Config for lsp-inlayhints.nvim]], true)
+try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19lsp-inlayhints\frequire\0", "config", "lsp-inlayhints.nvim")
+time([[Config for lsp-inlayhints.nvim]], false)
+-- Config for: fugitive-gitlab.vim
+time([[Config for fugitive-gitlab.vim]], true)
+try_loadstring("\27LJ\2\n£\1\0\0\5\0\t\1\0226\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\t€6\1\4\0'\3\5\0B\1\2\0026\2\0\0009\2\6\0024\3\3\0009\4\b\1>\4\1\3=\3\a\2K\0\1\0\15GITALB_URL\28fugitive_gitlab_domains\6g\vsecret\frequire\bmac\bhas\afn\bvim\2\0", "config", "fugitive-gitlab.vim")
+time([[Config for fugitive-gitlab.vim]], false)
+-- Config for: clever-f.vim
+time([[Config for clever-f.vim]], true)
+try_loadstring("\27LJ\2\n‚\1\0\0\2\0\5\0\r6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\3\0006\0\0\0009\0\1\0)\1\1\0=\1\4\0K\0\1\0\24clever_f_smart_case\25clever_f_ignore_case\28clever_f_across_no_line\6g\bvim\0", "config", "clever-f.vim")
+time([[Config for clever-f.vim]], false)
+-- Config for: vim-silicon
+time([[Config for vim-silicon]], true)
+try_loadstring("\27LJ\2\nµ\1\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0•\1       let g:silicon={}\n       let g:plug_window = 'botright 40vnew'\n\t\t\t let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'\bcmd\bvim\0", "config", "vim-silicon")
+time([[Config for vim-silicon]], false)
+-- Config for: im-select.nvim
+time([[Config for im-select.nvim]], true)
+try_loadstring("\27LJ\2\n¿\1\0\0\4\0\b\1\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\6€6\1\4\0'\3\5\0B\1\2\0029\1\6\0015\3\a\0B\1\2\1K\0\1\0\1\0\2\22default_im_select\28com.apple.keylayout.ABC\25disable_auto_restore\3\0\nsetup\14im_select\frequire\bmac\bhas\afn\bvim\2\0", "config", "im-select.nvim")
+time([[Config for im-select.nvim]], false)
 -- Config for: copilot.lua
 time([[Config for copilot.lua]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\fcopilot\frequire\0", "config", "copilot.lua")

@@ -10,7 +10,7 @@ local ensure_packer = function()
 end
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
-	function lock_use(setup)
+	local function lock_use(setup)
 		-- defaule is lock = true
 		setup.lock = true
 		use(setup)
@@ -62,7 +62,7 @@ return require("packer").startup(function(use)
 		"numToStr/Navigator.nvim",
 		-- master
 		config = function()
-			require("Navigator").setup()
+			require("Navigator").setup({})
 		end,
 	})
 	-- git related
