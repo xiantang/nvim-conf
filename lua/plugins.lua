@@ -11,10 +11,15 @@ end
 
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
-	use({ "lewis6991/impatient.nvim", lock = true })
+	function lock_use(setup)
+		-- defaule is lock = true
+		setup.lock = true
+		use(setup)
+	end
+
+	lock_use({ "lewis6991/impatient.nvim" })
 	--  'ggandor/leap.nvim',
-	use({
-		lock = true,
+	lock_use({
 		"phaazon/hop.nvim",
 		branch = "v2", -- optional but strongly recommended
 		config = function()
@@ -23,8 +28,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		lock = true,
+	lock_use({
 		"/Users/jingdizhu/project/extract-value.nvim",
 		config = function()
 			require("extract_variable").setup()
@@ -32,8 +36,7 @@ return require("packer").startup(function(use)
 		require = { "nvim-treesitter/nvim-treesitter-textobjects" },
 	})
 
-	use({
-		lock = true,
+	lock_use({
 		"folke/persistence.nvim",
 		module = "persistence",
 		config = function()
@@ -43,8 +46,7 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
-	use({
-		lock = true,
+	lock_use({
 		"xiantang/nvim-lspconfig",
 		-- use commit
 		requires = {
@@ -55,14 +57,14 @@ return require("packer").startup(function(use)
 			"onsails/lspkind.nvim",
 		},
 	})
-	use({ "j-hui/fidget.nvim", lock = true })
-	use({ "williamboman/mason.nvim", lock = true })
-	use({ "williamboman/mason-lspconfig.nvim", lock = true })
-	use({ "glepnir/lspsaga.nvim", lock = true })
-	use({ "onsails/lspkind.nvim", lock = true })
+	lock_use({ "j-hui/fidget.nvim" })
+	lock_use({ "williamboman/mason.nvim" })
+	lock_use({ "williamboman/mason-lspconfig.nvim" })
+	lock_use({ "glepnir/lspsaga.nvim" })
+	lock_use({ "onsails/lspkind.nvim" })
 
-	use({
-		lock = true,
+	lock_use({
+
 		"numToStr/Navigator.nvim",
 		-- master
 		config = function()
@@ -70,21 +72,20 @@ return require("packer").startup(function(use)
 		end,
 	})
 	-- git related
-	use({
-		lock = true,
+	lock_use({
+
 		"rhysd/conflict-marker.vim",
 	})
 
-	use({
-		lock = true,
+	lock_use({
+
 		"lvimuser/lsp-inlayhints.nvim",
 		branch = "anticonceal",
 		config = function()
 			require("lsp-inlayhints").setup()
 		end,
 	})
-	use({
-		lock = true,
+	lock_use({
 		"kylechui/nvim-surround",
 		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
 		config = function()
@@ -94,8 +95,8 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		lock = true,
+	lock_use({
+
 		"/Users/jingdizhu/project/obsidian.nvim",
 		after = "nvim-cmp",
 		config = function()
@@ -107,8 +108,8 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
-	use({
-		lock = true,
+	lock_use({
+
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		cmd = "ObsidianToday",
@@ -132,44 +133,48 @@ return require("packer").startup(function(use)
 			"hrsh7th/cmp-nvim-lsp",
 		},
 	})
+	lock_use({
 
-	use({
-		lock = true,
+		"hrsh7th/cmp-nvim-lsp",
+	})
+
+	lock_use({
+
 		"hrsh7th/cmp-buffer",
 		opt = true,
 	})
-	use({
-		lock = true,
+	lock_use({
+
 		"stevearc/profile.nvim",
 	})
 
-	use({
-		lock = true,
+	lock_use({
+
 		"hrsh7th/cmp-cmdline",
 		opt = true,
 	})
 
-	use({
-		lock = true,
+	lock_use({
+
 		"ray-x/lsp_signature.nvim",
 	})
 
-	use({
-		lock = true,
+	lock_use({
+
 		"hrsh7th/cmp-path",
 		opt = true,
 	})
 
-	use({
-		lock = true,
+	lock_use({
+
 		"saadparwaiz1/cmp_luasnip",
 		opt = true,
 	})
 
-	use({ "wbthomason/packer.nvim", lock = true })
-	use({ "tpope/vim-fugitive", lock = true })
-	use({
-		lock = true,
+	lock_use({ "wbthomason/packer.nvim" })
+	lock_use({ "tpope/vim-fugitive" })
+	lock_use({
+
 		"shumphrey/fugitive-gitlab.vim",
 		config = function()
 			-- check operation system
@@ -180,8 +185,8 @@ return require("packer").startup(function(use)
 			end
 		end,
 	})
-	use({
-		lock = true,
+	lock_use({
+
 		"segeljakt/vim-silicon",
 		config = function()
 			vim.cmd([[
@@ -190,13 +195,13 @@ return require("packer").startup(function(use)
 			 let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png']])
 		end,
 	})
-	use({ "simrat39/symbols-outline.nvim", lock = true })
-	use({ "ray-x/go.nvim" })
-	use({ "p00f/nvim-ts-rainbow", lock = true })
-	use({ "ray-x/guihua.lua", lock = true })
-	use({ "petertriho/nvim-scrollbar", lock = true })
-	use({
-		lock = true,
+	lock_use({ "simrat39/symbols-outline.nvim" })
+	lock_use({ "ray-x/go.nvim" })
+	lock_use({ "p00f/nvim-ts-rainbow" })
+	lock_use({ "ray-x/guihua.lua" })
+	lock_use({ "petertriho/nvim-scrollbar" })
+	lock_use({
+
 		"rhysd/clever-f.vim",
 		config = function()
 			vim.g.clever_f_across_no_line = 1
@@ -204,30 +209,33 @@ return require("packer").startup(function(use)
 			vim.g.clever_f_smart_case = 1
 		end,
 	})
-	use({ "leoluz/nvim-dap-go", lock = true })
-	use({ "rcarriga/nvim-dap-ui", lock = true })
-	use({ "mfussenegger/nvim-dap", lock = true })
-	use({ "romainl/vim-cool", lock = true })
-	use({ "windwp/nvim-autopairs", lock = true })
-	use({ "lukas-reineke/indent-blankline.nvim", lock = true })
-	use({ "RRethy/vim-illuminate", lock = true })
-	use({ "vim-scripts/ReplaceWithRegister", lock = true })
-	use({ "folke/neodev.nvim", lock = true })
-	use({ "rafamadriz/friendly-snippets", lock = true })
-	use({ "RRethy/nvim-base16", lock = true })
-	use({ "mbbill/undotree", lock = true })
-	use({ "nvim-lualine/lualine.nvim", lock = true })
-	use({ "ryanoasis/vim-devicons", lock = true })
-	use({ "nvim-tree/nvim-web-devicons", lock = true })
-	-- use({"bkad/CamelCaseMotion",lock=true})
-	use({ "tpope/vim-rhubarb", lock = true })
-	use({ "dstein64/vim-startuptime", lock = true })
-	use({ "jose-elias-alvarez/null-ls.nvim", lock = true })
-	use({ "nvim-treesitter/nvim-treesitter", lock = true })
-	use({ "nvim-treesitter/nvim-treesitter-textobjects", commit = "a60af980b6f0a6e7ee239ffb9d1d519aaaa1de58" })
-	use({ "nvim-treesitter/playground", lock = true })
-	use({
-		lock = true,
+	lock_use({ "leoluz/nvim-dap-go" })
+	lock_use({ "rcarriga/nvim-dap-ui" })
+	lock_use({ "mfussenegger/nvim-dap" })
+	lock_use({ "romainl/vim-cool" })
+	lock_use({ "windwp/nvim-autopairs" })
+	lock_use({ "lukas-reineke/indent-blankline.nvim" })
+	lock_use({ "RRethy/vim-illuminate" })
+	lock_use({ "vim-scripts/ReplaceWithRegister" })
+	lock_use({ "folke/neodev.nvim" })
+	lock_use({ "rafamadriz/friendly-snippets" })
+	lock_use({ "RRethy/nvim-base16" })
+	lock_use({ "mbbill/undotree" })
+	lock_use({ "nvim-lualine/lualine.nvim" })
+	lock_use({ "ryanoasis/vim-devicons" })
+	lock_use({ "nvim-tree/nvim-web-devicons" })
+	-- use_helper({"bkad/CamelCaseMotion",lock=true})
+	lock_use({ "tpope/vim-rhubarb" })
+	lock_use({ "dstein64/vim-startuptime" })
+	lock_use({ "jose-elias-alvarez/null-ls.nvim" })
+	lock_use({ "nvim-treesitter/nvim-treesitter" })
+	lock_use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		commit = "a60af980b6f0a6e7ee239ffb9d1d519aaaa1de58",
+	})
+	lock_use({ "nvim-treesitter/playground" })
+	lock_use({
+
 		"keaising/im-select.nvim",
 		config = function()
 			-- check is macos
@@ -247,34 +255,34 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({ "lewis6991/gitsigns.nvim", lock = true })
-	use({ "L3MON4D3/LuaSnip", commit = "79f647218847b1cd204fede7dd89025e43fd00c3", lock = true })
-	use({ "plasticboy/vim-markdown", require = "godlygeek/tabular", lock = true })
-	use({ "glacambre/firenvim", lock = true })
-	use({ "vim-scripts/argtextobj.vim", lock = true })
-	use({
-		lock = true,
+	lock_use({ "lewis6991/gitsigns.nvim" })
+	lock_use({ "L3MON4D3/LuaSnip", commit = "79f647218847b1cd204fede7dd89025e43fd00c3" })
+	lock_use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
+	lock_use({ "glacambre/firenvim" })
+	lock_use({ "vim-scripts/argtextobj.vim" })
+	lock_use({
+
 		"preservim/nerdtree",
 		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind" },
 		opt = true,
 		config = function() end,
 		requires = "Xuyuanp/nerdtree-git-plugin",
 	})
-	use({ "Xuyuanp/nerdtree-git-plugin", lock = true })
-	use({ "junegunn/fzf", lock = true })
-	use({ "junegunn/fzf.vim", lock = true })
-	use({ "nvim-lua/plenary.nvim", lock = true })
-	use({
-		lock = true,
+	lock_use({ "Xuyuanp/nerdtree-git-plugin" })
+	lock_use({ "junegunn/fzf" })
+	lock_use({ "junegunn/fzf.vim" })
+	lock_use({ "nvim-lua/plenary.nvim" })
+	lock_use({
+
 		"zbirenbaum/copilot.lua",
 		config = function()
 			require("copilot").setup({})
 		end,
 	})
-	use({ "michaelb/sniprun", run = "bash ./install.sh" })
-	use({ "numToStr/Comment.nvim", lock = true })
-	use({
-		lock = true,
+	lock_use({ "michaelb/sniprun", run = "bash ./install.sh" })
+	lock_use({ "numToStr/Comment.nvim" })
+	lock_use({
+
 		"ianding1/leetcode.vim",
 		commit = "11d9a4b36faa0996ddeee2f7994021ca3c4656ca",
 		config = function()
@@ -282,10 +290,10 @@ return require("packer").startup(function(use)
 			vim.g.leetcode_solution_filetype = "golang"
 		end,
 	})
-	use({ "akinsho/toggleterm.nvim", lock = true })
-	use({ "nvim-telescope/telescope.nvim" })
-	use({
-		lock = true,
+	lock_use({ "akinsho/toggleterm.nvim" })
+	lock_use({ "nvim-telescope/telescope.nvim" })
+	lock_use({
+
 		"uga-rosa/cmp-dictionary",
 		opt = true,
 		config = function()
