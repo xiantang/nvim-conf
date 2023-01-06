@@ -8,7 +8,6 @@ local ensure_packer = function()
 	end
 	return false
 end
-
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
 	function lock_use(setup)
@@ -16,7 +15,6 @@ return require("packer").startup(function(use)
 		setup.lock = true
 		use(setup)
 	end
-
 	lock_use({ "lewis6991/impatient.nvim" })
 	--  'ggandor/leap.nvim',
 	lock_use({
@@ -27,7 +25,6 @@ return require("packer").startup(function(use)
 			require("hop").setup({ keys = "dfgjkalwertyuizxcnm" })
 		end,
 	})
-
 	lock_use({
 		"/Users/jingdizhu/project/extract-value.nvim",
 		config = function()
@@ -35,7 +32,6 @@ return require("packer").startup(function(use)
 		end,
 		require = { "nvim-treesitter/nvim-treesitter-textobjects" },
 	})
-
 	lock_use({
 		"folke/persistence.nvim",
 		module = "persistence",
@@ -62,9 +58,7 @@ return require("packer").startup(function(use)
 	lock_use({ "williamboman/mason-lspconfig.nvim" })
 	lock_use({ "glepnir/lspsaga.nvim" })
 	lock_use({ "onsails/lspkind.nvim" })
-
 	lock_use({
-
 		"numToStr/Navigator.nvim",
 		-- master
 		config = function()
@@ -73,12 +67,9 @@ return require("packer").startup(function(use)
 	})
 	-- git related
 	lock_use({
-
 		"rhysd/conflict-marker.vim",
 	})
-
 	lock_use({
-
 		"lvimuser/lsp-inlayhints.nvim",
 		branch = "anticonceal",
 		config = function()
@@ -94,9 +85,7 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
-
 	lock_use({
-
 		"/Users/jingdizhu/project/obsidian.nvim",
 		after = "nvim-cmp",
 		config = function()
@@ -109,7 +98,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 	lock_use({
-
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		cmd = "ObsidianToday",
@@ -134,47 +122,33 @@ return require("packer").startup(function(use)
 		},
 	})
 	lock_use({
-
 		"hrsh7th/cmp-nvim-lsp",
 	})
-
 	lock_use({
-
 		"hrsh7th/cmp-buffer",
 		opt = true,
 	})
 	lock_use({
-
 		"stevearc/profile.nvim",
 	})
-
 	lock_use({
-
 		"hrsh7th/cmp-cmdline",
 		opt = true,
 	})
-
 	lock_use({
-
 		"ray-x/lsp_signature.nvim",
 	})
-
 	lock_use({
-
 		"hrsh7th/cmp-path",
 		opt = true,
 	})
-
 	lock_use({
-
 		"saadparwaiz1/cmp_luasnip",
 		opt = true,
 	})
-
 	lock_use({ "wbthomason/packer.nvim" })
 	lock_use({ "tpope/vim-fugitive" })
 	lock_use({
-
 		"shumphrey/fugitive-gitlab.vim",
 		config = function()
 			-- check operation system
@@ -186,7 +160,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 	lock_use({
-
 		"segeljakt/vim-silicon",
 		config = function()
 			vim.cmd([[
@@ -201,7 +174,6 @@ return require("packer").startup(function(use)
 	lock_use({ "ray-x/guihua.lua" })
 	lock_use({ "petertriho/nvim-scrollbar" })
 	lock_use({
-
 		"rhysd/clever-f.vim",
 		config = function()
 			vim.g.clever_f_across_no_line = 1
@@ -235,7 +207,6 @@ return require("packer").startup(function(use)
 	})
 	lock_use({ "nvim-treesitter/playground" })
 	lock_use({
-
 		"keaising/im-select.nvim",
 		config = function()
 			-- check is macos
@@ -247,21 +218,18 @@ return require("packer").startup(function(use)
 					-- For macOS, default: "com.apple.keylayout.ABC", aka: US
 					-- You can use `im-select` in cli to get the IM name of you preferred
 					default_im_select = "com.apple.keylayout.ABC",
-
 					-- Set to 1 if you don't want restore IM status when `InsertEnter`
 					disable_auto_restore = 0,
 				})
 			end
 		end,
 	})
-
 	lock_use({ "lewis6991/gitsigns.nvim" })
 	lock_use({ "L3MON4D3/LuaSnip", commit = "79f647218847b1cd204fede7dd89025e43fd00c3" })
 	lock_use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
 	lock_use({ "glacambre/firenvim" })
 	lock_use({ "vim-scripts/argtextobj.vim" })
 	lock_use({
-
 		"preservim/nerdtree",
 		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind" },
 		opt = true,
@@ -273,7 +241,6 @@ return require("packer").startup(function(use)
 	lock_use({ "junegunn/fzf.vim" })
 	lock_use({ "nvim-lua/plenary.nvim" })
 	lock_use({
-
 		"zbirenbaum/copilot.lua",
 		config = function()
 			require("copilot").setup({})
@@ -282,7 +249,6 @@ return require("packer").startup(function(use)
 	lock_use({ "michaelb/sniprun", run = "bash ./install.sh" })
 	lock_use({ "numToStr/Comment.nvim" })
 	lock_use({
-
 		"ianding1/leetcode.vim",
 		commit = "11d9a4b36faa0996ddeee2f7994021ca3c4656ca",
 		config = function()
@@ -293,7 +259,6 @@ return require("packer").startup(function(use)
 	lock_use({ "akinsho/toggleterm.nvim" })
 	lock_use({ "nvim-telescope/telescope.nvim" })
 	lock_use({
-
 		"uga-rosa/cmp-dictionary",
 		opt = true,
 		config = function()
