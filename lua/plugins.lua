@@ -116,7 +116,7 @@ return require("packer").startup(function(use)
 	})
 	lock_use({
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		event = { "InsertEnter", "CmdlineEnter" },
 		cmd = "ObsidianToday",
 		config = function()
 			vim.cmd([[ PackerLoad cmp-buffer ]]) -- this loads cmp-buffer
