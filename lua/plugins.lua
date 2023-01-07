@@ -61,7 +61,7 @@ return require("packer").startup(function(use)
 				cursor = {
 					-- cursor animation
 					enabled = true,
-					timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
+					timing = animate.gen_timing.linear({ duration = 150, unit = "total" }),
 					path = animate.gen_path.walls(),
 				},
 				scroll = {
