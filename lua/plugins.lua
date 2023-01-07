@@ -258,10 +258,7 @@ return require("packer").startup(function(use)
 	lock_use({ "junegunn/fzf.vim" })
 	lock_use({ "nvim-lua/plenary.nvim" })
 	lock_use({
-		"zbirenbaum/copilot.lua",
-		config = function()
-			require("copilot").setup({})
-		end,
+		"github/copilot.vim",
 	})
 	lock_use({ "michaelb/sniprun", run = "bash ./install.sh" })
 	lock_use({ "numToStr/Comment.nvim" })

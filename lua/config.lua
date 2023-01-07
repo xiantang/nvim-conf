@@ -91,6 +91,22 @@ vim.cmd([[
       highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
 ]])
 
+vim.cmd([[
+let g:copilot_enable = 1
+let g:copilot_filetypes = {
+    \ '*': v:true,
+    \ 'markdown':v:true,
+    \ 'yaml': v:true,
+    \ 'go': v:false,
+    \ 'lua': v:true,
+    \ 'gitcommit': v:true,
+    \ "TelescopePrompt": v:false,
+      \ }
+
+" imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
+let g:copilot_no_tab_map = v:true
+let g:copilot_assume_mapped = v:true
+    ]])
 function toggle_profile()
 	local prof = require("profile")
 	if prof.is_recording() then
@@ -103,7 +119,6 @@ function toggle_profile()
 	end
 end
 
--- undotree
 vim.cmd([[
 " buff enter"
 function Undotree_record() abort
@@ -123,22 +138,7 @@ endfunction
 autocmd BufEnter * call Undotree_record()
 
 ]])
-
-vim.cmd([[
-let g:copilot_enable = 1
-let g:copilot_filetypes = {
-    \ 'markdown': v:true,
-    \ 'yaml': v:true,
-    \ 'go': v:false,
-    \ 'lua': v:true,
-    \ 'gitcommit': v:true,
-    \ "TelescopePrompt": v:false,
-      \ }
-
-" imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
-let g:copilot_no_tab_map = v:true
-let g:copilot_assume_mapped = v:true
-    ]])
+--
 
 -- firenvim
 vim.cmd([[
