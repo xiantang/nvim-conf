@@ -53,6 +53,23 @@ return require("packer").startup(function(use)
 			"onsails/lspkind.nvim",
 		},
 	})
+	lock_use({
+		"echasnovski/mini.animate",
+		config = function()
+			local animate = require("mini.animate")
+			require("mini.animate").setup({
+				cursor = {
+					-- cursor animation
+					enabled = true,
+					timing = animate.gen_timing.linear({ duration = 100, unit = "total" }),
+					path = animate.gen_path.walls(),
+				},
+				scroll = {
+					enable = false,
+				},
+			})
+		end,
+	})
 	lock_use({ "j-hui/fidget.nvim" })
 	lock_use({ "williamboman/mason.nvim" })
 	lock_use({ "williamboman/mason-lspconfig.nvim" })

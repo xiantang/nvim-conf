@@ -1,4 +1,8 @@
 M = {}
+
+string.startswith = function(self, str)
+	return self:find("^" .. str) ~= nil
+end
 function RecentlySeesion()
 	-- get parameters from nvim start commands
 	local args = vim.api.nvim_get_vvar("argv")
