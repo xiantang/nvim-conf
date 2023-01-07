@@ -125,7 +125,7 @@ return require("packer").startup(function(use)
 			vim.cmd([[ PackerLoad cmp_luasnip ]])
 			vim.cmd([[ PackerLoad cmp-dictionary ]])
 			require("luasnip.loaders.from_vscode").load({
-				include = { "go", "python", "sh", "json", "lua", "gitcommit" },
+				include = { "go", "python", "sh", "json", "lua", "gitcommit", "sql" },
 			})
 			require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
 			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/my_snippets/lua/" })
