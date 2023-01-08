@@ -62,7 +62,7 @@ return require("packer").startup(function(use)
 					-- cursor animation
 					enabled = true,
 					timing = animate.gen_timing.linear({ duration = 150, unit = "total" }),
-					path = animate.gen_path.walls(),
+					path = animate.gen_path.line(),
 				},
 				scroll = {
 					enable = false,
@@ -191,11 +191,11 @@ return require("packer").startup(function(use)
 	lock_use({ "ray-x/guihua.lua" })
 	lock_use({ "petertriho/nvim-scrollbar" })
 	lock_use({
-		"rhysd/clever-f.vim",
+		"jinh0/eyeliner.nvim",
 		config = function()
-			vim.g.clever_f_across_no_line = 1
-			vim.g.clever_f_ignore_case = 1
-			vim.g.clever_f_smart_case = 1
+			require("eyeliner").setup({
+				highlight_on_key = true,
+			})
 		end,
 	})
 	lock_use({ "leoluz/nvim-dap-go" })

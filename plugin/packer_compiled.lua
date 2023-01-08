@@ -100,12 +100,6 @@ _G.packer_plugins = {
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/argtextobj.vim",
     url = "https://github.com/vim-scripts/argtextobj.vim"
   },
-  ["clever-f.vim"] = {
-    config = { "\27LJ\2\n‚\1\0\0\2\0\5\0\r6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\3\0006\0\0\0009\0\1\0)\1\1\0=\1\4\0K\0\1\0\24clever_f_smart_case\25clever_f_ignore_case\28clever_f_across_no_line\6g\bvim\0" },
-    loaded = true,
-    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/clever-f.vim",
-    url = "https://github.com/rhysd/clever-f.vim"
-  },
   ["cmp-buffer"] = {
     after_files = { "/Users/jingdizhu/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
     loaded = false,
@@ -163,6 +157,12 @@ _G.packer_plugins = {
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/extract-value.nvim",
     url = "/Users/jingdizhu/project/extract-value.nvim"
   },
+  ["eyeliner.nvim"] = {
+    config = { "\27LJ\2\nO\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\21highlight_on_key\2\nsetup\reyeliner\frequire\0" },
+    loaded = true,
+    path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/eyeliner.nvim",
+    url = "https://github.com/jinh0/eyeliner.nvim"
+  },
   ["fidget.nvim"] = {
     loaded = true,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/fidget.nvim",
@@ -216,7 +216,7 @@ _G.packer_plugins = {
     url = "https://github.com/phaazon/hop.nvim"
   },
   ["im-select.nvim"] = {
-    config = { "\27LJ\2\n¿\1\0\0\4\0\b\1\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\6€6\1\4\0'\3\5\0B\1\2\0029\1\6\0015\3\a\0B\1\2\1K\0\1\0\1\0\2\25disable_auto_restore\3\0\22default_im_select\28com.apple.keylayout.ABC\nsetup\14im_select\frequire\bmac\bhas\afn\bvim\2\0" },
+    config = { "\27LJ\2\n¿\1\0\0\4\0\b\1\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\6€6\1\4\0'\3\5\0B\1\2\0029\1\6\0015\3\a\0B\1\2\1K\0\1\0\1\0\2\22default_im_select\28com.apple.keylayout.ABC\25disable_auto_restore\3\0\nsetup\14im_select\frequire\bmac\bhas\afn\bvim\2\0" },
     loaded = true,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/im-select.nvim",
     url = "https://github.com/keaising/im-select.nvim"
@@ -268,7 +268,7 @@ _G.packer_plugins = {
     url = "https://github.com/williamboman/mason.nvim"
   },
   ["mini.animate"] = {
-    config = { "\27LJ\2\ní\1\0\0\b\0\15\0\0236\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\1\0B\1\2\0029\1\2\0015\3\v\0005\4\3\0009\5\4\0009\5\5\0055\a\6\0B\5\2\2=\5\a\0049\5\b\0009\5\t\5B\5\1\2=\5\n\4=\4\f\0035\4\r\0=\4\14\3B\1\2\1K\0\1\0\vscroll\1\0\1\venable\1\vcursor\1\0\0\tpath\nwalls\rgen_path\vtiming\1\0\2\tunit\ntotal\rduration\3–\1\vlinear\15gen_timing\1\0\1\fenabled\2\nsetup\17mini.animate\frequire\0" },
+    config = { "\27LJ\2\nì\1\0\0\b\0\15\0\0236\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\1\0B\1\2\0029\1\2\0015\3\v\0005\4\3\0009\5\4\0009\5\5\0055\a\6\0B\5\2\2=\5\a\0049\5\b\0009\5\t\5B\5\1\2=\5\n\4=\4\f\0035\4\r\0=\4\14\3B\1\2\1K\0\1\0\vscroll\1\0\1\venable\1\vcursor\1\0\0\tpath\tline\rgen_path\vtiming\1\0\2\rduration\3–\1\tunit\ntotal\vlinear\15gen_timing\1\0\1\fenabled\2\nsetup\17mini.animate\frequire\0" },
     loaded = true,
     path = "/Users/jingdizhu/.local/share/nvim/site/pack/packer/start/mini.animate",
     url = "https://github.com/echasnovski/mini.animate"
@@ -508,52 +508,45 @@ end
 time([[Config for nvim-surround]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
 time([[Config for nvim-surround]], false)
--- Config for: vim-silicon
-time([[Config for vim-silicon]], true)
-try_loadstring("\27LJ\2\nµ\1\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0•\1       let g:silicon={}\n       let g:plug_window = 'botright 40vnew'\n\t\t\t let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'\bcmd\bvim\0", "config", "vim-silicon")
-time([[Config for vim-silicon]], false)
 -- Config for: lsp-inlayhints.nvim
 time([[Config for lsp-inlayhints.nvim]], true)
 try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\19lsp-inlayhints\frequire\0", "config", "lsp-inlayhints.nvim")
 time([[Config for lsp-inlayhints.nvim]], false)
+-- Config for: vim-silicon
+time([[Config for vim-silicon]], true)
+try_loadstring("\27LJ\2\nµ\1\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0•\1       let g:silicon={}\n       let g:plug_window = 'botright 40vnew'\n\t\t\t let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png'\bcmd\bvim\0", "config", "vim-silicon")
+time([[Config for vim-silicon]], false)
 -- Config for: fugitive-gitlab.vim
 time([[Config for fugitive-gitlab.vim]], true)
 try_loadstring("\27LJ\2\n£\1\0\0\5\0\t\1\0226\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\t€6\1\4\0'\3\5\0B\1\2\0026\2\0\0009\2\6\0024\3\3\0009\4\b\1>\4\1\3=\3\a\2K\0\1\0\15GITALB_URL\28fugitive_gitlab_domains\6g\vsecret\frequire\bmac\bhas\afn\bvim\2\0", "config", "fugitive-gitlab.vim")
 time([[Config for fugitive-gitlab.vim]], false)
--- Config for: clever-f.vim
-time([[Config for clever-f.vim]], true)
-try_loadstring("\27LJ\2\n‚\1\0\0\2\0\5\0\r6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\3\0006\0\0\0009\0\1\0)\1\1\0=\1\4\0K\0\1\0\24clever_f_smart_case\25clever_f_ignore_case\28clever_f_across_no_line\6g\bvim\0", "config", "clever-f.vim")
-time([[Config for clever-f.vim]], false)
 -- Config for: im-select.nvim
 time([[Config for im-select.nvim]], true)
-try_loadstring("\27LJ\2\n¿\1\0\0\4\0\b\1\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\6€6\1\4\0'\3\5\0B\1\2\0029\1\6\0015\3\a\0B\1\2\1K\0\1\0\1\0\2\25disable_auto_restore\3\0\22default_im_select\28com.apple.keylayout.ABC\nsetup\14im_select\frequire\bmac\bhas\afn\bvim\2\0", "config", "im-select.nvim")
+try_loadstring("\27LJ\2\n¿\1\0\0\4\0\b\1\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\b\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0\15\0\0\0X\1\6€6\1\4\0'\3\5\0B\1\2\0029\1\6\0015\3\a\0B\1\2\1K\0\1\0\1\0\2\22default_im_select\28com.apple.keylayout.ABC\25disable_auto_restore\3\0\nsetup\14im_select\frequire\bmac\bhas\afn\bvim\2\0", "config", "im-select.nvim")
 time([[Config for im-select.nvim]], false)
 -- Config for: mini.animate
 time([[Config for mini.animate]], true)
-try_loadstring("\27LJ\2\ní\1\0\0\b\0\15\0\0236\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\1\0B\1\2\0029\1\2\0015\3\v\0005\4\3\0009\5\4\0009\5\5\0055\a\6\0B\5\2\2=\5\a\0049\5\b\0009\5\t\5B\5\1\2=\5\n\4=\4\f\0035\4\r\0=\4\14\3B\1\2\1K\0\1\0\vscroll\1\0\1\venable\1\vcursor\1\0\0\tpath\nwalls\rgen_path\vtiming\1\0\2\tunit\ntotal\rduration\3–\1\vlinear\15gen_timing\1\0\1\fenabled\2\nsetup\17mini.animate\frequire\0", "config", "mini.animate")
+try_loadstring("\27LJ\2\nì\1\0\0\b\0\15\0\0236\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\1\0B\1\2\0029\1\2\0015\3\v\0005\4\3\0009\5\4\0009\5\5\0055\a\6\0B\5\2\2=\5\a\0049\5\b\0009\5\t\5B\5\1\2=\5\n\4=\4\f\0035\4\r\0=\4\14\3B\1\2\1K\0\1\0\vscroll\1\0\1\venable\1\vcursor\1\0\0\tpath\tline\rgen_path\vtiming\1\0\2\rduration\3–\1\tunit\ntotal\vlinear\15gen_timing\1\0\1\fenabled\2\nsetup\17mini.animate\frequire\0", "config", "mini.animate")
 time([[Config for mini.animate]], false)
--- Config for: hop.nvim
-time([[Config for hop.nvim]], true)
-try_loadstring("\27LJ\2\nQ\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tkeys\24dfgjkalwertyuizxcnm\nsetup\bhop\frequire\0", "config", "hop.nvim")
-time([[Config for hop.nvim]], false)
--- Config for: extract-value.nvim
-time([[Config for extract-value.nvim]], true)
-try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21extract_variable\frequire\0", "config", "extract-value.nvim")
-time([[Config for extract-value.nvim]], false)
+-- Config for: eyeliner.nvim
+time([[Config for eyeliner.nvim]], true)
+try_loadstring("\27LJ\2\nO\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\21highlight_on_key\2\nsetup\reyeliner\frequire\0", "config", "eyeliner.nvim")
+time([[Config for eyeliner.nvim]], false)
 -- Config for: Navigator.nvim
 time([[Config for Navigator.nvim]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14Navigator\frequire\0", "config", "Navigator.nvim")
 time([[Config for Navigator.nvim]], false)
+-- Config for: extract-value.nvim
+time([[Config for extract-value.nvim]], true)
+try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\21extract_variable\frequire\0", "config", "extract-value.nvim")
+time([[Config for extract-value.nvim]], false)
+-- Config for: hop.nvim
+time([[Config for hop.nvim]], true)
+try_loadstring("\27LJ\2\nQ\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tkeys\24dfgjkalwertyuizxcnm\nsetup\bhop\frequire\0", "config", "hop.nvim")
+time([[Config for hop.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'ObsidianToday', function(cmdargs)
-          require('packer.load')({'nvim-cmp'}, { cmd = 'ObsidianToday', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-cmp'}, { cmd = 'ObsidianToday' }, _G.packer_plugins)
-          return vim.fn.getcompletion('ObsidianToday ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'NERDTreeToggle', function(cmdargs)
           require('packer.load')({'nerdtree'}, { cmd = 'NERDTreeToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -574,6 +567,13 @@ pcall(vim.api.nvim_create_user_command, 'NERDTreeFind', function(cmdargs)
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'nerdtree'}, { cmd = 'NERDTreeFind' }, _G.packer_plugins)
           return vim.fn.getcompletion('NERDTreeFind ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'ObsidianToday', function(cmdargs)
+          require('packer.load')({'nvim-cmp'}, { cmd = 'ObsidianToday', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-cmp'}, { cmd = 'ObsidianToday' }, _G.packer_plugins)
+          return vim.fn.getcompletion('ObsidianToday ', 'cmdline')
       end})
 time([[Defining lazy-load commands]], false)
 

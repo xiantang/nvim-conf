@@ -62,9 +62,6 @@ nnoremap <D-v> "+p
 cnoremap <D-v> <c-r>+
 ]])
 
-vim.keymap.set("", ",", "<Plug>(clever-f-repeat-back)", {})
-vim.keymap.set("", ";", "<Plug>(clever-f-repeat-forward)", {})
-
 function search_file_from_bookmarks()
 	local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
 	local choices = {}
