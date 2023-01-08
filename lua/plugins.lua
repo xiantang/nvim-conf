@@ -198,6 +198,7 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
+
 	lock_use({ "leoluz/nvim-dap-go" })
 	lock_use({ "rcarriga/nvim-dap-ui" })
 	lock_use({ "mfussenegger/nvim-dap" })
