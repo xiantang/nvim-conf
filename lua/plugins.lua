@@ -251,7 +251,7 @@ return require("packer").startup(function(use)
 	})
 	lock_use({ "lewis6991/gitsigns.nvim" })
 	lock_use({ "L3MON4D3/LuaSnip", commit = "79f647218847b1cd204fede7dd89025e43fd00c3" })
-	lock_use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
+	-- lock_use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
 	lock_use({ "glacambre/firenvim" })
 	lock_use({ "vim-scripts/argtextobj.vim" })
 	lock_use({
@@ -270,7 +270,7 @@ return require("packer").startup(function(use)
 	})
 	lock_use({ "michaelb/sniprun", run = "bash ./install.sh" })
 	lock_use({ "numToStr/Comment.nvim" })
-	lock_use({ "akinsho/toggleterm.nvim" })
+	-- lock_use({ "akinsho/toggleterm.nvim" })
 	lock_use({ "nvim-telescope/telescope.nvim" })
 	lock_use({
 		"uga-rosa/cmp-dictionary",

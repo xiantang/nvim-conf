@@ -51,15 +51,6 @@ vim.keymap.set("n", "<Leader>ss", ":source ~/.config/nvim/init.vim<CR>", {})
 vim.keymap.set("n", "<Leader>v", ":vsp<CR>", {})
 vim.keymap.set("n", "<Leader>w", ":w<CR>", {})
 vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", {})
-vim.keymap.set("n", "<Leader>1", ":1ToggleTerm<CR>", {})
-vim.keymap.set("n", "<Leader>2", ":2ToggleTerm<CR>", {})
-vim.keymap.set("n", "<Leader>3", ":3ToggleTerm<CR>", {})
-vim.keymap.set("n", "<Leader>4", ":4ToggleTerm<CR>", {})
-vim.keymap.set("n", "<Leader>5", ":5ToggleTerm<CR>", {})
-vim.keymap.set("n", "<Leader>6", ":6ToggleTerm<CR>", {})
-vim.keymap.set("n", "<Leader>7", ":7ToggleTerm<CR>", {})
-vim.keymap.set("n", "<Leader>8", ":8ToggleTerm<CR>", {})
-vim.keymap.set("n", "<Leader>9", ":9ToggleTerm<CR>", {})
 vim.keymap.set("n", "<Leader>rt", ":GoRunTestFunc<CR>", {})
 vim.keymap.set("n", "<Leader>rf", ":GoRunTestFile<CR>", {})
 vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', {})
@@ -108,7 +99,6 @@ vim.keymap.set("n", "<C-e>", ":lua search_file_from_bookmarks()<CR>", { silent =
 vim.keymap.set("n", "<C-q>", ":Telescope oldfiles<CR>", {})
 vim.keymap.set("n", "<Leader>l", ":lua NerdSmartLocated()<CR>", {})
 vim.cmd([[
-nnoremap <Leader>; <Cmd>exe v:count1 . "ToggleTerm size=10"<CR>
 nnoremap <Leader>[  <C-O>
 nnoremap <Leader>]  <C-I>
 nnoremap <leader>sv :source $MYVIMRC<CR>
