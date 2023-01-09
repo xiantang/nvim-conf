@@ -9,12 +9,32 @@ vim.keymap.set("n", "r", "r", {})
 vim.keymap.set("n", "q", "q", {})
 -- vim.keymap.set("n", "n ", "nzzzv")
 -- vim.keymap.set("n", "N ", "Nzzzv")
-vim.keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>:lua require('specs').show_specs()<CR>", {})
-vim.keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>:lua require('specs').show_specs()<CR>", {})
-vim.keymap.set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>:lua require('specs').show_specs()<CR>", {})
-vim.keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>:lua require('specs').show_specs()<CR>", {})
-vim.keymap.set("n", "<C-d>", "<C-d>zz:lua require('specs').show_specs()<CR>", {})
-vim.keymap.set("n", "<C-u>", "<C-u>zz:lua require('specs').show_specs()<CR>", {})
+vim.keymap.set(
+	{ "n", "t" },
+	"<C-h>",
+	"<CMD>NavigatorLeft<CR>:lua require('specs').show_specs()<CR>",
+	{ noremap = true, silent = true }
+)
+vim.keymap.set(
+	{ "n", "t" },
+	"<C-l>",
+	"<CMD>NavigatorRight<CR>:lua require('specs').show_specs()<CR>",
+	{ noremap = true, silent = true }
+)
+vim.keymap.set(
+	{ "n", "t" },
+	"<C-k>",
+	"<CMD>NavigatorUp<CR>:lua require('specs').show_specs()<CR>",
+	{ noremap = true, silent = true }
+)
+vim.keymap.set(
+	{ "n", "t" },
+	"<C-j>",
+	"<CMD>NavigatorDown<CR>:lua require('specs').show_specs()<CR>",
+	{ noremap = true, silent = true }
+)
+vim.keymap.set("n", "<C-d>", "<C-d>zz:lua require('specs').show_specs()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-u>", "<C-u>zz:lua require('specs').show_specs()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "m", "mM", { silent = true })
 vim.api.nvim_set_keymap("n", "M", "`M", { silent = true })
 vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>", {})
