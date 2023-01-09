@@ -54,20 +54,9 @@ return require("packer").startup(function(use)
 		},
 	})
 	lock_use({
-		"echasnovski/mini.animate",
+		"edluffy/specs.nvim",
 		config = function()
-			local animate = require("mini.animate")
-			require("mini.animate").setup({
-				cursor = {
-					-- cursor animation
-					enabled = true,
-					timing = animate.gen_timing.linear({ duration = 150, unit = "total" }),
-					path = animate.gen_path.line(),
-				},
-				scroll = {
-					enable = false,
-				},
-			})
+			require("specs").setup({})
 		end,
 	})
 	lock_use({ "j-hui/fidget.nvim" })
