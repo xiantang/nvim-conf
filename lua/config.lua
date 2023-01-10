@@ -1,5 +1,5 @@
-require("plugins")
 require("start")
+require("neodev").setup()
 require("impatient")
 require("scrollbar.handlers.gitsigns").setup()
 require("scrollbar").setup({
@@ -30,7 +30,6 @@ require("lualine_setup")
 require("lsp_config")
 require("tele")
 require("git")
-require("term")
 require("syntax")
 require("indent")
 require("nvim-autopairs").setup({})
@@ -52,7 +51,9 @@ let g:vim_markdown_folding_disabled = 1
 ]])
 
 require("fastmind")
-require("go").setup()
+require("go").setup({
+	lsp_inlay_hints = { enable = false },
+})
 require("txtobj")
 require("null")
 require("Comment").setup()
@@ -73,6 +74,10 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
+hi LspInlayHint guifg=#d8d8d8 guibg=#3a3a3a
+]])
+
+vim.cmd([[
       let g:conflict_marker_highlight_group = ''
       " Include text after begin and end markers
       let g:conflict_marker_begin = '^<<<<<<< .*$'
@@ -85,12 +90,27 @@ vim.cmd([[
       highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
 ]])
 
+vim.cmd([[
+let g:copilot_enable = 1
+let g:copilot_filetypes = {
+    \ '*': v:true,
+    \ 'markdown':v:true,
+    \ 'yaml': v:true,
+    \ 'go': v:false,
+    \ 'lua': v:true,
+    \ 'gitcommit': v:true,
+    \ "TelescopePrompt": v:false,
+      \ }
+
+" imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
+let g:copilot_no_tab_map = v:true
+let g:copilot_assume_mapped = v:true
+    ]])
 function toggle_profile()
 	local prof = require("profile")
 	if prof.is_recording() then
 		prof.stop()
 		filename = ".profile.json"
-		print(filename)
 		prof.export(filename)
 		vim.notify(string.format("Wrote %s", filename))
 	else
@@ -98,7 +118,6 @@ function toggle_profile()
 	end
 end
 
--- undotree
 vim.cmd([[
 " buff enter"
 function Undotree_record() abort
@@ -118,30 +137,14 @@ endfunction
 autocmd BufEnter * call Undotree_record()
 
 ]])
-
-vim.cmd([[
-let g:copilot_enable = 1
-let g:copilot_filetypes = {
-    \ 'markdown': v:true,
-    \ 'yaml': v:true,
-    \ 'go': v:false,
-    \ 'lua': v:true,
-    \ 'gitcommit': v:true,
-    \ "TelescopePrompt": v:false,
-    \ "frecency": v:false,
-      \ }
-
-imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
-let g:copilot_no_tab_map = v:true
-let g:copilot_assume_mapped = v:true
-    ]])
+--
 
 -- firenvim
 vim.cmd([[
 
 
 function! SetFontSizeFirenvim(timer)
-  set guifont=Fira_Code:h18
+  set guifont=Fira_Code:h22
 endfunction
 
 
@@ -156,12 +159,12 @@ if exists('g:started_by_firenvim')
   \}
   let g:dashboard_disable_at_vimenter=1
   let g:NERDTreeHijackNetrw=0
-  call timer_start(3000, function("SetFontSizeFirenvim"))
+  " call timer_start(3000, function("SetFontSizeFirenvim"))
   let g:copilot_enable = 0
   let g:copilot_filetypes = {
       \ 'markdown': v:true,
       \ 'yaml': v:true,
-      \ 'go': v:true,
+      \ 'go': v:false,
         \ }
   echo 'nvim good'
 else

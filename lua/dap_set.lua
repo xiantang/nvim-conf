@@ -91,12 +91,8 @@ function defer()
 	vim.cmd("NERDTreeToggle | wincmd p")
 	-- rollback to default keymap
 	-- nvim_del_keymap
-	vim.api.nvim_del_keymap("n", "c")
-	vim.api.nvim_del_keymap("n", "n")
-	vim.api.nvim_del_keymap("n", "s")
-	vim.api.nvim_del_keymap("n", "o")
-	vim.api.nvim_del_keymap("n", "r")
-	vim.api.nvim_del_keymap("n", "q")
+	-- source keymap.lua
+	vim.cmd("source ~/.config/nvim/lua/keymap.lua")
 end
 
 dap.listeners.after["disconnected"]["key_map"] = function()

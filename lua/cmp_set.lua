@@ -44,7 +44,7 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif luasnip.expand_or_jumpable() then
+			elseif luasnip.expand_or_locally_jumpable() then
 				luasnip.expand_or_jump()
 			else
 				fallback()
@@ -60,14 +60,16 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 	}),
+
 	sources = {
 		{ name = "luasnip", priority = 100 },
-		{ name = "nvim_lsp", priority = 99, max_item_count = 10 },
-		{ name = "cmp_tabnine", priority = 98, max_item_count = 2, keyword_length = 3 },
-		{ name = "buffer", priority = 80, max_item_count = 3, keyword_length = 3 },
+		{ name = "nvim_lsp", priority = 90 },
+		-- { name = "cmp_tabnine", priority = 98, max_item_count = 2, keyword_length = 3 },
+		{ name = "buffer", priority = 80, max_item_count = 3, keyword_length = 5 },
 		{ name = "path", priority = 80, max_item_count = 3, keyword_length = 3 },
+		{ name = "nvim_lsp_signature_help" },
 		-- disable fuzzy
-		{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
+		-- { name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 5 },
 	},
 })
 
