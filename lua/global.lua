@@ -30,3 +30,4 @@ set.smartcase = true
 set.ignorecase = true
 set.sessionoptions = "blank"
 set.hidden = true
+set.autoindent = true
