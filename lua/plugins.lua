@@ -131,6 +131,7 @@ return require("packer").startup(function(use)
 			vim.cmd([[PackerLoad cmp-path ]])
 			vim.cmd([[ PackerLoad cmp_luasnip ]])
 			vim.cmd([[ PackerLoad cmp-dictionary ]])
+			vim.cmd([[ PackerLoad cmp-nvim-lua ]])
 			require("luasnip.loaders.from_vscode").load({
 				include = { "go", "python", "sh", "json", "lua", "gitcommit", "sql" },
 			})
@@ -144,6 +145,9 @@ return require("packer").startup(function(use)
 		requires = {
 			"hrsh7th/cmp-nvim-lsp",
 		},
+	})
+	lock_use({
+		"hrsh7th/cmp-nvim-lua",
 	})
 	lock_use({
 		"hrsh7th/cmp-nvim-lsp",
