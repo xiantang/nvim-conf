@@ -25,6 +25,14 @@ return require("packer").startup(function(use)
 			require("hop").setup({ keys = "dfgjkalwertyuizxcnm" })
 		end,
 	})
+
+	lock_use({
+		"andymass/vim-matchup",
+		setup = function()
+			-- may set any options here
+			vim.g.matchup_matchparen_offscreen = { method = "popup" }
+		end,
+	})
 	lock_use({
 		"/Users/jingdizhu/project/extract-value.nvim",
 		config = function()
