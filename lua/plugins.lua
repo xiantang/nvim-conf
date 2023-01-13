@@ -8,6 +8,11 @@ local ensure_packer = function()
 	end
 	return false
 end
+
+require("packer").init({
+	snapshot_path = vim.fn.stdpath("config") .. "/snapshots",
+})
+
 local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
 	local function lock_use(setup)
