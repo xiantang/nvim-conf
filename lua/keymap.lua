@@ -1,11 +1,11 @@
 vim.keymap.set("n", "j", "gj", {})
-vim.cmd([[
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-]])
+-- vim.cmd([[
+-- set softtabstop=4
+-- set tabstop=4
+-- set shiftwidth=4
+-- set expandtab
+-- set smartindent
+-- ]])
 vim.keymap.set("n", "k", "gk", {})
 vim.keymap.set("n", "o", "o", {})
 -- You can even bind it to search jumping and more, example:

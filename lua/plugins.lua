@@ -39,6 +39,13 @@ return require("packer").startup(function(use)
 		end,
 	})
 	lock_use({
+		"/Users/jingdizhu/project/comby.nvim",
+		config = function()
+			require("plugin_name").setup()
+		end,
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+	lock_use({
 		"/Users/jingdizhu/project/extract-value.nvim",
 		config = function()
 			require("extract_variable").setup()
