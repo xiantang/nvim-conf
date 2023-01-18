@@ -42,6 +42,7 @@ return {
 	},
 	{
 		"xiantang/nvim-lspconfig",
+		event = "BufReadPre",
 		-- use commit
 		dependencies = {
 			"j-hui/fidget.nvim",
@@ -263,6 +264,7 @@ return {
 	"vim-scripts/ReplaceWithRegister",
 	{
 		"folke/neodev.nvim",
+		ft = "lua",
 		config = function()
 			require("neodev").setup({})
 		end,
@@ -434,7 +436,13 @@ endif
 		end,
 	},
 	--  "akinsho/toggleterm.nvim" ,
-	"nvim-telescope/telescope.nvim",
+	{
+		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
+		config = function()
+			require("tele")
+		end,
+	},
 	{
 		"uga-rosa/cmp-dictionary",
 		config = function()

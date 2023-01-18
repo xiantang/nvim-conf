@@ -1,6 +1,5 @@
 require("start")
 require("toggle")
-require("tele")
 require("indent")
 require("fastmind")
 
