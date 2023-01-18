@@ -287,7 +287,6 @@ return {
 	{ "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
 	{
 		"folke/neodev.nvim",
-		-- ft = "lua",
 		event = "VeryLazy",
 		config = function()
 			require("neodev").setup({})
@@ -327,7 +326,7 @@ return {
 	{ "ryanoasis/vim-devicons", event = "VeryLazy" },
 	{ "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 	{ "tpope/vim-rhubarb", event = "VeryLazy" },
-	{ "dstein64/vim-startuptime", event = "VeryLazy" },
+	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = "VeryLazy",
@@ -364,8 +363,6 @@ return {
 		config = function()
 			-- firenvim
 			vim.cmd([[
-
-
 function! SetFontSizeFirenvim(timer)
   set guifont=Fira_Code:h22
 endfunction
