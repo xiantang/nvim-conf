@@ -294,9 +294,8 @@ return {
 	},
 	{
 		"RRethy/nvim-base16",
-		config = function()
-			vim.cmd([[silent! colorscheme base16-tender]])
-		end,
+		lazy = true,
+		config = function() end,
 	},
 	{
 		"mbbill/undotree",

@@ -53,6 +53,7 @@ require("lazy").setup({
 	{ import = "plugins" },
 })
 
+vim.cmd.colorscheme("base16-tender")
 require("start")
 require("nerdtree")
 vim.cmd([[
