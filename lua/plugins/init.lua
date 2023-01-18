@@ -336,45 +336,11 @@ return {
 		end,
 	},
 	{
-		"nvim-treesitter/nvim-treesitter",
-		event = "VeryLazy",
-		config = function()
-			require("syntax")
-			require("txtobj")
-		end,
-	},
-	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		event = "VeryLazy",
 		commit = "a60af980b6f0a6e7ee239ffb9d1d519aaaa1de58",
 	},
 	{ "nvim-treesitter/playground", event = "VeryLazy" },
-	{
-		event = "VeryLazy",
-		"keaising/im-select.nvim",
-		config = function()
-			-- check is macos
-			local is_mac = vim.fn.has("mac") == 1
-			if is_mac then
-				require("im_select").setup({
-					-- IM will be set to `default_im_select` in `normal` mode(`EnterVim` or `InsertLeave`)
-					-- For Windows/WSL, default: "1033", aka: English US Keyboard
-					-- For macOS, default: "com.apple.keylayout.ABC", aka: US
-					-- You can use `im-select` in cli to get the IM name of you preferred
-					default_im_select = "com.apple.keylayout.ABC",
-					-- Set to 1 if you don't want restore IM status when `InsertEnter`
-					disable_auto_restore = 0,
-				})
-			end
-		end,
-	},
-	{
-		"lewis6991/gitsigns.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("git")
-		end,
-	},
 	{
 		"L3MON4D3/LuaSnip",
 		commit = "79f647218847b1cd204fede7dd89025e43fd00c3",
@@ -490,7 +456,9 @@ endif
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		config = function()
-			require("tele")
+			require("telescope").setup({
+				extensions = {},
+			})
 		end,
 	},
 	{
