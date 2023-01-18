@@ -43,7 +43,7 @@ return {
 	},
 	{
 		"xiantang/nvim-lspconfig",
-		event = "BufReadPre",
+		event = "VeryLazy",
 		-- use commit
 		dependencies = {
 			"j-hui/fidget.nvim",
@@ -157,27 +157,12 @@ return {
 		},
 	},
 	{
-		"saadparwaiz1/cmp_luasnip",
-	},
-	{
-		"hrsh7th/cmp-nvim-lua",
-	},
-	{
-		"hrsh7th/cmp-nvim-lsp",
-	},
-	{
-		"hrsh7th/cmp-buffer",
-	},
-	{
 		"stevearc/profile.nvim",
 		event = "VeryLazy",
 	},
 	{
 		"ray-x/lsp_signature.nvim",
 		event = "VeryLazy",
-	},
-	{
-		"hrsh7th/cmp-path",
 	},
 	{
 		"tpope/vim-fugitive",
@@ -278,15 +263,14 @@ return {
 	{ "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
 	{
 		"folke/neodev.nvim",
-		ft = "lua",
-		event = "VeryLazy",
+		-- ft = "lua",
+		event = "InsertEnter",
 		config = function()
 			require("neodev").setup({})
 		end,
 	},
 	{
 		"RRethy/nvim-base16",
-		event = "VeryLazy",
 		config = function()
 			vim.cmd([[silent! colorscheme base16-tender]])
 		end,
@@ -351,6 +335,7 @@ return {
 	{
 		"L3MON4D3/LuaSnip",
 		commit = "79f647218847b1cd204fede7dd89025e43fd00c3",
+		event = "VeryLazy",
 		config = function()
 			require("luasnip.loaders.from_vscode").load({
 				include = { "go", "python", "sh", "json", "lua", "gitcommit", "sql" },
@@ -366,6 +351,7 @@ return {
 	-- lock_use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
 	{
 		"glacambre/firenvim",
+		event = "VeryLazy",
 		config = function()
 			-- firenvim
 			vim.cmd([[
@@ -402,7 +388,7 @@ endif
 ]])
 		end,
 	},
-	"vim-scripts/argtextobj.vim",
+	{ "vim-scripts/argtextobj.vim", event = "VeryLazy" },
 	{
 		"preservim/nerdtree",
 		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind", "NerdSmartLocated" },
@@ -422,12 +408,13 @@ endif
 		end,
 		dependencies = "Xuyuanp/nerdtree-git-plugin",
 	},
-	"Xuyuanp/nerdtree-git-plugin",
-	"junegunn/fzf",
-	"junegunn/fzf.vim",
-	"nvim-lua/plenary.nvim",
+	{ "Xuyuanp/nerdtree-git-plugin", event = "VeryLazy" },
+	{ "junegunn/fzf", event = "VeryLazy" },
+	{ "junegunn/fzf.vim", event = "VeryLazy" },
+	{ "nvim-lua/plenary.nvim", event = "VeryLazy" },
 	{
 		"github/copilot.vim",
+		event = "VeryLazy",
 		config = function()
 			vim.cmd([[
 				let g:copilot_enable = 1
@@ -447,9 +434,10 @@ endif
 						]])
 		end,
 	},
-	{ "michaelb/sniprun", build = "bash ./install.sh" },
+	{ "michaelb/sniprun", event = "VeryLazy", build = "bash ./install.sh" },
 	{
 		"numToStr/Comment.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("Comment").setup()
 		end,
@@ -464,6 +452,7 @@ endif
 	},
 	{
 		"uga-rosa/cmp-dictionary",
+		event = "VeryLazy",
 		config = function()
 			require("cmp_dictionary").setup({
 				dic = {
