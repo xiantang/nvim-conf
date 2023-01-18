@@ -132,28 +132,11 @@ return {
 			})
 		end,
 	},
-	-- {
-	-- 	"/Users/jingdizhu/project/obsidian.nvim",
-	-- 	after = "nvim-cmp",
-	-- 	config = function()
-	-- 		require("obsidian").setup({
-	-- 			dir = "/Users/jingdizhu/Documents/my-vault",
-	-- 			completion = {
-	-- 				nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter", "CmdlineEnter" },
+		event = "InsertEnter",
 		config = function()
 			require("cmp_set")
-			require("luasnip.loaders.from_vscode").load({
-				include = { "go", "python", "sh", "json", "lua", "gitcommit", "sql" },
-			})
-			require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
-			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/my_snippets/lua/" })
 			local source = require("jira")
 			require("cmp").register_source("cmp_jira", source.new({}))
 			require("go_test")
@@ -270,6 +253,7 @@ return {
 	"romainl/vim-cool",
 	{
 		"windwp/nvim-autopairs",
+		event = "VeryLazy",
 		config = function()
 			require("nvim-autopairs").setup({})
 		end,
@@ -292,12 +276,6 @@ return {
 	},
 	{
 		"mbbill/undotree",
-	},
-	{
-		"nvim-lualine/lualine.nvim",
-		config = function()
-			require("lualine_setup")
-		end,
 	},
 	"ryanoasis/vim-devicons",
 	"nvim-tree/nvim-web-devicons",
@@ -353,10 +331,16 @@ return {
 		"L3MON4D3/LuaSnip",
 		commit = "79f647218847b1cd204fede7dd89025e43fd00c3",
 		config = function()
-			require("go").setup({
-				lsp_inlay_hints = { enable = false },
+			require("luasnip.loaders.from_vscode").load({
+				include = { "go", "python", "sh", "json", "lua", "gitcommit", "sql" },
 			})
+			require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
+			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/my_snippets/lua/" })
+			require("go").setup({})
 		end,
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+		},
 	},
 	-- lock_use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
 	{
