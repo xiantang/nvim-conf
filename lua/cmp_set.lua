@@ -2,6 +2,9 @@ local luasnip = require("luasnip")
 
 -- nvim-cmp setup
 local cmp = require("cmp")
+-- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#add-parentheses-after-selecting-function-or-method-item
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 if cmp == nil then
 	return

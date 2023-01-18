@@ -17,7 +17,6 @@ function _G.console(str)
 	end
 	-- if include new line in string then split it
 	local lines = vim.split(convert, "\n")
-	-- append lines to buffer
 	vim.api.nvim_buf_set_lines(buf, -1, -1, false, lines)
 end
 

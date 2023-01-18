@@ -342,7 +342,7 @@ return {
 	{
 		"L3MON4D3/LuaSnip",
 		commit = "79f647218847b1cd204fede7dd89025e43fd00c3",
-		event = "VeryLazy",
+		event = "InsertEnter",
 		config = function()
 			require("luasnip.loaders.from_vscode").load({
 				include = { "go", "python", "sh", "json", "lua", "gitcommit", "sql" },
@@ -454,29 +454,6 @@ endif
 		config = function()
 			require("telescope").setup({
 				extensions = {},
-			})
-		end,
-	},
-	{
-		"uga-rosa/cmp-dictionary",
-		event = "VeryLazy",
-		config = function()
-			local set = vim.o
-			set.spell = true
-			set.spelllang = "en,cjk"
-			set.spellsuggest = "best,9"
-			require("cmp_dictionary").setup({
-				dic = {
-					["*"] = { "~/.config/nvim/words", "~/.config/nvim/spell/en.utf-8.add" },
-				},
-				-- The following are default values.
-				exact = -1,
-				document = false,
-				first_case_insensitive = false,
-				async = true,
-				max_items = -1,
-				capacity = 5,
-				debug = false,
 			})
 		end,
 	},
