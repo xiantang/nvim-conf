@@ -315,9 +315,7 @@ return {
 					set undofile
 			endif
 			endfunction
-
 			autocmd BufEnter * call Undotree_record()
-
 			]])
 		end,
 	},
