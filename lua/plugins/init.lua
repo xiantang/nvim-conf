@@ -496,6 +496,10 @@ endif
 		"uga-rosa/cmp-dictionary",
 		event = "VeryLazy",
 		config = function()
+			local set = vim.o
+			set.spell = true
+			set.spelllang = "en,cjk"
+			set.spellsuggest = "best,9"
 			require("cmp_dictionary").setup({
 				dic = {
 					["*"] = { "~/.config/nvim/words", "~/.config/nvim/spell/en.utf-8.add" },
