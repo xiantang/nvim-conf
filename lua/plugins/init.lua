@@ -1,8 +1,7 @@
 return {
-	"lewis6991/impatient.nvim",
-	--  'ggandor/leap.nvim',
 	{
 		"phaazon/hop.nvim",
+		event = "VeryLazy",
 		branch = "v2", -- optional but strongly recommended
 		config = function()
 			-- you can configure Hop the way you like here; see :h hop-config
@@ -11,6 +10,7 @@ return {
 	},
 
 	{
+		event = "VeryLazy",
 		"andymass/vim-matchup",
 		config = function()
 			-- may set any options here
@@ -32,6 +32,7 @@ return {
 	-- 	require = { "nvim-treesitter/nvim-treesitter-textobjects" },
 	-- },
 	{
+		event = "VeryLazy",
 		"folke/persistence.nvim",
 		config = function()
 			require("persistence").setup({
@@ -56,6 +57,7 @@ return {
 		end,
 	},
 	{
+		event = "VeryLazy",
 		"edluffy/specs.nvim",
 		config = function()
 			require("specs").setup({
@@ -80,17 +82,19 @@ return {
 		end,
 	},
 	{
+		event = "VeryLazy",
 		"j-hui/fidget.nvim",
 		config = function()
 			require("fidget").setup()
 		end,
 	},
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	{ "glepnir/lspsaga.nvim", commit = "b7b4777" },
-	"onsails/lspkind.nvim",
+	{ "williamboman/mason.nvim", event = "VeryLazy" },
+	{ "williamboman/mason-lspconfig.nvim", event = "VeryLazy" },
+	{ "glepnir/lspsaga.nvim", commit = "b7b4777", event = "VeryLazy" },
+	{ "onsails/lspkind.nvim", event = "VeryLazy" },
 	{
 		"numToStr/Navigator.nvim",
+		event = "VeryLazy",
 		-- master
 		config = function()
 			require("Navigator").setup({})
@@ -99,6 +103,7 @@ return {
 	-- git related
 	{
 		"rhysd/conflict-marker.vim",
+		event = "VeryLazy",
 		config = function()
 			vim.cmd([[
       let g:conflict_marker_highlight_group = ''
@@ -126,6 +131,7 @@ return {
 	},
 	{
 		"kylechui/nvim-surround",
+		event = "VeryLazy",
 		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
 		config = function()
 			require("nvim-surround").setup({
@@ -135,7 +141,7 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
 			require("cmp_set")
 			local source = require("jira")
@@ -150,7 +156,9 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 		},
 	},
-	{ "saadparwaiz1/cmp_luasnip" },
+	{
+		"saadparwaiz1/cmp_luasnip",
+	},
 	{
 		"hrsh7th/cmp-nvim-lua",
 	},
@@ -162,17 +170,22 @@ return {
 	},
 	{
 		"stevearc/profile.nvim",
+		event = "VeryLazy",
 	},
 	{
 		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
 	},
 	{
 		"hrsh7th/cmp-path",
 	},
-	"wbthomason/packer.nvim",
-	"tpope/vim-fugitive",
+	{
+		"tpope/vim-fugitive",
+		cmd = "Git",
+	},
 	{
 		"shumphrey/fugitive-gitlab.vim",
+		event = "VeryLazy",
 		config = function()
 			-- check operation system
 			local is_mac = vim.fn.has("mac") == 1
@@ -184,6 +197,7 @@ return {
 	},
 	{
 		"segeljakt/vim-silicon",
+		event = "VeryLazy",
 		config = function()
 			vim.cmd([[
 			 let g:silicon={}
@@ -197,9 +211,9 @@ return {
 			require("symbols-outline").setup()
 		end,
 	},
-	"ray-x/go.nvim",
-	"p00f/nvim-ts-rainbow",
-	"ray-x/guihua.lua",
+	{ "ray-x/go.nvim", event = "VeryLazy" },
+	{ "p00f/nvim-ts-rainbow", event = "VeryLazy" },
+	{ "ray-x/guihua.lua", event = "VeryLazy" },
 	{
 		"petertriho/nvim-scrollbar",
 		config = function()
@@ -259,39 +273,42 @@ return {
 			require("nvim-autopairs").setup({})
 		end,
 	},
-	"lukas-reineke/indent-blankline.nvim",
-	"RRethy/vim-illuminate",
-	"vim-scripts/ReplaceWithRegister",
+	{ "lukas-reineke/indent-blankline.nvim", event = "VeryLazy" },
+	{ "RRethy/vim-illuminate", event = "VeryLazy" },
+	{ "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
 	{
 		"folke/neodev.nvim",
 		ft = "lua",
+		event = "VeryLazy",
 		config = function()
 			require("neodev").setup({})
 		end,
 	},
-	"rafamadriz/friendly-snippets",
 	{
 		"RRethy/nvim-base16",
+		event = "VeryLazy",
 		config = function()
 			vim.cmd([[silent! colorscheme base16-tender]])
 		end,
 	},
 	{
 		"mbbill/undotree",
+		event = "VeryLazy",
 	},
-	"ryanoasis/vim-devicons",
-	"nvim-tree/nvim-web-devicons",
-	-- use_helper({"bkad/CamelCaseMotion",lock=true})
-	"tpope/vim-rhubarb",
-	"dstein64/vim-startuptime",
+	{ "ryanoasis/vim-devicons", event = "VeryLazy" },
+	{ "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
+	{ "tpope/vim-rhubarb", event = "VeryLazy" },
+	{ "dstein64/vim-startuptime", event = "VeryLazy" },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("null")
 		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		event = "VeryLazy",
 		config = function()
 			require("syntax")
 			require("txtobj")
@@ -306,6 +323,7 @@ return {
 	},
 	"nvim-treesitter/playground",
 	{
+		event = "VeryLazy",
 		"keaising/im-select.nvim",
 		config = function()
 			-- check is macos
@@ -325,6 +343,7 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("git")
 		end,
