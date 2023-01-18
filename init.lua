@@ -4,9 +4,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local set = vim.o
 set.noswapfile = true
-set.spell = true
-set.spelllang = "en,cjk"
-set.spellsuggest = "best,9"
+-- so slow
+-- set.spell = true
+-- set.spelllang = "en,cjk"
+-- set.spellsuggest = "best,9"
 -- set guifont:DejaVuSansMono\ Nerd\ Font:h17
 -- set.guifont = "DejaVuSansMono Nerd Font:h17"
 set.number = true
@@ -14,8 +15,8 @@ set.relativenumber = true
 set.autoread = true
 set.mouse = "a"
 -- set.guicursor = "a:blinkon1,i:ver25"
-set.updatetime = 3000
 set.encoding = "utf8"
+set.updatetime = 3000
 set.termguicolors = true
 set.ts = 2
 set.sts = 2
