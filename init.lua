@@ -2,8 +2,8 @@
 -- See `:help vim.o`
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.cmd("set noswapfile")
 local set = vim.o
+set.noswapfile = true
 set.spell = true
 set.spelllang = "en,cjk"
 set.spellsuggest = "best,9"
@@ -47,8 +47,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 require("lazy").setup({
 	{ import = "plugins" },

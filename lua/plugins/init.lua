@@ -119,17 +119,6 @@ return {
 		]])
 		end,
 	},
-	-- {
-	-- 	"lvimuser/lsp-inlayhints.nvim",
-	-- 	event = "VeryLazy",
-	-- 	branch = "anticonceal",
-	-- 	config = function()
-	-- 		require("lsp-inlayhints").setup()
-	-- 		vim.cmd([[
-	-- 		hi LspInlayHint guifg=#d8d8d8 guibg=#3a3a3a
-	-- 		]])
-	-- 	end,
-	-- },
 	{
 		"kylechui/nvim-surround",
 		event = "VeryLazy",
