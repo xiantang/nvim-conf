@@ -149,6 +149,24 @@ return {
 	{
 		"stevearc/profile.nvim",
 		event = "VeryLazy",
+		config = function()
+			-- override variable  as white
+			-- for method caller
+			function toggle_profile()
+				local prof = require("profile")
+				if prof.is_recording() then
+					prof.stop()
+					filename = ".profile.json"
+					prof.export(filename)
+					vim.notify(string.format("Wrote %s", filename))
+				else
+					prof.start("*")
+				end
+			end
+			vim.api.nvim_create_user_command("Profile", function()
+				toggle_profile()
+			end, {})
+		end,
 	},
 	{
 		"ray-x/lsp_signature.nvim",
@@ -156,6 +174,7 @@ return {
 	},
 	{
 		"tpope/vim-fugitive",
+		config = function() end,
 		cmd = "Git",
 	},
 	{
@@ -252,7 +271,17 @@ return {
 			require("nvim-autopairs").setup({})
 		end,
 	},
-	{ "lukas-reineke/indent-blankline.nvim", event = "VeryLazy" },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			vim.opt.list = true
+			vim.opt.listchars:append("eol:↲")
+			require("indent_blankline").setup({
+				show_end_of_line = true,
+			})
+		end,
+		event = "VeryLazy",
+	},
 	{ "RRethy/vim-illuminate", event = "VeryLazy" },
 	{ "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
 	{
@@ -271,6 +300,27 @@ return {
 	},
 	{
 		"mbbill/undotree",
+		config = function()
+			vim.cmd([[
+			" buff enter"
+			function Undotree_record() abort
+			if has("persistent_undo")
+				 let target_path = expand('~/.undodir')
+					" create the directory and any parent directories
+					" if the location does not exist.
+					if !isdirectory(target_path)
+							call mkdir(target_path, "p", 0700)
+					endif
+
+					let &undodir=target_path
+					set undofile
+			endif
+			endfunction
+
+			autocmd BufEnter * call Undotree_record()
+
+			]])
+		end,
 		event = "VeryLazy",
 	},
 	{ "ryanoasis/vim-devicons", event = "VeryLazy" },

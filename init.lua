@@ -52,4 +52,11 @@ require("lazy").setup({
 	{ import = "plugins" },
 })
 
-require("config")
+require("start")
+require("nerdtree")
+vim.cmd([[
+				hi! link TSVariable Normal
+				cnoreabbrev git Git
+				cnoreabbrev gp Git push
+				cnoreabbrev Gbrowse GBrowse
+]])
