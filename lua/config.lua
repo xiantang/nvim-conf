@@ -10,6 +10,10 @@ vim.cmd("cnoreabbrev Gbrowse GBrowse")
 -- override variable  as white
 -- for method caller
 function toggle_profile()
+
+
+
+
 	local prof = require("profile")
 	if prof.is_recording() then
 		prof.stop()
@@ -22,6 +26,9 @@ function toggle_profile()
 end
 
 require("nerdtree")
+vim.cmd([[
+				hi! link TSVariable Normal
+			]])
 
 vim.cmd([[
 " buff enter"

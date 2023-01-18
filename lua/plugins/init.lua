@@ -119,16 +119,17 @@ return {
 		]])
 		end,
 	},
-	{
-		"lvimuser/lsp-inlayhints.nvim",
-		branch = "anticonceal",
-		config = function()
-			require("lsp-inlayhints").setup()
-			vim.cmd([[
-			hi LspInlayHint guifg=#d8d8d8 guibg=#3a3a3a
-			]])
-		end,
-	},
+	-- {
+	-- 	"lvimuser/lsp-inlayhints.nvim",
+	-- 	event = "VeryLazy",
+	-- 	branch = "anticonceal",
+	-- 	config = function()
+	-- 		require("lsp-inlayhints").setup()
+	-- 		vim.cmd([[
+	-- 		hi LspInlayHint guifg=#d8d8d8 guibg=#3a3a3a
+	-- 		]])
+	-- 	end,
+	-- },
 	{
 		"kylechui/nvim-surround",
 		event = "VeryLazy",
@@ -192,6 +193,7 @@ return {
 	},
 	{
 		"simrat39/symbols-outline.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("symbols-outline").setup()
 		end,
@@ -201,6 +203,7 @@ return {
 	{ "ray-x/guihua.lua", event = "VeryLazy" },
 	{
 		"petertriho/nvim-scrollbar",
+		event = "VeryLazy",
 		config = function()
 			require("scrollbar.handlers.gitsigns").setup()
 			require("scrollbar").setup({
@@ -230,27 +233,29 @@ return {
 	},
 	{
 		"jinh0/eyeliner.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("eyeliner").setup({
 				highlight_on_key = true,
 			})
 		end,
 	},
-
 	{
 		"leoluz/nvim-dap-go",
+		event = "VeryLazy",
 		config = function()
 			require("dap-go").setup()
 		end,
 	},
-	"rcarriga/nvim-dap-ui",
+	{ "rcarriga/nvim-dap-ui", event = "VeryLazy" },
 	{
+		event = "VeryLazy",
 		"mfussenegger/nvim-dap",
 		config = function()
 			require("dap_set")
 		end,
 	},
-	"romainl/vim-cool",
+	{ "romainl/vim-cool", event = "VeryLazy" },
 	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",
@@ -296,13 +301,11 @@ return {
 		config = function()
 			require("syntax")
 			require("txtobj")
-			vim.cmd([[
-				hi! link TSVariable Normal
-			]])
 		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		event = "VeryLazy",
 		commit = "a60af980b6f0a6e7ee239ffb9d1d519aaaa1de58",
 	},
 	"nvim-treesitter/playground",
