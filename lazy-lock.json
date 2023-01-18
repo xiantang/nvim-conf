@@ -28,6 +28,7 @@
   "lsp_signature.nvim": { "branch": "master", "commit": "c1e9c2a5d0f0aa73c2544ad958c6f06973235d35" },
   "lspkind.nvim": { "branch": "master", "commit": "c68b3a003483cf382428a43035079f78474cd11e" },
   "lspsaga.nvim": { "branch": "main", "commit": "b7b4777369b441341b2dcd45c738ea4167c11c9e" },
+  "lualine-copilot": { "branch": "main", "commit": "94c14f6d2b68534288476118b0d9f8f7027c2b6a" },
   "lualine.nvim": { "branch": "master", "commit": "0050b308552e45f7128f399886c86afefc3eb988" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "610f5919fe633ac872239a0ab786572059f0d91d" },
   "mason.nvim": { "branch": "main", "commit": "5e78970539d937b7aef7a4e10b219d60da0b1425" },
