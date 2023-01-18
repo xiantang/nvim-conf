@@ -153,11 +153,11 @@ return {
 		config = function()
 			-- override variable  as white
 			-- for method caller
-			function toggle_profile()
+			local function toggle_profile()
 				local prof = require("profile")
 				if prof.is_recording() then
 					prof.stop()
-					filename = ".profile.json"
+					local filename = ".profile.json"
 					prof.export(filename)
 					vim.notify(string.format("Wrote %s", filename))
 				else
