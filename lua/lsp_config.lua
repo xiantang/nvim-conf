@@ -239,6 +239,9 @@ nvim_lsp.sumneko_lua.setup({
 					"/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/",
 				},
 			},
+			completion = {
+				callSnippet = "Replace",
+			},
 			-- Do not send telemetry data containing a randomized but unique identifier
 			telemetry = {
 				enable = false,

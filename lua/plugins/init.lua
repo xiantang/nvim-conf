@@ -51,6 +51,8 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			"glepnir/lspsaga.nvim",
 			"onsails/lspkind.nvim",
+			-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+			"folke/neodev.nvim",
 		},
 		config = function()
 			require("lsp_config")
@@ -286,7 +288,7 @@ return {
 	{
 		"folke/neodev.nvim",
 		-- ft = "lua",
-		event = "InsertEnter",
+		event = "VeryLazy",
 		config = function()
 			require("neodev").setup({})
 		end,
