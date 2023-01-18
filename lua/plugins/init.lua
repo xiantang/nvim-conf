@@ -315,6 +315,7 @@ return {
 					set undofile
 			endif
 			endfunction
+			let g:undotree_WindowLayout = 3
 			autocmd BufEnter * call Undotree_record()
 			]])
 		end,
