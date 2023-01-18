@@ -10,10 +10,6 @@ vim.cmd("cnoreabbrev Gbrowse GBrowse")
 -- override variable  as white
 -- for method caller
 function toggle_profile()
-
-
-
-
 	local prof = require("profile")
 	if prof.is_recording() then
 		prof.stop()

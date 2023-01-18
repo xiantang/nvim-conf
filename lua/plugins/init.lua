@@ -43,7 +43,7 @@ return {
 	},
 	{
 		"xiantang/nvim-lspconfig",
-		event = "VeryLazy",
+		event = "BufRead",
 		-- use commit
 		dependencies = {
 			"j-hui/fidget.nvim",
@@ -308,7 +308,7 @@ return {
 		event = "VeryLazy",
 		commit = "a60af980b6f0a6e7ee239ffb9d1d519aaaa1de58",
 	},
-	"nvim-treesitter/playground",
+	{ "nvim-treesitter/playground", event = "VeryLazy" },
 	{
 		event = "VeryLazy",
 		"keaising/im-select.nvim",
