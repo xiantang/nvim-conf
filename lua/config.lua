@@ -22,6 +22,8 @@ function toggle_profile()
 	end
 end
 
+require("nerdtree")
+
 vim.cmd([[
 " buff enter"
 function Undotree_record() abort
