@@ -8,7 +8,7 @@ function _G.console(str)
 		buf = vim.fn.bufnr("LSP Console")
 	else
 		-- split a new buffer with new window
-		vim.cmd("vsplit")
+		vim.cmd.vsplit()
 		local win = vim.api.nvim_get_current_win()
 		buf = vim.api.nvim_create_buf(true, true)
 		vim.api.nvim_win_set_buf(win, buf)
