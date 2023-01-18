@@ -1,21 +1,10 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-
-vim.opt.rtp:prepend(lazypath)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
-return require("lazy").setup({
-	"lewis6991/impatient.nvim",
+return {
+	{
+		"lewis6991/impatient.nvim",
+		config = function()
+			require("impatient")
+		end,
+	},
 	--  'ggandor/leap.nvim',
 	{
 		"phaazon/hop.nvim",
@@ -66,9 +55,6 @@ return require("lazy").setup({
 			"glepnir/lspsaga.nvim",
 			"onsails/lspkind.nvim",
 		},
-		config = function()
-			require("lsp_config")
-		end,
 	},
 	{
 		"edluffy/specs.nvim",
@@ -94,12 +80,7 @@ return require("lazy").setup({
 			})
 		end,
 	},
-	{
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup()
-		end,
-	},
+	"j-hui/fidget.nvim",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	{ "glepnir/lspsaga.nvim", commit = "b7b4777" },
@@ -114,29 +95,12 @@ return require("lazy").setup({
 	-- git related
 	{
 		"rhysd/conflict-marker.vim",
-		config = function()
-			vim.cmd([[
-      let g:conflict_marker_highlight_group = ''
-      " Include text after begin and end markers
-      let g:conflict_marker_begin = '^<<<<<<< .*$'
-      let g:conflict_marker_end   = '^>>>>>>> .*$'
-
-      highlight ConflictMarkerBegin guibg=#2f7366
-      highlight ConflictMarkerOurs guibg=#2e5049
-      highlight ConflictMarkerTheirs guibg=#344f69
-      highlight ConflictMarkerEnd guibg=#2f628e
-      highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
-		]])
-		end,
 	},
 	{
 		"lvimuser/lsp-inlayhints.nvim",
 		branch = "anticonceal",
 		config = function()
 			require("lsp-inlayhints").setup()
-			vim.cmd([[
-			hi LspInlayHint guifg=#d8d8d8 guibg=#3a3a3a
-			]])
 		end,
 	},
 	{
@@ -183,11 +147,6 @@ return require("lazy").setup({
 		end,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-nvim-lua",
-			"saadparwaiz1/cmp_luasnip",
 		},
 	},
 	{
@@ -204,10 +163,18 @@ return require("lazy").setup({
 		"stevearc/profile.nvim",
 	},
 	{
+		"hrsh7th/cmp-cmdline",
+		opt = true,
+	},
+	{
 		"ray-x/lsp_signature.nvim",
 	},
 	{
 		"hrsh7th/cmp-path",
+		opt = true,
+	},
+	{
+		"saadparwaiz1/cmp_luasnip",
 		opt = true,
 	},
 	"wbthomason/packer.nvim",
@@ -232,44 +199,11 @@ return require("lazy").setup({
 			 let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png']])
 		end,
 	},
-	{
-		"simrat39/symbols-outline.nvim",
-		config = function()
-			require("symbols-outline").setup()
-		end,
-	},
+	"simrat39/symbols-outline.nvim",
 	"ray-x/go.nvim",
 	"p00f/nvim-ts-rainbow",
 	"ray-x/guihua.lua",
-	{
-		"petertriho/nvim-scrollbar",
-		config = function()
-			require("scrollbar.handlers.gitsigns").setup()
-			require("scrollbar").setup({
-				set_highlights = true,
-				marks = {
-					GitAdd = {
-						text = "│",
-						priority = 5,
-						color = "green",
-						cterm = nil,
-					},
-					GitChange = {
-						text = "│",
-						priority = 5,
-						color = "yellow",
-						cterm = nil,
-					},
-					GitDelete = {
-						text = "_",
-						priority = 5,
-						color = "red",
-						cterm = nil,
-					},
-				},
-			})
-		end,
-	},
+	"petertriho/nvim-scrollbar",
 	{
 		"jinh0/eyeliner.nvim",
 		config = function()
@@ -279,45 +213,23 @@ return require("lazy").setup({
 		end,
 	},
 
-	{
-		"leoluz/nvim-dap-go",
-		config = function()
-			require("dap-go").setup()
-		end,
-	},
+	"leoluz/nvim-dap-go",
 	"rcarriga/nvim-dap-ui",
-	{
-		"mfussenegger/nvim-dap",
-		config = function()
-			require("dap_set")
-		end,
-	},
+	"mfussenegger/nvim-dap",
 	"romainl/vim-cool",
-	{
-		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
-	},
+	"windwp/nvim-autopairs",
 	"lukas-reineke/indent-blankline.nvim",
 	"RRethy/vim-illuminate",
 	"vim-scripts/ReplaceWithRegister",
 	{
 		"folke/neodev.nvim",
 		config = function()
-			require("neodev").setup({})
+			require("neodev").setup()
 		end,
 	},
 	"rafamadriz/friendly-snippets",
-	{
-		"RRethy/nvim-base16",
-		config = function()
-			vim.cmd([[silent! colorscheme base16-tender]])
-		end,
-	},
-	{
-		"mbbill/undotree",
-	},
+	"RRethy/nvim-base16",
+	"mbbill/undotree",
 	{
 		"nvim-lualine/lualine.nvim",
 		config = function()
@@ -329,22 +241,8 @@ return require("lazy").setup({
 	-- use_helper({"bkad/CamelCaseMotion",lock=true})
 	"tpope/vim-rhubarb",
 	"dstein64/vim-startuptime",
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		config = function()
-			require("null")
-		end,
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("syntax")
-			require("txtobj")
-			vim.cmd([[
-				hi! link TSVariable Normal
-			]])
-		end,
-	},
+	"jose-elias-alvarez/null-ls.nvim",
+	"nvim-treesitter/nvim-treesitter",
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		commit = "a60af980b6f0a6e7ee239ffb9d1d519aaaa1de58",
@@ -368,82 +266,16 @@ return require("lazy").setup({
 			end
 		end,
 	},
-	{
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("git")
-		end,
-	},
-	{
-		"L3MON4D3/LuaSnip",
-		commit = "79f647218847b1cd204fede7dd89025e43fd00c3",
-		config = function()
-			require("go").setup({
-				lsp_inlay_hints = { enable = false },
-			})
-		end,
-	},
+	"lewis6991/gitsigns.nvim",
+	{ "L3MON4D3/LuaSnip", commit = "79f647218847b1cd204fede7dd89025e43fd00c3" },
 	-- lock_use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
-	{
-		"glacambre/firenvim",
-		config = function()
-			-- firenvim
-			vim.cmd([[
-
-
-function! SetFontSizeFirenvim(timer)
-  set guifont=Fira_Code:h22
-endfunction
-
-
-" https://github.com/glacambre/firenvim/issues/1006#issuecomment-1126785734
-if exists('g:started_by_firenvim')
-  let g:firenvim_config = {
-        \ 'localSettings' : {
-          \ '.*' : {
-              \ 'filename' : '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.go',
-            \   },
-      \ }
-  \}
-  let g:dashboard_disable_at_vimenter=1
-  let g:NERDTreeHijackNetrw=0
-  " call timer_start(3000, function("SetFontSizeFirenvim"))
-  let g:copilot_enable = 0
-  let g:copilot_filetypes = {
-      \ 'markdown': v:true,
-      \ 'yaml': v:true,
-      \ 'go': v:false,
-        \ }
-  echo 'nvim good'
-else
-  set laststatus=2
-endif
-
-]])
-		end,
-	},
+	"glacambre/firenvim",
 	"vim-scripts/argtextobj.vim",
 	{
 		"preservim/nerdtree",
 		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind" },
 		opt = true,
-		config = function()
-			require("nerdtree")
-
-			vim.cmd([[
-
-	let NERDTreeShowBookmarks=1
-	let NERDTreeShowHidden=1
-	let g:NERDTreeChDirMode = 2
-	" width"
-	let g:NERDTreeWinSize = 25
-	" mini 
-	let g:NERDTreeMinimalMenu=1
-
-
-	let g:vim_markdown_folding_disabled = 1
-	]])
-		end,
+		config = function() end,
 		dependencies = "Xuyuanp/nerdtree-git-plugin",
 	},
 	"Xuyuanp/nerdtree-git-plugin",
@@ -452,32 +284,9 @@ endif
 	"nvim-lua/plenary.nvim",
 	{
 		"github/copilot.vim",
-		config = function()
-			vim.cmd([[
-				let g:copilot_enable = 1
-				let g:copilot_filetypes = {
-						\ '*': v:true,
-						\ 'markdown':v:true,
-						\ 'yaml': v:true,
-						\ 'go': v:false,
-						\ 'lua': v:true,
-						\ 'gitcommit': v:true,
-						\ "TelescopePrompt": v:false,
-							\ }
-
-				" imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
-				let g:copilot_no_tab_map = v:true
-				let g:copilot_assume_mapped = v:true
-						]])
-		end,
 	},
 	{ "michaelb/sniprun", build = "bash ./install.sh" },
-	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	},
+	"numToStr/Comment.nvim",
 	--  "akinsho/toggleterm.nvim" ,
 	"nvim-telescope/telescope.nvim",
 	{
@@ -499,4 +308,4 @@ endif
 			})
 		end,
 	},
-})
+}
