@@ -12,7 +12,7 @@ return {
 
 	{
 		"andymass/vim-matchup",
-		setup = function()
+		config = function()
 			-- may set any options here
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 		end,
@@ -385,7 +385,6 @@ endif
 	{
 		"preservim/nerdtree",
 		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind", "NerdSmartLocated" },
-		opt = true,
 		config = function()
 			vim.cmd([[
 	let NERDTreeShowBookmarks=1
@@ -438,7 +437,6 @@ endif
 	"nvim-telescope/telescope.nvim",
 	{
 		"uga-rosa/cmp-dictionary",
-		opt = true,
 		config = function()
 			require("cmp_dictionary").setup({
 				dic = {
