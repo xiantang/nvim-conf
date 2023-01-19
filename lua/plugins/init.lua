@@ -293,11 +293,6 @@ return {
 		end,
 	},
 	{
-		"RRethy/nvim-base16",
-		lazy = true,
-		config = function() end,
-	},
-	{
 		"mbbill/undotree",
 		config = function()
 			vim.cmd([[
