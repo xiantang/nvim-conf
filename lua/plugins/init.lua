@@ -272,6 +272,7 @@ return {
 			require("nvim-autopairs").setup({})
 		end,
 	},
+
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
@@ -280,6 +281,14 @@ return {
 			require("indent_blankline").setup({
 				show_end_of_line = true,
 			})
+		end,
+		event = "VeryLazy",
+	},
+	{
+		"echasnovski/mini.indentscope",
+		version = false,
+		config = function()
+			require("mini.indentscope").setup({})
 		end,
 		event = "VeryLazy",
 	},
