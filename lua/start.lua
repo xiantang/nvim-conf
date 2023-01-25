@@ -24,6 +24,8 @@ vim.cmd("silent! autocmd VimEnter *  nested lua RecentlySeesion()")
 function M.Stop()
 	local args = vim.api.nvim_get_vvar("argv")
 	if #args > 1 then
+		vim.cmd.wa()
+		vim.cmd.qa()
 		return
 	end
 	require("persistence").save()
@@ -31,8 +33,8 @@ function M.Stop()
 	-- write and append to file
 	vim.fn.writefile({ messages }, "/tmp/nvim.log", "a")
 	-- quit all
-	vim.cmd("wa")
-	vim.cmd("qa")
+	vim.cmd.wa()
+	vim.cmd.qa()
 	-- write down all :messages to a file
 	-- get output of :messages
 	-- write to file

@@ -2,6 +2,9 @@ local luasnip = require("luasnip")
 
 -- nvim-cmp setup
 local cmp = require("cmp")
+-- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#add-parentheses-after-selecting-function-or-method-item
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 if cmp == nil then
 	return
@@ -34,6 +37,8 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
+		-- abort
+		["<C-c>"] = cmp.mapping.abort(),
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
@@ -68,6 +73,7 @@ cmp.setup({
 		{ name = "buffer", priority = 80, max_item_count = 3, keyword_length = 5 },
 		{ name = "path", priority = 80, max_item_count = 3, keyword_length = 3 },
 		{ name = "nvim_lsp_signature_help" },
+		{ name = "nvim_lua" },
 		-- disable fuzzy
 		-- { name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 5 },
 	},

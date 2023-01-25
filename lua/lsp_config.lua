@@ -239,6 +239,9 @@ nvim_lsp.sumneko_lua.setup({
 					"/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/",
 				},
 			},
+			completion = {
+				callSnippet = "Replace",
+			},
 			-- Do not send telemetry data containing a randomized but unique identifier
 			telemetry = {
 				enable = false,
@@ -257,15 +260,6 @@ nvim_lsp.gopls.setup({
 	capabilities = capabilities,
 	settings = {
 		gopls = {
-			hints = {
-				assignVariableTypes = true,
-				compositeLiteralFields = true,
-				compositeLiteralTypes = true,
-				constantValues = true,
-				functionTypeParameters = true,
-				parameterNames = true,
-				rangeVariableTypes = true,
-			},
 			experimentalPostfixCompletions = true,
 			analyses = {
 				unusedparams = true,
@@ -276,8 +270,3 @@ nvim_lsp.gopls.setup({
 	},
 	on_attach = on_attach,
 })
-
--- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#add-parentheses-after-selecting-function-or-method-item
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-local cmp = require("cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

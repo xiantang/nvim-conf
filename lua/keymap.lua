@@ -1,11 +1,11 @@
 vim.keymap.set("n", "j", "gj", {})
-vim.cmd([[
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-]])
+-- vim.cmd([[
+-- set softtabstop=4
+-- set tabstop=4
+-- set shiftwidth=4
+-- set expandtab
+-- set smartindent
+-- ]])
 vim.keymap.set("n", "k", "gk", {})
 vim.keymap.set("n", "o", "o", {})
 -- You can even bind it to search jumping and more, example:
@@ -42,8 +42,8 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "<C-d>", "<C-d>zz:lua require('specs').show_specs()<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz:lua require('specs').show_specs()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "m", "mM", { silent = true })
-vim.api.nvim_set_keymap("n", "M", "`M", { silent = true })
+-- vim.api.nvim_set_keymap("n", "m", "mM", { silent = true })
+-- vim.api.nvim_set_keymap("n", "M", "`M", { silent = true })
 vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>", {})
 vim.keymap.set("n", "<C-Right>", ":vertical resize -5<CR>", {})
 vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", {})
@@ -53,9 +53,9 @@ vim.keymap.set("n", "<Leader>q", ":wq<CR>", {})
 vim.keymap.set("n", "<Leader>gs", ":Git<CR>", {})
 vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", {})
 vim.keymap.set("n", "<Leader>t", ":NERDTreeToggle<CR>", {})
-vim.keymap.set("n", "<Leader>s", ":sp<CR>", {})
+vim.keymap.set("n", "<Leader>s", ":sp<CR>", { desc = "[S]plit window" })
 vim.keymap.set("n", "<Leader>ss", ":source ~/.config/nvim/init.vim<CR>", {})
-vim.keymap.set("n", "<Leader>v", ":vsp<CR>", {})
+vim.keymap.set("n", "<Leader>v", ":vsp<CR>", { desc = "[V]ertically [S]plit window" })
 vim.keymap.set("n", "<Leader>w", ":w<CR>", {})
 vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", {})
 vim.keymap.set("n", "<Leader>rt", ":GoRunTestFunc<CR>", {})
