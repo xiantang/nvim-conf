@@ -3,7 +3,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local set = vim.o
-set.noswapfile = true
+vim.cmd([[set noswapfile]])
 -- so slow
 -- set.spell = true
 -- set.spelllang = "en,cjk"
