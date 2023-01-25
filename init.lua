@@ -4,12 +4,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local set = vim.o
 vim.cmd([[set noswapfile]])
--- so slow
--- set.spell = true
--- set.spelllang = "en,cjk"
--- set.spellsuggest = "best,9"
--- set guifont:DejaVuSansMono\ Nerd\ Font:h17
--- set.guifont = "DejaVuSansMono Nerd Font:h17"
 set.number = true
 set.relativenumber = true
 set.autoread = true
