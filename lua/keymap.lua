@@ -131,11 +131,6 @@ vim.keymap.set("n", "<Leader>gr", function()
 	end
 end, { noremap = false, expr = true })
 
-vim.keymap.set("n", "<Leader>n", function()
-	-- open new split
-	return "<cmd>ObsidianToday<CR>"
-end, { noremap = false, expr = true })
-
 local function t(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
