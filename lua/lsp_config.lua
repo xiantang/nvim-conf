@@ -1,8 +1,5 @@
 local nvim_lsp = require("lspconfig")
 
-local golang_capabilities = vim.lsp.protocol.make_client_capabilities()
-golang_capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 -- get function name in body of golang function
 function _G.get_cur_go_func_name()
 	-- get current line number
@@ -37,7 +34,11 @@ end
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
-	require("lsp_signature").on_attach(signature_setup, bufnr)
+	-- require("lsp-inlayhints").on_attach(client, bufnr)
+	require("lsp_signature").on_attach({
+		doc_lines = 1,
+		hint_prefix = "",
+	}, bufnr)
 	if client.supports_method("textDocument/formatting") then
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 		vim.api.nvim_create_autocmd("BufWritePre", {
@@ -72,7 +73,7 @@ local on_attach = function(client, bufnr)
 	local opts = { noremap = true, silent = true }
 	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "gv", "<cmd>Lspsaga peek_definition<CR>", opts)
+	-- buf_set_keymap("n", "gv", "<cmd>Lspsaga peek_definition<CR>", opts)
 	buf_set_keymap("n", "ga", "<cmd>Lspsaga code_action<CR>", opts)
 	-- -- coode action for extract function or variable
 	-- buf_set_keymap("v", "ga", "cmd>lua vim.lsp.bug.code_action()<CR>", opts)
@@ -192,15 +193,18 @@ require("mason-lspconfig").setup({
 
 local common_servers = {
 	"sqlls",
+	"jqls",
 	"jsonls",
 	"pyright",
 	"dockerls",
 	"bashls",
 	"vimls",
 	"yamlls",
+	"terraformls",
 }
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 for _, server in pairs(common_servers) do
 	-- https://www.reddit.com/r/neovim/comments/mm1h0t/lsp_diagnostics_remain_stuck_can_someone_please/
@@ -215,6 +219,7 @@ for _, server in pairs(common_servers) do
 end
 
 nvim_lsp.sumneko_lua.setup({
+	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = {
 		Lua = {
@@ -227,11 +232,15 @@ nvim_lsp.sumneko_lua.setup({
 				globals = { "vim", "hs" },
 			},
 			workspace = {
+				checkThirdParty = false,
 				-- Make the server aware of Neovim runtime files
 				library = {
 					vim.api.nvim_get_runtime_file("", true),
 					"/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/",
 				},
+			},
+			completion = {
+				callSnippet = "Replace",
 			},
 			-- Do not send telemetry data containing a randomized but unique identifier
 			telemetry = {
@@ -248,7 +257,7 @@ nvim_lsp.gopls.setup({
 		allow_incremental_sync = false,
 		debounce_text_changes = 500,
 	},
-	capabilities = golang_capabilities,
+	capabilities = capabilities,
 	settings = {
 		gopls = {
 			experimentalPostfixCompletions = true,

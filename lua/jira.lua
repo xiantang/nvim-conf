@@ -32,13 +32,14 @@ local parse_api_response = function(response)
 			return false, {}
 		end
 
+		local description_val = ""
 		local summary_val = ""
 		if issue.fields then
 			if issue.fields.summary then
 				summary_val = issue.fields.summary
 			end
 			if issue.fields.description then
-				local description_val = issue.fields.description
+				description_val = issue.fields.description
 			end
 		end
 
