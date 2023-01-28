@@ -34,7 +34,7 @@ function etract_value(mode)
 		vim.api.nvim_echo({ { "empty var", "WarningMsg" } }, true, {})
 		return
 	end
-	cmd = string.format(":lua require'nvim-treesitter.textobjects.select'.select_textobject('@parameter.inner')")
+	local cmd = string.format(":lua require'nvim-treesitter.textobjects.select'.select_textobject('@parameter.inner')")
 
 	vim.cmd(cmd)
 	vim.cmd('normal! "zy')
@@ -44,6 +44,7 @@ function etract_value(mode)
 	vim.cmd("normal! i" .. var)
 	--
 	local stored = vim.fn.getreg("z")
+	local newinfo = ""
 	if file_type == "go" then
 		newinfo = string.format("%s := %s ", var, stored)
 	elseif file_type == "lua" then
