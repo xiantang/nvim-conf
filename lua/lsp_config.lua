@@ -24,7 +24,10 @@ local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
 			-- apply whatever logic you want (in this example, we'll only use null-ls)
-			return client.name == "null-ls"
+			if client.name == "null-ls" or client.name == "awk_ls" then
+				return true
+			end
+			return false
 		end,
 		bufnr = bufnr,
 	})
@@ -180,6 +183,7 @@ require("mason").setup({
 })
 require("mason-lspconfig").setup({
 	ensure_installed = {
+		"awk_ls",
 		"sumneko_lua",
 		"sqlls",
 		"jsonls",
@@ -192,6 +196,7 @@ require("mason-lspconfig").setup({
 })
 
 local common_servers = {
+	"awk_ls",
 	"sqlls",
 	"jqls",
 	"jsonls",
