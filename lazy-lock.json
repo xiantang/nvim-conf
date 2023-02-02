@@ -68,5 +68,6 @@
   "vim-silicon": { "branch": "master", "commit": "4a93122ae2139a12e2a56f064d086c05160b6835" },
   "vim-startuptime": { "branch": "master", "commit": "cb4c112b9e0f224236ee4eab6bf5153406b3f88b" },
   "vim-wakatime": { "branch": "master", "commit": "413e9c4e44baaeb60beded33e26c37d9d22130b0" },
-  "which-key.nvim": { "branch": "main", "commit": "e4fa445065a2bb0bbc3cca85346b67817f28e83e" }
+  "which-key.nvim": { "branch": "main", "commit": "e4fa445065a2bb0bbc3cca85346b67817f28e83e" },
+  "winbar.nvim": { "branch": "main", "commit": "13739fdb31be51a1000486189662596f07a59a31" }
 }
