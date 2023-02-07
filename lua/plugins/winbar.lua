@@ -1,6 +1,6 @@
 return {
 	{
-		-- event = "VeryLazy",
+		event = "VeryLazy",
 		"fgheng/winbar.nvim",
 		config = function()
 			require("winbar").setup({
