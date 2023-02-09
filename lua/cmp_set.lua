@@ -66,6 +66,11 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 
+	experimental = {
+		ghost_text = true,
+		native_menu = false,
+	},
+
 	sources = {
 		{ name = "luasnip", priority = 100 },
 		{ name = "nvim_lsp", priority = 90 },
