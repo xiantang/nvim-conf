@@ -7,5 +7,10 @@ au BufRead,BufNewFile *.jq setfiletype jq
 au BufWritePost *.go silent! :lua go_org_imports()
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
-au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
 ]])
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+	pattern = { "*" },
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
