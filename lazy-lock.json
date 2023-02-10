@@ -18,6 +18,7 @@
   "fugitive-gitlab.vim": { "branch": "master", "commit": "b73a8e97de95d26280082abb7f51465a3d3b239e" },
   "fzf": { "branch": "master", "commit": "20230117636c9dfa3ed6f6428c5bc4c51b02f60a" },
   "fzf.vim": { "branch": "master", "commit": "bdf48c282ad2174c25c059b3cdb7956427b07a99" },
+  "git-blame.nvim": { "branch": "master", "commit": "17840d01f42ee308e1dbbcc2cde991297aee36c9" },
   "gitsigns.nvim": { "branch": "main", "commit": "addd6e174a85fc1c4007ab0b65d77e6555b417bf" },
   "go.nvim": { "branch": "master", "commit": "4030487864e90255bfbab12fa2f9b5ca13b5bef4" },
   "guihua.lua": { "branch": "master", "commit": "a55e30a8d5a44683eaeffbf3d06c39699a173954" },
