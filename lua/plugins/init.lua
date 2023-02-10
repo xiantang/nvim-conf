@@ -170,10 +170,6 @@ return {
 		end,
 	},
 	{
-		"ray-x/lsp_signature.nvim",
-		event = "VeryLazy",
-	},
-	{
 		"segeljakt/vim-silicon",
 		event = "VeryLazy",
 		config = function()
