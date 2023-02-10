@@ -17,12 +17,4 @@ return {
 			end
 		end,
 	},
-	{
-		event = "VeryLazy",
-		"f-person/git-blame.nvim",
-		config = function()
-			vim.g.gitblame_ignored_filetypes = { "gitcommit", "c" }
-			vim.g.gitblame_message_template = "<author> • <summary> • <date>"
-		end,
-	},
 }
