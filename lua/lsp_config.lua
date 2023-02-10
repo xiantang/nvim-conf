@@ -260,6 +260,7 @@ nvim_lsp.gopls.setup({
 	capabilities = capabilities,
 	settings = {
 		gopls = {
+			-- fix my pain point
 			usePlaceholders = true,
 			experimentalPostfixCompletions = true,
 			analyses = {
