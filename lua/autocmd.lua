@@ -11,6 +11,8 @@ au CursorHold,CursorHoldI * checktime
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	pattern = { "*" },
 	callback = function()
-		vim.highlight.on_yank()
+		vim.highlight.on_yank({
+			timeout = 300,
+		})
 	end,
 })
