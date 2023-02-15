@@ -20,12 +20,12 @@ function etract_value(mode)
 		end
 	end
 	if not supported then
-		ret = string.format("file type %s not supported", file_type)
+		local ret = string.format("file type %s not supported", file_type)
 		vim.api.nvim_echo({ { ret, "WarningMsg" } }, true, {})
 		return
 	end
 	if not queries.get_query(file_type, "textobjects") then
-		query = nil
+		local query = nil
 		vim.api.nvim_echo({ { "no textobjects query found", "WarningMsg" } }, true, {})
 		return
 	end
