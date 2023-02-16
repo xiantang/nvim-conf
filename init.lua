@@ -1,5 +1,7 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
+-- use Bold
+vim.o.guifont = "JetBrains Mono:h15"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local set = vim.o
