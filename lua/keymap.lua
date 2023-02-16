@@ -47,6 +47,10 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz:lua require('specs').show_specs()<CR>", { 
 vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>", {})
 vim.keymap.set("n", "<C-Right>", ":vertical resize -5<CR>", {})
 vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", {})
+
+-- term
+vim.keymap.set("n", "<C-;>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", { noremap = true, silent = true })
+vim.keymap.set("t", "<C-;>", "<C-\\><C-n><Cmd>exe v:count1 . 'ToggleTerm'<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-Down>", ":resize -5<CR>", {})
 vim.keymap.set("n", "0", "^", {})
 vim.keymap.set("n", "<Leader>q", ":wq<CR>", {})
