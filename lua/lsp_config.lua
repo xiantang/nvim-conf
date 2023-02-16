@@ -24,7 +24,10 @@ local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
 			-- apply whatever logic you want (in this example, we'll only use null-ls)
-			return client.name == "null-ls"
+			if client.name == "null-ls" or client.name == "awk_ls" then
+				return true
+			end
+			return false
 		end,
 		bufnr = bufnr,
 	})
@@ -34,11 +37,6 @@ end
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
-	-- require("lsp-inlayhints").on_attach(client, bufnr)
-	require("lsp_signature").on_attach({
-		doc_lines = 1,
-		hint_prefix = "",
-	}, bufnr)
 	if client.supports_method("textDocument/formatting") then
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 		vim.api.nvim_create_autocmd("BufWritePre", {
@@ -180,6 +178,7 @@ require("mason").setup({
 })
 require("mason-lspconfig").setup({
 	ensure_installed = {
+		"awk_ls",
 		"sumneko_lua",
 		"sqlls",
 		"jsonls",
@@ -192,6 +191,7 @@ require("mason-lspconfig").setup({
 })
 
 local common_servers = {
+	"awk_ls",
 	"sqlls",
 	"jqls",
 	"jsonls",
@@ -260,6 +260,8 @@ nvim_lsp.gopls.setup({
 	capabilities = capabilities,
 	settings = {
 		gopls = {
+			-- PAINPOINT
+			usePlaceholders = true,
 			experimentalPostfixCompletions = true,
 			analyses = {
 				unusedparams = true,

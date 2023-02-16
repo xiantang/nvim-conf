@@ -22,7 +22,8 @@ return {
 					disable = {},
 				},
 				indent = {
-					enable = true,
+					-- because it's buggy
+					enable = false,
 				},
 				select = {
 					enable = true,
