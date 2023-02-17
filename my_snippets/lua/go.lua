@@ -1,5 +1,6 @@
 local ls = require("luasnip")
 local fmt = require("luasnip.extras.fmt").fmt
+local postfix = require("luasnip.extras.postfix").postfix
 local i = ls.i
 
 local s = ls.s
@@ -16,6 +17,11 @@ local function same(index)
 end
 
 ls.add_snippets("go", {
+	postfix(".len", {
+		f(function(_, parent)
+			return "len(" .. parent.snippet.env.POSTFIX_MATCH .. ")"
+		end, {}),
+	}),
 	s(
 		"func",
 		fmt(
