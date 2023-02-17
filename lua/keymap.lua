@@ -1,4 +1,3 @@
-vim.keymap.set("n", "j", "gj", { noremap = true, silent = true })
 -- vim.cmd([[
 -- set softtabstop=4
 -- set tabstop=4
@@ -6,6 +5,7 @@ vim.keymap.set("n", "j", "gj", { noremap = true, silent = true })
 -- set expandtab
 -- set smartindent
 -- ]])
+vim.keymap.set("n", "j", "gj", { noremap = true, silent = true })
 vim.keymap.set("n", "k", "gk", { noremap = true, silent = true })
 vim.keymap.set("n", "o", "o", { noremap = true, silent = true })
 -- You can even bind it to search jumping and more, example:
