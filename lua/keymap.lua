@@ -1,4 +1,4 @@
-vim.keymap.set("n", "j", "gj", {})
+vim.keymap.set("n", "j", "gj", { noremap = true, silent = true })
 -- vim.cmd([[
 -- set softtabstop=4
 -- set tabstop=4
@@ -6,8 +6,8 @@ vim.keymap.set("n", "j", "gj", {})
 -- set expandtab
 -- set smartindent
 -- ]])
-vim.keymap.set("n", "k", "gk", {})
-vim.keymap.set("n", "o", "o", {})
+vim.keymap.set("n", "k", "gk", { noremap = true, silent = true })
+vim.keymap.set("n", "o", "o", { noremap = true, silent = true })
 -- You can even bind it to search jumping and more, example:
 vim.api.nvim_set_keymap("n", "n", 'n:lua require("specs").show_specs()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "N", 'N:lua require("specs").show_specs()<CR>', { noremap = true, silent = true })
