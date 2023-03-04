@@ -4,6 +4,11 @@ string.startswith = function(self, str)
 	return self:find("^" .. str) ~= nil
 end
 function RecentlySeesion()
+	if vim.g.neovide then
+		-- Put anything you want to happen only in Neovide here
+		require("persistence").load({ last = true })
+		return
+	end
 	-- get parameters from nvim start commands
 	local args = vim.api.nvim_get_vvar("argv")
 	if #args > 1 then
