@@ -155,7 +155,7 @@ if not lsp_configs.golangcilsp then
 					"run",
 					"--enable-all",
 					"--disable",
-					"lll",
+					"typecheck",
 					"--out-format",
 					"json",
 					"--issues-exit-code=1",
