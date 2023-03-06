@@ -187,7 +187,7 @@ return {
 		end,
 	},
 	{ "ray-x/go.nvim", event = "VeryLazy" },
-	{ "p00f/nvim-ts-rainbow", event = "VeryLazy" },
+	{ "mrjones2014/nvim-ts-rainbow", event = "VeryLazy" },
 	{ "ray-x/guihua.lua", event = "VeryLazy" },
 	{
 		"petertriho/nvim-scrollbar",
