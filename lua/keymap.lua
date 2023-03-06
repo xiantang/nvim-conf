@@ -83,6 +83,10 @@ vim.keymap.set("n", "<Leader>P", ":Telescope live_grep<CR>", {})
 vim.keymap.set("n", "<Leader>Q", ':lua require("start").Stop()<CR>', {})
 vim.keymap.set("", "s", [[<Cmd>lua require('hop').hint_words()<CR>]], {})
 vim.keymap.set("n", "gs", ":HopWordMW<CR>", {})
+
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "gt", "<Cmd>BufferNext<CR>", opts)
+vim.keymap.set("n", "gt", "<Cmd>BufferPrevious<CR>", opts)
 vim.cmd([[
 "ctrl A to  move to line start when in command mode like in iterm2
 "ctrl E to move to line end when in command mode like in iterm2
