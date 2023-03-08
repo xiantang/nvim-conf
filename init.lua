@@ -67,8 +67,6 @@ vim.cmd.cnoreabbrev([[git Git]])
 vim.cmd.cnoreabbrev([[gp Git push]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
 vim.cmd.cnoreabbrev([[lazy Lazy]])
-vim.cmd([[
-				hi! link TSVariable Normal
-]])
+vim.api.nvim_set_hl(0, "TSVariable", { link = "Normal" })
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
