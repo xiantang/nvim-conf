@@ -16,7 +16,7 @@ vim.o.guifont = "JetBrains Mono:h15"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local set = vim.o
-vim.cmd([[set noswapfile]])
+vim.opt.swapfile = false
 set.number = true
 set.relativenumber = true
 set.autoread = true
