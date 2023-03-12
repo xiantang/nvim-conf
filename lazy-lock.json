@@ -25,7 +25,7 @@
   "im-select.nvim": { "branch": "master", "commit": "2300c31be9e3071789b8d864d846b63f265f983d" },
   "indent-blankline.nvim": { "branch": "master", "commit": "c4c203c3e8a595bc333abaf168fcb10c13ed5fb7" },
   "lazy.nvim": { "branch": "main", "commit": "c389ad552bd5c2050783ac6cd6e54f5fbba3c7bc" },
-  "lsp-lens.nvim": { "branch": "main", "commit": "24f835c04d807a3c3204b5b4f32b34fdcdf857cf" },
+  "lsp-lens.nvim": { "branch": "main", "commit": "c544be7b73d2bf23760f3f3e45196c14ac7d2361" },
   "lspkind.nvim": { "branch": "master", "commit": "c68b3a003483cf382428a43035079f78474cd11e" },
   "lspsaga.nvim": { "branch": "main", "commit": "b7b4777369b441341b2dcd45c738ea4167c11c9e" },
   "lualine-copilot": { "branch": "main", "commit": "94c14f6d2b68534288476118b0d9f8f7027c2b6a" },
