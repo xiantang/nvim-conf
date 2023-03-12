@@ -66,7 +66,6 @@ require("lazy").setup("plugins", {
 
 vim.cmd.colorscheme("base16-tender")
 require("start")
-require("nerdtree")
 vim.cmd.cnoreabbrev([[git Git]])
 vim.cmd.cnoreabbrev([[gp Git push]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
