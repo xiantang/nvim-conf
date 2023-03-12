@@ -4,6 +4,7 @@ return {
 		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind", "NerdSmartLocated" },
 		keys = {
 			{ "<leader>l", ":lua NerdSmartLocated()<CR>", desc = "smart location" },
+			{ "<leader>t", ":NERDTreeToggle<CR>", desc = "toggle" },
 		},
 
 		config = function()
