@@ -109,22 +109,6 @@ return {
 		end,
 	},
 	{
-		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter", "CmdlineEnter" },
-		config = function()
-			require("cmp_set")
-			local source = require("jira")
-			require("cmp").register_source("cmp_jira", source.new({}))
-			require("go_test")
-		end,
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-path",
-			"saadparwaiz1/cmp_luasnip",
-		},
-	},
-	{
 		"stevearc/profile.nvim",
 		event = "VeryLazy",
 		config = function()
