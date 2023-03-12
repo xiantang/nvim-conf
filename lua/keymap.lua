@@ -118,7 +118,6 @@ end
 
 vim.keymap.set("n", "<C-e>", ":lua search_file_from_bookmarks()<CR>", { silent = true })
 vim.keymap.set("n", "<C-q>", ":Telescope oldfiles<CR>", {})
-vim.keymap.set("n", "<Leader>l", ":lua NerdSmartLocated()<CR>", {})
 vim.cmd([[
 nnoremap <Leader>[  <C-O>
 nnoremap <Leader>]  <C-I>

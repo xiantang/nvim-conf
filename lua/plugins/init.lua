@@ -386,25 +386,6 @@ endif
 ]])
 		end,
 	},
-	{
-		"preservim/nerdtree",
-		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind", "NerdSmartLocated" },
-		config = function()
-			vim.cmd([[
-	let NERDTreeShowBookmarks=1
-	let NERDTreeShowHidden=1
-	let g:NERDTreeChDirMode = 2
-	" width"
-	let g:NERDTreeWinSize = 25
-	" mini 
-	let g:NERDTreeMinimalMenu=1
-
-
-	let g:vim_markdown_folding_disabled = 1
-	]])
-		end,
-		dependencies = "Xuyuanp/nerdtree-git-plugin",
-	},
 	{ "Xuyuanp/nerdtree-git-plugin", event = "VeryLazy" },
 	{ "junegunn/fzf", event = "VeryLazy" },
 	{ "junegunn/fzf.vim", event = "VeryLazy" },
