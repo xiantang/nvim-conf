@@ -16,6 +16,13 @@ return {
 			require("lsp_config")
 		end,
 	},
+	{
+		"VidocqH/lsp-lens.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("lsp-lens").setup()
+		end,
+	},
 	{ "williamboman/mason.nvim", event = "VeryLazy" },
 	{ "williamboman/mason-lspconfig.nvim", event = "VeryLazy" },
 	{ "glepnir/lspsaga.nvim", commit = "b7b4777", event = "VeryLazy" },
