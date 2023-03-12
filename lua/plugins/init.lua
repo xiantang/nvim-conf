@@ -269,13 +269,6 @@ return {
 	{ "tpope/vim-rhubarb", event = "VeryLazy" },
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{
-		"jose-elias-alvarez/null-ls.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("null")
-		end,
-	},
-	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		event = "VeryLazy",
 		commit = "a60af980b6f0a6e7ee239ffb9d1d519aaaa1de58",
