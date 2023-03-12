@@ -1,5 +1,12 @@
 return {
 	{
+		"folke/neodev.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("neodev").setup({})
+		end,
+	},
+	{
 		"xiantang/nvim-lspconfig",
 		event = "BufRead",
 		-- use commit
