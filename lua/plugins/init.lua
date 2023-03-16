@@ -66,14 +66,6 @@ return {
 		end,
 	},
 	{
-		"numToStr/Navigator.nvim",
-		event = "VeryLazy",
-		-- master
-		config = function()
-			require("Navigator").setup({})
-		end,
-	},
-	{
 		"kylechui/nvim-surround",
 		event = "VeryLazy",
 		config = function()
@@ -93,64 +85,12 @@ return {
 		end,
 	},
 	{
-		"simrat39/symbols-outline.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("symbols-outline").setup()
-		end,
-	},
-	{
-		"petertriho/nvim-scrollbar",
-		event = "VeryLazy",
-		config = function()
-			require("scrollbar.handlers.gitsigns").setup()
-			require("scrollbar").setup({
-				set_highlights = true,
-				marks = {
-					GitAdd = {
-						text = "│",
-						priority = 5,
-						color = "green",
-						cterm = nil,
-					},
-					GitChange = {
-						text = "│",
-						priority = 5,
-						color = "yellow",
-						cterm = nil,
-					},
-					GitDelete = {
-						text = "_",
-						priority = 5,
-						color = "red",
-						cterm = nil,
-					},
-				},
-			})
-		end,
-	},
-	{
 		"jinh0/eyeliner.nvim",
 		event = "VeryLazy",
 		config = function()
 			require("eyeliner").setup({
 				highlight_on_key = true,
 			})
-		end,
-	},
-	{
-		"leoluz/nvim-dap-go",
-		event = "VeryLazy",
-		config = function()
-			require("dap-go").setup()
-		end,
-	},
-	{ "rcarriga/nvim-dap-ui", event = "VeryLazy" },
-	{
-		event = "VeryLazy",
-		"mfussenegger/nvim-dap",
-		config = function()
-			require("dap_set")
 		end,
 	},
 	{ "romainl/vim-cool", event = "VeryLazy" },
@@ -213,24 +153,6 @@ return {
 			]])
 		end,
 	},
-	{ "ryanoasis/vim-devicons", event = "VeryLazy" },
-	{ "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
-	{
-		"L3MON4D3/LuaSnip",
-		commit = "79f647218847b1cd204fede7dd89025e43fd00c3",
-		event = "InsertEnter",
-		config = function()
-			require("luasnip.loaders.from_vscode").load({
-				include = { "go", "python", "sh", "json", "lua", "gitcommit", "sql" },
-			})
-			require("luasnip.loaders.from_vscode").lazy_load({ paths = { "/Users/jingdizhu/.config/nvim/my_snippets" } })
-			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/my_snippets/lua/" })
-			require("go").setup({})
-		end,
-		dependencies = {
-			"rafamadriz/friendly-snippets",
-		},
-	},
 	-- lock_use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
 	{
 		"glacambre/firenvim",
@@ -289,7 +211,6 @@ endif
 						]])
 		end,
 	},
-	{ "michaelb/sniprun", event = "VeryLazy", build = "bash ./install.sh" },
 	{
 		"numToStr/Comment.nvim",
 		event = "VeryLazy",
