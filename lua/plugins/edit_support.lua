@@ -1,4 +1,13 @@
 return {
+	{ "romainl/vim-cool", event = "VeryLazy" },
+	{
+		event = "VeryLazy",
+		"andymass/vim-matchup",
+		config = function()
+			-- may set any options here
+			vim.g.matchup_matchparen_offscreen = { method = "popup" }
+		end,
+	},
 	{
 		"folke/neodev.nvim",
 		event = "VeryLazy",
