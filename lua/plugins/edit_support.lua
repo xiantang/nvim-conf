@@ -1,5 +1,13 @@
 return {
 	{
+		"folke/neodev.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("neodev").setup({})
+		end,
+	},
+	{ "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
+	{
 		"numToStr/Comment.nvim",
 		event = "VeryLazy",
 		config = function()

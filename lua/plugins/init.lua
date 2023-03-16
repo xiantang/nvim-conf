@@ -7,20 +7,6 @@ return {
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 		end,
 	},
-	-- {
-	-- 	"/Users/jingdizhu/project/comby.nvim",
-	-- 	config = function()
-	-- 		require("plugin_name").setup()
-	-- 	end,
-	-- 	dependencies = { "nvim-lua/plenary.nvim" },
-	-- },
-	-- {
-	-- 	"/Users/jingdizhu/project/extract-value.nvim",
-	-- 	config = function()
-	-- 		require("extract_variable").setup()
-	-- 	end,
-	-- 	require = { "nvim-treesitter/nvim-treesitter-textobjects" },
-	-- },
 	{
 		event = "VeryLazy",
 		"folke/persistence.nvim",
@@ -57,15 +43,6 @@ return {
 		end,
 	},
 	{
-		"kylechui/nvim-surround",
-		event = "VeryLazy",
-		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
-		end,
-	},
-	{
 		"segeljakt/vim-silicon",
 		event = "VeryLazy",
 		config = function()
@@ -76,56 +53,4 @@ return {
 		end,
 	},
 	{ "romainl/vim-cool", event = "VeryLazy" },
-	{ "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
-	{
-		"folke/neodev.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("neodev").setup({})
-		end,
-	},
-	{
-		"mbbill/undotree",
-		config = function()
-			vim.cmd([[
-			" buff enter"
-			function Undotree_record() abort
-			if has("persistent_undo")
-				 let target_path = expand('~/.undodir')
-					" create the directory and any parent directories
-					" if the location does not exist.
-					if !isdirectory(target_path)
-							call mkdir(target_path, "p", 0700)
-					endif
-
-					let &undodir=target_path
-					set undofile
-			endif
-			endfunction
-			let g:undotree_WindowLayout = 3
-			autocmd BufEnter * call Undotree_record()
-			]])
-		end,
-	},
-	-- lock_use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
-	{
-		"github/copilot.vim",
-		event = "VeryLazy",
-		config = function()
-			vim.cmd([[
-				let g:copilot_enable = 1
-				let g:copilot_filetypes = {
-						\ '*': v:true,
-						\ 'markdown':v:true,
-						\ 'yaml': v:true,
-						\ 'go': v:false,
-						\ 'lua': v:true,
-						\ 'gitcommit': v:true,
-						\ "TelescopePrompt": v:false,
-							\ }
-
-				" imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
-						]])
-		end,
-	},
 }
