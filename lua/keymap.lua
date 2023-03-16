@@ -145,7 +145,7 @@ project_picker = function(opts)
         actions.close(prompt_bufnr)
         local selection = action_state.get_selected_entry()
         -- print(vim.inspect(selection))
-				vim.cmd("NERDTree " .. selection.value)
+				vim.cmd("NERDTree " .. selection.value .. "| wincmd p")
       end)
       return true
     end,
