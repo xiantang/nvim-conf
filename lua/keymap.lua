@@ -58,7 +58,7 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>", {})
 vim.keymap.set("n", "<C-Right>", ":vertical resize -5<CR>", {})
 vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", {})
 
--- term
+-- termkey
 vim.keymap.set("n", "<C-;>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opt)
 vim.keymap.set("t", "<C-;>", "<C-\\><C-n><Cmd>exe v:count1 . 'ToggleTerm'<CR>", opt)
 vim.keymap.set("n", "<C-Down>", ":resize -5<CR>", {})
@@ -116,8 +116,45 @@ function search_file_from_bookmarks()
 	})
 end
 
-vim.keymap.set("n", "<C-e>", ":lua search_file_from_bookmarks()<CR>", { silent = true })
 vim.keymap.set("n", "<C-q>", ":Telescope oldfiles<CR>", {})
+local pickers = require "telescope.pickers"
+local finders = require "telescope.finders"
+local conf = require("telescope.config").values
+local actions = require "telescope.actions"
+local action_state = require "telescope.actions.state"
+
+project_picker = function(opts)
+	local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
+	local choices = {}
+
+	for i, bookmark in ipairs(bookmarks) do
+		local path = vim.split(bookmark, " ")[2]
+		if path ~= nil then
+			table.insert(choices, path)
+		end
+	end
+  opts = opts or {}
+  pickers.new(opts, {
+    prompt_title = "project",
+    finder = finders.new_table {
+      results = choices
+    },
+    sorter = conf.generic_sorter(opts),
+    attach_mappings = function(prompt_bufnr, map)
+      actions.select_default:replace(function()
+        actions.close(prompt_bufnr)
+        local selection = action_state.get_selected_entry()
+        -- print(vim.inspect(selection))
+				vim.cmd("NERDTree " .. selection.value)
+      end)
+      return true
+    end,
+  }):find()
+end
+
+-- to execute the function
+-- bind to a key
+vim.keymap.set("n", "<C-e>", ":lua project_picker(require('telescope.themes').get_dropdown{})<CR>", { silent = true })
 vim.cmd([[
 nnoremap <Leader>[  <C-O>
 nnoremap <Leader>]  <C-I>
