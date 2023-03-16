@@ -66,37 +66,11 @@ return {
 		end,
 	},
 	{
-		event = "VeryLazy",
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup()
-		end,
-	},
-	{
 		"numToStr/Navigator.nvim",
 		event = "VeryLazy",
 		-- master
 		config = function()
 			require("Navigator").setup({})
-		end,
-	},
-	-- git related
-	{
-		"rhysd/conflict-marker.vim",
-		event = "VeryLazy",
-		config = function()
-			vim.cmd([[
-      let g:conflict_marker_highlight_group = ''
-      " Include text after begin and end markers
-      let g:conflict_marker_begin = '^<<<<<<< .*$'
-      let g:conflict_marker_end   = '^>>>>>>> .*$'
-
-      highlight ConflictMarkerBegin guibg=#2f7366
-      highlight ConflictMarkerOurs guibg=#2e5049
-      highlight ConflictMarkerTheirs guibg=#344f69
-      highlight ConflictMarkerEnd guibg=#2f628e
-      highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
-		]])
 		end,
 	},
 	{
@@ -147,9 +121,6 @@ return {
 			require("symbols-outline").setup()
 		end,
 	},
-	{ "ray-x/go.nvim", event = "VeryLazy" },
-	{ "mrjones2014/nvim-ts-rainbow", event = "VeryLazy" },
-	{ "ray-x/guihua.lua", event = "VeryLazy" },
 	{
 		"petertriho/nvim-scrollbar",
 		event = "VeryLazy",

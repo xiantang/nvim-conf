@@ -36,4 +36,6 @@ return {
 			})
 		end,
 	},
+	{ "mrjones2014/nvim-ts-rainbow", event = "VeryLazy" },
+	{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
 }
