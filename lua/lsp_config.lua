@@ -250,7 +250,8 @@ nvim_lsp.sumneko_lua.setup({
 })
 
 nvim_lsp.gopls.setup({
-	cmd = { "gopls" },
+	-- debug gopls
+	cmd = { "gopls", "-rpc.trace", "serve", "--debug=localhost:6060" },
 	-- for postfix snippets and analyzers
 	flags = {
 		allow_incremental_sync = false,

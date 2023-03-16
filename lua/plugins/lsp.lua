@@ -53,4 +53,13 @@ return {
 	{ "williamboman/mason-lspconfig.nvim", event = "VeryLazy" },
 	{ "glepnir/lspsaga.nvim", commit = "b7b4777", event = "VeryLazy" },
 	{ "onsails/lspkind.nvim", event = "VeryLazy" },
+	{
+		event = "VeryLazy",
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup()
+		end,
+	},
+	{ "ray-x/go.nvim", event = "VeryLazy" },
+	{ "ray-x/guihua.lua", event = "VeryLazy" },
 }

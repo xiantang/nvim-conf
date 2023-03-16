@@ -1,4 +1,5 @@
 return {
+	{ "Xuyuanp/nerdtree-git-plugin", event = "VeryLazy" },
 	{
 		"preservim/nerdtree",
 		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind", "NerdSmartLocated" },
