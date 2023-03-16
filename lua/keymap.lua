@@ -94,7 +94,7 @@ project_picker = function(opts)
 	opts = opts or {}
 	pickers
 		.new(opts, {
-			prompt_title = "project",
+			prompt_title = "Jump Between Projects",
 			finder = finders.new_table({
 				results = choices,
 			}),
