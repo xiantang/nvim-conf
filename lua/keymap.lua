@@ -5,51 +5,32 @@
 -- set expandtab
 -- set smartindent
 -- ]])
-vim.keymap.set("n", "j", "gj", { noremap = true, silent = true })
-vim.keymap.set("n", "k", "gk", { noremap = true, silent = true })
-vim.keymap.set("n", "o", "o", { noremap = true, silent = true })
+local opt = { noremap = true, silent = true }
+vim.keymap.set("n", "j", "gj", opt)
+vim.keymap.set("n", "k", "gk", opt)
+vim.keymap.set("n", "o", "o", opt)
 -- You can even bind it to search jumping and more, example:
-vim.api.nvim_set_keymap("n", "n", 'n:lua require("specs").show_specs()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "N", 'N:lua require("specs").show_specs()<CR>', { noremap = true, silent = true })
-vim.keymap.set("n", "c", "c", {})
-vim.keymap.set("n", "r", "r", {})
-vim.keymap.set("n", "q", "q", {})
+vim.api.nvim_set_keymap("n", "n", 'n:lua require("specs").show_specs()<CR>', opt)
+vim.api.nvim_set_keymap("n", "N", 'N:lua require("specs").show_specs()<CR>', opt)
+vim.keymap.set("n", "c", "c", opt)
+vim.keymap.set("n", "r", "r", opt)
+vim.keymap.set("n", "q", "q", opt)
 -- vim.keymap.set("n", "n ", "nzzzv")
 -- vim.keymap.set("n", "N ", "Nzzzv")
 if vim.g.neovide then
-	vim.keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>", { noremap = true, silent = true })
-	vim.keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>", { noremap = true, silent = true })
-	vim.keymap.set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>", { noremap = true, silent = true })
-	vim.keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>", { noremap = true, silent = true })
-	vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
-	vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+	vim.keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>", opt)
+	vim.keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>", opt)
+	vim.keymap.set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>", opt)
+	vim.keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>", opt)
+	vim.keymap.set("n", "<C-d>", "<C-d>zz", opt)
+	vim.keymap.set("n", "<C-u>", "<C-u>zz", opt)
 else
-	vim.keymap.set(
-		{ "n", "t" },
-		"<C-h>",
-		"<CMD>NavigatorLeft<CR>:lua require('specs').show_specs()<CR>",
-		{ noremap = true, silent = true }
-	)
-	vim.keymap.set(
-		{ "n", "t" },
-		"<C-l>",
-		"<CMD>NavigatorRight<CR>:lua require('specs').show_specs()<CR>",
-		{ noremap = true, silent = true }
-	)
-	vim.keymap.set(
-		{ "n", "t" },
-		"<C-k>",
-		"<CMD>NavigatorUp<CR>:lua require('specs').show_specs()<CR>",
-		{ noremap = true, silent = true }
-	)
-	vim.keymap.set(
-		{ "n", "t" },
-		"<C-j>",
-		"<CMD>NavigatorDown<CR>:lua require('specs').show_specs()<CR>",
-		{ noremap = true, silent = true }
-	)
-	vim.keymap.set("n", "<C-d>", "<C-d>zz:lua require('specs').show_specs()<CR>", { noremap = true, silent = true })
-	vim.keymap.set("n", "<C-u>", "<C-u>zz:lua require('specs').show_specs()<CR>", { noremap = true, silent = true })
+	vim.keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>:lua require('specs').show_specs()<CR>", opt)
+	vim.keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>:lua require('specs').show_specs()<CR>", opt)
+	vim.keymap.set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>:lua require('specs').show_specs()<CR>", opt)
+	vim.keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>:lua require('specs').show_specs()<CR>", opt)
+	vim.keymap.set("n", "<C-d>", "<C-d>zz:lua require('specs').show_specs()<CR>", opt)
+	vim.keymap.set("n", "<C-u>", "<C-u>zz:lua require('specs').show_specs()<CR>", opt)
 end
 -- vim.api.nvim_set_keymap("n", "m", "mM", { silent = true })
 -- vim.api.nvim_set_keymap("n", "M", "`M", { silent = true })
@@ -57,15 +38,14 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>", {})
 vim.keymap.set("n", "<C-Right>", ":vertical resize -5<CR>", {})
 vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", {})
 
--- term
-vim.keymap.set("n", "<C-;>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", { noremap = true, silent = true })
-vim.keymap.set("t", "<C-;>", "<C-\\><C-n><Cmd>exe v:count1 . 'ToggleTerm'<CR>", { noremap = true, silent = true })
+-- termkey
+vim.keymap.set("n", "<C-;>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opt)
+vim.keymap.set("t", "<C-;>", "<C-\\><C-n><Cmd>exe v:count1 . 'ToggleTerm'<CR>", opt)
 vim.keymap.set("n", "<C-Down>", ":resize -5<CR>", {})
 vim.keymap.set("n", "0", "^", {})
 vim.keymap.set("n", "<Leader>q", ":wq<CR>", {})
 vim.keymap.set("n", "<Leader>gs", ":Git<CR>", {})
 vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", {})
-vim.keymap.set("n", "<Leader>t", ":NERDTreeToggle<CR>", {})
 vim.keymap.set("n", "<Leader>ss", ":source ~/.config/nvim/init.vim<CR>", {})
 vim.keymap.set("n", "<Leader>s", ":sp<CR>", { desc = "[S]plit window" })
 vim.keymap.set("n", "<Leader>v", ":vsp<CR>", { desc = "[V]ertically [S]plit window" })
@@ -78,11 +58,12 @@ vim.keymap.set("n", "<Leader>ut", ":UndotreeToggle<CR>", {})
 vim.keymap.set("n", "tt", ":GenReturn<CR>0", {})
 vim.keymap.set("n", "K", "k", {})
 vim.keymap.set("n", "<Leader>p", ":Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>", {})
-vim.api.nvim_set_keymap("n", "<space>fb", ":Telescope file_browser<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<space>fb", ":Telescope file_browser<CR>", opt)
 vim.keymap.set("n", "<Leader>P", ":Telescope live_grep<CR>", {})
 vim.keymap.set("n", "<Leader>Q", ':lua require("start").Stop()<CR>', {})
 vim.keymap.set("", "s", [[<Cmd>lua require('hop').hint_words()<CR>]], {})
 vim.keymap.set("n", "gs", ":HopWordMW<CR>", {})
+
 vim.cmd([[
 "ctrl A to  move to line start when in command mode like in iterm2
 "ctrl E to move to line end when in command mode like in iterm2
@@ -93,7 +74,14 @@ nnoremap <D-v> "+p
 cnoremap <D-v> <c-r>+
 ]])
 
-function search_file_from_bookmarks()
+vim.keymap.set("n", "<C-q>", ":Telescope oldfiles<CR>", {})
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local conf = require("telescope.config").values
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+
+project_picker = function(opts)
 	local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
 	local choices = {}
 
@@ -103,21 +91,47 @@ function search_file_from_bookmarks()
 			table.insert(choices, path)
 		end
 	end
-	-- use telescope to select a bookmark and open it
-	-- put into
-	local actions = require("telescope.actions")
-	require("telescope.builtin").find_files({
-		-- exclude png files
-		file_ignore_patterns = { "*.png", "*.ttf", ".git" },
-		search_dirs = choices,
-		-- show hidden files
-		hidden = true,
-	})
+	opts = opts or {}
+	pickers
+		.new(opts, {
+			prompt_title = "Jump Between Projects",
+			finder = finders.new_table({
+				results = choices,
+			}),
+			sorter = conf.generic_sorter(opts),
+			attach_mappings = function(prompt_bufnr, map)
+				actions.select_default:replace(function()
+					actions.close(prompt_bufnr)
+					local selection = action_state.get_selected_entry()
+					-- print(vim.inspect(selection))
+					require("telescope.builtin").find_files({
+						-- exclude png files
+						file_ignore_patterns = { "*.png", "*.ttf", ".git" },
+						search_dirs = { selection.value },
+						-- show hidden files
+						hidden = true,
+						attach_mappings = function(prompt_bufnr, map)
+							actions.select_default:replace(function()
+								actions.close(prompt_bufnr)
+								local selection = action_state.get_selected_entry()
+								-- print(vim.inspect(selection))
+								vim.cmd("e " .. selection.value)
+								vim.cmd("NerdSmartLocated")
+								vim.cmd("wincmd p")
+							end)
+							return true
+						end,
+					})
+				end)
+				return true
+			end,
+		})
+		:find()
 end
 
-vim.keymap.set("n", "<C-e>", ":lua search_file_from_bookmarks()<CR>", { silent = true })
-vim.keymap.set("n", "<C-q>", ":Telescope oldfiles<CR>", {})
-vim.keymap.set("n", "<Leader>l", ":lua NerdSmartLocated()<CR>", {})
+-- to execute the function
+-- bind to a key
+vim.keymap.set("n", "<C-e>", ":lua project_picker(require('telescope.themes').get_dropdown{})<CR>", { silent = true })
 vim.cmd([[
 nnoremap <Leader>[  <C-O>
 nnoremap <Leader>]  <C-I>
@@ -134,7 +148,7 @@ vim.keymap.set("n", "gd", function()
 	else
 		return "gd"
 	end
-end, { noremap = false, expr = true })
+end, opt)
 
 vim.keymap.set("n", "<Leader>gr", function()
 	if require("obsidian").util.cursor_on_markdown_link() then

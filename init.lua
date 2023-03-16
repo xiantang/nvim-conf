@@ -16,7 +16,7 @@ vim.o.guifont = "JetBrains Mono:h15"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local set = vim.o
-vim.cmd([[set noswapfile]])
+vim.opt.swapfile = false
 set.number = true
 set.relativenumber = true
 set.autoread = true
@@ -56,19 +56,19 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	{ import = "plugins" },
+require("lazy").setup("plugins", {
+	dev = {
+		path = "~/project/nvimplugin/",
+		patterns = {}, -- For example {"folke"}
+		fallback = true, -- Fallback to git when local plugin doesn't exist
+	},
 })
 
 vim.cmd.colorscheme("base16-tender")
 require("start")
-require("nerdtree")
 vim.cmd.cnoreabbrev([[git Git]])
 vim.cmd.cnoreabbrev([[gp Git push]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
-vim.cmd.cnoreabbrev([[lazy Lazy]])
-vim.cmd([[
-				hi! link TSVariable Normal
-]])
+vim.api.nvim_set_hl(0, "TSVariable", { link = "Normal" })
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true

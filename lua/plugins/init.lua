@@ -8,7 +8,6 @@ return {
 			require("hop").setup({ keys = "dfgjkalwertyuizxcnm" })
 		end,
 	},
-
 	{
 		event = "VeryLazy",
 		"andymass/vim-matchup",
@@ -39,23 +38,6 @@ return {
 				dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
 				options = { "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
 			})
-		end,
-	},
-	{
-		"xiantang/nvim-lspconfig",
-		event = "BufRead",
-		-- use commit
-		dependencies = {
-			"j-hui/fidget.nvim",
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"glepnir/lspsaga.nvim",
-			"onsails/lspkind.nvim",
-			-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-			"folke/neodev.nvim",
-		},
-		config = function()
-			require("lsp_config")
 		end,
 	},
 	{
@@ -90,10 +72,6 @@ return {
 			require("fidget").setup()
 		end,
 	},
-	{ "williamboman/mason.nvim", event = "VeryLazy" },
-	{ "williamboman/mason-lspconfig.nvim", event = "VeryLazy" },
-	{ "glepnir/lspsaga.nvim", commit = "b7b4777", event = "VeryLazy" },
-	{ "onsails/lspkind.nvim", event = "VeryLazy" },
 	{
 		"numToStr/Navigator.nvim",
 		event = "VeryLazy",
@@ -129,23 +107,6 @@ return {
 				-- Configuration here, or leave empty to use defaults
 			})
 		end,
-	},
-	{
-		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter", "CmdlineEnter" },
-		config = function()
-			require("cmp_set")
-			local source = require("jira")
-			require("cmp").register_source("cmp_jira", source.new({}))
-			require("go_test")
-		end,
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-path",
-			"saadparwaiz1/cmp_luasnip",
-		},
 	},
 	{
 		"stevearc/profile.nvim",
@@ -308,13 +269,6 @@ return {
 	{ "tpope/vim-rhubarb", event = "VeryLazy" },
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{
-		"jose-elias-alvarez/null-ls.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("null")
-		end,
-	},
-	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		event = "VeryLazy",
 		commit = "a60af980b6f0a6e7ee239ffb9d1d519aaaa1de58",
@@ -431,25 +385,6 @@ endif
 
 ]])
 		end,
-	},
-	{
-		"preservim/nerdtree",
-		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind", "NerdSmartLocated" },
-		config = function()
-			vim.cmd([[
-	let NERDTreeShowBookmarks=1
-	let NERDTreeShowHidden=1
-	let g:NERDTreeChDirMode = 2
-	" width"
-	let g:NERDTreeWinSize = 25
-	" mini 
-	let g:NERDTreeMinimalMenu=1
-
-
-	let g:vim_markdown_folding_disabled = 1
-	]])
-		end,
-		dependencies = "Xuyuanp/nerdtree-git-plugin",
 	},
 	{ "Xuyuanp/nerdtree-git-plugin", event = "VeryLazy" },
 	{ "junegunn/fzf", event = "VeryLazy" },

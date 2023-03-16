@@ -15,8 +15,7 @@ function _G.get_cur_go_func_name()
 			return nil
 		end
 	end
-	local func_name = string.match(line_str, "func%s+([%w_]+)")
-	return func_name
+	return string.match(line_str, "func%s+([%w_]+)")
 end
 
 -- Avoiding LSP formatting conflicts https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts#neovim-08
@@ -155,7 +154,7 @@ if not lsp_configs.golangcilsp then
 					"run",
 					"--enable-all",
 					"--disable",
-					"lll",
+					"typecheck",
 					"--out-format",
 					"json",
 					"--issues-exit-code=1",
