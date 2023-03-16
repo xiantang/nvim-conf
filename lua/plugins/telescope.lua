@@ -64,4 +64,7 @@ return {
 			end
 		end,
 	},
+	{ "junegunn/fzf", event = "VeryLazy" },
+	{ "junegunn/fzf.vim", event = "VeryLazy" },
+	{ "nvim-lua/plenary.nvim", event = "VeryLazy" },
 }

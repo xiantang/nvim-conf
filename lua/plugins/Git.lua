@@ -1,4 +1,5 @@
 return {
+	{ "tpope/vim-rhubarb", event = "VeryLazy" },
 	{
 		event = "VeryLazy",
 		"tpope/vim-fugitive",
