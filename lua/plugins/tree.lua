@@ -9,7 +9,6 @@ return {
 
 		config = function()
 			vim.cmd([[
-				let NERDTreeShowBookmarks=1
 				let NERDTreeShowHidden=1
 				let g:NERDTreeChDirMode = 2
 				" width"
@@ -58,8 +57,7 @@ return {
 				vim.cmd("normal zz")
 			end
 			-- create a cmd for this
-			vim.cmd('command NerdSmartLocated lua NerdSmartLocated()')
-
+			vim.cmd("command NerdSmartLocated lua NerdSmartLocated()")
 		end,
 		dependencies = "Xuyuanp/nerdtree-git-plugin",
 	},
