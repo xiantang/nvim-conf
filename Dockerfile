@@ -23,6 +23,5 @@ RUN cd /root/TMP/neovim && git checkout stable && make -j4 && make install
 COPY ./ /root/.config/nvim/
 
 # Install Neovim extensions.
-RUN nvim --headless "+Lazy! restore" +qa
-#
+RUN nvim --headless "+Lazy! restore" +qa || exit 0
 RUN touch /root/.NERDTreeBookmarks
