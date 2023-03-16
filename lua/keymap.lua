@@ -74,28 +74,6 @@ nnoremap <D-v> "+p
 cnoremap <D-v> <c-r>+
 ]])
 
-function search_file_from_bookmarks()
-	local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
-	local choices = {}
-
-	for i, bookmark in ipairs(bookmarks) do
-		local path = vim.split(bookmark, " ")[2]
-		if path ~= nil then
-			table.insert(choices, path)
-		end
-	end
-	-- use telescope to select a bookmark and open it
-	-- put into
-	local actions = require("telescope.actions")
-	require("telescope.builtin").find_files({
-		-- exclude png files
-		file_ignore_patterns = { "*.png", "*.ttf", ".git" },
-		search_dirs = choices,
-		-- show hidden files
-		hidden = true,
-	})
-end
-
 vim.keymap.set("n", "<C-q>", ":Telescope oldfiles<CR>", {})
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
