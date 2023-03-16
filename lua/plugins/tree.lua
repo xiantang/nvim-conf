@@ -57,6 +57,9 @@ return {
 				-- type zz
 				vim.cmd("normal zz")
 			end
+			-- create a cmd for this
+			vim.cmd('command NerdSmartLocated lua NerdSmartLocated()')
+
 		end,
 		dependencies = "Xuyuanp/nerdtree-git-plugin",
 	},

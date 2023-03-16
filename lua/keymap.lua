@@ -6,7 +6,7 @@
 -- set smartindent
 -- ]])
 local opt = { noremap = true, silent = true }
-vim.keymap.set("n", "j", "gj", opt )
+vim.keymap.set("n", "j", "gj", opt)
 vim.keymap.set("n", "k", "gk", opt)
 vim.keymap.set("n", "o", "o", opt)
 -- You can even bind it to search jumping and more, example:
@@ -25,30 +25,10 @@ if vim.g.neovide then
 	vim.keymap.set("n", "<C-d>", "<C-d>zz", opt)
 	vim.keymap.set("n", "<C-u>", "<C-u>zz", opt)
 else
-	vim.keymap.set(
-		{ "n", "t" },
-		"<C-h>",
-		"<CMD>NavigatorLeft<CR>:lua require('specs').show_specs()<CR>",
-		opt
-	)
-	vim.keymap.set(
-		{ "n", "t" },
-		"<C-l>",
-		"<CMD>NavigatorRight<CR>:lua require('specs').show_specs()<CR>",
-		opt
-	)
-	vim.keymap.set(
-		{ "n", "t" },
-		"<C-k>",
-		"<CMD>NavigatorUp<CR>:lua require('specs').show_specs()<CR>",
-		opt
-	)
-	vim.keymap.set(
-		{ "n", "t" },
-		"<C-j>",
-		"<CMD>NavigatorDown<CR>:lua require('specs').show_specs()<CR>",
-		opt
-	)
+	vim.keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>:lua require('specs').show_specs()<CR>", opt)
+	vim.keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>:lua require('specs').show_specs()<CR>", opt)
+	vim.keymap.set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>:lua require('specs').show_specs()<CR>", opt)
+	vim.keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>:lua require('specs').show_specs()<CR>", opt)
 	vim.keymap.set("n", "<C-d>", "<C-d>zz:lua require('specs').show_specs()<CR>", opt)
 	vim.keymap.set("n", "<C-u>", "<C-u>zz:lua require('specs').show_specs()<CR>", opt)
 end
@@ -117,11 +97,11 @@ function search_file_from_bookmarks()
 end
 
 vim.keymap.set("n", "<C-q>", ":Telescope oldfiles<CR>", {})
-local pickers = require "telescope.pickers"
-local finders = require "telescope.finders"
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
 local conf = require("telescope.config").values
-local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 
 project_picker = function(opts)
 	local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
@@ -133,23 +113,42 @@ project_picker = function(opts)
 			table.insert(choices, path)
 		end
 	end
-  opts = opts or {}
-  pickers.new(opts, {
-    prompt_title = "project",
-    finder = finders.new_table {
-      results = choices
-    },
-    sorter = conf.generic_sorter(opts),
-    attach_mappings = function(prompt_bufnr, map)
-      actions.select_default:replace(function()
-        actions.close(prompt_bufnr)
-        local selection = action_state.get_selected_entry()
-        -- print(vim.inspect(selection))
-				vim.cmd("NERDTree " .. selection.value .. "| wincmd p")
-      end)
-      return true
-    end,
-  }):find()
+	opts = opts or {}
+	pickers
+		.new(opts, {
+			prompt_title = "project",
+			finder = finders.new_table({
+				results = choices,
+			}),
+			sorter = conf.generic_sorter(opts),
+			attach_mappings = function(prompt_bufnr, map)
+				actions.select_default:replace(function()
+					actions.close(prompt_bufnr)
+					local selection = action_state.get_selected_entry()
+					-- print(vim.inspect(selection))
+					require("telescope.builtin").find_files({
+						-- exclude png files
+						file_ignore_patterns = { "*.png", "*.ttf", ".git" },
+						search_dirs = { selection.value },
+						-- show hidden files
+						hidden = true,
+						attach_mappings = function(prompt_bufnr, map)
+							actions.select_default:replace(function()
+								actions.close(prompt_bufnr)
+								local selection = action_state.get_selected_entry()
+								-- print(vim.inspect(selection))
+								vim.cmd("e " .. selection.value)
+								vim.cmd("NerdSmartLocated")
+								vim.cmd("wincmd p")
+							end)
+							return true
+						end,
+					})
+				end)
+				return true
+			end,
+		})
+		:find()
 end
 
 -- to execute the function
