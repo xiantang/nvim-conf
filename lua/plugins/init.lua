@@ -1,14 +1,5 @@
 return {
 	{
-		"phaazon/hop.nvim",
-		event = "VeryLazy",
-		branch = "v2", -- optional but strongly recommended
-		config = function()
-			-- you can configure Hop the way you like here; see :h hop-config
-			require("hop").setup({ keys = "dfgjkalwertyuizxcnm" })
-		end,
-	},
-	{
 		event = "VeryLazy",
 		"andymass/vim-matchup",
 		config = function()
@@ -84,24 +75,7 @@ return {
 			 let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png']])
 		end,
 	},
-	{
-		"jinh0/eyeliner.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("eyeliner").setup({
-				highlight_on_key = true,
-			})
-		end,
-	},
 	{ "romainl/vim-cool", event = "VeryLazy" },
-	{
-		"windwp/nvim-autopairs",
-		event = "VeryLazy",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
-	},
-
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
@@ -121,7 +95,6 @@ return {
 		end,
 		event = "VeryLazy",
 	},
-	{ "RRethy/vim-illuminate", event = "VeryLazy" },
 	{ "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
 	{
 		"folke/neodev.nvim",
@@ -155,43 +128,6 @@ return {
 	},
 	-- lock_use({ "plasticboy/vim-markdown", require = "godlygeek/tabular" })
 	{
-		"glacambre/firenvim",
-		event = "VeryLazy",
-		config = function()
-			-- firenvim
-			vim.cmd([[
-function! SetFontSizeFirenvim(timer)
-  set guifont=Fira_Code:h22
-endfunction
-
-
-" https://github.com/glacambre/firenvim/issues/1006#issuecomment-1126785734
-if exists('g:started_by_firenvim')
-  let g:firenvim_config = {
-        \ 'localSettings' : {
-          \ '.*' : {
-              \ 'filename' : '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.go',
-            \   },
-      \ }
-  \}
-  let g:dashboard_disable_at_vimenter=1
-  let g:NERDTreeHijackNetrw=0
-  " call timer_start(3000, function("SetFontSizeFirenvim"))
-  let g:copilot_enable = 0
-  let g:copilot_filetypes = {
-      \ 'markdown': v:true,
-      \ 'yaml': v:true,
-      \ 'go': v:false,
-        \ }
-  echo 'nvim good'
-else
-  set laststatus=2
-endif
-
-]])
-		end,
-	},
-	{
 		"github/copilot.vim",
 		event = "VeryLazy",
 		config = function()
@@ -209,13 +145,6 @@ endif
 
 				" imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
 						]])
-		end,
-	},
-	{
-		"numToStr/Comment.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("Comment").setup()
 		end,
 	},
 }
