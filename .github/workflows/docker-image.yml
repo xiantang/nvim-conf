@@ -27,5 +27,7 @@ jobs:
       uses: RubbaBoy/BYOB@v1.2.1
       with:
         NAME: "startuptime"
-        VALUE: ${{ steps.record.outputs.startuptime }}
+        LABEL: 'startuptime(ms)'
+        STATUS: ${{ steps.record.outputs.startuptime }}
+        COLOR: 00EEFF
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
