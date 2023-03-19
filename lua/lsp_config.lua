@@ -285,10 +285,6 @@ nvim_lsp.gopls.setup({
 	capabilities = capabilities,
 	settings = {
 		gopls = {
-			directoryFilters = {
-				"-circle",
-				"-**/circle",
-			},
 			-- PAINPOINT
 			usePlaceholders = true,
 			experimentalPostfixCompletions = true,
