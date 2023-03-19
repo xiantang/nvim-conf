@@ -14,6 +14,7 @@ return {
 				let g:NERDTreeChDirMode = 2
 				" width"
 				let g:NERDTreeWinSize = 25
+				let g:NERDTreeShowLineNumbers=1
 				" mini 
 				let g:NERDTreeMinimalMenu=1
 
