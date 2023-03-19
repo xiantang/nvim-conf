@@ -76,7 +76,33 @@ local on_attach = function(client, bufnr)
 	-- buf_set_keymap("v", "ga", "cmd>lua vim.lsp.bug.code_action()<CR>", opts)
 	buf_set_keymap("v", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 	buf_set_keymap("n", "K", "<cmd>Lspsaga peek_definition<CR>", opts)
-	buf_set_keymap("n", "<space>gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+	function impl()
+		local filters = {
+			".*/circle/.*", -- 示例过滤器：排除 circle 文件夹中的所有文件
+		}
+		local function on_list(options)
+			local filtered_itmers = {}
+
+			for _, item in ipairs(options.items) do
+				local skip = false
+				for _, filter in ipairs(filters) do
+					if vim.fn.match(item.filename, filter) ~= -1 then
+						skip = true
+						break
+					end
+				end
+				if not skip then
+					table.insert(filtered_itmers, item)
+				end
+			end
+			vim.fn.setqflist({}, " ", {
+				items = filtered_itmers,
+			})
+			vim.cmd("botright copen")
+		end
+		vim.lsp.buf.implementation({ on_list = on_list })
+	end
+	buf_set_keymap("n", "<space>gi", ":lua impl()<CR>", opts)
 	buf_set_keymap("n", "<space>dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
 	buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 	buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
@@ -250,7 +276,6 @@ nvim_lsp.sumneko_lua.setup({
 })
 
 nvim_lsp.gopls.setup({
-	-- debug gopls
 	cmd = { "gopls", "-rpc.trace", "serve", "--debug=localhost:6060" },
 	-- for postfix snippets and analyzers
 	flags = {
