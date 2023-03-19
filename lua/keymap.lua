@@ -6,8 +6,12 @@
 -- set smartindent
 -- ]])
 local opt = { noremap = true, silent = true }
-vim.keymap.set("n", "j", "gj", opt)
-vim.keymap.set("n", "k", "gk", opt)
+-- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
+vim.cmd([[
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
+]])
+
 vim.keymap.set("n", "o", "o", opt)
 vim.keymap.set("n", "c", "c", opt)
 vim.keymap.set("n", "r", "r", opt)
