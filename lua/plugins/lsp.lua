@@ -17,6 +17,14 @@ return {
 		end,
 	},
 	{
+		"lvimuser/lsp-inlayhints.nvim",
+		event = "VeryLazy",
+		branch = "anticonceal",
+		config = function()
+			require("lsp-inlayhints").setup()
+		end,
+	},
+	{
 		"folke/neodev.nvim",
 		event = "VeryLazy",
 		config = function()
@@ -60,6 +68,14 @@ return {
 			require("fidget").setup()
 		end,
 	},
-	{ "ray-x/go.nvim", event = "VeryLazy" },
+	{
+		"ray-x/go.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("go").setup({
+				lsp_inlay_hints = { enable = false },
+			})
+		end,
+	},
 	{ "ray-x/guihua.lua", event = "VeryLazy" },
 }

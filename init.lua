@@ -70,5 +70,8 @@ vim.cmd.cnoreabbrev([[git Git]])
 vim.cmd.cnoreabbrev([[gp Git push]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
 vim.api.nvim_set_hl(0, "TSVariable", { link = "Normal" })
+vim.cmd([[
+hi LspInlayHint guifg=#d8d8d8 guibg=#3a3a3a
+]])
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
