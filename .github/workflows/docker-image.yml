@@ -28,3 +28,4 @@ jobs:
       with:
         NAME: "startuptime"
         VALUE: ${{ steps.record.outputs.startuptime }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
