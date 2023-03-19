@@ -10,7 +10,7 @@ return {
 
 		config = function()
 			vim.cmd([[
-				let NERDTreeShowHidden=1
+				let g:NERDTreeShowHidden=1
 				let g:NERDTreeChDirMode = 2
 				" width"
 				let g:NERDTreeWinSize = 25
