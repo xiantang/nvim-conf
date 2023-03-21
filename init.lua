@@ -35,6 +35,9 @@ set.mouse = "a"
 set.clipboard = "unnamed"
 set.modifiable = true
 set.smartcase = true
+-- https://www.youtube.com/watch?v=yMs97o_TdBU&t=344s&ab_channel=BenFrain
+-- make window width same when close a window
+set.equalalways = true
 set.ignorecase = true
 set.sessionoptions = "blank"
 set.hidden = true
