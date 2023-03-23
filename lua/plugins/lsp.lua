@@ -19,6 +19,7 @@ return {
 	{
 		"lvimuser/lsp-inlayhints.nvim",
 		event = "VeryLazy",
+		dev = true,
 		branch = "anticonceal",
 		config = function()
 			require("lsp-inlayhints").setup()
