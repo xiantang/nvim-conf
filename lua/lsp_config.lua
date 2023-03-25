@@ -262,6 +262,9 @@ nvim_lsp.sumneko_lua.setup({
 				library = {
 					vim.api.nvim_get_runtime_file("", true),
 					"/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/",
+					vim.fn.expand("~/lualib/share/lua/5.4"),
+					vim.fn.expand("~/lualib/lib/luarocks/rocks-5.4"),
+					"/opt/homebrew/opt/openresty/lualib",
 				},
 			},
 			completion = {
