@@ -1,7 +1,6 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- use Bold
-
 if vim.g.neovide then
 	local alpha = function()
 		return string.format("%x", math.floor(255 * (vim.g.transparency or 0.8)))
@@ -13,6 +12,10 @@ if vim.g.neovide then
 	-- Put anything you want to happen only in Neovide here
 end
 vim.o.guifont = "JetBrains Mono:h15"
+vim.cmd([[
+set guicursor=i:ver1
+set guicursor+=a:blinkon1
+]])
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local set = vim.o
