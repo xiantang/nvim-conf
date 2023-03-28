@@ -1,3 +1,4 @@
+vim.lsp.set_log_level("off")
 local nvim_lsp = require("lspconfig")
 
 -- get function name in body of golang function
