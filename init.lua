@@ -42,9 +42,14 @@ set.ignorecase = true
 set.sessionoptions = "blank"
 set.hidden = true
 set.autoindent = true
+vim.api.nvim_create_autocmd("User", {
+	pattern = "VeryLazy",
+	callback = function()
+		require("autocmd")
+		require("keymap")
+	end,
+})
 
-require("autocmd")
-require("keymap")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
