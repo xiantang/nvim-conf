@@ -86,22 +86,6 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 ]])
 
-vim.keymap.set("n", "gd", function()
-	if require("obsidian").util.cursor_on_markdown_link() then
-		return "<cmd>ObsidianFollowLink<CR>"
-	else
-		return "gd"
-	end
-end, opt)
-
-vim.keymap.set("n", "<Leader>gr", function()
-	if require("obsidian").util.cursor_on_markdown_link() then
-		return "<cmd>ObsidianCursorBacklinks<CR>"
-	else
-		return "<cmd>ObsidianBacklinks<CR>"
-	end
-end, { noremap = false, expr = true })
-
 local function t(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
