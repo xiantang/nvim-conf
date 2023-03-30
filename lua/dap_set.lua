@@ -1,4 +1,6 @@
 local dap = require("dap")
+
+dap.defaults.fallback.switchbuf = "useopen,uselast"
 require("dapui").setup({
 	icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
 	mappings = {
