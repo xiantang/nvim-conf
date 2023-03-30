@@ -2,7 +2,7 @@ return {
 	{ "Xuyuanp/nerdtree-git-plugin", event = "VeryLazy" },
 	{
 		"preservim/nerdtree",
-		cmd = { "NERDTreeToggle", "NERDTree", "NERDTreeFind", "NerdSmartLocated" },
+		cmd = { "NERDTreeClose", "NERDTreeToggle", "NERDTree", "NERDTreeFind", "NerdSmartLocated" },
 		keys = {
 			{ "<leader>l", ":lua NerdSmartLocated()<CR>", desc = "smart location" },
 			{ "<leader>t", ":NERDTreeToggle<CR>", desc = "toggle" },
