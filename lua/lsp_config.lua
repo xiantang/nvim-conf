@@ -81,7 +81,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "K", "<cmd>Lspsaga peek_definition<CR>", opts)
 	function impl()
 		local filters = {
-			".*/circle/.*", -- 示例过滤器：排除 circle 文件夹中的所有文件
+			".*/circle/.*", -- 示
 		}
 		local function on_list(options)
 			local filtered_itmers = {}
