@@ -28,8 +28,8 @@ else
 	vim.keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>", opt)
 	vim.keymap.set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>", opt)
 	vim.keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>", opt)
-	vim.keymap.set("n", "n", 'n:lua require("specs").show_specs()<CR>', opt)
-	vim.keymap.set("n", "N", 'N:lua require("specs").show_specs()<CR>', opt)
+	vim.keymap.set("n", "<C-d>", "<C-d>zz", opt)
+	vim.keymap.set("n", "<C-u>", "<C-u>zz", opt)
 end
 -- vim.api.nvim_set_keymap("n", "m", "mM", { silent = true })
 -- vim.api.nvim_set_keymap("n", "M", "`M", { silent = true })
