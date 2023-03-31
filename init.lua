@@ -79,6 +79,7 @@ require("lazy").setup("plugins", {
 vim.cmd.colorscheme("base16-tender")
 require("start")
 vim.cmd.cnoreabbrev([[git Git]])
+vim.cmd.abbreviate("ture", "true")
 vim.cmd.cnoreabbrev([[gp Git push]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
 vim.api.nvim_set_hl(0, "TSVariable", { link = "Normal" })
