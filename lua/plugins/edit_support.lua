@@ -11,6 +11,7 @@ return {
 		end,
 	},
 	{
+		event = "BufReadPost",
 		"andymass/vim-matchup",
 		config = function()
 			-- may set any options here
