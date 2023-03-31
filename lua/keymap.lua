@@ -56,9 +56,6 @@ vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', {
 vim.keymap.set("n", "<Leader>ut", ":UndotreeToggle<CR>", {})
 vim.keymap.set("n", "tt", ":GenReturn<CR>0", {})
 vim.keymap.set("n", "K", "k", {})
-vim.keymap.set("n", "<Leader>p", ":Telescope find_files<CR>", {})
-vim.api.nvim_set_keymap("n", "<space>fb", ":Telescope file_browser<CR>", opt)
-vim.keymap.set("n", "<Leader>P", ":Telescope live_grep<CR>", {})
 vim.keymap.set("n", "<Leader>Q", ':lua require("start").Stop()<CR>', {})
 vim.keymap.set("", "s", [[<Cmd>lua require('hop').hint_words()<CR>]], {})
 vim.keymap.set("n", "gs", ":HopWordMW<CR>", {})
@@ -73,7 +70,6 @@ nnoremap <D-v> "+p
 cnoremap <D-v> <c-r>+
 ]])
 
-vim.keymap.set("n", "<C-q>", ":Telescope oldfiles<CR>", {})
 vim.cmd([[
 nnoremap <Leader>[  <C-O>
 nnoremap <Leader>]  <C-I>
