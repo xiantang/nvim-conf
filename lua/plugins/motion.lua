@@ -29,6 +29,7 @@ return {
 		config = function()
 			-- when instert start
 			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+				pattern = { "*.md", "*.go", "*.py", "*.lua", "*.sh" },
 				callback = function()
 					require("harpoon.mark").add_file()
 				end,
