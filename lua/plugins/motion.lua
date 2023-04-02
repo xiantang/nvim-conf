@@ -27,9 +27,7 @@ return {
 			{ "<C-m>", ':lua require("harpoon.ui").nav_file(1)<CR>', { noremap = true, silent = true } },
 		},
 		config = function()
-			require("harpoon").setup({
-				save_on_toggle = true,
-			})
+			require("harpoon").setup({})
 			-- code
 		end,
 	},
