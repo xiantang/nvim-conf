@@ -27,7 +27,15 @@ return {
 			{ "<C-m>", ':lua require("harpoon.ui").nav_file(1)<CR>', { noremap = true, silent = true } },
 		},
 		config = function()
-			require("harpoon").setup({})
+			-- when instert start
+			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+				callback = function()
+					require("harpoon.mark").add_file()
+				end,
+			})
+			require("harpoon").setup({
+				excluded_filetypes = { "harpoon", "TelescopePrompt" },
+			})
 			-- code
 		end,
 	},
