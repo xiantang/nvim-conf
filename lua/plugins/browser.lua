@@ -43,9 +43,7 @@ endif
 			{ "<C-n>", ':lua require("harpoon.ui").nav_next()<CR>', {} },
 			{ "<C-p>", ':lua require("harpoon.ui").nav_prev()<CR>', {} },
 			{ "<Leader>a", ':lua require("harpoon.mark").add_file()<CR>', {} },
-			{ "<Leader>1", ':lua require("harpoon.ui").nav_file(1)<CR>', {} },
-			{ "<Leader>2", ':lua require("harpoon.ui").nav_file(2)<CR>', {} },
-			{ "<Leader>3", ':lua require("harpoon.ui").nav_file(3)<CR>', {} },
+			{ "<C-m>", ':lua require("harpoon.ui").nav_file(1)<CR>', {} },
 		},
 		config = function()
 			require("harpoon").setup({})
