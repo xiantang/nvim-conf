@@ -48,6 +48,7 @@ return {
 											lnum = line_count
 										end
 										vim.api.nvim_win_set_cursor(0, { lnum, 0 })
+										vim.cmd("normal zz")
 									end
 								end,
 							})
