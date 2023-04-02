@@ -40,6 +40,8 @@ endif
 		"ThePrimeagen/harpoon",
 		keys = {
 			{ "<C-q>", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', {} },
+			{ "<C-n>", ':lua require("harpoon.ui").nav_next()<CR>', {} },
+			{ "<C-p>", ':lua require("harpoon.ui").nav_prev()<CR>', {} },
 			{ "<Leader>a", ':lua require("harpoon.mark").add_file()<CR>', {} },
 			{ "<Leader>1", ':lua require("harpoon.ui").nav_file(1)<CR>', {} },
 			{ "<Leader>2", ':lua require("harpoon.ui").nav_file(2)<CR>', {} },
