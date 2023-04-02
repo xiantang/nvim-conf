@@ -6,7 +6,7 @@ return {
 			{ "<C-e>", ":lua project_picker(require('telescope.themes').get_dropdown{})<CR>", desc = "smart location" },
 			{ "<Leader>p", ":Telescope find_files<CR>", {} },
 			{ "<Leader>P", ":Telescope live_grep<CR>", {} },
-			{ "<C-q>", ":Telescope oldfiles<CR>", {} },
+			-- { "<C-q>", ":Telescope oldfiles<CR>", {} },
 		},
 		config = function()
 			local pickers = require("telescope.pickers")
@@ -105,6 +105,7 @@ return {
 					})
 					:find()
 			end
+			require("telescope").load_extension("harpoon")
 		end,
 	},
 	{ "junegunn/fzf", event = "VeryLazy" },
