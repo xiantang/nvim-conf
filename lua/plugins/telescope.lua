@@ -105,7 +105,6 @@ return {
 					})
 					:find()
 			end
-			require("telescope").load_extension("harpoon")
 		end,
 	},
 	{ "junegunn/fzf", event = "VeryLazy" },
