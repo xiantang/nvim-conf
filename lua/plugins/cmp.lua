@@ -38,7 +38,7 @@ return {
 				preselect = cmp.PreselectMode.None,
 				snippet = {
 					expand = function(args)
-						luasnip.lsp_expand(args.body)
+						require("luasnip").lsp_expand(args.body)
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
@@ -48,7 +48,8 @@ return {
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<CR>"] = cmp.mapping.confirm({
-						behavior = cmp.ConfirmBehavior.Replace,
+						-- https://github.com/hrsh7th/nvim-cmp/issues/706
+						behavior = cmp.ConfirmBehavior.Insert,
 						select = true,
 					}),
 					["<Tab>"] = cmp.mapping(function(fallback)
