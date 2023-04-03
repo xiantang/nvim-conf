@@ -47,6 +47,9 @@ vim.keymap.set("n", "K", "k", opt)
 vim.keymap.set("n", "<Leader>Q", ':lua require("start").Stop()<CR>', opt)
 vim.keymap.set("", "s", [[<Cmd>lua require('hop').hint_words()<CR>]], opt)
 vim.keymap.set("n", "gs", ":HopWordMW<CR>", opt)
+vim.cmd([[
+nnoremap <Leader><Leader> <C-^>
+]])
 
 vim.cmd([[
 "ctrl A to  move to line start when in command mode like in iterm2
