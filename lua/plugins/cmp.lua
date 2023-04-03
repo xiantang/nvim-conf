@@ -48,7 +48,7 @@ return {
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<CR>"] = cmp.mapping.confirm({
-						-- https://github.com/hrsh7th/nvim-cmp/issues/706
+						-- https://github.com/golang/go/issues/40871
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
