@@ -5,6 +5,7 @@
 -- set expandtab
 -- set smartindent
 -- ]])
+vim.keymap.set("n", "<Leader><Leader>", "<C-^>", { noremap = true })
 local opt = { noremap = true, silent = true }
 -- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 vim.keymap.set("n", "j", [[v:count ? 'j' : 'gj']], { noremap = true, expr = true })
@@ -47,9 +48,6 @@ vim.keymap.set("n", "K", "k", opt)
 vim.keymap.set("n", "<Leader>Q", ':lua require("start").Stop()<CR>', opt)
 vim.keymap.set("", "s", [[<Cmd>lua require('hop').hint_words()<CR>]], opt)
 vim.keymap.set("n", "gs", ":HopWordMW<CR>", opt)
-vim.cmd([[
-nnoremap <Leader><Leader> <C-^>
-]])
 
 vim.cmd([[
 "ctrl A to  move to line start when in command mode like in iterm2
