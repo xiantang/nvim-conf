@@ -5,7 +5,6 @@
 -- set expandtab
 -- set smartindent
 -- ]])
-vim.keymap.set("n", "<Leader><Leader>", "<C-^>", { noremap = true })
 local opt = { noremap = true, silent = true }
 -- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 vim.keymap.set("n", "j", [[v:count ? 'j' : 'gj']], { noremap = true, expr = true })
