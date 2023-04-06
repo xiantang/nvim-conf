@@ -233,7 +233,9 @@ local common_servers = {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
+local clangdCap = vim.lsp.protocol.make_client_capabilities()
+clangdCap.offsetEncoding = { "utf-16" }
+require("lspconfig").clangd.setup({ capabilities = clangdCap, on_attach = on_attach })
 for _, server in pairs(common_servers) do
 	-- https://www.reddit.com/r/neovim/comments/mm1h0t/lsp_diagnostics_remain_stuck_can_someone_please/
 	nvim_lsp[server].setup({
