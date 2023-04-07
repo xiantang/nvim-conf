@@ -70,38 +70,7 @@ return {
 				},
 			},
 			options = {
-				theme = {
-					normal = {
-						a = { fg = "#000000", bg = colors.green, gui = "bold" },
-						b = { fg = "#000000", bg = colors.green },
-						c = { fg = "#000000", bg = colors.green },
-					},
-					insert = {
-						a = { fg = "#000000", bg = colors.green, gui = "bold" },
-						b = { fg = "#000000", bg = colors.green },
-						c = { fg = "#000000", bg = colors.green },
-					},
-					visual = {
-						a = { fg = "#000000", bg = colors.green, gui = "bold" },
-						b = { fg = "#000000", bg = colors.green },
-						c = { fg = "#000000", bg = colors.green },
-					},
-					replace = {
-						a = { fg = "#000000", bg = colors.green, gui = "bold" },
-						b = { fg = "#000000", bg = colors.green },
-						c = { fg = "#000000", bg = colors.green },
-					},
-					command = {
-						a = { fg = "#000000", bg = colors.green, gui = "bold" },
-						b = { fg = "#000000", bg = colors.green },
-						c = { fg = "#000000", bg = colors.green },
-					},
-					inactive = {
-						a = { fg = "#000000", bg = colors.white, gui = "bold" },
-						b = { fg = "#000000", bg = colors.white },
-						c = { fg = "#000000", bg = colors.white },
-					},
-				},
+				theme = "nordic",
 			},
 		})
 	end,
