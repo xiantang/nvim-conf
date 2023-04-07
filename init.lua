@@ -30,6 +30,7 @@ set.number = true
 set.relativenumber = true
 set.autoread = true
 set.mouse = "a"
+set.cursorline = true
 -- set.guicursor = "a:blinkon1,i:ver25"
 set.encoding = "utf8"
 set.updatetime = 3000
