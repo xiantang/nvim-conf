@@ -4,6 +4,15 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
+			local c = require("nordic.colors")
+			require("nordic").setup({
+				override = {
+					WinSeparator = {
+						fg = c.blue1,
+						bold = true,
+					}, -- the column separating vertically split windows
+				},
+			})
 			require("nordic").load()
 		end,
 	},
