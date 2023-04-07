@@ -52,11 +52,10 @@ return {
 			end
 		end
 		require("lualine").setup({
-			options = {
-				globalstatus = true,
-				theme = "nordic",
-			},
 			sections = {
+				lualine_c = {
+					lsp,
+				},
 				lualine_x = {
 					{
 						lazy_status.updates,
@@ -69,6 +68,10 @@ return {
 					"encoding",
 					"fileformat",
 				},
+			},
+			options = {
+				theme = "nordic",
+				globalstatus = false,
 			},
 		})
 	end,
