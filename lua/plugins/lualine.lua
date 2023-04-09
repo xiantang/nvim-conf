@@ -33,7 +33,7 @@ return {
 			end
 		end
 		local function lsp()
-			local clients = vim.lsp.buf_get_clients()
+			local clients = vim.lsp.get_active_clients()
 			if #clients == 0 then
 				return ""
 			end
