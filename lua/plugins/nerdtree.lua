@@ -62,7 +62,6 @@ return {
 		end,
 		dependencies = {
 			"Xuyuanp/nerdtree-git-plugin",
-			"her/synicons.vim",
 			"ryanoasis/vim-devicons",
 		},
 	},
