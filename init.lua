@@ -84,6 +84,5 @@ vim.cmd.cnoreabbrev([[git Git]])
 vim.cmd.abbreviate("ture", "true")
 vim.cmd.cnoreabbrev([[gp Git push]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
-vim.api.nvim_set_hl(0, "TSVariable", { link = "Normal" })
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
