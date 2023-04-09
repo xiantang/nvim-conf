@@ -26,6 +26,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local set = vim.o
 vim.opt.swapfile = false
+set.encoding = "UTF-8"
 set.number = true
 set.relativenumber = true
 set.autoread = true

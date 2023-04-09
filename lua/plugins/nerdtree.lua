@@ -1,5 +1,4 @@
 return {
-	{ "Xuyuanp/nerdtree-git-plugin", event = "VeryLazy" },
 	{
 		"preservim/nerdtree",
 		cmd = { "NERDTreeClose", "NERDTreeToggle", "NERDTree", "NERDTreeFind", "NerdSmartLocated" },
@@ -61,6 +60,10 @@ return {
 			-- create a cmd for this
 			vim.cmd("command NerdSmartLocated lua NerdSmartLocated()")
 		end,
-		dependencies = "Xuyuanp/nerdtree-git-plugin",
+		dependencies = {
+			"Xuyuanp/nerdtree-git-plugin",
+			"her/synicons.vim",
+			"ryanoasis/vim-devicons",
+		},
 	},
 }
