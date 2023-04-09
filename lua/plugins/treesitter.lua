@@ -61,6 +61,7 @@ return {
 					-- termcolors = {} -- table of colour name strings
 				},
 			})
+			vim.api.nvim_set_hl(0, "TSVariable", { link = "Normal" })
 		end,
 	},
 	{ "mrjones2014/nvim-ts-rainbow", event = "VeryLazy" },
