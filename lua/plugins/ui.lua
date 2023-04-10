@@ -35,6 +35,12 @@ return {
 					"TelescopePromptBorder",
 					"SagaBorder",
 					"SagaNormal",
+					"TelescopeResultsBorder",
+					"TelescopeResultsNormal",
+					"TelescopeResultsNumber",
+					"TelescopeResultsStruct",
+					"TelescopeMultiSelection",
+					"TelescopePreviewCharDev",
 				},
 				extra_groups = {}, -- table: additional groups that should be cleared
 				exclude_groups = {}, -- table: groups you don't want to clear
