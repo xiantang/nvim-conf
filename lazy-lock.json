@@ -69,7 +69,6 @@
   "vim-devicons": { "branch": "master", "commit": "71f239af28b7214eebb60d4ea5bd040291fb7e33" },
   "vim-fugitive": { "branch": "master", "commit": "2febbe1f00be04f16daa6464cb39214a8566ec4b" },
   "vim-illuminate": { "branch": "master", "commit": "da80f3877896adcf77f59fb0bf74e9601615d372" },
-  "vim-matchup": { "branch": "master", "commit": "f69d1ac5bd3c4e6ad349f64317000cc9a4a895cf" },
   "vim-rhubarb": { "branch": "master", "commit": "cad60fe382f3f501bbb28e113dfe8c0de6e77c75" },
   "vim-silicon": { "branch": "master", "commit": "4a93122ae2139a12e2a56f064d086c05160b6835" },
   "vim-startuptime": { "branch": "master", "commit": "cb4c112b9e0f224236ee4eab6bf5153406b3f88b" },

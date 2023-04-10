@@ -10,13 +10,13 @@ return {
 			 let g:silicon['output'] = '~/images/silicon-{time:%Y-%m-%d-%H%M%S}.png']])
 		end,
 	},
-	{
-		event = "BufReadPost",
-		"andymass/vim-matchup",
-		config = function()
-			-- may set any options here
-		end,
-	},
+	-- {
+	-- 	event = "BufReadPost",
+	-- 	"andymass/vim-matchup",
+	-- 	config = function()
+	-- 		-- may set any options here
+	-- 	end,
+	-- },
 	{
 		"folke/neodev.nvim",
 		event = "VeryLazy",
