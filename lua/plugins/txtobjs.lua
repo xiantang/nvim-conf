@@ -2,7 +2,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		event = "VeryLazy",
-		commit = "a60af980b6f0a6e7ee239ffb9d1d519aaaa1de58",
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				textobjects = {
