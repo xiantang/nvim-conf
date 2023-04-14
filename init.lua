@@ -1,7 +1,6 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- use Bold
-
 if vim.g.neovide then
 	local alpha = function()
 		return string.format("%x", math.floor(255 * (vim.g.transparency or 0.8)))
@@ -13,6 +12,16 @@ if vim.g.neovide then
 	-- Put anything you want to happen only in Neovide here
 end
 vim.o.guifont = "JetBrains Mono:h15"
+vim.cmd([[
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
+set guicursor+=i:ver1
+set guicursor+=a:blinkon1
+]])
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local set = vim.o
@@ -70,6 +79,7 @@ require("lazy").setup("plugins", {
 vim.cmd.colorscheme("base16-tender")
 require("start")
 vim.cmd.cnoreabbrev([[git Git]])
+vim.cmd.abbreviate("ture", "true")
 vim.cmd.cnoreabbrev([[gp Git push]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
 vim.api.nvim_set_hl(0, "TSVariable", { link = "Normal" })

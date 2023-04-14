@@ -1,3 +1,4 @@
+vim.lsp.set_log_level("off")
 local nvim_lsp = require("lspconfig")
 
 -- get function name in body of golang function
@@ -36,16 +37,18 @@ end
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
-	if client.supports_method("textDocument/formatting") then
-		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = augroup,
-			buffer = bufnr,
-			callback = function()
-				lsp_formatting(bufnr)
-			end,
-		})
-	end
+	local navbuddy = require("nvim-navbuddy")
+	navbuddy.attach(client, bufnr)
+	-- if client.supports_method("textDocument/formatting") then
+	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = augroup,
+		buffer = bufnr,
+		callback = function()
+			lsp_formatting(bufnr)
+		end,
+	})
+	-- end
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -78,7 +81,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "K", "<cmd>Lspsaga peek_definition<CR>", opts)
 	function impl()
 		local filters = {
-			".*/circle/.*", -- 示例过滤器：排除 circle 文件夹中的所有文件
+			".*/circle/.*", -- 示
 		}
 		local function on_list(options)
 			local filtered_itmers = {}
@@ -110,7 +113,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	buf_set_keymap("n", "<space>rn", "<cmd>Lspsaga rename<CR>", opts)
 	buf_set_keymap("n", "<space>gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
-	buf_set_keymap("n", "<space>o", "<cmd>SymbolsOutline<CR>", opts)
+	buf_set_keymap("n", "<space>o", "<cmd>Navbuddy<CR>", opts)
 	-- buf_set_keymap('n', '<space>f', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
 	-- if current buff end with _test.go, then set keymap for error
 	local buf_name = vim.api.nvim_buf_get_name(bufnr)
@@ -230,7 +233,9 @@ local common_servers = {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
+local clangdCap = vim.lsp.protocol.make_client_capabilities()
+clangdCap.offsetEncoding = { "utf-16" }
+require("lspconfig").clangd.setup({ capabilities = clangdCap, on_attach = on_attach })
 for _, server in pairs(common_servers) do
 	-- https://www.reddit.com/r/neovim/comments/mm1h0t/lsp_diagnostics_remain_stuck_can_someone_please/
 	nvim_lsp[server].setup({

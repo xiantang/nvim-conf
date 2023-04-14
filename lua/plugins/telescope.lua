@@ -4,16 +4,59 @@ return {
 		cmd = "Telescope",
 		keys = {
 			{ "<C-e>", ":lua project_picker(require('telescope.themes').get_dropdown{})<CR>", desc = "smart location" },
+			{ "<Leader>p", ":Telescope find_files<CR>", {} },
+			{ "<Leader>P", ":Telescope live_grep<CR>", {} },
+			{ "<C-q>", ":Telescope oldfiles<CR>", {} },
 		},
 		config = function()
-			require("telescope").setup({
-				extensions = {},
-			})
 			local pickers = require("telescope.pickers")
 			local finders = require("telescope.finders")
 			local conf = require("telescope.config").values
 			local actions = require("telescope.actions")
 			local action_state = require("telescope.actions.state")
+			require("telescope").setup({
+				pickers = {
+					find_files = {
+						on_input_filter_cb = function(prompt)
+							local find_colon = string.find(prompt, ":")
+							if find_colon then
+								local ret = string.sub(prompt, 1, find_colon - 1)
+								vim.schedule(function()
+									local prompt_bufnr = vim.api.nvim_get_current_buf()
+									local picker = action_state.get_current_picker(prompt_bufnr)
+									local lnum = tonumber(prompt:sub(find_colon + 1))
+									if type(lnum) == "number" then
+										local win = picker.previewer.state.winid
+										local bufnr = picker.previewer.state.bufnr
+										local line_count = vim.api.nvim_buf_line_count(bufnr)
+										vim.api.nvim_win_set_cursor(win, { math.max(1, math.min(lnum, line_count)), 0 })
+									end
+								end)
+								return { prompt = ret }
+							end
+						end,
+						attach_mappings = function()
+							actions.select_default:enhance({
+								post = function()
+									-- if we found something, go to line
+									local prompt = action_state.get_current_line()
+									local find_colon = string.find(prompt, ":")
+									if find_colon then
+										local lnum = tonumber(prompt:sub(find_colon + 1))
+										local line_count = vim.api.nvim_buf_line_count(0)
+										if lnum >= line_count then
+											lnum = line_count
+										end
+										vim.api.nvim_win_set_cursor(0, { lnum, 0 })
+										vim.cmd("normal zz")
+									end
+								end,
+							})
+							return true
+						end,
+					},
+				},
+			})
 
 			project_picker = function(opts)
 				local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")

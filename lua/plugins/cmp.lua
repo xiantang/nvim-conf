@@ -38,7 +38,7 @@ return {
 				preselect = cmp.PreselectMode.None,
 				snippet = {
 					expand = function(args)
-						luasnip.lsp_expand(args.body)
+						require("luasnip").lsp_expand(args.body)
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
@@ -48,6 +48,7 @@ return {
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<CR>"] = cmp.mapping.confirm({
+						-- https://github.com/golang/go/issues/40871
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
@@ -116,7 +117,7 @@ return {
 				}),
 			})
 			local source = require("jira")
-			require("cmp").register_source("cmp_jira", source.new({}))
+			-- require("cmp").register_source("cmp_jira", source.new({}))
 			require("go_test")
 		end,
 		dependencies = {
