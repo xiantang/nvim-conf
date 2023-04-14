@@ -79,19 +79,22 @@ return {
 						attach_mappings = function(prompt_bufnr, map)
 							actions.select_default:replace(function()
 								actions.close(prompt_bufnr)
-								local selection = action_state.get_selected_entry()
+								local project = action_state.get_selected_entry()
 								-- print(vim.inspect(selection))
 								require("telescope.builtin").find_files({
 									-- exclude png files
 									file_ignore_patterns = { "*.png", "*.ttf", ".git" },
-									search_dirs = { selection.value },
+									search_dirs = { project.value },
 									-- show hidden files
 									hidden = true,
 									attach_mappings = function(buf, m)
 										actions.select_default:replace(function()
 											actions.close(buf)
 											local selected = action_state.get_selected_entry()
-											-- print(vim.inspect(selection))
+											if project.value == selected.value then
+												vim.cmd("NERDTree " .. selected.value)
+												return
+											end
 											vim.cmd("e " .. selected.value)
 											vim.cmd("NerdSmartLocated")
 											vim.cmd("wincmd p")
