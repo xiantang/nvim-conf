@@ -1,55 +1,5 @@
 return {
 	{
-		"xiyaowong/transparent.nvim",
-		config = function()
-			require("transparent").setup({
-				groups = { -- table: default groups
-					"Normal",
-					"NormalNC",
-					"Comment",
-					"Constant",
-					"Special",
-					"Identifier",
-					"Statement",
-					"PreProc",
-					"Type",
-					"Underlined",
-					"Todo",
-					"String",
-					"Function",
-					"Conditional",
-					"Repeat",
-					"Operator",
-					"Structure",
-					"LineNr",
-					"NonText",
-					"SignColumn",
-					"CursorLineNr",
-					"EndOfBuffer",
-					"LspFloatWinNormal",
-					"Normal",
-					"NormalFloat",
-					"FloatBorder",
-					"TelescopeNormal",
-					"TelescopeBorder",
-					"TelescopePromptBorder",
-					"SagaBorder",
-					"SagaNormal",
-					"TelescopePreviewNormal",
-					"TelescopeResultsBorder",
-					"TelescopeResultsNormal",
-					"TelescopeResultsNumber",
-					"TelescopeResultsStruct",
-					"TelescopeMultiSelection",
-				},
-				extra_groups = {}, -- table: additional groups that should be cleared
-				exclude_groups = {}, -- table: groups you don't want to clear
-			})
-			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "ExtraGroup" })
-			-- vimscript: let g:transparent_groups = extend(get(g:, 'transparent_groups', []), ["ExtraGroup"])
-		end,
-	},
-	{
 		"simrat39/symbols-outline.nvim",
 		event = "VeryLazy",
 		config = function()
