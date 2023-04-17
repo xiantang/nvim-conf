@@ -1,14 +1,14 @@
 {
-    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-    "Lua.completion.autoRequire": false,
-    "Lua.diagnostics.disable": [
-        "unused-local"
-    ],
-    "Lua.diagnostics.globals": [
-        "vim",
-        "defer",
-        "gofumpt",
-        "core"
-    ],
-    "Lua.workspace.checkThirdParty": false
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "Lua.completion.autoRequire": false,
+  "Lua.diagnostics.disable": [
+    "unused-local"
+  ],
+  "Lua.diagnostics.globals": [
+    "vim",
+    "defer",
+    "gofumpt",
+    "core"
+  ],
+  "Lua.workspace.checkThirdParty": false
 }
