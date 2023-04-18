@@ -32,7 +32,6 @@ set.autoread = true
 set.mouse = "a"
 -- set.guicursor = "a:blinkon1,i:ver25"
 set.encoding = "utf8"
-set.updatetime = 3000
 set.termguicolors = true
 set.ts = 2
 set.sts = 2

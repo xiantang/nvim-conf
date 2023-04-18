@@ -8,6 +8,8 @@ au BufRead,BufNewFile *.jq setfiletype jq
 au BufWritePost *.go silent! :lua go_org_imports()
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
+au CursorHold,CursorHoldI * normal! m'
+au VimEnter * :clearjumps
 ]])
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	pattern = { "*" },
