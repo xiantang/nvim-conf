@@ -9,7 +9,6 @@ return {
 				triggers = {
 					-- marks
 					"<leader>",
-					"`",
 					"g`",
 					"g'",
 					-- registers
