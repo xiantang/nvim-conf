@@ -114,7 +114,7 @@ local on_attach = function(client, bufnr)
 	-- buf_set_keymap('n', '<space>f', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
 	-- if current buff end with _test.go, then set keymap for error
 	local buf_name = vim.api.nvim_buf_get_name(bufnr)
-	buf_set_keymap("n", "ge", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+	buf_set_keymap("n", "<space>ge", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 
 	-- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
