@@ -11,7 +11,8 @@ function RecentlySeesion()
 	end
 	-- get parameters from nvim start commands
 	local args = vim.api.nvim_get_vvar("argv")
-	if #args > 1 then
+	-- embed
+	if #args > 2 then
 		return
 	end
 

@@ -7,14 +7,6 @@ return {
 		end,
 	},
 	{
-		"SmiteshP/nvim-navbuddy",
-		dependencies = {
-			"xiantang/nvim-lspconfig",
-			"SmiteshP/nvim-navic",
-			"MunifTanjim/nui.nvim",
-		},
-	},
-	{
 		"petertriho/nvim-scrollbar",
 		event = "VeryLazy",
 		config = function()

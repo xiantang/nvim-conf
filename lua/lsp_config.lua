@@ -37,8 +37,14 @@ end
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
-	local navbuddy = require("nvim-navbuddy")
-	navbuddy.attach(client, bufnr)
+	if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
+		local semantic = client.config.capabilities.textDocument.semanticTokens
+		client.server_capabilities.semanticTokensProvider = {
+			full = true,
+			legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
+			range = true,
+		}
+	end
 	-- if client.supports_method("textDocument/formatting") then
 	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 	vim.api.nvim_create_autocmd("BufWritePre", {
@@ -113,11 +119,10 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	buf_set_keymap("n", "<space>rn", "<cmd>Lspsaga rename<CR>", opts)
 	buf_set_keymap("n", "<space>gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
-	buf_set_keymap("n", "<space>o", "<cmd>Navbuddy<CR>", opts)
 	-- buf_set_keymap('n', '<space>f', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
 	-- if current buff end with _test.go, then set keymap for error
 	local buf_name = vim.api.nvim_buf_get_name(bufnr)
-	buf_set_keymap("n", "ge", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+	buf_set_keymap("n", "<space>ge", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 
 	-- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
@@ -295,6 +300,7 @@ nvim_lsp.gopls.setup({
 		gopls = {
 			-- PAINPOINT
 			usePlaceholders = true,
+			semanticTokens = true,
 			experimentalPostfixCompletions = true,
 			analyses = {
 				unusedparams = true,

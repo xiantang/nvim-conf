@@ -32,7 +32,6 @@ set.autoread = true
 set.mouse = "a"
 -- set.guicursor = "a:blinkon1,i:ver25"
 set.encoding = "utf8"
-set.updatetime = 3000
 set.termguicolors = true
 set.ts = 2
 set.sts = 2
@@ -84,4 +83,3 @@ vim.cmd.cnoreabbrev([[gp Git push]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
-vim.api.nvim_set_hl(0, "TSVariable", { link = "Normal" })
