@@ -10,10 +10,10 @@ function RecentlySeesion()
 		return
 	end
 	-- get parameters from nvim start commands
-	local args = vim.api.nvim_get_vvar("argv")
-	if #args > 1 then
-		return
-	end
+	-- local args = vim.api.nvim_get_vvar("argv")
+	-- if #args > 1 then
+	-- 	return
+	-- end
 
 	-- check filenvim
 	if vim.g.started_by_firenvim == true then
