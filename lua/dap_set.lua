@@ -78,7 +78,7 @@ dap.defaults.fallback.console = "internalConsole"
 dap.listeners.after["event_initialized"]["key_map"] = function()
 	-- close nerd tree
 	vim.cmd("NERDTreeClose")
-	require("dapui").open()
+	require("dapui").open({})
 	vim.api.nvim_set_keymap("n", "c", '<cmd>lua require"dap".continue()<CR>', { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("n", "n", '<cmd>lua require"dap".step_over()<CR> | zz', { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("n", "s", '<cmd>lua require"dap".step_into()<CR> | zz', { noremap = true, silent = true })
@@ -89,7 +89,7 @@ dap.listeners.after["event_initialized"]["key_map"] = function()
 end
 
 function defer()
-	require("dapui").close()
+	require("dapui").close({})
 	vim.cmd("NERDTreeToggle | wincmd p")
 	-- rollback to default keymap
 	-- nvim_del_keymap
