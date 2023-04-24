@@ -22,6 +22,7 @@ set guicursor+=i:blinkwait10
 set guicursor+=i:ver1
 set guicursor+=a:blinkon1
 ]])
+vim.g.hardtime_default_on = 1
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local set = vim.o
