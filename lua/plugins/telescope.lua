@@ -90,6 +90,8 @@ return {
 									-- exclude png files
 									file_ignore_patterns = { "*.png", "*.ttf", ".git" },
 									search_dirs = { pro_to_path[project.value] },
+									-- relative path
+									path_display = { "smart" },
 									-- show hidden files
 									hidden = true,
 									attach_mappings = function(buf, m)
