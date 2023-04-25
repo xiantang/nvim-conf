@@ -24,7 +24,7 @@ set guicursor+=a:blinkon1
 ]])
 vim.g.hardtime_default_on = 1
 vim.g.hardtime_maxcount = 2
-vim.g.hardtime_timeout = 500
+vim.g.hardtime_timeout = 700
 vim.g.list_of_normal_keys = { "h", "j", "k", "l", "-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" }
 vim.g.list_of_visual_keys = { "h", "j", "k", "l", "-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" }
 vim.g.hardtime_allow_different_key = 1
