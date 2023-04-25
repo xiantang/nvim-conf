@@ -1,7 +1,4 @@
 return {
-	{
-		"takac/vim-hardtime",
-	},
 	{ "romainl/vim-cool", event = "VeryLazy" },
 	{
 		"segeljakt/vim-silicon",

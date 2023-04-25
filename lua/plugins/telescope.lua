@@ -62,11 +62,15 @@ return {
 			project_picker = function(opts)
 				local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
 				local choices = {}
+				local pro_to_path = {}
 
+				-- make a map key is the project name, value is the path
 				for i, bookmark in ipairs(bookmarks) do
+					local project_name = vim.split(bookmark, " ")[1]
 					local path = vim.split(bookmark, " ")[2]
 					if path ~= nil then
-						table.insert(choices, path)
+						pro_to_path[project_name] = path
+						table.insert(choices, project_name)
 					end
 				end
 				opts = opts or {}
@@ -85,7 +89,7 @@ return {
 								require("telescope.builtin").find_files({
 									-- exclude png files
 									file_ignore_patterns = { "*.png", "*.ttf", ".git" },
-									search_dirs = { project.value },
+									search_dirs = { pro_to_path[project.value] },
 									-- show hidden files
 									hidden = true,
 									attach_mappings = function(buf, m)
