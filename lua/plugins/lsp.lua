@@ -64,6 +64,15 @@ return {
 			require("fidget").setup()
 		end,
 	},
-	{ "ray-x/go.nvim", event = "VeryLazy" },
+	{
+		"ray-x/go.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("go").setup({
+				lsp_codelens = false,
+			})
+		end,
+	},
+
 	{ "ray-x/guihua.lua", event = "VeryLazy" },
 }

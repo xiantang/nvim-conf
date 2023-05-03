@@ -10,7 +10,6 @@ return {
 			})
 			require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.expand("~/.config/nvim/my_snippets") } })
 			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/my_snippets/lua/" })
-			require("go").setup({})
 		end,
 		dependencies = {
 			"rafamadriz/friendly-snippets",
