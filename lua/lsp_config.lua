@@ -211,6 +211,7 @@ require("mason").setup({
 })
 require("mason-lspconfig").setup({
 	ensure_installed = {
+		"shfmt",
 		"awk_ls",
 		"sumneko_lua",
 		"sqlls",
