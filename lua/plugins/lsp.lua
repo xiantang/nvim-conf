@@ -69,6 +69,7 @@ return {
 		event = "VeryLazy",
 		config = function()
 			require("go").setup({
+				-- https://github.com/ray-x/go.nvim/issues/113
 				lsp_codelens = false,
 			})
 		end,
