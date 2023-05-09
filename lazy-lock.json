@@ -35,6 +35,7 @@
   "mason.nvim": { "branch": "main", "commit": "5e78970539d937b7aef7a4e10b219d60da0b1425" },
   "mini.indentscope": { "branch": "main", "commit": "3a517f11aa9d1434c4cdba1a807df4e5ca42d3ea" },
   "neodev.nvim": { "branch": "main", "commit": "15e9e7c1daa22ce83757cf1c304a038f0549cf47" },
+  "neorg": { "branch": "main", "commit": "5de014e7cc3dc6eed0a62854fe8ba58f664d97ea" },
   "nerdtree": { "branch": "master", "commit": "fc85a6f07c2cd694be93496ffad75be126240068" },
   "nerdtree-git-plugin": { "branch": "master", "commit": "e1fe727127a813095854a5b063c15e955a77eafb" },
   "null-ls.nvim": { "branch": "main", "commit": "7bd74a821d991057ca1c0ca569d8252c4f89f860" },
