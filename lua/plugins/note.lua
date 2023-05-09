@@ -8,6 +8,13 @@ return {
 				["core.concealer"] = {
 					config = {
 						folds = false,
+						icons = {
+							todo = {
+								undone = {
+									icon = " ",
+								},
+							},
+						},
 					},
 				}, -- Adds pretty icons to your documents
 				["core.dirman"] = { -- Manages Neorg workspaces
