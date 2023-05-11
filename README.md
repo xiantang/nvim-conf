@@ -10,4 +10,4 @@
 * Code highlight for any language
 * Code snippet
 
-<img width="1512" alt="image" src="https://user-images.githubusercontent.com/34479567/237648822-79b94352-6951-49bd-9b12-cfd51dbc799b.png">
+<img width="1512" alt="image" src="https://user-images.githubusercontent.com/34479567/237651867-d817d17d-1620-42e2-8972-d6b0af108edd.png">
