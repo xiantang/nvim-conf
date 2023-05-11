@@ -27,7 +27,7 @@ return {
 									local prompt_bufnr = vim.api.nvim_get_current_buf()
 									local picker = action_state.get_current_picker(prompt_bufnr)
 									local lnum = tonumber(prompt:sub(find_colon + 1))
-									if type(lnum) == "number" then
+									if type(lnum) == "number" and picker.previewer.state ~= nil then
 										local win = picker.previewer.state.winid
 										local bufnr = picker.previewer.state.bufnr
 										local line_count = vim.api.nvim_buf_line_count(bufnr)
