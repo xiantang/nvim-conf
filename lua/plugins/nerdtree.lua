@@ -30,8 +30,10 @@ return {
 				--
 				local prefix_len = 0
 				local prefix = ""
+				local project = ""
 				for _, bookmark in ipairs(bookmarks) do
 					local path = vim.split(bookmark, " ")[2]
+					local p = vim.split(bookmark, " ")[1]
 					if path == nil then
 						goto continue
 					end
@@ -42,6 +44,7 @@ return {
 					if string.find(current_path, path, 1, true) == 1 and string.len(path) > prefix_len then
 						prefix_len = string.len(path)
 						prefix = path
+						project = p
 					end
 
 					::continue::
@@ -54,6 +57,7 @@ return {
 					vim.api.nvim_set_current_win(current_win)
 				end
 
+				vim.cmd(string.format("!tmux rename-window %s", project))
 				vim.cmd("NERDTreeFind")
 				-- type zz
 				vim.cmd("normal zz")
