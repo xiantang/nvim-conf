@@ -57,7 +57,6 @@ return {
 					vim.api.nvim_set_current_win(current_win)
 				end
 
-				vim.cmd(string.format("!tmux rename-window %s", project))
 				vim.cmd("NERDTreeFind")
 				-- type zz
 				vim.cmd("normal zz")
