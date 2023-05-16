@@ -29,7 +29,7 @@ vim.cmd("silent! autocmd VimEnter *  nested lua RecentlySeesion()")
 
 function M.Stop()
 	local args = vim.api.nvim_get_vvar("argv")
-	vim.cmd(string.format("!tmux rename-window %s", "zsh"))
+	vim.cmd([[!tmux set-window-option automatic-rename "on" 1>/dev/null]])
 	if #args > 1 then
 		vim.cmd.wa()
 		vim.cmd.qa()
