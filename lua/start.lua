@@ -22,7 +22,7 @@ function RecentlySeesion()
 		return
 	end
 	require("persistence").load({ last = true })
-	-- FIX duplicate with nerdtree.lua
+	-- FIXME duplicate with nerdtree.lua
 	local current_path = vim.fn.expand("%:p")
 
 	-- read  $HOME/.NERDTreeBookmarks
