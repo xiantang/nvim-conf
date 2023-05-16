@@ -47,5 +47,6 @@ vim.api.nvim_create_autocmd({ "DirChanged" }, {
 			::continue::
 		end
 		vim.cmd(string.format("silent !tmux rename-window %s", project))
+		vim.cmd(string.format("silent !tmux set-environment NVIM_DIR %s", prefix))
 	end,
 })
