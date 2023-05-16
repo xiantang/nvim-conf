@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 		})
 	end,
 })
-vim.api.nvim_create_autocmd({ "DirChanged" }, {
+vim.api.nvim_create_autocmd({ "DirChanged", "UIEnter" }, {
 	pattern = { "*" },
 	callback = function(cwd)
 		local current_path = cwd.file

@@ -5,6 +5,12 @@ return {
 		opts = {
 			load = {
 				["core.defaults"] = {}, -- Loads default behaviour
+				["core.export"] = {},
+				["core.export.markdown"] = {
+					config = {
+						extensions = "all",
+					},
+				},
 				["core.concealer"] = {
 					config = {
 						folds = false,
