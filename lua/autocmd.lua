@@ -21,8 +21,8 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 vim.api.nvim_create_autocmd({ "DirChanged" }, {
 	pattern = { "*" },
 	callback = function(cwd)
-		current_path = cwd.file
-		-- read  $HOME/.NERDTreeBookmarks
+		local current_path = cwd.file
+		-- FIXME duplicate logic with nerdtree
 		local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
 		--
 		local prefix_len = 0
