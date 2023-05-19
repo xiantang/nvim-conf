@@ -2,8 +2,10 @@ return {
 	{
 		"nvim-neorg/neorg",
 		build = ":Neorg sync-parsers",
+		cmd = "Neorg",
 		keys = {
 			{ "<leader>jt", ":Neorg workspace notes<CR>:Neorg journal today<CR>", desc = "journal today" },
+			{ "<leader>jy", ":Neorg workspace notes<CR>:Neorg journal yesterday<CR>", desc = "journal yesterday" },
 		},
 		opts = {
 			load = {
