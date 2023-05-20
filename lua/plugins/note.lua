@@ -4,8 +4,9 @@ return {
 		build = ":Neorg sync-parsers",
 		lazy = false,
 		keys = {
-			{ "<leader>jt", ":Neorg workspace notes<CR>:Neorg journal today<CR>", desc = "journal today" },
-			{ "<leader>jy", ":Neorg workspace notes<CR>:Neorg journal yesterday<CR>", desc = "journal yesterday" },
+			{ "<leader>jn", ":Neorg workspace notes<CR>:Neorg journal today<CR>", desc = "[J]ournal [N]owday " },
+			{ "<leader>jy", ":Neorg workspace notes<CR>:Neorg journal yesterday<CR>", desc = "[J]ournal [Y]esterday" },
+			{ "<leader>jt", ":Neorg workspace notes<CR>:Neorg journal tomorrow<CR>", desc = "[J]ournal [T]omorrow " },
 		},
 		opts = {
 			load = {
