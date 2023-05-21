@@ -115,29 +115,6 @@ local function log_to_file()
 	return true
 end
 
-dap.configurations.python = {
-	{
-		type = "python",
-		request = "launch",
-		name = "Launch file",
-		program = "${file}",
-		logToFile = log_to_file,
-		pythonPath = function()
-			return "/opt/homebrew/bin/python3"
-		end,
-	},
-	{
-		type = "python",
-		request = "attach",
-		name = "Attach remote",
-		connect = function()
-			local host = vim.fn.input("Host [127.0.0.1]: ")
-			host = host ~= "" and host or "127.0.0.1"
-			local port = tonumber(vim.fn.input("Port [5678]: ")) or 5678
-			return { host = host, port = port }
-		end,
-	},
-}
 dap.adapters.python = function(cb, config)
 	if config.request == "attach" then
 		---@diagnostic disable-next-line: undefined-field
@@ -278,3 +255,43 @@ function _G.class_surrounding_cursor()
 	prev_class_name = find_name(func)
 	return prev_class_name
 end
+dap.set_log_level("TRACE")
+dap.configurations.python = {
+	{
+		type = "python",
+		request = "launch",
+		name = "Debug test function",
+		module = "unittest",
+		args = {
+			"-v",
+			"mydict_test",
+		},
+		console = "integratedTerminal",
+		justMyCode = false,
+		logToFile = log_to_file,
+		pythonPath = function()
+			return "/opt/homebrew/bin/python3"
+		end,
+	},
+	{
+		type = "python",
+		request = "launch",
+		name = "Launch file",
+		program = "${file}",
+		logToFile = log_to_file,
+		pythonPath = function()
+			return "/opt/homebrew/bin/python3"
+		end,
+	},
+	{
+		type = "python",
+		request = "attach",
+		name = "Attach remote",
+		connect = function()
+			local host = vim.fn.input("Host [127.0.0.1]: ")
+			host = host ~= "" and host or "127.0.0.1"
+			local port = tonumber(vim.fn.input("Port [5678]: ")) or 5678
+			return { host = host, port = port }
+		end,
+	},
+}
