@@ -256,16 +256,32 @@ function _G.class_surrounding_cursor()
 	return prev_class_name
 end
 dap.set_log_level("TRACE")
+
+local function get_module_path()
+	return vim.fn.expand("%:.:r:gs?/?.?")
+end
+local function prune_nil(items)
+	return vim.tbl_filter(function(x)
+		return x
+	end, items)
+end
+
 dap.configurations.python = {
 	{
 		type = "python",
 		request = "launch",
 		name = "Debug test function",
 		module = "unittest",
-		args = {
-			"-v",
-			"mydict_test",
-		},
+		args = function()
+			local path = get_module_path()
+			local classname = class_surrounding_cursor()
+			local function_name = function_surrounding_cursor()
+			local test_path = table.concat(prune_nil({ path, classname, function_name }), ".")
+			return {
+				"-v",
+				test_path,
+			}
+		end,
 		console = "integratedTerminal",
 		justMyCode = false,
 		logToFile = log_to_file,
