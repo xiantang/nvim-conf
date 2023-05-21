@@ -270,6 +270,27 @@ dap.configurations.python = {
 	{
 		type = "python",
 		request = "launch",
+		name = "Launch file",
+		program = "${file}",
+		logToFile = log_to_file,
+		pythonPath = function()
+			return "/opt/homebrew/bin/python3"
+		end,
+	},
+	{
+		type = "python",
+		request = "attach",
+		name = "Attach remote",
+		connect = function()
+			local host = vim.fn.input("Host [127.0.0.1]: ")
+			host = host ~= "" and host or "127.0.0.1"
+			local port = tonumber(vim.fn.input("Port [5678]: ")) or 5678
+			return { host = host, port = port }
+		end,
+	},
+	{
+		type = "python",
+		request = "launch",
 		name = "Debug test function",
 		module = "unittest",
 		args = function()
@@ -287,27 +308,6 @@ dap.configurations.python = {
 		logToFile = log_to_file,
 		pythonPath = function()
 			return "/opt/homebrew/bin/python3"
-		end,
-	},
-	{
-		type = "python",
-		request = "launch",
-		name = "Launch file",
-		program = "${file}",
-		logToFile = log_to_file,
-		pythonPath = function()
-			return "/opt/homebrew/bin/python3"
-		end,
-	},
-	{
-		type = "python",
-		request = "attach",
-		name = "Attach remote",
-		connect = function()
-			local host = vim.fn.input("Host [127.0.0.1]: ")
-			host = host ~= "" and host or "127.0.0.1"
-			local port = tonumber(vim.fn.input("Port [5678]: ")) or 5678
-			return { host = host, port = port }
 		end,
 	},
 }
