@@ -232,6 +232,7 @@ local common_servers = {
 	"dockerls",
 	"bashls",
 	"vimls",
+	"tsserver",
 	"yamlls",
 	"terraformls",
 }

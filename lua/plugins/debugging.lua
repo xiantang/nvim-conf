@@ -11,7 +11,14 @@ return {
 		event = "VeryLazy",
 		"mfussenegger/nvim-dap",
 		config = function()
+			require("nvim-dap-virtual-text").setup()
 			require("dap_set")
 		end,
+	},
+	dependencies = {
+		"theHamsta/nvim-dap-virtual-text",
+	},
+	{
+		"theHamsta/nvim-dap-virtual-text",
 	},
 }
