@@ -11,6 +11,9 @@ return {
 		opts = {
 			load = {
 				["core.defaults"] = {}, -- Loads default behaviour
+				-- ["core.presenter"] = { config = {
+				-- 	zen_mode = "zen-mode",
+				-- } },
 				["core.export"] = {},
 				["core.completion"] = { config = { engine = "nvim-cmp" } },
 				["core.export.markdown"] = {
