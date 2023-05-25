@@ -3,7 +3,11 @@ return {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		keys = {
-			{ "<C-e>", ":lua project_picker(require('telescope.themes').get_dropdown{})<CR>", desc = "smart location" },
+			{
+				"<C-e>",
+				":lua project_picker(require('telescope.themes').get_dropdown{})<CR>",
+				desc = "jumping between project",
+			},
 			{ "<Leader>p", ":Telescope find_files<CR>", {} },
 			{ "<Leader>rs", ":Telescope resume<CR>", {} },
 			{ "<Leader>o", ":Telescope lsp_document_symbols<CR>", {} },
