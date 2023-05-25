@@ -12,6 +12,7 @@ return {
 			load = {
 				["core.defaults"] = {}, -- Loads default behaviour
 				["core.export"] = {},
+				["core.completion"] = { config = { engine = "nvim-cmp" } },
 				["core.export.markdown"] = {
 					config = {
 						extensions = "all",

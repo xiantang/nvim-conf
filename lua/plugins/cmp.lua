@@ -73,6 +73,7 @@ return {
 				}),
 
 				sources = {
+					{ name = "neorg" },
 					{ name = "luasnip", priority = 100 },
 					{ name = "nvim_lsp", priority = 90 },
 					-- { name = "cmp_tabnine", priority = 98, max_item_count = 2, keyword_length = 3 },
