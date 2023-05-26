@@ -254,7 +254,7 @@ for _, server in pairs(common_servers) do
 	})
 end
 
-nvim_lsp.sumneko_lua.setup({
+nvim_lsp.lua_ls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = {
@@ -335,7 +335,7 @@ vim.api.nvim_create_user_command("LspCapabilities", function()
 				end,
 				timeout = 14000,
 			})
-			-- fn.setreg("+", "Capabilities = " .. vim.inspect(client.server_capabilities))
+			fn.setreg("+", "Capabilities = " .. vim.inspect(client.server_capabilities))
 		end
 	end
 end, {})
