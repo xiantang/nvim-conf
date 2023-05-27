@@ -5,48 +5,51 @@
 -- set expandtab
 -- set smartindent
 -- ]])
-local opt = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true }
 -- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 vim.keymap.set("n", "j", [[v:count ? 'j' : 'gj']], { noremap = true, expr = true })
 vim.keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { noremap = true, expr = true })
 
-vim.keymap.set("n", "o", "o", opt)
-vim.keymap.set("n", "c", "c", opt)
-vim.keymap.set("n", "r", "r", opt)
-vim.keymap.set("n", "q", "q", opt)
+vim.keymap.set("n", "<Leader>[", "<C-O>", opts)
+vim.keymap.set("n", "<Leader>]", "<C-I>", opts)
+
+vim.keymap.set("n", "o", "o", opts)
+vim.keymap.set("n", "c", "c", opts)
+vim.keymap.set("n", "r", "r", opts)
+vim.keymap.set("n", "q", "q", opts)
 -- vim.keymap.set("n", "n ", "nzzzv")
 -- vim.keymap.set("n", "N ", "Nzzzv")
-vim.keymap.set("n", "<C-d>", "<C-d>zz", opt)
-vim.keymap.set("n", "<C-u>", "<C-u>zz", opt)
+vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
+vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 -- vim.api.nvim_set_keymap("n", "m", "mM", { silent = true })
 -- vim.api.nvim_set_keymap("n", "M", "`M", { silent = true })
-vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>", opt)
-vim.keymap.set("n", "<C-Right>", ":vertical resize -5<CR>", opt)
-vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", opt)
+vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>", opts)
+vim.keymap.set("n", "<C-Right>", ":vertical resize -5<CR>", opts)
+vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", opts)
 
 -- termkey
-vim.keymap.set("n", "<C-;>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opt)
-vim.keymap.set("t", "<C-;>", "<C-\\><C-n><Cmd>exe v:count1 . 'ToggleTerm'<CR>", opt)
-vim.keymap.set("n", "<C-Down>", ":resize -5<CR>", opt)
-vim.keymap.set("n", "0", "^", opt)
-vim.keymap.set("n", "<Leader>q", ":wq<CR>", opt)
-vim.keymap.set("n", "<Leader>gs", ":Git<CR>", opt)
-vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", opt)
-vim.keymap.set("n", "<Leader>ss", ":source ~/.config/nvim/init.vim<CR>", opt)
+vim.keymap.set("n", "<C-;>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
+vim.keymap.set("t", "<C-;>", "<C-\\><C-n><Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
+vim.keymap.set("n", "<C-Down>", ":resize -5<CR>", opts)
+vim.keymap.set("n", "0", "^", opts)
+vim.keymap.set("n", "<Leader>q", ":wq<CR>", opts)
+vim.keymap.set("n", "<Leader>gs", ":Git<CR>", opts)
+vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", opts)
+vim.keymap.set("n", "<Leader>ss", ":source ~/.config/nvim/init.vim<CR>", opts)
 -- we can use s and v to split
 vim.keymap.set("n", "<Leader>s", ":sp<CR>", { desc = "[S]plit window" })
 vim.keymap.set("n", "<Leader>v", ":vsp<CR>", { desc = "[V]ertically [S]plit window" })
-vim.keymap.set("n", "<Leader>w", ":w<CR>", opt)
-vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opt)
-vim.keymap.set("n", "<Leader>rt", ":GoRunTestFunc<CR>", opt)
-vim.keymap.set("n", "<Leader>rf", ":GoRunTestFile<CR>", opt)
-vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', opt)
-vim.keymap.set("n", "<Leader>ut", ":UndotreeToggle<CR>", opt)
-vim.keymap.set("n", "tt", ":GenReturn<CR>0", opt)
-vim.keymap.set("n", "K", "k", opt)
-vim.keymap.set("n", "<Leader>Q", ':lua require("start").Stop()<CR>', opt)
-vim.keymap.set("", "s", [[<Cmd>lua require('hop').hint_words()<CR>]], opt)
-vim.keymap.set("n", "gs", ":HopWordMW<CR>", opt)
+vim.keymap.set("n", "<Leader>w", ":w<CR>", opts)
+vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
+vim.keymap.set("n", "<Leader>rt", ":GoRunTestFunc<CR>", opts)
+vim.keymap.set("n", "<Leader>rf", ":GoRunTestFile<CR>", opts)
+vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', opts)
+vim.keymap.set("n", "<Leader>ut", ":UndotreeToggle<CR>", opts)
+vim.keymap.set("n", "tt", ":GenReturn<CR>0", opts)
+vim.keymap.set("n", "K", "k", opts)
+vim.keymap.set("n", "<Leader>Q", ':lua require("start").Stop()<CR>', opts)
+vim.keymap.set("", "s", [[<Cmd>lua require('hop').hint_words()<CR>]], opts)
+vim.keymap.set("n", "gs", ":HopWordMW<CR>", opts)
 
 vim.cmd([[
 "ctrl A to  move to line start when in command mode like in iterm2
@@ -59,8 +62,6 @@ cnoremap <D-v> <c-r>+
 ]])
 
 vim.cmd([[
-nnoremap <Leader>[  <C-O>
-nnoremap <Leader>]  <C-I>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 tnoremap <D-v> <C-\><C-n>"+p
 tnoremap <Esc> <C-\><C-n>

@@ -3,8 +3,13 @@ return {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		keys = {
-			{ "<C-e>", ":lua project_picker(require('telescope.themes').get_dropdown{})<CR>", desc = "smart location" },
+			{
+				"<C-e>",
+				":lua project_picker(require('telescope.themes').get_dropdown{})<CR>",
+				desc = "jumping between project",
+			},
 			{ "<Leader>p", ":Telescope find_files<CR>", {} },
+			{ "<Leader>rs", ":Telescope resume<CR>", {} },
 			{ "<Leader>o", ":Telescope lsp_document_symbols<CR>", {} },
 			{ "<Leader>P", ":Telescope live_grep<CR>", {} },
 			{ "<C-q>", ":Telescope oldfiles<CR>", {} },
@@ -26,7 +31,7 @@ return {
 									local prompt_bufnr = vim.api.nvim_get_current_buf()
 									local picker = action_state.get_current_picker(prompt_bufnr)
 									local lnum = tonumber(prompt:sub(find_colon + 1))
-									if type(lnum) == "number" then
+									if type(lnum) == "number" and picker.previewer.state ~= nil then
 										local win = picker.previewer.state.winid
 										local bufnr = picker.previewer.state.bufnr
 										local line_count = vim.api.nvim_buf_line_count(bufnr)
@@ -62,11 +67,15 @@ return {
 			project_picker = function(opts)
 				local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
 				local choices = {}
+				local pro_to_path = {}
 
+				-- make a map key is the project name, value is the path
 				for i, bookmark in ipairs(bookmarks) do
+					local project_name = vim.split(bookmark, " ")[1]
 					local path = vim.split(bookmark, " ")[2]
 					if path ~= nil then
-						table.insert(choices, path)
+						pro_to_path[project_name] = path
+						table.insert(choices, project_name)
 					end
 				end
 				opts = opts or {}
@@ -85,7 +94,9 @@ return {
 								require("telescope.builtin").find_files({
 									-- exclude png files
 									file_ignore_patterns = { "*.png", "*.ttf", ".git" },
-									search_dirs = { project.value },
+									search_dirs = { pro_to_path[project.value] },
+									-- relative path
+									path_display = { "smart" },
 									-- show hidden files
 									hidden = true,
 									attach_mappings = function(buf, m)

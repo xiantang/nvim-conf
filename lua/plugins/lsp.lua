@@ -6,6 +6,7 @@ return {
 			local null_ls = require("null-ls")
 			null_ls.setup({
 				sources = {
+					null_ls.builtins.formatting.shfmt,
 					null_ls.builtins.formatting.nginx_beautifier,
 					null_ls.builtins.formatting.gofumpt,
 					null_ls.builtins.code_actions.shellcheck,
@@ -63,6 +64,16 @@ return {
 			require("fidget").setup()
 		end,
 	},
-	{ "ray-x/go.nvim", event = "VeryLazy" },
+	{
+		"ray-x/go.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("go").setup({
+				-- https://github.com/ray-x/go.nvim/issues/113
+				lsp_codelens = false,
+			})
+		end,
+	},
+
 	{ "ray-x/guihua.lua", event = "VeryLazy" },
 }

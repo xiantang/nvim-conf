@@ -22,6 +22,15 @@ set guicursor+=i:blinkwait10
 set guicursor+=i:ver1
 set guicursor+=a:blinkon1
 ]])
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.hardtime_default_on = 1
+vim.g.hardtime_maxcount = 2
+vim.g.hardtime_timeout = 700
+vim.g.list_of_normal_keys = { "h", "j", "k", "l", "-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" }
+vim.g.list_of_visual_keys = { "h", "j", "k", "l", "-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" }
+vim.g.list_of_insert_keys = { "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" }
+vim.g.list_of_disabled_keys = {}
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local set = vim.o

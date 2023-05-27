@@ -1,4 +1,42 @@
 return {
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			local fm = require("oil").setup({
+
+				view_options = {
+					-- Show files and directories that start with "."
+					show_hidden = true,
+					-- This function defines what is considered a "hidden" file
+					is_hidden_file = function(name, bufnr)
+						return vim.startswith(name, ".")
+					end,
+					-- This function defines what will never be shown, even when `show_hidden` is set
+					is_always_hidden = function(name, bufnr)
+						return false
+					end,
+				},
+				keymaps = {
+					["g?"] = "actions.show_help",
+					["<CR>"] = "actions.select",
+					["s"] = "actions.select_vsplit",
+					["<C-t>"] = "actions.select_tab",
+					["<C-p>"] = "actions.preview",
+					["q"] = "actions.close",
+					["-"] = "actions.parent",
+					["_"] = "actions.open_cwd",
+					["`"] = "actions.cd",
+					["~"] = "actions.tcd",
+					["g."] = "actions.toggle_hidden",
+				},
+				use_default_keymaps = false,
+			})
+			vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+		end,
+	},
 	{ "Xuyuanp/nerdtree-git-plugin", event = "VeryLazy" },
 	{
 		"preservim/nerdtree",
@@ -30,8 +68,10 @@ return {
 				--
 				local prefix_len = 0
 				local prefix = ""
+				local project = ""
 				for _, bookmark in ipairs(bookmarks) do
 					local path = vim.split(bookmark, " ")[2]
+					local p = vim.split(bookmark, " ")[1]
 					if path == nil then
 						goto continue
 					end
@@ -42,6 +82,7 @@ return {
 					if string.find(current_path, path, 1, true) == 1 and string.len(path) > prefix_len then
 						prefix_len = string.len(path)
 						prefix = path
+						project = p
 					end
 
 					::continue::

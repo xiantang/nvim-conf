@@ -5,6 +5,10 @@ ls.add_snippets("markdown", {
 	ls.parser.parse_snippet("todo", "# todo ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}"),
 })
 
+ls.add_snippets("norg", {
+	-- todo date of today
+	ls.parser.parse_snippet("today", "* ${CURRENT_YEAR}/${CURRENT_MONTH}/${CURRENT_DATE}"),
+})
 ls.add_snippets("markdown", {
 	ls.parser.parse_snippet("-", "- [ ] ${1}"),
 })
