@@ -1,4 +1,29 @@
 return {
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			local fm = require("oil").setup({
+				keymaps = {
+					["g?"] = "actions.show_help",
+					["<CR>"] = "actions.select",
+					["s"] = "actions.select_vsplit",
+					["<C-t>"] = "actions.select_tab",
+					["<C-p>"] = "actions.preview",
+					["q"] = "actions.close",
+					["-"] = "actions.parent",
+					["_"] = "actions.open_cwd",
+					["`"] = "actions.cd",
+					["~"] = "actions.tcd",
+					["g."] = "actions.toggle_hidden",
+				},
+				use_default_keymaps = false,
+			})
+			vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+		end,
+	},
 	{ "Xuyuanp/nerdtree-git-plugin", event = "VeryLazy" },
 	{
 		"preservim/nerdtree",
