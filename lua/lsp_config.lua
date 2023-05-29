@@ -74,7 +74,7 @@ local on_attach = function(client, bufnr)
 	})
 	-- cousor hold for 3 seconds, show signature helper
 	-- silent
-	-- vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.hover() ]]
+	vim.api.nvim_command([[autocmd CursorHold  <buffer> lua vim.lsp.buf.hover() ]])
 	-- Mappings.
 	local opts = { noremap = true, silent = true }
 	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
