@@ -177,105 +177,105 @@ local function go_test(bufnr, command)
 	})
 end
 
-vim.api.nvim_create_user_command("GoRunTestFunc", function()
-	if vim.bo.filetype ~= "go" or string.find(vim.fn.expand("%"), "_test") == nil then
-		print("Not a go test file")
-		return
-	end
-	local func_name = get_cur_go_func_name()
-	local bufnr = vim.api.nvim_get_current_buf()
-	go_test(bufnr, {
-		"go",
-		"test",
-		"-run",
-		func_name,
-		"-v",
-		"-json",
-		"-count=1",
-	})
-end, {})
+-- vim.api.nvim_create_user_command("GoRunTestFunc", function()
+-- 	if vim.bo.filetype ~= "go" or string.find(vim.fn.expand("%"), "_test") == nil then
+-- 		print("Not a go test file")
+-- 		return
+-- 	end
+-- 	local func_name = get_cur_go_func_name()
+-- 	local bufnr = vim.api.nvim_get_current_buf()
+-- 	go_test(bufnr, {
+-- 		"go",
+-- 		"test",
+-- 		"-run",
+-- 		func_name,
+-- 		"-v",
+-- 		"-json",
+-- 		"-count=1",
+-- 	})
+-- end, {})
 
-vim.api.nvim_create_user_command("GoRunTestFile", function()
-	if vim.bo.filetype ~= "go" or string.find(vim.fn.expand("%"), "_test") == nil then
-		print("Not a go test file")
-		return
-	end
-	local bufnr = vim.api.nvim_get_current_buf()
-	local dir = vim.fn.expand("%:p:h")
-	-- filename
-	local filename = vim.fn.expand("%:t:r")
-	local test_name = string.format("%s/%s.go", dir, filename)
-
-	-- cat test file and use go test -run to run tests
-
-	-- alias testcases="sed -n 's/func.*\(Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g'"
-
-	--  $(cat coordinator_test.go | sed -n 's/func.*\(Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g'
-	local cmd = string.format("cat %s | sed -n 's/func.*\\(Test.*\\)(.*/\\1/p' | xargs | sed 's/ /|/g'", test_name)
-	local handle = io.popen(cmd)
-	if handle == nil then
-		print("Failed to run command")
-		return
-	end
-	local result = handle:read("*a")
-	handle:close()
-	-- remove new line
-	result = string.gsub(result, "\n", "")
-
-	go_test(bufnr, {
-		"go",
-		"test",
-		"-run",
-		result,
-		"-json",
-		"-count=1",
-	})
-end, {})
-
-local vim, api = vim, vim.api
-
-local name_map = {
-	error = "err",
-	int = "i",
-	int64 = "i",
-	uint = "i",
-	uint64 = "i",
-	float = "f",
-	float64 = "f",
-	string = "s",
-	rune = "r",
-	bool = "b",
-	channel = "ch",
-	byte = "b",
-}
-
-local function gen_name(types)
-	local rets = {}
-	local used = {}
-	for _, t in pairs(types) do
-		if name_map[t] then
-			if not used[name_map[t]] then
-				rets[#rets + 1] = name_map[t]
-				used[name_map[t]] = 1
-			else
-				rets[#rets + 1] = name_map[t] .. tostring(used[name_map[t]])
-				used[name_map[t]] = used[name_map[t]] + 1
-			end
-		else
-			local f = t:sub(1, 1)
-			if f == f:upper() then
-				name_map[t] = f:lower() .. t:sub(2)
-				table.insert(rets, name_map[t])
-				used[name_map[t]] = (used[name_map[t]] or 0) + 1
-			else
-				name_map[t] = f
-				table.insert(rets, name_map[t])
-				used[name_map[t]] = (used[name_map[t]] or 0) + 1
-			end
-		end
-	end
-	return rets
-end
+-- vim.api.nvim_create_user_command("GoRunTestFile", function()
+-- 	if vim.bo.filetype ~= "go" or string.find(vim.fn.expand("%"), "_test") == nil then
+-- 		print("Not a go test file")
+-- 		return
+-- 	end
+-- 	local bufnr = vim.api.nvim_get_current_buf()
+-- 	local dir = vim.fn.expand("%:p:h")
+-- 	-- filename
+-- 	local filename = vim.fn.expand("%:t:r")
+-- 	local test_name = string.format("%s/%s.go", dir, filename)
+--
+-- 	-- cat test file and use go test -run to run tests
+--
+-- 	-- alias testcases="sed -n 's/func.*\(Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g'"
+--
+-- 	--  $(cat coordinator_test.go | sed -n 's/func.*\(Test.*\)(.*/\1/p' | xargs | sed 's/ /|/g'
+-- 	local cmd = string.format("cat %s | sed -n 's/func.*\\(Test.*\\)(.*/\\1/p' | xargs | sed 's/ /|/g'", test_name)
+-- 	local handle = io.popen(cmd)
+-- 	if handle == nil then
+-- 		print("Failed to run command")
+-- 		return
+-- 	end
+-- 	local result = handle:read("*a")
+-- 	handle:close()
+-- 	-- remove new line
+-- 	result = string.gsub(result, "\n", "")
+--
+-- 	go_test(bufnr, {
+-- 		"go",
+-- 		"test",
+-- 		"-run",
+-- 		result,
+-- 		"-json",
+-- 		"-count=1",
+-- 	})
+-- end, {})
+--
+-- local vim, api = vim, vim.api
+--
+-- local name_map = {
+-- 	error = "err",
+-- 	int = "i",
+-- 	int64 = "i",
+-- 	uint = "i",
+-- 	uint64 = "i",
+-- 	float = "f",
+-- 	float64 = "f",
+-- 	string = "s",
+-- 	rune = "r",
+-- 	bool = "b",
+-- 	channel = "ch",
+-- 	byte = "b",
+-- }
+--
+-- local function gen_name(types)
+-- 	local rets = {}
+-- 	local used = {}
+-- 	for _, t in pairs(types) do
+-- 		if name_map[t] then
+-- 			if not used[name_map[t]] then
+-- 				rets[#rets + 1] = name_map[t]
+-- 				used[name_map[t]] = 1
+-- 			else
+-- 				rets[#rets + 1] = name_map[t] .. tostring(used[name_map[t]])
+-- 				used[name_map[t]] = used[name_map[t]] + 1
+-- 			end
+-- 		else
+-- 			local f = t:sub(1, 1)
+-- 			if f == f:upper() then
+-- 				name_map[t] = f:lower() .. t:sub(2)
+-- 				table.insert(rets, name_map[t])
+-- 				used[name_map[t]] = (used[name_map[t]] or 0) + 1
+-- 			else
+-- 				name_map[t] = f
+-- 				table.insert(rets, name_map[t])
+-- 				used[name_map[t]] = (used[name_map[t]] or 0) + 1
+-- 			end
+-- 		end
+-- 	end
+-- 	return rets
+-- end
 
 local function find_ret(str)
 	str = vim.trim(str)
