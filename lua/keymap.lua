@@ -13,8 +13,9 @@ vim.keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { noremap = true, expr = true
 vim.keymap.set("n", "<Leader>[", "<C-O>", opts)
 vim.keymap.set("n", "<Leader>]", "<C-I>", opts)
 
-vim.keymap.set("n", "<Tab>", "`", opts)
 vim.keymap.set("n", "<Tab>a", "`azz", opts)
+vim.keymap.set("n", "<Tab>b", "`bzz", opts)
+vim.keymap.set("n", "<Tab>m", "`mzz", opts)
 vim.keymap.set("n", "o", "o", opts)
 vim.keymap.set("n", "c", "c", opts)
 vim.keymap.set("n", "r", "r", opts)
