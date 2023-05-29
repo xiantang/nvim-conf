@@ -13,6 +13,7 @@ vim.keymap.set("n", "k", [[(v:count > 1 ? "m'" . v:count : '') . 'gk']], { norem
 vim.keymap.set("n", "<Leader>[", "<C-O>", opts)
 vim.keymap.set("n", "<Leader>]", "<C-I>", opts)
 
+-- becase hhkb layout
 vim.keymap.set("n", "<Tab><Tab>", "``zz", opts)
 vim.keymap.set("n", "<Tab>a", "`azz", opts)
 vim.keymap.set("n", "<Tab>b", "`bzz", opts)
