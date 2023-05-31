@@ -8,7 +8,6 @@
 local opts = { noremap = true, silent = true }
 -- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 vim.keymap.set("n", "j", function()
-	-- if count > 1 then
 	if vim.v.count > 1 then
 		return "m'" .. vim.v.count .. "j"
 	else
@@ -16,7 +15,6 @@ vim.keymap.set("n", "j", function()
 	end
 end, { noremap = true, expr = true })
 vim.keymap.set("n", "k", function()
-	-- if count > 1 then
 	if vim.v.count > 1 then
 		return "m'" .. vim.v.count .. "k"
 	else
