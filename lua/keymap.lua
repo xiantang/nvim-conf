@@ -7,20 +7,8 @@
 -- ]])
 local opts = { noremap = true, silent = true }
 -- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-vim.keymap.set("n", "j", function()
-	if vim.v.count > 1 then
-		return "m'" .. vim.v.count .. "j"
-	else
-		return "gj"
-	end
-end, { noremap = true, expr = true })
-vim.keymap.set("n", "k", function()
-	if vim.v.count > 1 then
-		return "m'" .. vim.v.count .. "k"
-	else
-		return "gk"
-	end
-end, { noremap = true, expr = true })
+vim.keymap.set("n", "j", [[v:count > 0 ? "m'" . v:count . "j" : 'gj']], { noremap = true, expr = true })
+vim.keymap.set("n", "k", [[v:count > 0 ? "m'" . v:count . "k" : 'gk']], { noremap = true, expr = true })
 
 vim.keymap.set("n", "<Leader>[", "<C-O>", opts)
 vim.keymap.set("n", "<Leader>]", "<C-I>", opts)
