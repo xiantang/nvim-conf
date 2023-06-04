@@ -5,7 +5,7 @@ return {
 		keys = {
 			{ "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
-			{ "<leader>tb", "<cmd>Telescope git_branches<CR>", desc = "git git_branches" },
+			{ "<leader>tb", "<cmd>Telescope git_branches<CR>", desc = "Git git_branches" },
 			{
 				"<C-e>",
 				":lua project_picker(require('telescope.themes').get_dropdown{})<CR>",
