@@ -12,6 +12,7 @@ vim.keymap.set("n", "k", [[v:count > 0 ? "m'" . v:count . "k" : 'gk']], { norema
 
 vim.keymap.set("n", "<Leader>[", "<C-O>", opts)
 vim.keymap.set("n", "<Leader>]", "<C-I>", opts)
+vim.keymap.set("v", "y", "ygv<esc>", opts)
 
 -- becase hhkb layout backstick is hard to press
 vim.keymap.set("n", "<Tab><Tab>", "``zz", opts)
