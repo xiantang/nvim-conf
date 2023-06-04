@@ -3,6 +3,8 @@ return {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		keys = {
+			{ "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
+			{ "<leader>tb", "<cmd>Telescope git_branches<CR>", desc = "git git_branches" },
 			{
 				"<C-e>",
 				":lua project_picker(require('telescope.themes').get_dropdown{})<CR>",
