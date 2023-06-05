@@ -1,5 +1,9 @@
 return {
 	{
+		"jbyuki/one-small-step-for-vimkind",
+		event = "VeryLazy",
+	},
+	{
 		"leoluz/nvim-dap-go",
 		event = "VeryLazy",
 		config = function()

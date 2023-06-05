@@ -89,6 +89,8 @@ return {
 				end
 				-- nerdTree open prefix
 				if prefix_len > 0 then
+					vim.cmd(string.format("silent !tmux rename-window %s", project))
+					vim.cmd(string.format("silent !tmux set-environment NVIM_DIR %s", prefix))
 					local cmd = string.format("NERDTree %s ", prefix)
 					vim.cmd(cmd)
 					-- move cursor to current win

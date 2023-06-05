@@ -7,18 +7,28 @@
 -- ]])
 local opts = { noremap = true, silent = true }
 -- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-vim.keymap.set("n", "j", [[v:count ? 'j' : 'gj']], { noremap = true, expr = true })
-vim.keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { noremap = true, expr = true })
+vim.keymap.set("n", "j", [[v:count > 0 ? "m'" . v:count . "j" : 'gj']], { noremap = true, expr = true })
+vim.keymap.set("n", "k", [[v:count > 0 ? "m'" . v:count . "k" : 'gk']], { noremap = true, expr = true })
 
 vim.keymap.set("n", "<Leader>[", "<C-O>", opts)
 vim.keymap.set("n", "<Leader>]", "<C-I>", opts)
+vim.keymap.set("v", "y", "ygv<esc>", opts)
 
+-- nnoremap <c-c> :cp<CR>
+-- nnoremap <c-n> :cn<CR>
+vim.keymap.set("n", "<c-p>", ":cp<CR>", opts)
+vim.keymap.set("n", "<c-n>", ":cn<CR>", opts)
+-- becase hhkb layout backstick is hard to press
+vim.keymap.set("n", "<Tab><Tab>", "``zz", opts)
+vim.keymap.set("n", "<Tab>a", "`azz", opts)
+vim.keymap.set("n", "<Tab>b", "`bzz", opts)
+vim.keymap.set("n", "<Tab>m", "`mzz", opts)
 vim.keymap.set("n", "o", "o", opts)
 vim.keymap.set("n", "c", "c", opts)
 vim.keymap.set("n", "r", "r", opts)
 vim.keymap.set("n", "q", "q", opts)
--- vim.keymap.set("n", "n ", "nzzzv")
--- vim.keymap.set("n", "N ", "Nzzzv")
+vim.keymap.set("n", "n", "nzz")
+vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
 vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 -- vim.api.nvim_set_keymap("n", "m", "mM", { silent = true })
@@ -41,15 +51,16 @@ vim.keymap.set("n", "<Leader>s", ":sp<CR>", { desc = "[S]plit window" })
 vim.keymap.set("n", "<Leader>v", ":vsp<CR>", { desc = "[V]ertically [S]plit window" })
 vim.keymap.set("n", "<Leader>w", ":w<CR>", opts)
 vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
-vim.keymap.set("n", "<Leader>rt", ":GoRunTestFunc<CR>", opts)
-vim.keymap.set("n", "<Leader>rf", ":GoRunTestFile<CR>", opts)
+vim.keymap.set("n", "<Leader>rt", ":GoTestFunc<CR>", opts)
+vim.keymap.set("n", "<Leader>rf", ":GoTestFile<CR>", opts)
 vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', opts)
 vim.keymap.set("n", "<Leader>ut", ":UndotreeToggle<CR>", opts)
-vim.keymap.set("n", "tt", ":GenReturn<CR>0", opts)
+-- vim.keymap.set("n", "tt", ":GenReturn<CR>0", opts)
 vim.keymap.set("n", "K", "k", opts)
 vim.keymap.set("n", "<Leader>Q", ':lua require("start").Stop()<CR>', opts)
-vim.keymap.set("", "s", [[<Cmd>lua require('hop').hint_words()<CR>]], opts)
-vim.keymap.set("n", "gs", ":HopWordMW<CR>", opts)
+-- vim.keymap.set("", "s", [[<Cmd>lua require('hop').hint_words()<CR>]], opts)
+vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+-- vim.keymap.set("n", "gs", ":HopWordMW<CR>", opts)
 
 vim.cmd([[
 "ctrl A to  move to line start when in command mode like in iterm2

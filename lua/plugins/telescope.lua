@@ -3,6 +3,9 @@ return {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		keys = {
+			{ "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
+			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
+			{ "<leader>tb", "<cmd>Telescope git_branches<CR>", desc = "Git git_branches" },
 			{
 				"<C-e>",
 				":lua project_picker(require('telescope.themes').get_dropdown{})<CR>",
@@ -13,6 +16,11 @@ return {
 			{ "<Leader>o", ":Telescope lsp_document_symbols<CR>", {} },
 			{ "<Leader>P", ":Telescope live_grep<CR>", {} },
 			{ "<C-q>", ":Telescope oldfiles<CR>", {} },
+			{
+				"<CR>",
+				"<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
+				{},
+			},
 		},
 		config = function()
 			local pickers = require("telescope.pickers")

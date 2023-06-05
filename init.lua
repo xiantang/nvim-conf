@@ -22,8 +22,6 @@ set guicursor+=i:blinkwait10
 set guicursor+=i:ver1
 set guicursor+=a:blinkon1
 ]])
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 vim.g.hardtime_default_on = 1
 vim.g.hardtime_maxcount = 2
 vim.g.hardtime_timeout = 700
@@ -39,6 +37,8 @@ set.number = true
 set.relativenumber = true
 set.autoread = true
 set.mouse = "a"
+-- set.splitbelow = true
+set.splitright = true
 -- set.guicursor = "a:blinkon1,i:ver25"
 set.encoding = "utf8"
 set.termguicolors = true
