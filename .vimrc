@@ -34,6 +34,10 @@ set sessionoptions="blank"
 set hidden
 set autoindent
 
+" keymap
+noremap <Leader>[ <C-O>
+noremap <Leader>] <C-I>
+
 " vim only, if it's neovim plz don't apply
 if !has('nvim')
 noremap - :Ntree<CR>
