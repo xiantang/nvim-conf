@@ -1,8 +1,7 @@
-") leader
+" leader
 " local leader
 let mapleader = " "
 let maplocalleader = " "
-
 colorscheme desert
 set nu
 set rnu
@@ -34,6 +33,9 @@ set ignorecase
 set sessionoptions="blank"
 set hidden
 set autoindent
+
+" vim only, if it's neovim plz don't apply
+if !has('nvim')
 noremap - :Ntree<CR>
 function! FZF() abort
     let l:tempname = tempname()
@@ -49,3 +51,4 @@ endfunction
 " :Files
 command! -nargs=* Files call FZF()
 nnoremap <leader>p :Files<cr>
+endif
