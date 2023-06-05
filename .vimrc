@@ -20,6 +20,9 @@ noremap <Leader>[ <C-O>
 noremap <Leader>] <C-I>
 if !has('nvim')
 colorscheme desert
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[4 q" "SR = REPLACE mode
+let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 noremap <Leader>s <C-w>s
 noremap <Leader>v <C-w>v
 nnoremap <C-h> <C-w>h
