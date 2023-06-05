@@ -15,6 +15,11 @@ set clipboard=unnamedplus
 set modifiable
 set smartcase
 
+set autoread
+set splitright
+set encoding=utf-8
+set termguicolors
+
 " no swap files
 set noswapfile
 syntax on
