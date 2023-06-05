@@ -2,7 +2,6 @@
 " local leader
 let mapleader = " "
 let maplocalleader = " "
-colorscheme desert
 set nu
 set rnu
 highlight Cursor guifg=white guibg=black
@@ -40,6 +39,7 @@ noremap <Leader>] <C-I>
 
 " vim only, if it's neovim plz don't apply
 if !has('nvim')
+colorscheme desert
 noremap - :Ntree<CR>
 function! FZF() abort
     let l:tempname = tempname()
