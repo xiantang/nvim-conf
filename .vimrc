@@ -18,6 +18,8 @@ syntax on
 set sessionoptions="blank"
 noremap <Leader>[ <C-O>
 noremap <Leader>] <C-I>
+noremap <C-D> <C-D>zz
+noremap <C-U> <C-U>zz
 if !has('nvim')
 colorscheme desert
 let &t_SI.="\e[5 q" "SI = INSERT mode
