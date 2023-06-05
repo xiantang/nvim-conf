@@ -10,8 +10,6 @@ local opts = { noremap = true, silent = true }
 -- vim.keymap.set("n", "j", [[v:count > 0 ? "m'" . v:count . "j" : 'gj']], { noremap = true, expr = true })
 -- vim.keymap.set("n", "k", [[v:count > 0 ? "m'" . v:count . "k" : 'gk']], { noremap = true, expr = true })
 
-vim.keymap.set("n", "<Leader>[", "<C-O>", opts)
-vim.keymap.set("n", "<Leader>]", "<C-I>", opts)
 vim.keymap.set("v", "y", "ygv<esc>", opts)
 
 -- nnoremap <c-c> :cp<CR>
