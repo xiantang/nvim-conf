@@ -17,6 +17,7 @@ set smartcase
 
 " no swap files
 set noswapfile
+syntax on
 
 " leader
 " local leader
