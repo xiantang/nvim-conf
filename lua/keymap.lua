@@ -7,11 +7,9 @@
 -- ]])
 local opts = { noremap = true, silent = true }
 -- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-vim.keymap.set("n", "j", [[v:count > 0 ? "m'" . v:count . "j" : 'gj']], { noremap = true, expr = true })
-vim.keymap.set("n", "k", [[v:count > 0 ? "m'" . v:count . "k" : 'gk']], { noremap = true, expr = true })
+-- vim.keymap.set("n", "j", [[v:count > 0 ? "m'" . v:count . "j" : 'gj']], { noremap = true, expr = true })
+-- vim.keymap.set("n", "k", [[v:count > 0 ? "m'" . v:count . "k" : 'gk']], { noremap = true, expr = true })
 
-vim.keymap.set("n", "<Leader>[", "<C-O>", opts)
-vim.keymap.set("n", "<Leader>]", "<C-I>", opts)
 vim.keymap.set("v", "y", "ygv<esc>", opts)
 
 -- nnoremap <c-c> :cp<CR>
@@ -29,10 +27,6 @@ vim.keymap.set("n", "r", "r", opts)
 vim.keymap.set("n", "q", "q", opts)
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
-vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
-vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
--- vim.api.nvim_set_keymap("n", "m", "mM", { silent = true })
--- vim.api.nvim_set_keymap("n", "M", "`M", { silent = true })
 vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>", opts)
 vim.keymap.set("n", "<C-Right>", ":vertical resize -5<CR>", opts)
 vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", opts)
