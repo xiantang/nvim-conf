@@ -2,6 +2,8 @@
 " local leader
 let mapleader = " "
 let maplocalleader = " "
+
+colorscheme desert
 set nu
 set rnu
 highlight Cursor guifg=white guibg=black
