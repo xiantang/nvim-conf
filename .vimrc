@@ -29,7 +29,6 @@ nnoremap <C-l> <C-w>l
 noremap - :Ntree<CR>
 function! FZF() abort
     let l:tempname = tempname()
-    " fzf | awk '{ print $1":1:0" }' > file
     execute 'silent !fzf --multi ' . '| awk ''{ print $1":1:0" }'' > ' . fnameescape(l:tempname)
     try
         execute 'cfile ' . l:tempname
