@@ -32,7 +32,6 @@ set ignorecase
 set sessionoptions="blank"
 set hidden
 set autoindent
-
 noremap - :Ntree<CR>
 function! FZF() abort
     let l:tempname = tempname()
@@ -45,8 +44,6 @@ function! FZF() abort
         call delete(l:tempname)
     endtry
 endfunction
-
 " :Files
 command! -nargs=* Files call FZF()
-
 nnoremap <leader>p :Files<cr>
