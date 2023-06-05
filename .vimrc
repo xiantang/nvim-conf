@@ -14,7 +14,6 @@ set guicursor+=a:blinkon1
 set mouse=a
 set clipboard=unnamed
 set encoding=utf-8
-syntax on
 set sessionoptions="blank"
 noremap <Leader>[ <C-O>
 noremap <Leader>] <C-I>
@@ -23,6 +22,7 @@ noremap <C-U> <C-U>zz
 nnoremap <expr> j v:count > 0 ? "m'" . v:count . "j" : 'gj'
 nnoremap <expr> k v:count > 0 ? "m'" . v:count . "k" : 'gk'
 if !has('nvim')
+syntax on
 colorscheme desert
 let &t_SI.="\e[5 q" "SI = INSERT mode
 let &t_SR.="\e[4 q" "SR = REPLACE mode
