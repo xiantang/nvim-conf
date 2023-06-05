@@ -16,16 +16,6 @@ if vim.g.neovide then
 	-- Put anything you want to happen only in Neovide here
 end
 vim.o.guifont = "JetBrains Mono:h15"
-vim.cmd([[
-highlight Cursor guifg=white guibg=black
-highlight iCursor guifg=white guibg=steelblue
-set guicursor=n-v-c:block-Cursor
-set guicursor+=i:ver100-iCursor
-set guicursor+=n-v-c:blinkon0
-set guicursor+=i:blinkwait10
-set guicursor+=i:ver1
-set guicursor+=a:blinkon1
-]])
 vim.g.hardtime_default_on = 1
 vim.g.hardtime_maxcount = 2
 vim.g.hardtime_timeout = 700
