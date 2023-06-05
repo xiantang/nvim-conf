@@ -27,16 +27,6 @@ local set = vim.o
 set.ts = 2
 set.sts = 2
 set.sw = 2
-set.hlsearch = true
-set.autoindent = true
-set.smartindent = true
--- https://www.youtube.com/watch?v=yMs97o_TdBU&t=344s&ab_channel=BenFrain
--- make window width same when close a window
-set.equalalways = true
-set.ignorecase = true
-set.sessionoptions = "blank"
-set.hidden = true
-set.autoindent = true
 
 require("autocmd")
 require("keymap")

@@ -1,3 +1,8 @@
+" leader
+" local leader
+let mapleader = " "
+let maplocalleader = " "
+
 set nu
 set rnu
 highlight Cursor guifg=white guibg=black
@@ -24,8 +29,14 @@ set termguicolors
 set noswapfile
 syntax on
 
-" leader
-" local leader
-let mapleader = " "
-let maplocalleader = " "
+
+set hlsearch
+set autoindent
+set smartindent
+set equalalways
+set ignorecase
+set sessionoptions="blank"
+set hidden
+set autoindent
+
 
