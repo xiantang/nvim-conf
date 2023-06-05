@@ -9,3 +9,13 @@ set guicursor+=i:blinkwait10
 set guicursor+=i:ver1
 set guicursor+=a:blinkon1
 set mouse=a
+set clipboard=unnamedplus
+
+" no swap files
+set noswapfile
+
+" leader
+" local leader
+let mapleader = " "
+let maplocalleader = " "
+
