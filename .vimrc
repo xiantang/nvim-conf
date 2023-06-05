@@ -2,7 +2,6 @@
 " local leader
 let mapleader = " "
 let maplocalleader = " "
-
 set nu
 set rnu
 highlight Cursor guifg=white guibg=black
@@ -15,21 +14,16 @@ set guicursor+=i:ver1
 set guicursor+=a:blinkon1
 set mouse=a
 set clipboard=unnamedplus
-
 " modifiable
 set modifiable
 set smartcase
-
 set autoread
 set splitright
 set encoding=utf-8
 set termguicolors
-
 " no swap files
 set noswapfile
 syntax on
-
-
 set hlsearch
 set autoindent
 set smartindent
@@ -38,4 +32,3 @@ set ignorecase
 set sessionoptions="blank"
 set hidden
 set autoindent
-
