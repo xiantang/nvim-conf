@@ -1,6 +1,10 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- use Bold
+-- source vim script
+-- vimrc can be reusued
+vim.cmd("source ~/.config/nvim/.vimrc")
+
 if vim.g.neovide then
 	local alpha = function()
 		return string.format("%x", math.floor(255 * (vim.g.transparency or 0.8)))
@@ -33,8 +37,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 local set = vim.o
 vim.opt.swapfile = false
-set.number = true
-set.relativenumber = true
 set.autoread = true
 set.mouse = "a"
 -- set.splitbelow = true
