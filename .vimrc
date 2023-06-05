@@ -13,7 +13,7 @@ set guicursor+=i:blinkwait10
 set guicursor+=i:ver1
 set guicursor+=a:blinkon1
 set mouse=a
-set clipboard=unnamedplus
+set clipboard=unnamed
 " modifiable
 set modifiable
 set smartcase
