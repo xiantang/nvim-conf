@@ -1,10 +1,6 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- use Bold
--- source vim script
--- vimrc can be reusued
-vim.cmd("source ~/.config/nvim/.vimrc")
-
 if vim.g.neovide then
 	local alpha = function()
 		return string.format("%x", math.floor(255 * (vim.g.transparency or 0.8)))
@@ -16,6 +12,16 @@ if vim.g.neovide then
 	-- Put anything you want to happen only in Neovide here
 end
 vim.o.guifont = "JetBrains Mono:h15"
+vim.cmd([[
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
+set guicursor+=i:ver1
+set guicursor+=a:blinkon1
+]])
 vim.g.hardtime_default_on = 1
 vim.g.hardtime_maxcount = 2
 vim.g.hardtime_timeout = 700
@@ -23,11 +29,36 @@ vim.g.list_of_normal_keys = { "h", "j", "k", "l", "-", "+", "<UP>", "<DOWN>", "<
 vim.g.list_of_visual_keys = { "h", "j", "k", "l", "-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" }
 vim.g.list_of_insert_keys = { "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" }
 vim.g.list_of_disabled_keys = {}
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 local set = vim.o
-set.ts = 2
+vim.opt.swapfile = false
+set.number = true
+set.relativenumber = true
+set.autoread = true
+set.mouse = "a"
+-- set.splitbelow = true
+set.splitright = true
+-- set.guicursor = "a:blinkon1,i:ver25"
+set.encoding = "utf8"
 set.termguicolors = true
+set.ts = 2
 set.sts = 2
 set.sw = 2
+set.hlsearch = true
+set.autoindent = true
+set.smartindent = true
+set.mouse = "a"
+set.clipboard = "unnamed"
+set.modifiable = true
+set.smartcase = true
+-- https://www.youtube.com/watch?v=yMs97o_TdBU&t=344s&ab_channel=BenFrain
+-- make window width same when close a window
+set.equalalways = true
+set.ignorecase = true
+set.sessionoptions = "blank"
+set.hidden = true
+set.autoindent = true
 
 require("autocmd")
 require("keymap")
