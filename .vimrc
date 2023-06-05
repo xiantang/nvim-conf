@@ -32,14 +32,18 @@ set ignorecase
 set sessionoptions="blank"
 set hidden
 set autoindent
-
 " keymap
 noremap <Leader>[ <C-O>
 noremap <Leader>] <C-I>
-
 " vim only, if it's neovim plz don't apply
 if !has('nvim')
 colorscheme desert
+noremap <Leader>s <C-w>s
+noremap <Leader>v <C-w>v
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
 noremap - :Ntree<CR>
 function! FZF() abort
     let l:tempname = tempname()
