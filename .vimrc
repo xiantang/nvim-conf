@@ -42,4 +42,20 @@ function! FZF() abort
 endfunction
 command! -nargs=* Files call FZF()
 nnoremap <leader>p :Files<cr>
+function! RG(args) abort
+    let l:tempname = tempname()
+    let l:pattern = '.'
+    if len(a:args) > 0
+        let l:pattern = a:args
+    endif
+    execute 'silent !rg --vimgrep ''' . l:pattern . ''' | fzf -m > ' . fnameescape(l:tempname)
+    try
+        execute 'cfile ' . l:tempname
+        redraw!
+    finally
+        call delete(l:tempname)
+    endtry
+endfunction
+command! -nargs=* Rg call RG(<q-args>)
+nnoremap <leader>P :Rg<cr>
 endif
