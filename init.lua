@@ -25,6 +25,7 @@ vim.g.list_of_insert_keys = { "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" }
 vim.g.list_of_disabled_keys = {}
 local set = vim.o
 set.ts = 2
+set.termguicolors = true
 set.sts = 2
 set.sw = 2
 
