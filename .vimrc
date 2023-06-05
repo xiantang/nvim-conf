@@ -1,4 +1,4 @@
-" leader
+") leader
 " local leader
 let mapleader = " "
 let maplocalleader = " "
@@ -32,3 +32,21 @@ set ignorecase
 set sessionoptions="blank"
 set hidden
 set autoindent
+
+noremap - :Ntree<CR>
+function! FZF() abort
+    let l:tempname = tempname()
+    " fzf | awk '{ print $1":1:0" }' > file
+    execute 'silent !fzf --multi ' . '| awk ''{ print $1":1:0" }'' > ' . fnameescape(l:tempname)
+    try
+        execute 'cfile ' . l:tempname
+        redraw!
+    finally
+        call delete(l:tempname)
+    endtry
+endfunction
+
+" :Files
+command! -nargs=* Files call FZF()
+
+nnoremap <leader>p :Files<cr>
