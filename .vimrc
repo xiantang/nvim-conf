@@ -11,6 +11,10 @@ set guicursor+=a:blinkon1
 set mouse=a
 set clipboard=unnamedplus
 
+" modifiable
+set modifiable
+set smartcase
+
 " no swap files
 set noswapfile
 
