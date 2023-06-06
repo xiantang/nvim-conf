@@ -39,7 +39,7 @@ return {
 								arrow_open = "⏷",
 							},
 							git = {
-								unstaged = "m",
+								unstaged = "✗",
 								staged = "✓",
 								unmerged = "⌥",
 								renamed = "➜",
