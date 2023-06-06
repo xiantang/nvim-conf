@@ -34,9 +34,7 @@ return {
 				renderer = {
 					group_empty = true,
 				},
-				filters = {
-					dotfiles = true,
-				},
+				filters = {},
 			})
 			require("nvim-tree.view").View.winopts.number = true
 			require("nvim-tree.view").View.winopts.relativenumber = true
