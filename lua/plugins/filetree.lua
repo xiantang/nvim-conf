@@ -32,7 +32,23 @@ return {
 					width = 30,
 				},
 				renderer = {
-					group_empty = true,
+					icons = {
+						glyphs = {
+							folder = {
+								arrow_closed = "⏵",
+								arrow_open = "⏷",
+							},
+							git = {
+								unstaged = "m",
+								staged = "✓",
+								unmerged = "⌥",
+								renamed = "➜",
+								untracked = "★",
+								deleted = "⊖",
+								ignored = "◌",
+							},
+						},
+					},
 				},
 				filters = {},
 			})
