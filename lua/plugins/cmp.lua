@@ -119,7 +119,6 @@ return {
 			})
 			local source = require("jira")
 			-- require("cmp").register_source("cmp_jira", source.new({}))
-			require("go_test")
 		end,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
