@@ -11,9 +11,42 @@ au CursorHold,CursorHoldI * checktime
 au BufWinEnter NvimTree setlocal rnu
 ]])
 
+last = ""
+
 vim.api.nvim_create_autocmd({ "CursorMoved" }, {
 	pattern = { "*" },
-	callback = function() end,
+	callback = function()
+		-- read last line of  ~/logfile.txt
+		local logfile = vim.fn.expand("~/logfile.txt")
+		local lastline = vim.fn.system("tail -n 1 " .. logfile)
+		-- get last 20 chars of lastline
+		local lastchars = string.sub(lastline, -20)
+		-- if lastchars match regex "jjj$" then
+		if string.match(lastchars, "jjj$") then
+			s = "You should use <count>j instead of jjj"
+			if last == s then
+				return
+			end
+			require("notify")(s)
+			last = s
+		end
+		if string.match(lastchars, "kkk$") then
+			s = "You should use <count>k instead of kkk"
+			if last == s then
+				return
+			end
+			require("notify")(s)
+			last = s
+		end
+		if string.match(lastchars, "d%[left%-shift%]4$") then
+			-- avoid send notification too often
+			require("notify")("You should use D instead of d$")
+		end
+		if string.match(lastchars, "y%[left%-shift%]4$") then
+			-- avoid send notification too often
+			require("notify")("You should use Y instead of y$")
+		end
+	end,
 })
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	pattern = { "*" },
