@@ -16,11 +16,11 @@ return {
 			{ "<Leader>o", ":Telescope lsp_document_symbols<CR>", {} },
 			{ "<Leader>P", ":Telescope live_grep<CR>", {} },
 			{ "<C-q>", ":Telescope oldfiles<CR>", {} },
-			{
-				"<CR>",
-				"<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
-				{},
-			},
+			-- {
+			-- 	"<CR>",
+			-- 	"<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
+			-- 	{},
+			-- },
 		},
 		config = function()
 			local pickers = require("telescope.pickers")
