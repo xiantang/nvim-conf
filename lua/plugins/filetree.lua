@@ -11,11 +11,9 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
-			require("nvim-tree").setup({
-				view = {
-					adaptive_size = true,
-				},
-			})
+			require("nvim-tree").setup({})
+			require("nvim-tree.view").View.winopts.number = true
+			require("nvim-tree.view").View.winopts.relativenumber = true
 			function _G.NerdSmartLocated()
 				-- get curent buff path
 				local current_win = vim.api.nvim_get_current_win()
