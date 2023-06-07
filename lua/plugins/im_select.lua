@@ -7,7 +7,7 @@ return {
 			local is_mac = vim.fn.has("mac") == 1
 			if is_mac then
 				require("im_select").setup({
-					-- enable_delete_unbound_albIM will be set to `default_im_select` in `normal` mode(`EnterVim` or `InsertLeave`)
+					-- IM will be set to `default_im_select` in `normal` mode(`EnterVim` or `InsertLeave`)
 					-- For Windows/WSL, default: "1033", aka: English US Keyboard
 					-- For macOS, default: "com.apple.keylayout.ABC", aka: US
 					-- You can use `im-select` in cli to get the IM name of you preferred

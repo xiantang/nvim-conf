@@ -65,6 +65,12 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost", "InsertEnter" }, {
 			end
 		end
 		if env.event == "TextYankPost" then
+			if string.match(lastline, "c%[left%-shift%]4$") then
+				-- avoid send notification too often
+				async.run(function()
+					notify("You should use C instead of c$")
+				end)
+			end
 			if string.match(lastline, "y%[left%-shift%]4$") then
 				-- avoid send notification too often
 				async.run(function()
