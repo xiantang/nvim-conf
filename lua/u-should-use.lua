@@ -1,14 +1,24 @@
 local M = {}
+
+local logger = require("keylogger")
 M.last = ""
 M.logfile = vim.fn.expand(string.format("~/logfile_%s.log", vim.fn.getpid()))
 
 M.setup = function(opts)
+	-- add UserCmd to run UShouldUseStart
+
+	vim.api.nvim_create_user_command("UShouldUseStart", function()
+		logger.run(M.logfile)
+	end, {})
+	vim.api.nvim_create_user_command("UShouldUseStop", function()
+		logger.stop()
+	end, {})
+
 	vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost", "InsertEnter" }, {
 		pattern = { "*" },
 		callback = function(env)
 			-- read last line of  ~/logfile.txt
-			local logfile = vim.fn.expand("~/logfile.txt")
-			local lastchars = vim.fn.system("tail -c 20 " .. logfile)
+			local lastchars = vim.fn.system("tail -c 20 " .. M.logfile)
 			local async = require("plenary.async")
 			local notify = require("notify").async
 			local function check(regex, recommand, wrong)
