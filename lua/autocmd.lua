@@ -18,75 +18,50 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost", "InsertEnter" }, {
 	callback = function(env)
 		-- read last line of  ~/logfile.txt
 		local logfile = vim.fn.expand("~/logfile.txt")
-		local lastline = vim.fn.system("tail -c 20 " .. logfile)
+		local lastchars = vim.fn.system("tail -c 20 " .. logfile)
 		local async = require("plenary.async")
 		local notify = require("notify").async
-		if env.event == "CursorMoved" then
-			if string.match(lastline, "kkkk$") then
-				local s = "You should use <count>k instead of kkkk"
-				if last == s then
-					return
-				end
-				require("notify")(s)
-				last = s
-			end
-			if string.match(lastline, "bbbb$") then
-				local s = "You should use F<key> instead of bbbb"
-				if last == s then
-					return
-				end
-				require("notify")(s)
-				last = s
-			end
-			if string.match(lastline, "eeee$") then
-				local s = "You should use f<key> instead of eeee"
-				if last == s then
-					return
-				end
-				require("notify")(s)
-				last = s
-			end
-			if string.match(lastline, "jjjj$") then
-				local s = "You should use <count>j instead of jjjj"
-				if last == s then
-					return
-				end
-				require("notify")(s)
-				last = s
-			end
-			return
-		end
-		if env.event == "InsertEnter" then
-			if string.match(lastline, "0i") then
+		local function check(regex, recommand, wrong)
+			if string.match(lastchars, regex) then
 				-- avoid send notification too often
 				async.run(function()
-					notify("You should use I instead of 0i")
-				end)
-			end
-		end
-		if env.event == "TextYankPost" then
-			if string.match(lastline, "c%[left%-shift%]4$") then
-				-- avoid send notification too often
-				async.run(function()
-					notify("You should use C instead of c$")
-				end)
-			end
-			if string.match(lastline, "y%[left%-shift%]4$") then
-				-- avoid send notification too often
-				async.run(function()
-					notify("You should use Y instead of y$")
-				end)
-			end
-			if string.match(lastline, "d%[left%-shift%]4$") then
-				-- avoid send notification too often
-				async.run(function()
-					s = "You should use D instead of d$"
+					local s = string.format("you should use %s instead of %s", recommand, wrong)
 					if last == s then
 						return
 					end
 					notify(s)
 					last = s
 				end)
+				return true
+			end
+		end
+		if env.event == "CursorMoved" then
+			if check("bbbb$", "F<key>", "bbbb") then
+				return
+			end
+			if check("eeee$", "f<key>", "eeee") then
+				return
+			end
+			if check("jjjj$", "<count>j", "jjjj") then
+				return
+			end
+			if check("kkkk$", "<count>k", "kkkk") then
+				return
+			end
+		end
+		if env.event == "InsertEnter" then
+			if check("0i", "I", "0i") then
+				return
+			end
+		end
+		if env.event == "TextYankPost" then
+			if check("c%[left%-shift%]4$", "C", "c%[left%-shift%]4") then
+				return
+			end
+			if check("y%[left%-shift%]4$", "Y", "y%[left%-shift%]4") then
+				return
+			end
+			if check("d%[left%-shift%]4$", "D", "d%[left%-shift%]4") then
 				return
 			end
 			return
