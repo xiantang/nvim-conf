@@ -53,15 +53,18 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost", "InsertEnter" }, {
 			if check("0i", "I", "0i") then
 				return
 			end
+			if check("%[left%-shift%]4a", "A", "$a") then
+				return
+			end
 		end
 		if env.event == "TextYankPost" then
-			if check("c%[left%-shift%]4$", "C", "c%[left%-shift%]4") then
+			if check("c%[left%-shift%]4$", "C", "c$") then
 				return
 			end
-			if check("y%[left%-shift%]4$", "Y", "y%[left%-shift%]4") then
+			if check("y%[left%-shift%]4$", "Y", "y$") then
 				return
 			end
-			if check("d%[left%-shift%]4$", "D", "d%[left%-shift%]4") then
+			if check("d%[left%-shift%]4$", "D", "d$") then
 				return
 			end
 			return
