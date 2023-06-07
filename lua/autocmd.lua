@@ -15,64 +15,70 @@ last = ""
 
 vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost" }, {
 	pattern = { "*" },
-	callback = function()
+	callback = function(env)
 		-- read last line of  ~/logfile.txt
 		local logfile = vim.fn.expand("~/logfile.txt")
 		local lastline = vim.fn.system("tail -n 1 " .. logfile)
 		-- get last 20 chars of lastline
 		local lastchars = string.sub(lastline, -20)
 		-- if lastchars match regex "jjj$" then
-		if string.match(lastchars, "jjjj$") then
-			local s = "You should use <count>j instead of jjjj"
-			if last == s then
-				return
-			end
-			require("notify")(s)
-			last = s
-		end
-		if string.match(lastchars, "eeee$") then
-			local s = "You should use f<key> instead of eeee"
-			if last == s then
-				return
-			end
-			require("notify")(s)
-			last = s
-		end
-		if string.match(lastchars, "bbbb$") then
-			local s = "You should use F<key> instead of bbbb"
-			if last == s then
-				return
-			end
-			require("notify")(s)
-			last = s
-		end
-		if string.match(lastchars, "kkkk$") then
-			local s = "You should use <count>k instead of kkkk"
-			if last == s then
-				return
-			end
-			require("notify")(s)
-			last = s
-		end
 		local async = require("plenary.async")
 		local notify = require("notify").async
-		if string.match(lastchars, "d%[left%-shift%]4$") then
-			-- avoid send notification too often
-			async.run(function()
-				s = "You should use D instead of d$"
+		if env.event == "CursorMoved" then
+			if string.match(lastchars, "kkkk$") then
+				local s = "You should use <count>k instead of kkkk"
 				if last == s then
 					return
 				end
-				notify(s)
+				require("notify")(s)
 				last = s
-			end)
+			end
+			if string.match(lastchars, "bbbb$") then
+				local s = "You should use F<key> instead of bbbb"
+				if last == s then
+					return
+				end
+				require("notify")(s)
+				last = s
+			end
+			if string.match(lastchars, "eeee$") then
+				local s = "You should use f<key> instead of eeee"
+				if last == s then
+					return
+				end
+				require("notify")(s)
+				last = s
+			end
+			if string.match(lastchars, "jjjj$") then
+				local s = "You should use <count>j instead of jjjj"
+				if last == s then
+					return
+				end
+				require("notify")(s)
+				last = s
+			end
 			return
 		end
-		if string.match(lastchars, "y%[left%-shift%]4$") then
-			-- avoid send notification too often
-			async.run(function()
-				notify("You should use Y instead of y$")
-			end)
+		if env.event == "TextYankPost" then
+			if string.match(lastchars, "y%[left%-shift%]4$") then
+				-- avoid send notification too often
+				async.run(function()
+					notify("You should use Y instead of y$")
+				end)
+			end
+			if string.match(lastchars, "d%[left%-shift%]4$") then
+				-- avoid send notification too often
+				async.run(function()
+					s = "You should use D instead of d$"
+					if last == s then
+						return
+					end
+					notify(s)
+					last = s
+				end)
+				return
+			end
+			return
 		end
 	end,
 })
