@@ -13,7 +13,7 @@ au BufWinEnter NvimTree setlocal rnu
 
 last = ""
 
-vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost" }, {
+vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost", "InsertEnter" }, {
 	pattern = { "*" },
 	callback = function(env)
 		-- read last line of  ~/logfile.txt
@@ -58,6 +58,14 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost" }, {
 				last = s
 			end
 			return
+		end
+		if env.event == "InsertEnter" then
+			if string.match(lastchars, "0i") then
+				-- avoid send notification too often
+				async.run(function()
+					notify("You should use I instead of 0i")
+				end)
+			end
 		end
 		if env.event == "TextYankPost" then
 			if string.match(lastchars, "y%[left%-shift%]4$") then
