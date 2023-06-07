@@ -47,7 +47,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
 	dev = {
-		path = "~/project/nvimplugin/",
+		path = "~/sidepro/",
 		patterns = {}, -- For example {"folke"}
 		fallback = true, -- Fallback to git when local plugin doesn't exist
 	},
