@@ -55,7 +55,6 @@ require("lazy").setup("plugins", {
 
 vim.cmd.colorscheme("base16-tender")
 require("start")
-require("u-should-use").setup()
 vim.cmd.cnoreabbrev([[git Git]])
 vim.cmd.abbreviate("ture", "true")
 vim.cmd.cnoreabbrev([[gp Git push]])
