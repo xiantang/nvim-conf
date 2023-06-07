@@ -7,8 +7,8 @@ function M.run(opts)
 	end
 	local pid = vim.fn.getpid()
 	local logpath = string.format("~/logfile_%s", pid)
-	local logfile = vim.fn.expand(logpath)
-	local args = { "keylogger", logfile }
+	M.logfile = vim.fn.expand(logpath)
+	local args = { "keylogger", M.logfile }
 	keylogger = vim.fn.jobstart(args)
 end
 
