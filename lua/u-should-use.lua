@@ -14,6 +14,8 @@ M.setup = function(opts)
 		logger.stop()
 	end, {})
 
+	vim.cmd("UShouldUseStart")
+
 	vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost", "InsertEnter" }, {
 		pattern = { "*" },
 		callback = function(env)
