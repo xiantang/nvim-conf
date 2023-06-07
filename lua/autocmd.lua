@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost", "InsertEnter" }, {
 					end
 					notify(s)
 					last = s
-				end)
+				end, function() end)
 				return true
 			end
 		end
