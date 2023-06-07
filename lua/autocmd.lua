@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost" }, {
 		local lastchars = string.sub(lastline, -20)
 		-- if lastchars match regex "jjj$" then
 		if string.match(lastchars, "jjjj$") then
-			s = "You should use <count>j instead of jjjj"
+			local s = "You should use <count>j instead of jjjj"
 			if last == s then
 				return
 			end
@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost" }, {
 			last = s
 		end
 		if string.match(lastchars, "kkkk$") then
-			s = "You should use <count>k instead of kkkk"
+			local s = "You should use <count>k instead of kkkk"
 			if last == s then
 				return
 			end
