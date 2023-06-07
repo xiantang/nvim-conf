@@ -30,6 +30,22 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost" }, {
 			require("notify")(s)
 			last = s
 		end
+		if string.match(lastchars, "eeee$") then
+			local s = "You should use f<key> instead of eeee"
+			if last == s then
+				return
+			end
+			require("notify")(s)
+			last = s
+		end
+		if string.match(lastchars, "bbbb$") then
+			local s = "You should use F<key> instead of bbbb"
+			if last == s then
+				return
+			end
+			require("notify")(s)
+			last = s
+		end
 		if string.match(lastchars, "kkkk$") then
 			local s = "You should use <count>k instead of kkkk"
 			if last == s then
