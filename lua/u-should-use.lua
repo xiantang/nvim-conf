@@ -1,5 +1,6 @@
 local M = {}
 M.last = ""
+M.logfile = vim.fn.expand(string.format("~/logfile_%s.log", vim.fn.getpid()))
 
 M.setup = function(opts)
 	vim.api.nvim_create_autocmd({ "CursorMoved", "TextYankPost", "InsertEnter" }, {
