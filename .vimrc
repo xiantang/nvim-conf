@@ -49,11 +49,9 @@ command! -nargs=* Files call FZF()
 nnoremap <leader>p :Files<cr>
 function! RG(args) abort
     let l:tempname = tempname()
-    let l:pattern = '<NOPATTERN>'
+    let l:pattern = '.'
     if len(a:args) > 0
         let l:pattern = a:args
-		else
-			return
     endif
     execute 'silent !rg --vimgrep ''' . l:pattern . ''' | fzf -m > ' . fnameescape(l:tempname)
     try
