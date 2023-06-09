@@ -19,13 +19,7 @@ return {
 	-- },
 	{
 		"ThePrimeagen/harpoon",
-		keys = {
-			-- { "<C-q>", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', { noremap = true, silent = true } },
-			-- { "<C-n>", ':lua require("harpoon.ui").nav_next()<CR>', { noremap = true, silent = true } },
-			-- { "<C-p>", ':lua require("harpoon.ui").nav_prev()<CR>', { noremap = true, silent = true } },
-			-- { "<Leader>a", ':lua require("harpoon.mark").add_file()<CR>', { noremap = true, silent = true } },
-			-- { "<C-m>", ':lua require("harpoon.ui").nav_file(1)<CR>', { noremap = true, silent = true } },
-		},
+		lazy = true,
 		config = function()
 			-- when instert start
 			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
