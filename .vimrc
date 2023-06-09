@@ -52,8 +52,8 @@ function! RG(args) abort
     let l:pattern = ''
     if len(a:args) > 0
         let l:pattern = a:args
-			else
-				return
+		else
+			return
     endif
     execute 'silent !rg --vimgrep ''' . l:pattern . ''' | fzf -m > ' . fnameescape(l:tempname)
     try
