@@ -22,7 +22,7 @@ return {
 					format = lspkind.cmp_format({
 						mode = "symbol_text",
 						menu = {
-							buffer = "[Buffer]",
+							treesitter = "[Treesitter]",
 							nvim_lsp = "[LSP]",
 							luasnip = "[LuaSnip]",
 							nvim_lua = "[Lua]",
@@ -77,7 +77,7 @@ return {
 					{ name = "luasnip", priority = 100 },
 					{ name = "nvim_lsp", priority = 90 },
 					-- { name = "cmp_tabnine", priority = 98, max_item_count = 2, keyword_length = 3 },
-					{ name = "buffer", priority = 80, max_item_count = 3, keyword_length = 5 },
+					{ name = "treesitter", priority = 80, max_item_count = 3, keyword_length = 5 },
 					{ name = "path", priority = 80, max_item_count = 3, keyword_length = 3 },
 					{ name = "nvim_lsp_signature_help" },
 					{ name = "nvim_lua" },
@@ -97,14 +97,14 @@ return {
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
-					{ name = "buffer" },
+					{ name = "treesitter" },
 				},
 			})
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources({
 					{ name = "cmp_jira", max_item_count = 5, keyword_length = 2 },
 					{ name = "luasnip", priority = 100 },
-					{ name = "buffer", keyword_length = 3 },
+					{ name = "treesitter", keyword_length = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 				}),
 			})
@@ -113,7 +113,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "cmp_jira", max_item_count = 5, keyword_length = 2 },
 					{ name = "luasnip", priority = 100 },
-					{ name = "buffer", keyword_length = 3 },
+					{ name = "treesitter", keyword_length = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 				}),
 			})
@@ -123,7 +123,7 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-buffer",
+			"ray-x/cmp-treesitter",
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
 		},
