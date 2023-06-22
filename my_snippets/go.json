@@ -48,5 +48,10 @@
     "prefix": "sli",
     "body": "$1 := []$2{$3}",
     "description": "slice literal"
+  },
+  "gorm tag": {
+    "prefix": "gorm",
+    "body": "`gorm:\"$1\"`",
+    "description": "Snippet for struct gorm tag"
   }
 }
