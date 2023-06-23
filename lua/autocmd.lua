@@ -12,6 +12,15 @@ au CursorHold,CursorHoldI * checktime
 au BufWinEnter NvimTree setlocal rnu
 ]])
 
+vim.api.nvim_create_autocmd({
+	"BufWritePost",
+}, {
+	pattern = { "*" },
+	callback = function()
+		vim.cmd("silent! :NvimTreeRefresh")
+	end,
+})
+
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	pattern = { "*" },
 	callback = function()
