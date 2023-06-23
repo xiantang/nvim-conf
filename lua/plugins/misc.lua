@@ -12,6 +12,22 @@ return {
 				":lua require('harpoon.ui').toggle_quick_menu()<CR>",
 			},
 			{
+				"<left>",
+				':lua require("harpoon.ui").nav_file(1)<CR>',
+			},
+			{
+				"<right>",
+				':lua require("harpoon.ui").nav_file(2)<CR>',
+			},
+			{
+				"<up>",
+				':lua require("harpoon.ui").nav_file(3)<CR>',
+			},
+			{
+				"<down>",
+				':lua require("harpoon.ui").nav_file(4)<CR>',
+			},
+			{
 				"<C-n>",
 				':lua require("harpoon.ui").nav_next()<CR>',
 				{ noremap = true, silent = true },
