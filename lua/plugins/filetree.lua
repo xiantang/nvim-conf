@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-tree/nvim-tree.lua",
-		cmd = { "NvimTreeToggle", "NimTreeOpen", "NerdSmartLocated" },
+		cmd = { "NvimTreeToggle", "NvimTreeOpen", "NerdSmartLocated" },
 		keys = {
 			{ "<leader>l", ":lua NerdSmartLocated()<CR>", desc = "smart location" },
 			{ "<leader>t", ":NvimTreeToggle<CR>", desc = "toggle" },
@@ -136,7 +136,7 @@ return {
 				},
 				use_default_keymaps = false,
 			})
-			vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+			vim.keymap.set("n", "<Leader>-", require("oil").open, { desc = "Open parent directory" })
 		end,
 	},
 	{ "Xuyuanp/nerdtree-git-plugin", event = "VeryLazy" },
