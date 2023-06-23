@@ -16,23 +16,23 @@ return {
 				":lua require('harpoon.ui').toggle_quick_menu()<CR>",
 			},
 			{
-				"<leader>1",
+				"g1",
 				':lua require("harpoon.ui").nav_file(1)<CR>',
 			},
 			{
-				"<leader>2",
+				"g2",
 				':lua require("harpoon.ui").nav_file(2)<CR>',
 			},
 			{
-				"<leader>3",
+				"g3",
 				':lua require("harpoon.ui").nav_file(3)<CR>',
 			},
 			{
-				"<leader>4",
+				"g4",
 				':lua require("harpoon.ui").nav_file(4)<CR>',
 			},
 			{
-				"<leader>5",
+				"g5",
 				':lua require("harpoon.ui").nav_file(5)<CR>',
 			},
 		},
