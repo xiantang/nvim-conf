@@ -32,8 +32,12 @@ return {
 				':lua require("harpoon.ui").nav_file(4)<CR>',
 			},
 			{
-				"g5",
-				':lua require("harpoon.ui").nav_file(5)<CR>',
+				"gn",
+				':lua require("harpoon.ui").nav_next()<CR>',
+			},
+			{
+				"gp",
+				':lua require("harpoon.ui").nav_prev()<CR>',
 			},
 		},
 		config = function()
