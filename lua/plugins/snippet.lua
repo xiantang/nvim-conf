@@ -12,7 +12,7 @@ return {
 			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/my_snippets/lua/" })
 		end,
 		dependencies = {
-			"rafamadriz/friendly-snippets",
+			"xiantang/friendly-snippets",
 		},
 	},
 }
