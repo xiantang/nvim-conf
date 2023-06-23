@@ -290,7 +290,7 @@ nvim_lsp.lua_ls.setup({
 })
 
 nvim_lsp.gopls.setup({
-	cmd = { "gopls", "-rpc.trace", "serve", "--debug=localhost:6060" },
+	cmd = { "gopls" },
 	-- for postfix snippets and analyzers
 	flags = {
 		allow_incremental_sync = false,
@@ -307,7 +307,8 @@ nvim_lsp.gopls.setup({
 				unusedparams = true,
 				shadow = true,
 			},
-			staticcheck = true,
+			-- use gopls build by myself https://github.com/xiantang/tools
+			-- staticcheck = true,
 		},
 	},
 	on_attach = on_attach,

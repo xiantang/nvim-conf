@@ -49,7 +49,7 @@ return {
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<CR>"] = cmp.mapping.confirm({
 						-- https://github.com/golang/go/issues/40871
-						behavior = cmp.ConfirmBehavior.Replace,
+						behavior = cmp.ConfirmBehavior.Insert,
 						select = true,
 					}),
 					["<Tab>"] = cmp.mapping(function(fallback)
