@@ -32,12 +32,14 @@ return {
 				':lua require("harpoon.ui").nav_file(4)<CR>',
 			},
 			{
-				"gn",
+				"<C-n>",
 				':lua require("harpoon.ui").nav_next()<CR>',
+				{ noremap = true, silent = true },
 			},
 			{
-				"gp",
+				"<C-p>",
 				':lua require("harpoon.ui").nav_prev()<CR>',
+				{ noremap = true, silent = true },
 			},
 		},
 		config = function()
