@@ -12,6 +12,7 @@ au CursorHold,CursorHoldI * checktime
 au BufWinEnter NvimTree setlocal rnu
 ]])
 
+-- auto refresh nvim tree when commit and push code
 vim.api.nvim_create_autocmd({
 	"BufWritePost",
 }, {
