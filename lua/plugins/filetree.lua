@@ -31,6 +31,13 @@ return {
 				view = {
 					width = 30,
 				},
+				actions = {
+					open_file = {
+						window_picker = {
+							chars = "fjkdslaqwergh",
+						},
+					},
+				},
 				renderer = {
 					icons = {
 						glyphs = {
