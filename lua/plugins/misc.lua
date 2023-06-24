@@ -4,7 +4,7 @@ return {
 		lazy = false,
 		keys = {
 			{
-				"<C-a>",
+				"<C-s>",
 				':lua require("harpoon.mark").add_file()<CR>',
 			},
 			{
