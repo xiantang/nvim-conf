@@ -16,7 +16,7 @@ vim.keymap.set("v", "y", "ygv<esc>", opts)
 -- nnoremap <c-n> :cn<CR>
 vim.keymap.set("n", "<c-p>", ":cp<CR>", opts)
 vim.keymap.set("n", "<c-n>", ":cn<CR>", opts)
--- becase hhkb layout backstick is hard to press
+-- because hhkb layout backtick is hard to press
 vim.keymap.set("n", "<Tab><Tab>", "``", opts)
 vim.keymap.set("n", "<Tab>a", "`azz", opts)
 vim.keymap.set("n", "<Tab>b", "`bzz", opts)
