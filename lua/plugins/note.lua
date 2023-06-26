@@ -10,6 +10,11 @@ return {
 		},
 		opts = {
 			load = {
+				["core.keybinds"] = {
+					config = {
+						default_keybinds = false,
+					},
+				},
 				["core.defaults"] = {}, -- Loads default behaviour
 				-- ["core.presenter"] = { config = {
 				-- 	zen_mode = "zen-mode",
