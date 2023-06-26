@@ -8,7 +8,7 @@ return {
 				':lua require("harpoon.mark").add_file()<CR>',
 			},
 			{
-				"<C-m>",
+				"<CR>",
 				":lua require('harpoon.ui').toggle_quick_menu()<CR>",
 			},
 			{
