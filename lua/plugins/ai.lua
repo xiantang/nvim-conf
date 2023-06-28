@@ -9,13 +9,13 @@ return {
 						\ '*': v:true,
 						\ 'markdown':v:true,
 						\ 'yaml': v:true,
-						\ 'go': v:false,
+						\ 'go': v:true,
 						\ 'lua': v:true,
 						\ 'gitcommit': v:true,
 						\ "TelescopePrompt": v:false,
 							\ }
 
-				" imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
+				imap <silent><script><expr> <C-e> copilot#Accept('\<CR>')
 						]])
 		end,
 	},
