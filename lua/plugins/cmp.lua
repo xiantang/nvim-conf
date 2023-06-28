@@ -105,19 +105,14 @@ return {
 					end, { "i", "s" }),
 				}),
 
-				sources = cmp.config.sources(
-					{
-						{ name = "nvim_lua" },
-						{ name = "luasnip", priority = 100 },
-						{ name = "nvim_lsp", priority = 90 },
-					},
-					{ { name = "neorg" } },
-					-- { name = "cmp_tabnine", priority = 98, max_item_count = 2, keyword_length = 3 },
-					{
-						{ name = "treesitter", priority = 80, max_item_count = 3, keyword_length = 3 },
-						{ name = "path", priority = 80, max_item_count = 3, keyword_length = 3 },
-					}
-				),
+				sources = cmp.config.sources({
+					{ name = "nvim_lua" },
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+				}, { { name = "neorg" } }, {
+					{ name = "treesitter", max_item_count = 3, keyword_length = 3 },
+					{ name = "path", max_item_count = 3, keyword_length = 3 },
+				}),
 			})
 
 			cmp.setup.cmdline(":", {
