@@ -32,7 +32,13 @@ return {
 			require("Comment").setup()
 		end,
 	},
-	{ "RRethy/vim-illuminate", event = "VeryLazy" },
+	{
+		"echasnovski/mini.cursorword",
+		version = "*",
+		config = function()
+			require("mini.cursorword").setup()
+		end,
+	},
 	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",
