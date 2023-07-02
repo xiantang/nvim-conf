@@ -44,8 +44,8 @@ return {
 					comparators = {
 						cmp.config.compare.offset,
 						cmp.config.compare.exact,
-						cmp.config.compare.score,
 						cmp.config.compare.recently_used,
+						cmp.config.compare.score,
 
 						-- copied from cmp-under, but I don't think I need the plugin for this.
 						-- I might add some more of my own.
