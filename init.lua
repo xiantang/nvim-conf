@@ -51,6 +51,11 @@ require("lazy").setup("plugins", {
 		patterns = {}, -- For example {"folke"}
 		fallback = true, -- Fallback to git when local plugin doesn't exist
 	},
+	change_detection = {
+		-- automatically check for config file changes and reload the ui
+		enabled = false,
+		notify = true, -- get a notification when changes are found
+	},
 })
 
 vim.cmd.colorscheme("base16-tender")
