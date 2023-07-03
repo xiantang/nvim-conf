@@ -14,3 +14,7 @@
 
 ## mini vim(without plugins)
 `alias vim="vim -S https://raw.githubusercontent.com/xiantang/nvim-conf/dev/.vimrc"`
+
+## GOPLS
+use gopls build by myself https://github.com/xiantang/tools due to https://github.com/golang/go/issues/40871
+

@@ -47,9 +47,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
 	dev = {
-		path = "~/project/nvimplugin/",
+		path = "~/sidepro/",
 		patterns = {}, -- For example {"folke"}
 		fallback = true, -- Fallback to git when local plugin doesn't exist
+	},
+	change_detection = {
+		-- automatically check for config file changes and reload the ui
+		enabled = false,
+		notify = true, -- get a notification when changes are found
 	},
 })
 
@@ -59,5 +64,6 @@ vim.cmd.cnoreabbrev([[git Git]])
 vim.cmd.abbreviate("ture", "true")
 vim.cmd.cnoreabbrev([[gp Git push]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
+vim.cmd.abbreviate("stirng", "string")
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true

@@ -19,7 +19,7 @@ return {
 					return s:match("^%s*(.-)%s*$")
 				end
 
-				vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+				vim.api.nvim_create_autocmd({ "InsertEnter", "FocusGained" }, {
 					callback = function()
 						local default_im_select = "com.apple.keylayout.ABC"
 						local current_select = all_trim(vim.fn.system({ "im-select" }))

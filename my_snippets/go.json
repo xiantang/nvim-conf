@@ -11,7 +11,7 @@
   },
   "log context error": {
     "prefix": "logce",
-    "body": "logutils.Logger().WithCtx($1).WithField(\"$2\",$3).Error(\"$4\")",
+    "body": "logutils.Logger().WithCtx($1).WithError(err).WithField(\"$2\",$3).Error(\"$4\")",
     "description": "log error"
   },
   "log context info": {
@@ -48,5 +48,10 @@
     "prefix": "sli",
     "body": "$1 := []$2{$3}",
     "description": "slice literal"
+  },
+  "gorm tag": {
+    "prefix": "gorm",
+    "body": "`gorm:\"$1\"`",
+    "description": "Snippet for struct gorm tag"
   }
 }

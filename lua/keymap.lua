@@ -16,8 +16,8 @@ vim.keymap.set("v", "y", "ygv<esc>", opts)
 -- nnoremap <c-n> :cn<CR>
 vim.keymap.set("n", "<c-p>", ":cp<CR>", opts)
 vim.keymap.set("n", "<c-n>", ":cn<CR>", opts)
--- becase hhkb layout backstick is hard to press
-vim.keymap.set("n", "<Tab><Tab>", "``zz", opts)
+-- because hhkb layout backtick is hard to press
+vim.keymap.set("n", "<Tab><Tab>", "``", opts)
 vim.keymap.set("n", "<Tab>a", "`azz", opts)
 vim.keymap.set("n", "<Tab>b", "`bzz", opts)
 vim.keymap.set("n", "<Tab>m", "`mzz", opts)
@@ -87,5 +87,5 @@ function _G.smart_ctrl_e()
 	end
 end
 
-vim.keymap.set("i", "<C-e>", "v:lua.smart_ctrl_e()", { expr = true, noremap = true, replace_keycodes = false })
+-- vim.keymap.set("i", "<C-e>", "v:lua.smart_ctrl_e()", { expr = true, noremap = true, replace_keycodes = false })
 vim.keymap.set("i", "<C-a>", "<esc>I", { noremap = true })

@@ -5,6 +5,10 @@ set splitright noswapfile hlsearch autoindent
 set smartindent equalalways ignorecase
 highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=steelblue
+set spell
+set spelllang=en,cjk
+set spellsuggest=best,9
+set spelloptions=camel
 set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set guicursor+=n-v-c:blinkon0
@@ -23,6 +27,7 @@ nnoremap <expr> j v:count > 0 ? "m'" . v:count . "j" : 'gj'
 nnoremap <expr> k v:count > 0 ? "m'" . v:count . "k" : 'gk'
 if !has('nvim')
 syntax on
+let g:netrw_bufsettings = 'noma nomod rnu nobl nowrap ro' 
 colorscheme desert
 let &t_SI.="\e[5 q" "SI = INSERT mode
 let &t_SR.="\e[4 q" "SR = REPLACE mode

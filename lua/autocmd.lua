@@ -1,4 +1,5 @@
 vim.cmd([[
+autocmd VimResized * wincmd =
 au BufEnter leetcode.cn_*.txt set filetype=go
 au BufEnter *.conf set filetype=config
 au FileType * set formatoptions-=cro
@@ -8,8 +9,18 @@ au BufRead,BufNewFile *.jq setfiletype jq
 au BufWritePost *.go silent! :lua go_org_imports()
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
-au BufEnter Nerd_tree_* NERDTreeRefreshRoot
+au BufWinEnter NvimTree setlocal rnu
 ]])
+
+-- auto refresh nvim tree when commit and push code
+vim.api.nvim_create_autocmd({
+	"BufWritePost",
+}, {
+	pattern = { "fugitive" },
+	callback = function()
+		vim.cmd("silent! :NvimTreeRefresh")
+	end,
+})
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	pattern = { "*" },

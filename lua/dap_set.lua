@@ -75,7 +75,6 @@ dap.defaults.fallback.console = "internalConsole"
 
 dap.listeners.after["event_initialized"]["key_map"] = function()
 	-- close nerd tree
-	vim.cmd("NERDTreeClose")
 	require("dapui").open()
 	vim.api.nvim_set_keymap("n", "c", '<cmd>lua require"dap".continue()<CR>', { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("n", "n", '<cmd>lua require"dap".step_over()<CR> | zz', { noremap = true, silent = true })
@@ -88,7 +87,6 @@ end
 
 function defer()
 	require("dapui").close()
-	vim.cmd("NERDTreeToggle | wincmd p")
 	-- rollback to default keymap
 	-- nvim_del_keymap
 	-- source keymap.lua
@@ -132,7 +130,7 @@ dap.adapters.python = function(cb, config)
 	else
 		cb({
 			type = "executable",
-			command = "~/env/.virtualenvs/debugpy/bin/python",
+			command = "python",
 			args = { "-m", "debugpy.adapter" },
 			options = {
 				source_filetype = "python",
@@ -271,6 +269,7 @@ dap.configurations.python = {
 		type = "python",
 		request = "launch",
 		name = "Launch file",
+		justMyCode = false,
 		program = "${file}",
 		logToFile = log_to_file,
 		pythonPath = function()
@@ -340,15 +339,3 @@ dap.configurations.sh = {
 		terminalKind = "integrated",
 	},
 }
-
-dap.configurations.lua = {
-	{
-		type = "nlua",
-		request = "attach",
-		name = "Attach to running Neovim instance",
-	},
-}
-
-dap.adapters.nlua = function(callback, config)
-	callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
-end

@@ -133,6 +133,9 @@ local on_attach = function(client, bufnr)
 		buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 	end
 
+	-- check if harpoon plugin loaded using lazy api
+	buf_set_keymap("n", "<CR>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
+
 	-- Set autocommands conditional on server_capabilities
 	if client.server_capabilities.document_highlight then
 		vim.api.nvim_exec(
@@ -290,7 +293,7 @@ nvim_lsp.lua_ls.setup({
 })
 
 nvim_lsp.gopls.setup({
-	cmd = { "gopls", "-rpc.trace", "serve", "--debug=localhost:6060" },
+	cmd = { "gopls" },
 	-- for postfix snippets and analyzers
 	flags = {
 		allow_incremental_sync = false,
@@ -307,7 +310,8 @@ nvim_lsp.gopls.setup({
 				unusedparams = true,
 				shadow = true,
 			},
-			staticcheck = true,
+			-- use gopls build by myself https://github.com/xiantang/tools
+			-- staticcheck = true,
 		},
 	},
 	on_attach = on_attach,
