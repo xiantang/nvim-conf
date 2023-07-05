@@ -201,9 +201,6 @@ if not lsp_configs.golangcilsp then
 	}
 end
 
-nvim_lsp.golangci_lint_ls.setup({
-	filetypes = { "go", "gomod" },
-})
 -- set up lspconfig
 require("mason").setup({
 	ui = {
