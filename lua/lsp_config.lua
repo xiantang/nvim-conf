@@ -180,27 +180,6 @@ end
 
 local lsp_configs = require("lspconfig/configs")
 
-if not lsp_configs.golangcilsp then
-	lsp_configs.golangcilsp = {
-		default_config = {
-			cmd = { "golangci-lint-langserver" },
-			root_dir = nvim_lsp.util.root_pattern(".git", "go.mod"),
-			init_options = {
-				command = {
-					"golangci-lint",
-					"run",
-					"--enable-all",
-					"--disable",
-					"typecheck",
-					"--out-format",
-					"json",
-					"--issues-exit-code=1",
-				},
-			},
-		},
-	}
-end
-
 -- set up lspconfig
 require("mason").setup({
 	ui = {
