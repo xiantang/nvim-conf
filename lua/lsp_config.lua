@@ -156,20 +156,6 @@ end
 
 -- auto cmd
 
-function go_org_imports(wait_ms)
-	local params = vim.lsp.util.make_range_params()
-	params.context = { only = { "source.organizeImports" } }
-	local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
-	for cid, res in pairs(result or {}) do
-		for _, r in pairs(res.result or {}) do
-			if r.edit then
-				local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
-				vim.lsp.util.apply_workspace_edit(r.edit, enc)
-			end
-		end
-	end
-end
-
 function gofumpt(timeoutms)
 	-- get current file path
 	local file_path = vim.api.nvim_buf_get_name(0)
@@ -180,30 +166,6 @@ end
 
 local lsp_configs = require("lspconfig/configs")
 
-if not lsp_configs.golangcilsp then
-	lsp_configs.golangcilsp = {
-		default_config = {
-			cmd = { "golangci-lint-langserver" },
-			root_dir = nvim_lsp.util.root_pattern(".git", "go.mod"),
-			init_options = {
-				command = {
-					"golangci-lint",
-					"run",
-					"--enable-all",
-					"--disable",
-					"typecheck",
-					"--out-format",
-					"json",
-					"--issues-exit-code=1",
-				},
-			},
-		},
-	}
-end
-
-nvim_lsp.golangci_lint_ls.setup({
-	filetypes = { "go", "gomod" },
-})
 -- set up lspconfig
 require("mason").setup({
 	ui = {
