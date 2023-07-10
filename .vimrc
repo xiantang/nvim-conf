@@ -23,6 +23,8 @@ noremap <Leader>[ <C-O>
 noremap <Leader>] <C-I>
 noremap <C-D> <C-D>zz
 noremap <C-U> <C-U>zz
+noremap {   {zz
+noremap }   }zz
 nnoremap <expr> j v:count > 0 ? "m'" . v:count . "j" : 'gj'
 nnoremap <expr> k v:count > 0 ? "m'" . v:count . "k" : 'gk'
 if !has('nvim')
