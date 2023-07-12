@@ -27,7 +27,7 @@ ls.add_snippets("go", {
 		f(function(_, parent)
 			return 'fmt.Printf("'
 				.. parent.snippet.env.POSTFIX_MATCH
-				.. ': %v", '
+				.. ': %+v", '
 				.. parent.snippet.env.POSTFIX_MATCH
 				.. ")"
 		end, {}),
