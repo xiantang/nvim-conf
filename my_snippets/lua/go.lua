@@ -22,6 +22,17 @@ ls.add_snippets("go", {
 			return "len(" .. parent.snippet.env.POSTFIX_MATCH .. ")"
 		end, {}),
 	}),
+
+	postfix(".p", {
+		f(function(_, parent)
+			return 'fmt.Printf("'
+				.. parent.snippet.env.POSTFIX_MATCH
+				.. ': %v", '
+				.. parent.snippet.env.POSTFIX_MATCH
+				.. ")"
+		end, {}),
+	}),
+
 	s(
 		"func",
 		fmt(
