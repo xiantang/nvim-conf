@@ -12,7 +12,7 @@ return {
 				desc = "jumping between project",
 			},
 			{ "<Leader>p", ":Telescope find_files<CR>", {} },
-			{ "<Leader>rs", ":Telescope resume<CR>", {} },
+			-- { "<Leader>rs", ":Telescope resume<CR>", {} },
 			{ "<Leader>o", ":Telescope lsp_document_symbols<CR>", {} },
 			{ "<Leader>P", ":Telescope live_grep<CR>", {} },
 			{ "<C-q>", ":Telescope oldfiles<CR>", {} },
