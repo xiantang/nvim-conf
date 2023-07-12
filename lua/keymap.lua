@@ -46,9 +46,9 @@ vim.keymap.set("n", "<Leader>v", ":vsp<CR>", { desc = "[V]ertically [S]plit wind
 vim.keymap.set("n", "<Leader>w", ":w<CR>", opts)
 vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
 -- test
-vim.keymap.set("n", "<Leader>ut", ':lua require("neotest").run.run()<CR>', opts)
-vim.keymap.set("n", "<Leader>us", ':lua require("neotest").output.open({ enter = true })<CR>G', opts)
-vim.keymap.set("n", "<Leader>uf", ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>', opts)
+vim.keymap.set("n", "<Leader>ut", ":TestNearest -v<CR>", opts)
+vim.keymap.set("n", "<Leader>us", ":TestFile<CR>", opts)
+vim.keymap.set("n", "<Leader>uv", ":TestVisit<CR>", opts)
 vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', opts)
 -- vim.keymap.set("n", "tt", ":GenReturn<CR>0", opts)
 vim.keymap.set("n", "K", "k", opts)
