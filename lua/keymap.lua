@@ -47,7 +47,7 @@ vim.keymap.set("n", "<Leader>w", ":w<CR>", opts)
 vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
 -- test
 vim.keymap.set("n", "<Leader>ut", ":TestNearest -v<CR>", opts)
-vim.keymap.set("n", "<Leader>uf", ":TestFile<CR>", opts)
+vim.keymap.set("n", "<Leader>uf", ":GoTestFile<CR>", opts)
 vim.keymap.set("n", "<Leader>uv", ":TestVisit<CR>", opts)
 vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', opts)
 -- vim.keymap.set("n", "tt", ":GenReturn<CR>0", opts)

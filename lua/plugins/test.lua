@@ -8,7 +8,7 @@ return {
 		config = function()
 			vim.cmd([[
 	let test#strategy = {
-		\ 'nearest': 'dispatch',
+		\ 'nearest': 'neovim',
 		\ 'file':    'dispatch',
 		\ 'suite':   'basic',
 	\}
