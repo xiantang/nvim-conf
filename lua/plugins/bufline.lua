@@ -23,27 +23,12 @@ return {
 				--  - middle-click: delete buffer
 				clickable = true,
 
-				-- Enables / disables diagnostic symbols
-				diagnostics = {
-					-- you can use a list
-					{ enabled = true, icon = "?" }, -- ERROR
-					{ enabled = false }, -- WARN
-					{ enabled = false }, -- INFO
-					{ enabled = true }, -- HINT
-
-					-- OR `vim.diagnostic.severity`
-					[vim.diagnostic.severity.ERROR] = { enabled = true, icon = "?" },
-					[vim.diagnostic.severity.WARN] = { enabled = false },
-					[vim.diagnostic.severity.INFO] = { enabled = false },
-					[vim.diagnostic.severity.HINT] = { enabled = true },
-				},
-
 				-- Excludes buffers from the tabline
 				exclude_ft = { "javascript", "zsh" },
 				exclude_name = { "package.json" },
 
 				-- Hide inactive buffers and file extensions. Other options are `alternate`, `current`, and `visible`.
-				hide = { extensions = true, inactive = true },
+				hide = { extensions = true, inactive = false },
 
 				-- Disable highlighting alternate buffers
 				highlight_alternate = false,
@@ -57,7 +42,53 @@ return {
 				-- Enable/disable icons
 				-- if set to 'numbers', will show buffer index in the tabline
 				-- if set to 'both', will show buffer index and icons in the tabline
-				icons = true,
+
+				icons = {
+					-- Configure the base icons on the bufferline.
+					-- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
+					buffer_index = true,
+					buffer_number = false,
+					button = "",
+					-- Enables / disables diagnostic symbols
+					diagnostics = {
+						[vim.diagnostic.severity.ERROR] = { enabled = true, icon = "ﬀ" },
+						[vim.diagnostic.severity.WARN] = { enabled = false },
+						[vim.diagnostic.severity.INFO] = { enabled = false },
+						[vim.diagnostic.severity.HINT] = { enabled = true },
+					},
+					gitsigns = {
+						added = { enabled = true, icon = "+" },
+						changed = { enabled = true, icon = "~" },
+						deleted = { enabled = true, icon = "-" },
+					},
+					filetype = {
+						-- Sets the icon's highlight group.
+						-- If false, will use nvim-web-devicons colors
+						custom_colors = false,
+
+						-- Requires `nvim-web-devicons` if `true`
+						enabled = true,
+					},
+					separator = { left = "▎", right = "" },
+
+					-- If true, add an additional separator at the end of the buffer list
+					separator_at_end = true,
+
+					-- Configure the icons on the bufferline when modified or pinned.
+					-- Supports all the base icon options.
+					modified = { button = "●" },
+					pinned = { button = "", filename = true },
+
+					-- Use a preconfigured buffer appearance— can be 'default', 'powerline', or 'slanted'
+					preset = "default",
+
+					-- Configure the icons on the bufferline based on the visibility of a buffer.
+					-- Supports all the base icon options, plus `modified` and `pinned`.
+					alternate = { filetype = { enabled = false } },
+					current = { buffer_index = true },
+					inactive = { button = "×" },
+					visible = { modified = { buffer_number = false } },
+				},
 
 				-- If set, the icon color will follow its corresponding buffer
 				-- highlight group. By default, the Buffer*Icon group is linked to the
