@@ -22,6 +22,7 @@ ls.add_snippets("go", {
 			return "len(" .. parent.snippet.env.POSTFIX_MATCH .. ")"
 		end, {}),
 	}),
+
 	s(
 		"func",
 		fmt(

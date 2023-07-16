@@ -36,7 +36,7 @@ vim.keymap.set("n", "<C-;>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
 vim.keymap.set("t", "<C-;>", "<C-\\><C-n><Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
 vim.keymap.set("n", "<C-Down>", ":resize -5<CR>", opts)
 vim.keymap.set("n", "0", "^", opts)
-vim.keymap.set("n", "<Leader>q", ":wq<CR>", opts)
+vim.keymap.set("n", "ZZ", ":wq<CR>", opts)
 vim.keymap.set("n", "<Leader>gs", ":Git<CR>", opts)
 vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", opts)
 vim.keymap.set("n", "<Leader>ss", ":source ~/.config/nvim/init.vim<CR>", opts)
@@ -45,16 +45,22 @@ vim.keymap.set("n", "<Leader>s", ":sp<CR>", { desc = "[S]plit window" })
 vim.keymap.set("n", "<Leader>v", ":vsp<CR>", { desc = "[V]ertically [S]plit window" })
 vim.keymap.set("n", "<Leader>w", ":w<CR>", opts)
 vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
-vim.keymap.set("n", "<Leader>rt", ":GoTestFunc<CR>", opts)
-vim.keymap.set("n", "<Leader>rf", ":GoTestFile<CR>", opts)
+-- test
+vim.keymap.set("n", "<Leader>ut", ":TestNearest -v<CR>", { desc = "TestNearest", silent = true, noremap = true })
+vim.keymap.set("n", "<Leader>uf", ":GoTestFile<CR>", { desc = "GoTestFile", silent = true, noremap = true })
+-- leader b nnoremap <leader>b :ls<CR>:b<space>
+-- wating for https://github.com/nvim-tree/nvim-tree.lua/issues/2127 fixed
+-- vim.keymap.set("n", "<Leader>b", ":ls<CR>:b<space>")
+vim.keymap.set(
+	"n",
+	"<Leader>uv",
+	":TestVisit<CR>",
+	{ desc = "Go to last visit test file", silent = true, noremap = true }
+)
 vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', opts)
-vim.keymap.set("n", "<Leader>ut", ":UndotreeToggle<CR>", opts)
 -- vim.keymap.set("n", "tt", ":GenReturn<CR>0", opts)
 vim.keymap.set("n", "K", "k", opts)
 vim.keymap.set("n", "<Leader>Q", ':lua require("start").Stop()<CR>', opts)
--- vim.keymap.set("", "s", [[<Cmd>lua require('hop').hint_words()<CR>]], opts)
-vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
--- vim.keymap.set("n", "gs", ":HopWordMW<CR>", opts)
 
 vim.cmd([[
 "ctrl A to  move to line start when in command mode like in iterm2

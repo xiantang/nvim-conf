@@ -12,15 +12,15 @@ return {
 				desc = "jumping between project",
 			},
 			{ "<Leader>p", ":Telescope find_files<CR>", {} },
-			{ "<Leader>rs", ":Telescope resume<CR>", {} },
+			-- { "<Leader>rs", ":Telescope resume<CR>", {} },
 			{ "<Leader>o", ":Telescope lsp_document_symbols<CR>", {} },
 			{ "<Leader>P", ":Telescope live_grep<CR>", {} },
-			{ "<C-q>", ":Telescope oldfiles<CR>", {} },
-			-- {
-			-- 	"<CR>",
-			-- 	"<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
-			-- 	{},
-			-- },
+			{
+				"<Leader>b",
+				":lua require('telescope.builtin').buffers()<CR>",
+				silent = true,
+				desc = "buffers",
+			},
 		},
 		config = function()
 			local pickers = require("telescope.pickers")
@@ -30,6 +30,19 @@ return {
 			local action_state = require("telescope.actions.state")
 			require("telescope").setup({
 				pickers = {
+					buffers = {
+						theme = "dropdown",
+						sort_lastused = true,
+						show_all_buffers = true,
+						ignore_current_buffer = true,
+						sort_mru = true,
+						mappings = {
+							n = {
+								["dd"] = "delete_buffer",
+							},
+						},
+						-- ignore current file
+					},
 					find_files = {
 						on_input_filter_cb = function(prompt)
 							local find_colon = string.find(prompt, ":")
