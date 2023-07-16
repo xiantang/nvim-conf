@@ -150,6 +150,8 @@ return {
 			-- change highlight
 			vim.cmd("highlight! link BufferInactiveIndex TabLineSel")
 			vim.cmd("highlight! link BufferInactive TabLineSel")
+			-- change buffercurrent to blue
+			vim.cmd("highlight! link BufferCurrent BufferCurrentIndex")
 		end,
 	},
 }
