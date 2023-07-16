@@ -18,7 +18,7 @@ return {
 			{ "<C-q>", ":Telescope oldfiles<CR>", {} },
 			{
 				"<Leader>b",
-				":lua require('telescope.builtin').buffers({ sort_lastused = true })<CR>",
+				":lua require('telescope.builtin').buffers()<CR>",
 				desc = "buffers",
 			},
 			-- {
@@ -36,6 +36,7 @@ return {
 			require("telescope").setup({
 				pickers = {
 					buffers = {
+						sort_lastused = true,
 						show_all_buffers = true,
 						sort_mru = true,
 						mappings = {
@@ -43,6 +44,7 @@ return {
 								["dd"] = "delete_buffer",
 							},
 						},
+						-- ignore current file
 					},
 					find_files = {
 						on_input_filter_cb = function(prompt)
