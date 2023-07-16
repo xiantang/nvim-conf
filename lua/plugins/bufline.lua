@@ -49,7 +49,7 @@ return {
 				highlight_alternate = false,
 
 				-- Disable highlighting file icons in inactive buffers
-				highlight_inactive_file_icons = false,
+				highlight_inactive_file_icons = true,
 
 				-- Enable highlighting visible buffers
 				highlight_visible = true,
@@ -147,6 +147,9 @@ return {
 				-- where X is the buffer number. But only a static string is accepted here.
 				no_name_title = nil,
 			})
+			-- change highlight
+			vim.cmd("highlight! link BufferInactiveIndex TabLineSel")
+			vim.cmd("highlight! link BufferInactive TabLineSel")
 		end,
 	},
 }
