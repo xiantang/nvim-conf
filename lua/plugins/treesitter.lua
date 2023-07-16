@@ -15,6 +15,7 @@ return {
 					keymaps = {
 						node_incremental = "v",
 						node_decremental = "<BS>",
+						init_selection = false,
 					},
 				},
 				highlight = {
