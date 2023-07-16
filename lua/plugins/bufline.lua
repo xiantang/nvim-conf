@@ -4,21 +4,21 @@ return {
 		dependencies = "nvim-tree/nvim-web-devicons",
 		event = "VeryLazy",
 		keys = {
-			{ "g1", ":BufferGoto 1<CR>" },
-			{ "g2", ":BufferGoto 2<CR>" },
-			{ "g3", ":BufferGoto 3<CR>" },
-			{ "g4", ":BufferGoto 4<CR>" },
-			{ "g5", ":BufferGoto 5<CR>" },
-			{ "g6", ":BufferGoto 6<CR>" },
-			{ "g7", ":BufferGoto 7<CR>" },
-			{ "g8", ":BufferGoto 8<CR>" },
-			{ "g9", ":BufferGoto 9<CR>" },
+			{ "g1", ":BufferGoto 1<CR>", silent = true, remap = false },
+			{ "g2", ":BufferGoto 2<CR>", silent = true, remap = false },
+			{ "g3", ":BufferGoto 3<CR>", silent = true, remap = false },
+			{ "g4", ":BufferGoto 4<CR>", silent = true, remap = false },
+			{ "g5", ":BufferGoto 5<CR>", silent = true, remap = false },
+			{ "g6", ":BufferGoto 6<CR>", silent = true, remap = false },
+			{ "g7", ":BufferGoto 7<CR>", silent = true, remap = false },
+			{ "g8", ":BufferGoto 8<CR>", silent = true, remap = false },
+			{ "g9", ":BufferGoto 9<CR>", silent = true, remap = false },
 			-- gn
-			{ "gn", ":BufferNext<CR>" },
+			{ "gn", ":BufferNext<CR>", silent = true, remap = false },
 			-- gp
-			{ "gp", ":BufferPrevious<CR>" },
+			{ "gp", ":BufferPrevious<CR>", silent = true, remap = false },
 			-- gq
-			{ "gq", ":BufferClose<CR>" },
+			{ "gq", ":BufferClose<CR>", silent = true, remap = false },
 		},
 		config = function()
 			-- Set barbar's options
