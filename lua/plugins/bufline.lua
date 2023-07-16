@@ -3,6 +3,17 @@ return {
 		"romgrk/barbar.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		event = "VeryLazy",
+		keys = {
+			{ "g1", ":BufferGoto 1<CR>" },
+			{ "g2", ":BufferGoto 2<CR>" },
+			{ "g3", ":BufferGoto 3<CR>" },
+			{ "g4", ":BufferGoto 4<CR>" },
+			{ "g5", ":BufferGoto 5<CR>" },
+			{ "g6", ":BufferGoto 6<CR>" },
+			{ "g7", ":BufferGoto 7<CR>" },
+			{ "g8", ":BufferGoto 8<CR>" },
+			{ "g9", ":BufferGoto 9<CR>" },
+		},
 		config = function()
 			-- Set barbar's options
 			require("bufferline").setup({
