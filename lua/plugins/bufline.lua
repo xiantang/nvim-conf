@@ -13,6 +13,10 @@ return {
 			{ "g7", ":BufferGoto 7<CR>" },
 			{ "g8", ":BufferGoto 8<CR>" },
 			{ "g9", ":BufferGoto 9<CR>" },
+			-- gn
+			{ "gn", ":BufferNext<CR>" },
+			-- gp
+			{ "gp", ":BufferPrevious<CR>" },
 		},
 		config = function()
 			-- Set barbar's options
