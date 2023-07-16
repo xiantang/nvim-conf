@@ -31,8 +31,7 @@ return {
 			require("telescope").setup({
 				pickers = {
 					buffers = {
-						theme = "cursor",
-						previewer = false,
+						theme = "dropdown",
 						sort_lastused = true,
 						show_all_buffers = true,
 						ignore_current_buffer = true,
