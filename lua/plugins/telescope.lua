@@ -15,12 +15,6 @@ return {
 			-- { "<Leader>rs", ":Telescope resume<CR>", {} },
 			{ "<Leader>o", ":Telescope lsp_document_symbols<CR>", {} },
 			{ "<Leader>P", ":Telescope live_grep<CR>", {} },
-			{
-				"<Leader>b",
-				":lua require('telescope.builtin').buffers()<CR>",
-				silent = true,
-				desc = "buffers",
-			},
 		},
 		config = function()
 			local pickers = require("telescope.pickers")

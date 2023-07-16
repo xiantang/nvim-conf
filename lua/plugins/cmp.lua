@@ -116,17 +116,6 @@ return {
 				}),
 			})
 
-			cmp.setup.cmdline(":", {
-				view = {
-					entries = { name = "wildmenu", separator = " " },
-				},
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({
-					{ name = "path" },
-				}, {
-					{ name = "cmdline", max_item_count = 30 },
-				}),
-			})
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
