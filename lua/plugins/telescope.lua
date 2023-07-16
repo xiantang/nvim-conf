@@ -16,6 +16,11 @@ return {
 			{ "<Leader>o", ":Telescope lsp_document_symbols<CR>", {} },
 			{ "<Leader>P", ":Telescope live_grep<CR>", {} },
 			{ "<C-q>", ":Telescope oldfiles<CR>", {} },
+			{
+				"<Leader>b",
+				":lua require('telescope.builtin').buffers({ sort_lastused = true })<CR>",
+				desc = "buffers",
+			},
 			-- {
 			-- 	"<CR>",
 			-- 	"<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
@@ -30,6 +35,15 @@ return {
 			local action_state = require("telescope.actions.state")
 			require("telescope").setup({
 				pickers = {
+					buffers = {
+						show_all_buffers = true,
+						sort_mru = true,
+						mappings = {
+							i = {
+								["<c-d>"] = "delete_buffer",
+							},
+						},
+					},
 					find_files = {
 						on_input_filter_cb = function(prompt)
 							local find_colon = string.find(prompt, ":")

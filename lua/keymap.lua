@@ -58,9 +58,6 @@ vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', o
 -- vim.keymap.set("n", "tt", ":GenReturn<CR>0", opts)
 vim.keymap.set("n", "K", "k", opts)
 vim.keymap.set("n", "<Leader>Q", ':lua require("start").Stop()<CR>', opts)
--- vim.keymap.set("", "s", [[<Cmd>lua require('hop').hint_words()<CR>]], opts)
-vim.keymap.set("n", "<leader>b", ":ls<CR>:b<SPACE>", { desc = "Switch to Other Buffer" })
--- vim.keymap.set("n", "gs", ":HopWordMW<CR>", opts)
 
 vim.cmd([[
 "ctrl A to  move to line start when in command mode like in iterm2
