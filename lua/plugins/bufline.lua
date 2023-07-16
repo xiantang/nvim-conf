@@ -17,6 +17,8 @@ return {
 			{ "gn", ":BufferNext<CR>" },
 			-- gp
 			{ "gp", ":BufferPrevious<CR>" },
+			-- gq
+			{ "gq", ":BufferClose<CR>" },
 		},
 		config = function()
 			-- Set barbar's options
