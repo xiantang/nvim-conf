@@ -58,11 +58,8 @@ return {
 			{ "g9", ":BufferGoto 9<CR>", silent = true, remap = false },
 			-- gn
 			{ "gn", ":BufferNext<CR>", silent = true, remap = false },
-			{ "<CR>", ":BufferNext<CR>", silent = true, remap = false },
 			-- gp
 			{ "gp", ":BufferPrevious<CR>", silent = true, remap = false },
-			-- <CR> with S
-			{ "<BS>", ":BufferPrevious<CR>", silent = true, remap = false },
 			-- gq
 			{ "gq", ":BufferClose<CR>", silent = true, remap = false },
 		},
