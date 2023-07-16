@@ -36,8 +36,10 @@ return {
 			require("telescope").setup({
 				pickers = {
 					buffers = {
+						theme = "dropdown",
 						sort_lastused = true,
 						show_all_buffers = true,
+						ignore_current_buffer = true,
 						sort_mru = true,
 						mappings = {
 							n = {
