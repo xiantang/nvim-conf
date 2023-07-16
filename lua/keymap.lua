@@ -49,7 +49,8 @@ vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
 vim.keymap.set("n", "<Leader>ut", ":TestNearest -v<CR>", { desc = "TestNearest", silent = true, noremap = true })
 vim.keymap.set("n", "<Leader>uf", ":GoTestFile<CR>", { desc = "GoTestFile", silent = true, noremap = true })
 -- leader b nnoremap <leader>b :ls<CR>:b<space>
-vim.keymap.set("n", "<Leader>b", ":ls<CR>:b<space>")
+-- wating for https://github.com/nvim-tree/nvim-tree.lua/issues/2127 fixed
+-- vim.keymap.set("n", "<Leader>b", ":ls<CR>:b<space>")
 vim.keymap.set(
 	"n",
 	"<Leader>uv",
