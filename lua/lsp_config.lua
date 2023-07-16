@@ -133,9 +133,6 @@ local on_attach = function(client, bufnr)
 		buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 	end
 
-	-- check if harpoon plugin loaded using lazy api
-	buf_set_keymap("n", "<CR>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
-
 	-- Set autocommands conditional on server_capabilities
 	if client.server_capabilities.document_highlight then
 		vim.api.nvim_exec(
