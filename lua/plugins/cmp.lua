@@ -83,7 +83,8 @@ return {
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<CR>"] = cmp.mapping.confirm({
 						-- https://github.com/golang/go/issues/40871
-						behavior = cmp.ConfirmBehavior.Replace,
+						-- https://github.com/hrsh7th/nvim-cmp/issues/706#issuecomment-1006260085
+						behavior = cmp.ConfirmBehavior.Insert,
 						select = true,
 					}),
 					["<Tab>"] = cmp.mapping(function(fallback)
