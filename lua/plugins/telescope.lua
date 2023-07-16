@@ -39,8 +39,8 @@ return {
 						show_all_buffers = true,
 						sort_mru = true,
 						mappings = {
-							i = {
-								["<c-d>"] = "delete_buffer",
+							n = {
+								["dd"] = "delete_buffer",
 							},
 						},
 					},
