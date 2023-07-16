@@ -21,11 +21,6 @@ return {
 				silent = true,
 				desc = "buffers",
 			},
-			-- {
-			-- 	"<CR>",
-			-- 	"<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
-			-- 	{},
-			-- },
 		},
 		config = function()
 			local pickers = require("telescope.pickers")
