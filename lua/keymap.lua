@@ -48,6 +48,7 @@ vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
 -- test
 vim.keymap.set("n", "<Leader>ut", ":TestNearest -v<CR>", { desc = "TestNearest", silent = true, noremap = true })
 vim.keymap.set("n", "<Leader>uf", ":GoTestFile<CR>", { desc = "GoTestFile", silent = true, noremap = true })
+vim.keymap.set("n", "<Leader>b", ":ls<cr>:b<space>")
 vim.keymap.set(
 	"n",
 	"<Leader>uv",
