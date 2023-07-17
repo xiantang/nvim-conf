@@ -38,7 +38,7 @@ let &t_SR.="\e[4 q" "SR = REPLACE mode
 let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 noremap <Leader>s <C-w>s
 noremap <Leader>v <C-w>v
-" nnoremap <leader>b :ls<CR>:b<space>
+noremap <Leader>b :ls<CR>:b<space>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
