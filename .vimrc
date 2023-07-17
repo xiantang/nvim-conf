@@ -27,6 +27,7 @@ noremap {   {zz
 noremap }   }zz
 nnoremap <silent><expr> j v:count > 0 ? "m'" . v:count . "j" : 'gj'
 nnoremap <silent><expr> k v:count > 0 ? "m'" . v:count . "k" : 'gk'
+nnoremap <leader>b :ls<CR>:b<space>
 if !has('nvim')
 syntax on
 let g:netrw_bufsettings = 'noma nomod rnu nobl nowrap ro' 
