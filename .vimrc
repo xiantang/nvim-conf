@@ -5,6 +5,7 @@ set splitright noswapfile hlsearch autoindent
 set smartindent equalalways ignorecase
 highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=steelblue
+set wcm=9
 set spell
 set spelllang=en,cjk
 set spellsuggest=best,9

@@ -1,4 +1,5 @@
 vim.cmd([[
+autocmd TermOpen * setlocal nobuflisted
 autocmd VimResized * wincmd =
 au BufEnter leetcode.cn_*.txt set filetype=go
 au BufEnter *.conf set filetype=config
