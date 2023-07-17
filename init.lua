@@ -14,8 +14,9 @@ if vim.g.neovide then
 	vim.g.transparency = 0.90
 	vim.g.neovide_background_color = "#0f1117" .. alpha()
 	-- Put anything you want to happen only in Neovide here
+else
+	vim.o.guifont = "JetBrains Mono:h15"
 end
-vim.o.guifont = "JetBrains Mono:h15"
 vim.g.hardtime_default_on = 1
 vim.g.hardtime_maxcount = 2
 vim.g.hardtime_timeout = 700
