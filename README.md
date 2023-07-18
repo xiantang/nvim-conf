@@ -18,3 +18,6 @@
 ## GOPLS
 use gopls build by myself https://github.com/xiantang/tools due to https://github.com/golang/go/issues/40871
 
+
+## font
+FiraCode Nerd Font Mono
