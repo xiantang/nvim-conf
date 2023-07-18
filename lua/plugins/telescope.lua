@@ -44,6 +44,9 @@ return {
 						-- ignore current file
 					},
 					find_files = {
+						hidden = true,
+						--ignore git files
+						file_ignore_patterns = { "%.git/.*", "node_modules/.*" },t
 						on_input_filter_cb = function(prompt)
 							local find_colon = string.find(prompt, ":")
 							if find_colon then
