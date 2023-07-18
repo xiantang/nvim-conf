@@ -7,7 +7,7 @@ vim.cmd("source ~/.config/nvim/.vimrc")
 
 if vim.g.neovide then
 	-- Put anything you want to happen only in Neovide here
-	vim.o.guifont = "FiraCode Nerd Font Mono:h16"
+	vim.o.guifont = "FiraCode Nerd Font Mono:h15"
 end
 vim.g.hardtime_default_on = 1
 vim.g.hardtime_maxcount = 2
