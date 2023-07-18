@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-neorg/neorg",
 		build = ":Neorg sync-parsers",
-		lazy = false,
+		ft = "norg",
 		keys = {
 			{ "<leader>jn", ":Neorg workspace notes<CR>:Neorg journal today<CR>", desc = "[J]ournal [N]owday " },
 			{ "<leader>jy", ":Neorg workspace notes<CR>:Neorg journal yesterday<CR>", desc = "[J]ournal [Y]esterday" },

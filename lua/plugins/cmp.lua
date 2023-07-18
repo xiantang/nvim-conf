@@ -29,7 +29,6 @@ return {
 							dictionary = "[Dictionary]",
 							path = "[Path]",
 							cmp_tabnine = "[TabNine]",
-							cmp_jira = "[Jira]",
 						},
 					}),
 				},
@@ -117,7 +116,7 @@ return {
 				}),
 			})
 
-			cmp.setup.cmdline(":", {
+			--[[ cmp.setup.cmdline(":", {
 				view = {
 					entries = { name = "wildmenu", separator = " " },
 				},
@@ -127,7 +126,7 @@ return {
 				}, {
 					{ name = "cmdline", max_item_count = 30 },
 				}),
-			})
+			}) ]]
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
@@ -136,7 +135,6 @@ return {
 			})
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources({
-					{ name = "cmp_jira", max_item_count = 5, keyword_length = 2 },
 					{ name = "luasnip", priority = 100 },
 					{ name = "treesitter", keyword_length = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
@@ -145,14 +143,11 @@ return {
 
 			cmp.setup.filetype("markdown", {
 				sources = cmp.config.sources({
-					{ name = "cmp_jira", max_item_count = 5, keyword_length = 2 },
 					{ name = "luasnip", priority = 100 },
 					{ name = "treesitter", keyword_length = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 				}),
 			})
-			local source = require("jira")
-			-- require("cmp").register_source("cmp_jira", source.new({}))
 		end,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",

@@ -15,12 +15,12 @@ return {
 			-- { "<Leader>rs", ":Telescope resume<CR>", {} },
 			{ "<Leader>o", ":Telescope lsp_document_symbols<CR>", {} },
 			{ "<Leader>P", ":Telescope live_grep<CR>", {} },
-			{
-				"<Leader>b",
-				":lua require('telescope.builtin').buffers()<CR>",
-				silent = true,
-				desc = "buffers",
-			},
+			-- {
+			-- 	"<Leader>b",
+			-- 	":lua require('telescope.builtin').buffers()<CR>",
+			-- 	silent = true,
+			-- 	desc = "buffers",
+			-- },
 		},
 		config = function()
 			local pickers = require("telescope.pickers")
@@ -44,6 +44,9 @@ return {
 						-- ignore current file
 					},
 					find_files = {
+						hidden = true,
+						--ignore git files
+						file_ignore_patterns = { "%.git/.*", "node_modules/.*" },
 						on_input_filter_cb = function(prompt)
 							local find_colon = string.find(prompt, ":")
 							if find_colon then

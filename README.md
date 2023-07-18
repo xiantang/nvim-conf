@@ -15,6 +15,10 @@
 ## mini vim(without plugins)
 `alias vim="vim -S https://raw.githubusercontent.com/xiantang/nvim-conf/dev/.vimrc"`
 
-## GOPLS
+## Font
+(FiraCode Nerd Font Mono)[https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode]
+
+## gopls
 use gopls build by myself https://github.com/xiantang/tools due to https://github.com/golang/go/issues/40871
+
 
