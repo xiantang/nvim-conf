@@ -1,5 +1,4 @@
 return {
-	{ "vim-scripts/Highlight-UnMatched-Brackets" },
 	{
 		"xiantang/nvim-treesitter-textobjects",
 		event = "VeryLazy",
