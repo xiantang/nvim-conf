@@ -1,0 +1,58 @@
+{
+  "log info": {
+    "prefix": "logi",
+    "body": "logutils.Logger().WithField(\"$1\",$2).Info(\"$3\")",
+    "description": "log info"
+  },
+  "log error": {
+    "prefix": "loge",
+    "body": "logutils.Logger().WithField(\"$1\",$2).Error(\"$3\")",
+    "description": "log error"
+  },
+  "log context error": {
+    "prefix": "logce",
+    "body": "logutils.Logger().WithCtx($1).WithError(err).WithField(\"$2\",$3).Error(\"$4\")",
+    "description": "log error"
+  },
+  "log context info": {
+    "prefix": "logci",
+    "body": "logutils.Logger().WithCtx($1).WithField(\"$2\",$3).Info(\"$4\")",
+    "description": "log info"
+  },
+  "log debug": {
+    "prefix": "logcd",
+    "body": "logutils.Logger().WithCtx($1).WithField(\"$2\",$3).Debug(\"$4\")",
+    "description": "log context debug"
+  },
+  "if error Wrap": {
+    "prefix": "iferr",
+    "body": "if err := $1; err != nil {\n\treturn  errors.Wrap(err, \"$2\")\n}",
+    "description": "if error Wrap"
+  },
+  "Use the statement before the if condition": {
+    "prefix": "iferrf",
+    "body": "if err := $1; err != nil {\n\treturn  errors.Wrapf(err, \"$2\", $3)\n}",
+    "description": "Use the statement before the if condition"
+  },
+  "struct": {
+    "prefix": "stru",
+    "body": "type $1 struct {\n\t$2\n}",
+    "description": "struct"
+  },
+  "interface": {
+    "prefix": "inter",
+    "body": "type $1 interface {\n\t$2\n}",
+    "description": "interface"
+  },
+  "slice literal": {
+    "prefix": "sli",
+    "body": "$1 := []$2{$3}",
+    "description": "slice literal"
+  },
+  "gorm tag": {
+    "prefix": "gorm",
+    "body": "`gorm:\"$1\"`",
+    "description": "Snippet for struct gorm tag"
+  }
+}
+

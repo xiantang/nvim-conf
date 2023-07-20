@@ -17,6 +17,7 @@ return {
 				let g:vsnip_filetypes.sql = ['sql']
 				let g:vsnip_filetypes.norg = ['norg']
 				let g:vsnip_filetypes.c = ['c']
+				let g:vsnip_snippet_dir = '~/.config/nvim/snippets'
 			]])
 		end,
 	},
