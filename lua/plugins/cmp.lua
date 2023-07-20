@@ -33,6 +33,7 @@ return {
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[Lua]",
 							vsnip = "[vsnip]",
+							luasnip = "[LuaSnip]",
 							dictionary = "[Dictionary]",
 							path = "[Path]",
 							cmp_tabnine = "[TabNine]",
@@ -119,6 +120,7 @@ return {
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
 					{ name = "vsnip" },
+					{ name = "luasnip" },
 				}, { { name = "neorg" } }, {
 					{ name = "treesitter", max_item_count = 3, keyword_length = 3 },
 					{ name = "path", max_item_count = 3, keyword_length = 3 },
@@ -149,6 +151,15 @@ return {
 				}),
 			})
 
+			cmp.setup.filetype("norg", {
+				sources = cmp.config.sources({
+					{ name = "luasnip" },
+					{ name = "neorg" },
+					{ name = "treesitter", max_item_count = 3, keyword_length = 3 },
+					{ name = "path", max_item_count = 3, keyword_length = 3 },
+				}),
+			})
+
 			cmp.setup.filetype("markdown", {
 				sources = cmp.config.sources({
 					{ name = "treesitter", keyword_length = 3 },
@@ -162,6 +173,7 @@ return {
 			"ray-x/cmp-treesitter",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-vsnip",
+			"saadparwaiz1/cmp_luasnip",
 		},
 	},
 }

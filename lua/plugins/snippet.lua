@@ -8,11 +8,11 @@ return {
 		commit = "79f647218847b1cd204fede7dd89025e43fd00c3",
 		event = "InsertEnter",
 		config = function()
-			require("luasnip.loaders.from_vscode").load({
-				include = { "norg", "c", "go", "python", "sh", "json", "lua", "gitcommit", "sql", "markdown" },
-			})
 			require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.expand("~/.config/nvim/my_snippets") } })
 			require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/my_snippets/lua/" })
+			require("luasnip.loaders.from_vscode").load({
+				include = { "norg" },
+			})
 		end,
 		dependencies = {
 			"xiantang/friendly-snippets",
@@ -22,6 +22,7 @@ return {
 		"hrsh7th/vim-vsnip",
 		config = function()
 			vim.cmd([[
+				let g:vsnip_filetypes = {}
 				let g:vsnip_filetypes.go = ['go']
 				let g:vsnip_filetypes.lua = ['lua']
 				let g:vsnip_filetypes.python = ['python']
@@ -30,7 +31,7 @@ return {
 				let g:vsnip_filetypes.markdown = ['markdown']
 				let g:vsnip_filetypes.gitcommit = ['gitcommit']
 				let g:vsnip_filetypes.sql = ['sql']
-				let g:vsnip_filetypes.norg = ['norg']
+				" let g:vsnip_filetypes.norg = ['norg']
 				let g:vsnip_filetypes.c = ['c']
 				let g:vsnip_snippet_dir = '~/.config/nvim/snippets'
 			]])
