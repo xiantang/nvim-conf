@@ -53,6 +53,12 @@
     "prefix": "gorm",
     "body": "`gorm:\"$1\"`",
     "description": "Snippet for struct gorm tag"
+  },
+  "Length Function": {
+    "prefix": ".len",
+    "body": [
+      "len(${1:variable})"
+    ],
+    "description": "Transforms .len to len()"
   }
 }
-
