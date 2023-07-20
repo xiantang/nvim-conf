@@ -1,6 +1,5 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e89df176e8b38e931b7e71a470f923a317976d86" },
-  "Highlight-UnMatched-Brackets": { "branch": "master", "commit": "01a170015e7cfa57b1432690323435b01f561d7c" },
   "LuaSnip": { "branch": "master", "commit": "79f647218847b1cd204fede7dd89025e43fd00c3" },
   "Navigator.nvim": { "branch": "master", "commit": "91d86506ac2a039504d5205d32a1d4bc7aa57072" },
   "ReplaceWithRegister": { "branch": "master", "commit": "832efc23111d19591d495dc72286de2fb0b09345" },
@@ -73,6 +72,8 @@
   "vim-silicon": { "branch": "master", "commit": "4a93122ae2139a12e2a56f064d086c05160b6835" },
   "vim-startuptime": { "branch": "master", "commit": "cb4c112b9e0f224236ee4eab6bf5153406b3f88b" },
   "vim-test": { "branch": "master", "commit": "155342d6c8137a8a5dfbdbfca2de831643b2e006" },
+  "vim-vsnip": { "branch": "master", "commit": "7753ba9c10429c29d25abfd11b4c60b76718c438" },
+  "vim-vsnip-integ": { "branch": "master", "commit": "1914e72cf3de70df7f5dde476cd299aba2440aef" },
   "vim-wakatime": { "branch": "master", "commit": "515dbcc2278a9279a19de838fa29fc5078e34e56" },
   "which-key.nvim": { "branch": "main", "commit": "e4fa445065a2bb0bbc3cca85346b67817f28e83e" },
   "winbar.nvim": { "branch": "main", "commit": "13739fdb31be51a1000486189662596f07a59a31" },

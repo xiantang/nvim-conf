@@ -1,6 +1,12 @@
 return {
 	{ "michaelb/sniprun", event = "VeryLazy", build = "bash ./install.sh" },
 	{
+		"hrsh7th/vim-vsnip",
+	},
+	{
+		"hrsh7th/vim-vsnip-integ",
+	},
+	{
 		"L3MON4D3/LuaSnip",
 		commit = "79f647218847b1cd204fede7dd89025e43fd00c3",
 		event = "InsertEnter",
