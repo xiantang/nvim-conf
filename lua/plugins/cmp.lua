@@ -3,8 +3,6 @@ return {
 		"hrsh7th/nvim-cmp",
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
-			local luasnip = require("luasnip")
-
 			-- nvim-cmp setup
 			local cmp = require("cmp")
 			-- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#add-parentheses-after-selecting-function-or-method-item
@@ -16,6 +14,9 @@ return {
 			end
 			local lspkind = require("lspkind")
 
+			local feedkey = function(key, mode)
+				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+			end
 			cmp.setup({
 				-- show source name in menu
 				formatting = {
@@ -24,8 +25,9 @@ return {
 						menu = {
 							treesitter = "[Treesitter]",
 							nvim_lsp = "[LSP]",
-							luasnip = "[LuaSnip]",
 							nvim_lua = "[Lua]",
+							vsnip = "[vsnip]",
+							luasnip = "[LuaSnip]",
 							dictionary = "[Dictionary]",
 							path = "[Path]",
 							cmp_tabnine = "[TabNine]",
@@ -71,7 +73,7 @@ return {
 				preselect = cmp.PreselectMode.None,
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
@@ -89,8 +91,10 @@ return {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
-						elseif luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
+						-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+						-- they way you will only jump inside the snippet region
+						elseif vim.fn["vsnip#available"](1) == 1 then
+							feedkey("<Plug>(vsnip-expand-or-jump)", "")
 						else
 							fallback()
 						end
@@ -98,10 +102,8 @@ return {
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
-						elseif luasnip.jumpable(-1) then
-							luasnip.jump(-1)
-						else
-							fallback()
+						elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+							feedkey("<Plug>(vsnip-jump-prev)", "")
 						end
 					end, { "i", "s" }),
 				}),
@@ -109,6 +111,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
+					{ name = "vsnip" },
 					{ name = "luasnip" },
 				}, { { name = "neorg" } }, {
 					{ name = "treesitter", max_item_count = 3, keyword_length = 3 },
@@ -135,15 +138,55 @@ return {
 			})
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources({
-					{ name = "luasnip", priority = 100 },
 					{ name = "treesitter", keyword_length = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 				}),
 			})
 
+			local luasnip = require("luasnip")
+			cmp.setup.filetype("norg", {
+				snippet = {
+					-- REQUIRED - you must specify a snippet engine
+					expand = function(args)
+						-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+						require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+						-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+						-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+					end,
+				},
+				mapping = {
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+						-- they way you will only jump inside the snippet region
+						elseif luasnip.expand_or_locally_jumpable()() then
+							luasnip.expand_or_jump()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+				},
+				sources = cmp.config.sources({
+					{ name = "luasnip" },
+					{ name = "neorg" },
+					{ name = "treesitter", max_item_count = 3, keyword_length = 3 },
+					{ name = "path", max_item_count = 3, keyword_length = 3 },
+				}),
+			})
+
 			cmp.setup.filetype("markdown", {
 				sources = cmp.config.sources({
-					{ name = "luasnip", priority = 100 },
 					{ name = "treesitter", keyword_length = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 				}),
@@ -154,7 +197,9 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"ray-x/cmp-treesitter",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-vsnip",
 			"saadparwaiz1/cmp_luasnip",
+			"lukas-reineke/cmp-under-comparator",
 		},
 	},
 }

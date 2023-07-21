@@ -3,7 +3,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		keys = {
-			{ "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
+			{ "<leader>b", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 			{ "<leader>tb", "<cmd>Telescope git_branches<CR>", desc = "Git git_branches" },
 			{
@@ -32,6 +32,7 @@ return {
 				pickers = {
 					buffers = {
 						theme = "dropdown",
+						previewer = false,
 						sort_lastused = true,
 						show_all_buffers = true,
 						ignore_current_buffer = true,
