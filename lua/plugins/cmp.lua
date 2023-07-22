@@ -23,7 +23,7 @@ return {
 					format = lspkind.cmp_format({
 						mode = "symbol_text",
 						menu = {
-							treesitter = "[Treesitter]",
+							buffer = "[buffer]",
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[Lua]",
 							vsnip = "[vsnip]",
@@ -104,7 +104,7 @@ return {
 					{ name = "vsnip" },
 					{ name = "luasnip" },
 				}, { { name = "neorg" } }, {
-					{ name = "treesitter", max_item_count = 3, keyword_length = 3 },
+					{ name = "buffer", max_item_count = 3 },
 					{ name = "path", max_item_count = 3, keyword_length = 3 },
 				}),
 			})
@@ -123,12 +123,12 @@ return {
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
-					{ name = "treesitter" },
+					{ name = "buffer" },
 				},
 			})
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources({
-					{ name = "treesitter", keyword_length = 3 },
+					{ name = "buffer", keyword_length = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 				}),
 			})
@@ -170,14 +170,14 @@ return {
 				sources = cmp.config.sources({
 					{ name = "luasnip" },
 					{ name = "neorg" },
-					{ name = "treesitter", max_item_count = 3, keyword_length = 3 },
+					{ name = "buffer", max_item_count = 3 },
 					{ name = "path", max_item_count = 3, keyword_length = 3 },
 				}),
 			})
 
 			cmp.setup.filetype("markdown", {
 				sources = cmp.config.sources({
-					{ name = "treesitter", keyword_length = 3 },
+					{ name = "buffer", max_item_count = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 				}),
 			})
@@ -185,7 +185,7 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
-			"ray-x/cmp-treesitter",
+			"ray-x/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-vsnip",
 			"saadparwaiz1/cmp_luasnip",
