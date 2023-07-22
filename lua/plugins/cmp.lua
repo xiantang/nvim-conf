@@ -23,7 +23,7 @@ return {
 					format = lspkind.cmp_format({
 						mode = "symbol_text",
 						menu = {
-							treesitter = "[Treesitter]",
+							buffer = "[buffer]",
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[Lua]",
 							vsnip = "[vsnip]",
@@ -42,30 +42,19 @@ return {
 					disallow_prefix_unmatching = true,
 				},
 				sorting = {
+					priority_weight = 1.0,
 					comparators = {
-						cmp.config.compare.offset,
-						cmp.config.compare.exact,
+						-- compare.score_offset, -- not good at all
+						cmp.config.compare.locality,
 						cmp.config.compare.recently_used,
-						cmp.config.compare.score,
-
-						-- copied from cmp-under, but I don't think I need the plugin for this.
-						-- I might add some more of my own.
-						function(entry1, entry2)
-							local _, entry1_under = entry1.completion_item.label:find("^_+")
-							local _, entry2_under = entry2.completion_item.label:find("^_+")
-							entry1_under = entry1_under or 0
-							entry2_under = entry2_under or 0
-							if entry1_under > entry2_under then
-								return false
-							elseif entry1_under < entry2_under then
-								return true
-							end
-						end,
-
-						cmp.config.compare.kind,
-						cmp.config.compare.sort_text,
-						cmp.config.compare.length,
+						cmp.config.compare.exact,
+						cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+						cmp.config.compare.offset,
 						cmp.config.compare.order,
+						-- compare.scopes, -- what?
+						-- compare.sort_text,
+						-- compare.kind,
+						-- compare.length, -- useless
 					},
 				},
 
@@ -109,12 +98,12 @@ return {
 				}),
 
 				sources = cmp.config.sources({
+					{ name = "vsnip" },
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
-					{ name = "vsnip" },
 					{ name = "luasnip" },
 				}, { { name = "neorg" } }, {
-					{ name = "treesitter", max_item_count = 3, keyword_length = 3 },
+					{ name = "buffer", max_item_count = 3 },
 					{ name = "path", max_item_count = 3, keyword_length = 3 },
 				}),
 			})
@@ -133,12 +122,12 @@ return {
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
-					{ name = "treesitter" },
+					{ name = "buffer" },
 				},
 			})
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources({
-					{ name = "treesitter", keyword_length = 3 },
+					{ name = "buffer", keyword_length = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 				}),
 			})
@@ -180,14 +169,14 @@ return {
 				sources = cmp.config.sources({
 					{ name = "luasnip" },
 					{ name = "neorg" },
-					{ name = "treesitter", max_item_count = 3, keyword_length = 3 },
+					{ name = "buffer", max_item_count = 3 },
 					{ name = "path", max_item_count = 3, keyword_length = 3 },
 				}),
 			})
 
 			cmp.setup.filetype("markdown", {
 				sources = cmp.config.sources({
-					{ name = "treesitter", keyword_length = 3 },
+					{ name = "buffer", max_item_count = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 				}),
 			})
@@ -195,7 +184,7 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
-			"ray-x/cmp-treesitter",
+			"ray-x/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-vsnip",
 			"saadparwaiz1/cmp_luasnip",
