@@ -46,7 +46,6 @@ return {
 					comparators = {
 						-- compare.score_offset, -- not good at all
 						cmp.config.compare.locality,
-						cmp.config.compare.locality,
 						cmp.config.compare.recently_used,
 						cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
 						cmp.config.compare.offset,
@@ -99,9 +98,9 @@ return {
 				}),
 
 				sources = cmp.config.sources({
+					{ name = "vsnip" },
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
-					{ name = "vsnip" },
 					{ name = "luasnip" },
 				}, { { name = "neorg" } }, {
 					{ name = "buffer", max_item_count = 3 },
