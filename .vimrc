@@ -7,6 +7,7 @@ highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=steelblue
 set wcm=9
 set spell
+set fillchars+=diff:╱
 set spelllang=en,cjk
 set spellsuggest=best,9
 set spelloptions=camel
