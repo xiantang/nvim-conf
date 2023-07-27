@@ -46,7 +46,11 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 noremap <Leader>s <C-w>s
 noremap <Leader>v <C-w>v
-noremap <Leader>b :ls<CR>:b<space>
+" if not neovim
+if !has('nvim')
+	noremap <Leader>b :ls<CR>:b<space>
+endif
+
 noremap <Leader>t :Vexplore<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
