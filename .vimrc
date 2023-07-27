@@ -47,42 +47,44 @@ let g:netrw_winsize = 25
 noremap <Leader>s <C-w>s
 noremap <Leader>v <C-w>v
 " if not neovim
-if !has('nvim')
-	noremap <Leader>t :Vexplore<CR>
-	nnoremap <C-h> <C-w>h
-	nnoremap <C-j> <C-w>j
-	nnoremap <C-k> <C-w>k
-	nnoremap <C-l> <C-w>l
-	noremap - :Ntree<CR>
-	function! FZF() abort
-			let l:tempname = tempname()
-			execute 'silent !fzf --multi ' . '| awk ''{ print $1":1:0" }'' > ' . fnameescape(l:tempname)
-			try
-					execute 'cfile ' . l:tempname
-					redraw!
-			finally
-					call delete(l:tempname)
-			endtry
-	endfunction
-	command! -nargs=* Files call FZF()
-	nnoremap <leader>p :Files<cr>
-	function! RG(args) abort
-			let l:tempname = tempname()
-			let l:pattern = '.'
-			if len(a:args) > 0
-					let l:pattern = a:args
-			endif
-			execute 'silent !rg --vimgrep ''' . l:pattern . ''' | fzf -m > ' . fnameescape(l:tempname)
-			try
-					execute 'cfile ' . l:tempname
-					redraw!
-			finally
-					call delete(l:tempname)
-			endtry
-	endfunction
-	command! -nargs=* Rg call RG(<q-args>)
-	nnoremap <leader>P :Rg<cr>
-	endif
-	noremap <Leader>b :ls<CR>:b<space>
+" vim only
+if has('nvim')
+	finish
 endif
 
+noremap <Leader>t :Vexplore<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+noremap - :Ntree<CR>
+function! FZF() abort
+		let l:tempname = tempname()
+		execute 'silent !fzf --multi ' . '| awk ''{ print $1":1:0" }'' > ' . fnameescape(l:tempname)
+		try
+				execute 'cfile ' . l:tempname
+				redraw!
+		finally
+				call delete(l:tempname)
+		endtry
+endfunction
+command! -nargs=* Files call FZF()
+nnoremap <leader>p :Files<cr>
+function! RG(args) abort
+		let l:tempname = tempname()
+		let l:pattern = '.'
+		if len(a:args) > 0
+				let l:pattern = a:args
+		endif
+		execute 'silent !rg --vimgrep ''' . l:pattern . ''' | fzf -m > ' . fnameescape(l:tempname)
+		try
+				execute 'cfile ' . l:tempname
+				redraw!
+		finally
+				call delete(l:tempname)
+		endtry
+endfunction
+command! -nargs=* Rg call RG(<q-args>)
+nnoremap <leader>P :Rg<cr>
+endif
+noremap <Leader>b :ls<CR>:b<space>
