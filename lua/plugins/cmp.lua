@@ -17,6 +17,7 @@ return {
 			local feedkey = function(key, mode)
 				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 			end
+			local luasnip = require("luasnip")
 			cmp.setup({
 				-- show source name in menu
 				formatting = {
@@ -26,7 +27,6 @@ return {
 							buffer = "[buffer]",
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[Lua]",
-							vsnip = "[vsnip]",
 							luasnip = "[LuaSnip]",
 							dictionary = "[Dictionary]",
 							path = "[Path]",
@@ -82,6 +82,8 @@ return {
 							cmp.select_next_item()
 						-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
 						-- they way you will only jump inside the snippet region
+						elseif luasnip.expand_or_locally_jumpable() then
+							luasnip.expand_or_jump()
 						elseif vim.fn["vsnip#available"](1) == 1 then
 							feedkey("<Plug>(vsnip-expand-or-jump)", "")
 						else
@@ -91,6 +93,8 @@ return {
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
 						elseif vim.fn["vsnip#jumpable"](-1) == 1 then
 							feedkey("<Plug>(vsnip-jump-prev)", "")
 						end
@@ -98,7 +102,6 @@ return {
 				}),
 
 				sources = cmp.config.sources({
-					{ name = "vsnip" },
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
@@ -108,17 +111,6 @@ return {
 				}),
 			})
 
-			--[[ cmp.setup.cmdline(":", {
-				view = {
-					entries = { name = "wildmenu", separator = " " },
-				},
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({
-					{ name = "path" },
-				}, {
-					{ name = "cmdline", max_item_count = 30 },
-				}),
-			}) ]]
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
@@ -129,48 +121,6 @@ return {
 				sources = cmp.config.sources({
 					{ name = "buffer", keyword_length = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
-				}),
-			})
-
-			local luasnip = require("luasnip")
-			cmp.setup.filetype("norg", {
-				snippet = {
-					-- REQUIRED - you must specify a snippet engine
-					expand = function(args)
-						-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-						require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-						-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-						-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-					end,
-				},
-				mapping = {
-					["<Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-						-- they way you will only jump inside the snippet region
-						elseif luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-
-					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						elseif luasnip.jumpable(-1) then
-							luasnip.jump(-1)
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-				},
-				sources = cmp.config.sources({
-					{ name = "luasnip" },
-					{ name = "neorg" },
-					{ name = "buffer", max_item_count = 3 },
-					{ name = "path", max_item_count = 3, keyword_length = 3 },
 				}),
 			})
 
