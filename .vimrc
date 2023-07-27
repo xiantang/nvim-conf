@@ -26,6 +26,8 @@ noremap <Leader>[ <C-O>
 noremap <Leader>] <C-I>
 noremap <C-D> <C-D>zz
 noremap <C-U> <C-U>zz
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 noremap {   {zz
 noremap }   }zz
 nnoremap <silent><expr> j v:count > 0 ? "m'" . v:count . "j" : 'gj'

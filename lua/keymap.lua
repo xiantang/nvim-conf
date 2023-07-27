@@ -75,8 +75,6 @@ vim.cmd([[
 nnoremap <leader>sv :source $MYVIMRC<CR>
 tnoremap <D-v> <C-\><C-n>"+p
 tnoremap <Esc> <C-\><C-n>
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
 ]])
 
 local function t(str)
