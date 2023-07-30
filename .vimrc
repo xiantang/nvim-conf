@@ -7,6 +7,7 @@ highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=steelblue
 set wcm=9
 set spell
+set fillchars+=diff:╱
 set spelllang=en,cjk
 set spellsuggest=best,9
 set spelloptions=camel
@@ -25,6 +26,8 @@ noremap <Leader>[ <C-O>
 noremap <Leader>] <C-I>
 noremap <C-D> <C-D>zz
 noremap <C-U> <C-U>zz
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 noremap {   {zz
 noremap }   }zz
 nnoremap <silent><expr> j v:count > 0 ? "m'" . v:count . "j" : 'gj'
@@ -43,7 +46,12 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 noremap <Leader>s <C-w>s
 noremap <Leader>v <C-w>v
-noremap <Leader>b :ls<CR>:b<space>
+" if not neovim
+" vim only
+if has('nvim')
+	finish
+endif
+
 noremap <Leader>t :Vexplore<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -51,31 +59,32 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 noremap - :Ntree<CR>
 function! FZF() abort
-    let l:tempname = tempname()
-    execute 'silent !fzf --multi ' . '| awk ''{ print $1":1:0" }'' > ' . fnameescape(l:tempname)
-    try
-        execute 'cfile ' . l:tempname
-        redraw!
-    finally
-        call delete(l:tempname)
-    endtry
+		let l:tempname = tempname()
+		execute 'silent !fzf --multi ' . '| awk ''{ print $1":1:0" }'' > ' . fnameescape(l:tempname)
+		try
+				execute 'cfile ' . l:tempname
+				redraw!
+		finally
+				call delete(l:tempname)
+		endtry
 endfunction
 command! -nargs=* Files call FZF()
 nnoremap <leader>p :Files<cr>
 function! RG(args) abort
-    let l:tempname = tempname()
-    let l:pattern = '.'
-    if len(a:args) > 0
-        let l:pattern = a:args
-    endif
-    execute 'silent !rg --vimgrep ''' . l:pattern . ''' | fzf -m > ' . fnameescape(l:tempname)
-    try
-        execute 'cfile ' . l:tempname
-        redraw!
-    finally
-        call delete(l:tempname)
-    endtry
+		let l:tempname = tempname()
+		let l:pattern = '.'
+		if len(a:args) > 0
+				let l:pattern = a:args
+		endif
+		execute 'silent !rg --vimgrep ''' . l:pattern . ''' | fzf -m > ' . fnameescape(l:tempname)
+		try
+				execute 'cfile ' . l:tempname
+				redraw!
+		finally
+				call delete(l:tempname)
+		endtry
 endfunction
 command! -nargs=* Rg call RG(<q-args>)
 nnoremap <leader>P :Rg<cr>
 endif
+noremap <Leader>b :ls<CR>:b<space>

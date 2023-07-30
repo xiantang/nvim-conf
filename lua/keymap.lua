@@ -6,9 +6,6 @@
 -- set smartindent
 -- ]])
 local opts = { noremap = true, silent = true }
--- https://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
--- vim.keymap.set("n", "j", [[v:count > 0 ? "m'" . v:count . "j" : 'gj']], { noremap = true, expr = true })
--- vim.keymap.set("n", "k", [[v:count > 0 ? "m'" . v:count . "k" : 'gk']], { noremap = true, expr = true })
 
 vim.keymap.set("v", "y", "ygv<esc>", opts)
 
@@ -37,6 +34,7 @@ vim.keymap.set("t", "<C-;>", "<C-\\><C-n><Cmd>exe v:count1 . 'ToggleTerm'<CR>", 
 vim.keymap.set("n", "<C-Down>", ":resize -5<CR>", opts)
 vim.keymap.set("n", "0", "^", opts)
 vim.keymap.set("n", "ZZ", ":wq<CR>", opts)
+vim.keymap.set("n", "z=", "1z=", opts)
 vim.keymap.set("n", "<Leader>gs", ":Git<CR>", opts)
 vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", opts)
 vim.keymap.set("n", "<Leader>ss", ":source ~/.config/nvim/init.vim<CR>", opts)
@@ -46,8 +44,8 @@ vim.keymap.set("n", "<Leader>v", ":vsp<CR>", { desc = "[V]ertically [S]plit wind
 vim.keymap.set("n", "<Leader>w", ":w<CR>", opts)
 vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
 -- test
-vim.keymap.set("n", "<Leader>ut", ":TestNearest -v<CR>", { desc = "TestNearest", silent = true, noremap = true })
-vim.keymap.set("n", "<Leader>uf", ":GoTestFile<CR>", { desc = "GoTestFile", silent = true, noremap = true })
+vim.keymap.set("n", "<Leader>tt", ":TestNearest -v<CR>", { desc = "TestNearest", silent = true, noremap = true })
+vim.keymap.set("n", "<Leader>tf", ":GoTestFile<CR>", { desc = "GoTestFile", silent = true, noremap = true })
 vim.keymap.set("n", "<Leader>b", ":ls<cr>:b<space>")
 vim.keymap.set(
 	"n",
@@ -74,8 +72,6 @@ vim.cmd([[
 nnoremap <leader>sv :source $MYVIMRC<CR>
 tnoremap <D-v> <C-\><C-n>"+p
 tnoremap <Esc> <C-\><C-n>
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
 ]])
 
 local function t(str)

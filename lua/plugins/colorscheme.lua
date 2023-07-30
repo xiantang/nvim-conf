@@ -8,4 +8,11 @@ return {
 		"sainnhe/sonokai",
 		lazy = true,
 	},
+	{
+		"xiantang/darcula-dark.nvim",
+		dev = true,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
 }
