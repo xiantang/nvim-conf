@@ -24,8 +24,8 @@ set wildoptions-=pum
 set sessionoptions="blank"
 noremap <Leader>[ <C-O>
 noremap <Leader>] <C-I>
-noremap <C-D> <C-D>zz
-noremap <C-U> <C-U>zz
+nnoremap <C-D> <C-D>zz
+nnoremap <C-U> <C-U>zz
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 noremap {   {zz
