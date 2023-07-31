@@ -4,6 +4,7 @@ return {
 		event = "VeryLazy",
 		config = function()
 			local null_ls = require("null-ls")
+			require("custom_code_actions")
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.shfmt,
@@ -16,6 +17,7 @@ return {
 					null_ls.builtins.formatting.isort,
 					null_ls.builtins.diagnostics.hadolint,
 				},
+				debug = true,
 			})
 		end,
 	},
