@@ -37,6 +37,9 @@ local fix_undefine_function = {
 			if not content then
 				return
 			end
+			if context.lsp_params.context.only ~= nil then
+				return
+			end
 
 			local row = vim.api.nvim_win_get_cursor(0)[1]
 			local line = content[row]
