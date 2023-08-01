@@ -1,6 +1,9 @@
 return {
 	{ "catppuccin/nvim", name = "catppuccin", lazy = true },
 	{
+		"rktjmp/lush.nvim",
+	},
+	{
 		"RRethy/nvim-base16",
 		lazy = true,
 	},
