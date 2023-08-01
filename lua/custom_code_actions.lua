@@ -64,6 +64,7 @@ local fix_undefine_function = {
 							-- use tree-sitter to find function start
 							-- put before current function
 							local func_start = get_function_start(row)
+							func_start = func_start - 1
 							vim.api.nvim_buf_set_lines(0, func_start, func_start, false, new_func_lines)
 						end,
 					},
