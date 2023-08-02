@@ -11,7 +11,7 @@ return {
 					enable = true, -- mandatory, false will disable the whole extension
 				},
 				incremental_selection = {
-					enable = true,
+					enable = false,
 					keymaps = {
 						node_incremental = "v",
 						node_decremental = "<BS>",
