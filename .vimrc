@@ -100,4 +100,4 @@ let g:currentmode={
        \ 'Rv' : 'V·Replace ',
        \ 'c'  : 'Command ',
        \}
-set statusline=%{toupper(g:currentmode[mode()])}%f\ %h%m%r\ %=%-14.(%l,%c%V%)\ %P
+set statusline=%{toupper(g:currentmode[mode()])}%f\ %h%m%r\ %=%-14.(%l,%c%V%)\ %y\ %P
