@@ -71,6 +71,7 @@ local on_attach = function(client, bufnr)
 	-- vim.api.nvim_command([[autocmd CursorHold  <buffer> lua vim.lsp.buf.hover() ]])
 	-- Mappings.
 	local opts = { noremap = true, silent = true }
+	buf_set_keymap("n", "<Enter>", "<Nop>", opts)
 	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	-- buf_set_keymap("n", "gv", "<cmd>Lspsaga peek_definition<CR>", opts)
