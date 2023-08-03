@@ -37,6 +37,7 @@ end
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local on_attach = function(client, bufnr)
+	vim.cmd("syntax on")
 	if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
 		local semantic = client.config.capabilities.textDocument.semanticTokens
 		client.server_capabilities.semanticTokensProvider = {
