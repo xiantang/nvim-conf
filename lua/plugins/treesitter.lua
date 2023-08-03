@@ -8,7 +8,7 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				matchup = {
-					enable = true, -- mandatory, false will disable the whole extension
+					enable = false, -- mandatory, false will disable the whole extension
 				},
 				incremental_selection = {
 					enable = false,
@@ -20,7 +20,7 @@ return {
 				},
 				highlight = {
 					-- disable highlight for variable and package in file
-					enable = true,
+					enable = false,
 					additional_vim_regex_highlighting = false,
 					disable = {},
 				},
