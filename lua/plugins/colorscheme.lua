@@ -14,8 +14,5 @@ return {
 	{
 		"xiantang/darcula-dark.nvim",
 		dev = true,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
 	},
 }
