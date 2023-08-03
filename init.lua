@@ -52,7 +52,6 @@ require("lazy").setup("plugins", {
 })
 
 vim.cmd.colorscheme("darcula-dark")
-require("start")
 vim.cmd.cnoreabbrev([[git Git]])
 vim.cmd.abbreviate("ture", "true")
 vim.cmd.cnoreabbrev([[gp Git push]])
