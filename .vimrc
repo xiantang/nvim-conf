@@ -89,3 +89,14 @@ command! -nargs=* Rg call RG(<q-args>)
 nnoremap <leader>P :Rg<cr>
 endif
 noremap <Leader>b :ls<CR>:b<space>
+let g:currentmode={
+       \ 'n'  : 'NORMAL ',
+       \ 'v'  : 'VISUAL ',
+       \ 'V'  : 'V·Line ',
+       \ "\<C-V>" : 'V·Block ',
+       \ 'i'  : 'INSERT ',
+       \ 'R'  : 'R ',
+       \ 'Rv' : 'V·Replace ',
+       \ 'c'  : 'Command ',
+       \}
+set statusline=%{toupper(g:currentmode[mode()])}%=%<%f\ %h%m%r\ %=%-14.(%l,%c%V%)\ %P
