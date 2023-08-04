@@ -94,6 +94,7 @@ let g:currentmode={
        \ 'v'  : 'VISUAL ',
        \ 'V'  : 'V·Line ',
        \ 's'  : 'SNIPET ',
+       \ 't'  : 'TEST ',
        \ "\<C-V>" : 'V·Block ',
        \ 'i'  : 'INSERT ',
        \ 'R'  : 'R ',
