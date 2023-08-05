@@ -1,6 +1,9 @@
 return {
 	{ "catppuccin/nvim", name = "catppuccin", lazy = true },
 	{
+		"rktjmp/lush.nvim",
+	},
+	{
 		"RRethy/nvim-base16",
 		lazy = true,
 	},
@@ -11,8 +14,5 @@ return {
 	{
 		"xiantang/darcula-dark.nvim",
 		dev = true,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
 	},
 }

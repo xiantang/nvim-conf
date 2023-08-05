@@ -24,8 +24,9 @@ set wildoptions-=pum
 set sessionoptions="blank"
 noremap <Leader>[ <C-O>
 noremap <Leader>] <C-I>
-noremap <C-D> <C-D>zz
-noremap <C-U> <C-U>zz
+" nnoremap <Enter> <Nop>
+nnoremap <C-D> <C-D>zz
+nnoremap <C-U> <C-U>zz
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 noremap {   {zz
@@ -88,3 +89,16 @@ command! -nargs=* Rg call RG(<q-args>)
 nnoremap <leader>P :Rg<cr>
 endif
 noremap <Leader>b :ls<CR>:b<space>
+let g:currentmode={
+       \ 'n'  : 'NORMAL ',
+       \ 'v'  : 'VISUAL ',
+       \ 'V'  : 'V·Line ',
+       \ 's'  : 'SNIPET ',
+       \ 't'  : 'TEST ',
+       \ "\<C-V>" : 'V·Block ',
+       \ 'i'  : 'INSERT ',
+       \ 'R'  : 'R ',
+       \ 'Rv' : 'V·Replace ',
+       \ 'c'  : 'Command ',
+       \}
+set statusline=%{toupper(g:currentmode[mode()])}%f\ %h%m%r\ %=%-14.(%l,%c%V%)\ %y\ %P

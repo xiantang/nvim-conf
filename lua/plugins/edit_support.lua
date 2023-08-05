@@ -15,6 +15,7 @@ return {
 		"andymass/vim-matchup",
 		config = function()
 			-- may set any options here
+			vim.g.matchup_matchparen_offscreen = { method = "scrolloff" }
 		end,
 	},
 	{
@@ -44,6 +45,12 @@ return {
 		event = "VeryLazy",
 		config = function()
 			require("nvim-autopairs").setup({})
+		end,
+	},
+	{
+		"nmac427/guess-indent.nvim",
+		config = function()
+			require("guess-indent").setup({})
 		end,
 	},
 }

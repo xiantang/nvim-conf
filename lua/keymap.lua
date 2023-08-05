@@ -37,6 +37,7 @@ vim.keymap.set("n", "ZZ", ":wq<CR>", opts)
 vim.keymap.set("n", "z=", "1z=", opts)
 vim.keymap.set("n", "<Leader>gs", ":Git<CR>", opts)
 vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", opts)
+vim.keymap.set("n", "<Leader>gl", ":Gllog -- %<CR>", opts)
 vim.keymap.set("n", "<Leader>ss", ":source ~/.config/nvim/init.vim<CR>", opts)
 -- we can use s and v to split
 vim.keymap.set("n", "<Leader>s", ":sp<CR>", { desc = "[S]plit window" })
@@ -46,7 +47,6 @@ vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
 -- test
 vim.keymap.set("n", "<Leader>tt", ":TestNearest -v<CR>", { desc = "TestNearest", silent = true, noremap = true })
 vim.keymap.set("n", "<Leader>tf", ":GoTestFile<CR>", { desc = "GoTestFile", silent = true, noremap = true })
-vim.keymap.set("n", "<Leader>b", ":ls<cr>:b<space>")
 vim.keymap.set(
 	"n",
 	"<Leader>uv",
@@ -56,7 +56,7 @@ vim.keymap.set(
 vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', opts)
 -- vim.keymap.set("n", "tt", ":GenReturn<CR>0", opts)
 vim.keymap.set("n", "K", "k", opts)
-vim.keymap.set("n", "<Leader>Q", ':lua require("start").Stop()<CR>', opts)
+vim.keymap.set("n", "ZZ", ":wqa<CR>", opts)
 
 vim.cmd([[
 "ctrl A to  move to line start when in command mode like in iterm2
