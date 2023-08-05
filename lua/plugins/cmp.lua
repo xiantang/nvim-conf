@@ -101,7 +101,6 @@ return {
 					{ name = "vsnip" },
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
 				}, { { name = "neorg" } }, {
 					{ name = "buffer", max_item_count = 3 },
 					{ name = "path", max_item_count = 3, keyword_length = 3 },
