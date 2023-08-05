@@ -1,24 +1,152 @@
-# My PDE (Personalized Development Environment)
-
-![](https://byob.yarr.is/xiantang/nvim-conf/startuptime)
-
-* Using jetbrains code colorschema
-* Git integration
-* LSP code completion, jumping, formatting
-* File tree
-* File/code fuzzy finder
-* Code highlight for any language
-* Code snippet
-
+# nvim-conf/
 <img width="1512" alt="image" src="https://user-images.githubusercontent.com/34479567/237651867-d817d17d-1620-42e2-8972-d6b0af108edd.png">
 
-## mini vim(without plugins)
+<a href="https://dotfyle.com/xiantang/nvim-conf"><img src="https://dotfyle.com/xiantang/nvim-conf/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/xiantang/nvim-conf"><img src="https://dotfyle.com/xiantang/nvim-conf/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/xiantang/nvim-conf"><img src="https://dotfyle.com/xiantang/nvim-conf/badges/plugin-manager?style=flat" /></a>
+![](https://byob.yarr.is/xiantang/nvim-conf/startuptime)
+
+
+## Install Instructions
+
+ > Install requires Neovim 0.9+. Always review the code before installing a configuration.
+
+Clone the repository and install the plugins:
+
+```sh
+git clone git@github.com:xiantang/nvim-conf ~/.config/xiantang/nvim-conf
+NVIM_APPNAME=xiantang/nvim-conf/ nvim --headless +"Lazy! sync" +qa
+```
+
+Open Neovim with this config:
+
+```sh
+NVIM_APPNAME=xiantang/nvim-conf/ nvim
+```
+
+## Plugins
+
+### code-runner
+
++ [michaelb/sniprun](https://dotfyle.com/plugins/michaelb/sniprun)
+### colorscheme
+
++ [RRethy/nvim-base16](https://dotfyle.com/plugins/RRethy/nvim-base16)
++ [catppuccin/nvim](https://dotfyle.com/plugins/catppuccin/nvim)
++ [sainnhe/sonokai](https://dotfyle.com/plugins/sainnhe/sonokai)
++ [xiantang/darcula-dark.nvim](https://dotfyle.com/plugins/xiantang/darcula-dark.nvim)
+### comment
+
++ [numToStr/Comment.nvim](https://dotfyle.com/plugins/numToStr/Comment.nvim)
+### completion
+
++ [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
+### cursorline
+
++ [echasnovski/mini.cursorword](https://dotfyle.com/plugins/echasnovski/mini.cursorword)
+### debugging
+
++ [rcarriga/nvim-dap-ui](https://dotfyle.com/plugins/rcarriga/nvim-dap-ui)
++ [mfussenegger/nvim-dap](https://dotfyle.com/plugins/mfussenegger/nvim-dap)
+### editing-support
+
++ [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
++ [folke/zen-mode.nvim](https://dotfyle.com/plugins/folke/zen-mode.nvim)
++ [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
++ [keaising/im-select.nvim](https://dotfyle.com/plugins/keaising/im-select.nvim)
+### file-explorer
+
++ [stevearc/oil.nvim](https://dotfyle.com/plugins/stevearc/oil.nvim)
+### fuzzy-finder
+
++ [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
+### game
+
++ [ThePrimeagen/vim-be-good](https://dotfyle.com/plugins/ThePrimeagen/vim-be-good)
+### git
+
++ [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
+### golang
+
++ [ray-x/go.nvim](https://dotfyle.com/plugins/ray-x/go.nvim)
+### indent
+
++ [echasnovski/mini.indentscope](https://dotfyle.com/plugins/echasnovski/mini.indentscope)
++ [lukas-reineke/indent-blankline.nvim](https://dotfyle.com/plugins/lukas-reineke/indent-blankline.nvim)
+### keybinding
+
++ [folke/which-key.nvim](https://dotfyle.com/plugins/folke/which-key.nvim)
+### lsp
+
++ [simrat39/symbols-outline.nvim](https://dotfyle.com/plugins/simrat39/symbols-outline.nvim)
++ [onsails/lspkind.nvim](https://dotfyle.com/plugins/onsails/lspkind.nvim)
++ [jose-elias-alvarez/null-ls.nvim](https://dotfyle.com/plugins/jose-elias-alvarez/null-ls.nvim)
++ [j-hui/fidget.nvim](https://dotfyle.com/plugins/j-hui/fidget.nvim)
++ [glepnir/lspsaga.nvim](https://dotfyle.com/plugins/glepnir/lspsaga.nvim)
+### lsp-installer
+
++ [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
+### note-taking
+
++ [nvim-neorg/neorg](https://dotfyle.com/plugins/nvim-neorg/neorg)
+### nvim-dev
+
++ [jbyuki/one-small-step-for-vimkind](https://dotfyle.com/plugins/jbyuki/one-small-step-for-vimkind)
++ [ray-x/guihua.lua](https://dotfyle.com/plugins/ray-x/guihua.lua)
++ [folke/neodev.nvim](https://dotfyle.com/plugins/folke/neodev.nvim)
++ [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
+### plugin-manager
+
++ [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
+### scrollbar
+
++ [petertriho/nvim-scrollbar](https://dotfyle.com/plugins/petertriho/nvim-scrollbar)
+### session
+
++ [rmagatti/auto-session](https://dotfyle.com/plugins/rmagatti/auto-session)
+### snippet
+
++ [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
+### statusline
+
++ [nvim-lualine/lualine.nvim](https://dotfyle.com/plugins/nvim-lualine/lualine.nvim)
+### syntax
+
++ [kylechui/nvim-surround](https://dotfyle.com/plugins/kylechui/nvim-surround)
++ [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
+### tmux
+
++ [numToStr/Navigator.nvim](https://dotfyle.com/plugins/numToStr/Navigator.nvim)
+### utility
+
++ [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
+## Language Servers
+
++ awk_ls
++ bashls
++ dockerls
++ gopls
++ jqls
++ jsonls
++ pyright
++ sqlls
++ terraformls
++ tsserver
++ vimls
++ yamlls
+
+
+ This readme was generated by [Dotfyle](https://dotfyle.com)
+
+
+
+### mini vim(without plugins)
 `alias vim="vim -S https://raw.githubusercontent.com/xiantang/nvim-conf/dev/.vimrc"`
 
-## Font
+### Font
 (FiraCode Nerd Font Mono)[https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode]
 
-## gopls
+### gopls
 use gopls build by myself https://github.com/xiantang/tools due to https://github.com/golang/go/issues/40871
 
 
