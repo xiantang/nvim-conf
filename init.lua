@@ -53,10 +53,26 @@ require("lazy").setup("plugins", {
 
 vim.cmd.colorscheme("darcula-dark")
 vim.cmd.cnoreabbrev([[git Git]])
-vim.cmd.abbreviate("ture", "true")
 vim.cmd.cnoreabbrev([[gp Git push]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
-vim.cmd.abbreviate("stirng", "string")
-vim.cmd.abbreviate("string", "string")
+function fix_it_when_its_wrong(wrong, right)
+	-- syntax keyword WordError wrong
+	vim.cmd.abbreviate(wrong, right)
+	cmd = string.format("syntax keyword SpellBad %s", wrong)
+	vim.cmd(cmd)
+end
+
+-- use map to for loop
+
+local dict = {
+	stirng = "string",
+	ture = "true",
+	fucntion = "function",
+}
+
+for k, v in pairs(dict) do
+	fix_it_when_its_wrong(k, v)
+end
+
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
