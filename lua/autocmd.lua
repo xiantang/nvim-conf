@@ -11,6 +11,8 @@ au BufNewFile,BufRead *.template setfiletype gotmpl
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
 au BufWinEnter NvimTree setlocal rnu
+autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
+autocmd BufWritePre *.tf lua vim.lsp.buf.format()
 ]])
 
 vim.api.nvim_create_autocmd("BufWritePre", {

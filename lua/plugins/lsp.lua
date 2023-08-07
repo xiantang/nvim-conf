@@ -29,7 +29,7 @@ return {
 		end,
 	},
 	{
-		"xiantang/nvim-lspconfig",
+		"neovim/nvim-lspconfig",
 		event = "BufRead",
 		-- use commit
 		dependencies = {
