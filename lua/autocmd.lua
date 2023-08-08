@@ -18,6 +18,11 @@ autocmd BufWritePre *.tf lua vim.lsp.buf.format()
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = { "*.go" },
 	callback = function()
+		-- if lsp is not running, then skip this
+		if not vim.tbl_contains(vim.lsp.get_active_clients(), "gopls") then
+			return
+		end
+
 		local params = vim.lsp.util.make_range_params(nil, vim.lsp.util._get_offset_encoding())
 		params.context = { only = { "source.organizeImports" } }
 
