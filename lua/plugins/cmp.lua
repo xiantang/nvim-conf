@@ -46,8 +46,8 @@ return {
 					comparators = {
 						-- compare.score_offset, -- not good at all
 						cmp.config.compare.locality,
-						cmp.config.compare.recently_used,
 						cmp.config.compare.exact,
+						cmp.config.compare.recently_used,
 						cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
 						cmp.config.compare.offset,
 						cmp.config.compare.order,
