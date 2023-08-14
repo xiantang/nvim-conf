@@ -22,6 +22,7 @@ set clipboard=unnamed
 set encoding=utf-8
 set wildoptions-=pum
 set sessionoptions="blank"
+
 " nnoremap <Enter> <Nop>
 nnoremap <C-D> <C-D>zz
 nnoremap <C-U> <C-U>zz
@@ -99,6 +100,7 @@ let g:currentmode={
        \ 'Rv' : 'V·Replace ',
        \ 'c'  : 'Command ',
        \}
+
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
@@ -108,3 +110,4 @@ function! StatuslineGit()
   return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
 endfunction
 set statusline=%{toupper(g:currentmode[mode()])}%f%{StatuslineGit()}\ %h%m%r\ %=%-14.(%l,%c%V%)\ %y\ %P
+
