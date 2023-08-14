@@ -22,8 +22,6 @@ set clipboard=unnamed
 set encoding=utf-8
 set wildoptions-=pum
 set sessionoptions="blank"
-noremap <Leader>[ <C-O>
-noremap <Leader>] <C-I>
 " nnoremap <Enter> <Nop>
 nnoremap <C-D> <C-D>zz
 nnoremap <C-U> <C-U>zz
