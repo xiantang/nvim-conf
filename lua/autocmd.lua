@@ -1,6 +1,6 @@
 vim.cmd([[
-autocmd TermOpen * setlocal nobuflisted
-autocmd VimResized * wincmd =
+au TermOpen * setlocal nobuflisted
+au VimResized * wincmd =
 au BufEnter leetcode.cn_*.txt set filetype=go
 au BufEnter *.conf set filetype=config
 au FileType * set formatoptions-=cro
@@ -11,8 +11,9 @@ au BufNewFile,BufRead *.template setfiletype gotmpl
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
 au BufWinEnter NvimTree setlocal rnu
-autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
-autocmd BufWritePre *.tf lua vim.lsp.buf.format()
+au VimEnter * :clearjumps
+au BufWritePre *.tfvars lua vim.lsp.buf.format()
+au BufWritePre *.tf lua vim.lsp.buf.format()
 ]])
 
 vim.api.nvim_create_autocmd("BufWritePre", {
