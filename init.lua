@@ -51,6 +51,7 @@ require("lazy").setup("plugins", {
 	},
 })
 
+
 local function status_line()
 	-- file full path
 	-- file directory

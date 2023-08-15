@@ -22,6 +22,7 @@ set clipboard=unnamed
 set encoding=utf-8
 set wildoptions-=pum
 set sessionoptions="blank"
+
 " nnoremap <Enter> <Nop>
 nnoremap <C-D> <C-D>zz
 nnoremap <C-U> <C-U>zz
@@ -99,4 +100,5 @@ let g:currentmode={
        \ 'Rv' : 'V·Replace ',
        \ 'c'  : 'Command ',
        \}
+
 set statusline=%{toupper(g:currentmode[mode()])}%f\ %h%m%r\ %=%-14.(%l,%c%V%)\ %y\ %P
