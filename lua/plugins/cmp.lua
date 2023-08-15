@@ -28,6 +28,7 @@ return {
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[Lua]",
 							luasnip = "[LuaSnip]",
+							vsnip = "[VSnip]",
 							dictionary = "[Dictionary]",
 							path = "[Path]",
 							cmp_tabnine = "[TabNine]",
@@ -82,8 +83,6 @@ return {
 							cmp.select_next_item()
 						-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
 						-- they way you will only jump inside the snippet region
-						elseif luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
 						elseif vim.fn["vsnip#available"](1) == 1 then
 							feedkey("<Plug>(vsnip-expand-or-jump)", "")
 						else
@@ -102,6 +101,7 @@ return {
 				}),
 
 				sources = cmp.config.sources({
+					{ name = "vsnip" },
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
 				}, { { name = "neorg" } }, {
