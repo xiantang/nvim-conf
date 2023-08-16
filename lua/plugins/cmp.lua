@@ -116,8 +116,18 @@ return {
 					{ name = "buffer" },
 				},
 			})
+
+			cmp.setup.filetype("norg", {
+				sources = cmp.config.sources({
+					{ name = "luasnip" },
+					{ name = "buffer", keyword_length = 3 },
+					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
+				}),
+			})
+
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources({
+					{ name = "luasnip" },
 					{ name = "buffer", keyword_length = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 				}),
