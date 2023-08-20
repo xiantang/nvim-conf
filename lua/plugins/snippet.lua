@@ -1,5 +1,4 @@
 return {
-	{ "michaelb/sniprun", event = "VeryLazy", build = "bash ./install.sh" },
 	{
 		"hrsh7th/vim-vsnip-integ",
 	},
