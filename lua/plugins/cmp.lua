@@ -109,7 +109,7 @@ return {
 							-- Options go into this table
 							keyword_length = 2,
 						},
-						max_item_count = 2,
+						max_item_count = 1,
 					},
 				}, { { name = "neorg" } }, {
 					{ name = "path", max_item_count = 3, keyword_length = 3 },
