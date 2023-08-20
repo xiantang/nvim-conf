@@ -1,0 +1,12 @@
+{
+  "fori": {
+    "prefix": "fori",
+    "body": "for (int ${1:i} = 0; $1 < ${2:count}; $1++) {\n\t$0\n}",
+    "description": "for i"
+  },
+  "forr": {
+    "prefix": "forr",
+    "body": "for ${1:value} in ${2:iterable}:\n\t${3:pass}$0",
+    "description": "Code snippet to create a for loop structure."
+  }
+}

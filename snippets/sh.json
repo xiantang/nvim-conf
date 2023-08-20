@@ -1,0 +1,12 @@
+{
+  "for_in": {
+    "prefix": "forr",
+    "body": "for ${1:VAR} in ${0:LIST}\ndo\n\techo \"\\$${1:VAR}\"\ndone\n",
+    "description": "for loop in list"
+  },
+  "for_i": {
+    "prefix": "forr",
+    "body": "for ${1:value} in ${2:iterable}:\n\t${3:pass}$0",
+    "description": "Code snippet to create a for loop structure."
+  }
+}

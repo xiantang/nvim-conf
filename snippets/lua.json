@@ -1,0 +1,10 @@
+{
+  "foreach": {
+    "prefix": "forr",
+    "body": [
+      "for i, ${1:x} in pairs(${2:table}) do",
+      "\t$0",
+      "end"
+    ]
+  }
+}
