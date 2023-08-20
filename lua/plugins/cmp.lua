@@ -103,8 +103,15 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
+					{
+						name = "buffer",
+						option = {
+							-- Options go into this table
+							keyword_length = 2,
+						},
+						max_item_count = 2,
+					},
 				}, { { name = "neorg" } }, {
-					{ name = "buffer", max_item_count = 3 },
 					{ name = "path", max_item_count = 3, keyword_length = 3 },
 				}),
 			})
