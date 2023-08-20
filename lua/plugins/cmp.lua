@@ -13,6 +13,7 @@ return {
 				return
 			end
 			local lspkind = require("lspkind")
+			require("keyword").setup()
 
 			local feedkey = function(key, mode)
 				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
@@ -103,6 +104,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
+					{ name = "keyword" },
 				}, { { name = "neorg" } }, {
 					{ name = "buffer", max_item_count = 3 },
 					{ name = "path", max_item_count = 3, keyword_length = 3 },
