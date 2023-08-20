@@ -4,29 +4,10 @@ local handles = {}
 
 local registered = false
 
-keywords = {
+local keywords = {
 	go = {
-		"package",
-		"import",
-		"func",
-		"var",
-		"const",
-		"type",
-		"struct",
-		"interface",
-		"defer",
-		"go",
-		"select",
 		"if",
-		"else",
-		"switch",
-		"case",
-		"default",
 		"for",
-		"range",
-		"break",
-		"continue",
-		"return",
 	},
 	lua = {
 		"and",
