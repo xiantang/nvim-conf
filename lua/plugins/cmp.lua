@@ -101,7 +101,6 @@ return {
 				}),
 
 				sources = cmp.config.sources({
-					{ name = "vsnip" },
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
 				}, { { name = "neorg" } }, {
