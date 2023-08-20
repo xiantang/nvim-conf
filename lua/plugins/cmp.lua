@@ -26,6 +26,7 @@ return {
 						mode = "symbol_text",
 						menu = {
 							buffer = "[buffer]",
+							keyword = "[LSP]",
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[Lua]",
 							luasnip = "[LuaSnip]",

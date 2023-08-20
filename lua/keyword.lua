@@ -28,6 +28,29 @@ keywords = {
 		"continue",
 		"return",
 	},
+	lua = {
+		"and",
+		"break",
+		"do",
+		"else",
+		"elseif",
+		"end",
+		"false",
+		"for",
+		"function",
+		"if",
+		"in",
+		"local",
+		"nil",
+		"not",
+		"or",
+		"repeat",
+		"return",
+		"then",
+		"true",
+		"until",
+		"while",
+	},
 }
 
 handles.setup = function()
@@ -54,9 +77,13 @@ handles.setup = function()
 		local prefix = string.sub(request.context.cursor_before_line, 1, request.offset - 1)
 
 		local items = {}
-		for _, address in pairs(keywords[filetype]) do
+		local lang = keywords[filetype]
+		if lang == nil then
+			return
+		end
+		for _, keyword in pairs(lang) do
 			table.insert(items, {
-				label = address,
+				label = keyword,
 				kind = cmp.lsp.CompletionItemKind.Keyword,
 			})
 		end
