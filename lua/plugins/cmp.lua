@@ -30,7 +30,7 @@ return {
 			tabnine:setup({
 				max_lines = 1000,
 				max_num_results = 1,
-				min_percent = 30,
+				min_percent = 10,
 				sort = true,
 				run_on_every_keystroke = true,
 				snippet_placeholder = "..",
