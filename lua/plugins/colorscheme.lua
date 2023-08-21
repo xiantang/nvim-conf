@@ -15,4 +15,8 @@ return {
 		"xiantang/darcula-dark.nvim",
 		dev = true,
 	},
+	{
+		"doums/darcula",
+		lazy = true,
+	},
 }

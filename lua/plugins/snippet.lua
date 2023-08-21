@@ -1,5 +1,4 @@
 return {
-	{ "michaelb/sniprun", event = "VeryLazy", build = "bash ./install.sh" },
 	{
 		"hrsh7th/vim-vsnip-integ",
 	},
@@ -22,6 +21,8 @@ return {
 		"hrsh7th/vim-vsnip",
 		config = function()
 			vim.cmd([[
+			  imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+			  smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 				let g:vsnip_filetypes = {}
 				let g:vsnip_filetypes.go = ['go']
 				let g:vsnip_filetypes.lua = ['lua']

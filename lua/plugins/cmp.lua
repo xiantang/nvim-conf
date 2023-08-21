@@ -1,5 +1,10 @@
 return {
 	{
+		"tzachar/cmp-tabnine",
+		build = "./install.sh",
+		dependencies = "hrsh7th/nvim-cmp",
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
@@ -13,27 +18,62 @@ return {
 				return
 			end
 			local lspkind = require("lspkind")
+			require("keyword").setup()
 
 			local feedkey = function(key, mode)
 				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 			end
 			local luasnip = require("luasnip")
+			local tabnine = require("cmp_tabnine.config")
+
+			tabnine:setup({
+				max_lines = 1000,
+				max_num_results = 1,
+				sort = true,
+				run_on_every_keystroke = true,
+				snippet_placeholder = "..",
+				ignored_file_types = {
+					-- default is not to ignore
+					-- uncomment to ignore in lua:
+					-- lua = true
+				},
+				show_prediction_strength = false,
+			})
+
+			local menu = {
+				buffer = "[buffer]",
+				keyword = "[LSP]",
+				nvim_lsp = "[LSP]",
+				nvim_lua = "[Lua]",
+				luasnip = "[LuaSnip]",
+				vsnip = "[VSnip]",
+				dictionary = "[Dictionary]",
+				path = "[Path]",
+				cmp_tabnine = "[TabNine]",
+			}
 			cmp.setup({
 				-- show source name in menu
 				formatting = {
-					format = lspkind.cmp_format({
-						mode = "symbol_text",
-						menu = {
-							buffer = "[buffer]",
-							nvim_lsp = "[LSP]",
-							nvim_lua = "[Lua]",
-							luasnip = "[LuaSnip]",
-							vsnip = "[VSnip]",
-							dictionary = "[Dictionary]",
-							path = "[Path]",
-							cmp_tabnine = "[TabNine]",
-						},
-					}),
+					format = function(entry, vim_item)
+						-- if you have lspkind installed, you can use it like
+						-- in the following line:
+						vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = "symbol_text" })
+						vim_item.menu = menu[entry.source.name]
+						if entry.source.name == "cmp_tabnine" then
+							local detail = (entry.completion_item.labelDetails or {}).detail
+							vim_item.kind = ""
+							if detail and detail:find(".*%%.*") then
+								vim_item.kind = vim_item.kind .. " " .. detail
+							end
+
+							if (entry.completion_item.data or {}).multiline then
+								vim_item.kind = vim_item.kind .. " " .. "[ML]"
+							end
+						end
+						local maxwidth = 80
+						vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
+						return vim_item
+					end,
 				},
 				matching = {
 					disallow_fuzzy_matching = true,
@@ -43,9 +83,9 @@ return {
 					disallow_prefix_unmatching = true,
 				},
 				sorting = {
-					priority_weight = 1.0,
+					priority_weight = 2.0,
 					comparators = {
-						-- compare.score_offset, -- not good at all
+						require("cmp_tabnine.compare"), -- compare.score_offset, -- not good at all
 						cmp.config.compare.locality,
 						cmp.config.compare.exact,
 						cmp.config.compare.recently_used,
@@ -101,9 +141,10 @@ return {
 				}),
 
 				sources = cmp.config.sources({
-					{ name = "vsnip" },
 					{ name = "nvim_lua" },
+					{ name = "cmp_tabnine", max_item_count = 1 },
 					{ name = "nvim_lsp" },
+					{ name = "keyword" },
 				}, { { name = "neorg" } }, {
 					{ name = "buffer", max_item_count = 3 },
 					{ name = "path", max_item_count = 3, keyword_length = 3 },
@@ -116,8 +157,18 @@ return {
 					{ name = "buffer" },
 				},
 			})
+
+			cmp.setup.filetype("norg", {
+				sources = cmp.config.sources({
+					{ name = "luasnip" },
+					{ name = "buffer", keyword_length = 3 },
+					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
+				}),
+			})
+
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources({
+					{ name = "luasnip" },
 					{ name = "buffer", keyword_length = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 				}),
