@@ -142,8 +142,8 @@ return {
 
 				sources = cmp.config.sources({
 					{ name = "nvim_lua" },
+					{ name = "cmp_tabnine", max_item_count = 2 },
 					{ name = "nvim_lsp" },
-					{ name = "cmp_tabnine" },
 					{ name = "keyword" },
 				}, { { name = "neorg" } }, {
 					{ name = "buffer", max_item_count = 3 },
