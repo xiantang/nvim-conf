@@ -78,7 +78,7 @@ return {
 					end,
 				},
 				matching = {
-					disallow_fuzzy_matching = true,
+					disallow_fuzzy_matching = false,
 					disallow_fullfuzzy_matching = true,
 					disallow_partial_fuzzy_matching = false,
 					disallow_partial_matching = false,
@@ -145,7 +145,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lua" },
 					{ name = "cmp_tabnine", max_item_count = 1 },
-					{ name = "nvim_lsp", max_item_count = 5 },
+					{ name = "nvim_lsp" },
 					{ name = "keyword" },
 				}, { { name = "neorg" } }, {
 					{ name = "buffer", max_item_count = 3 },
