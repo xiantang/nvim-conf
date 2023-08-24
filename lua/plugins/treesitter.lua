@@ -9,6 +9,8 @@ return {
 				"python",
 				"yaml",
 				"make",
+				"gitignore",
+				"terraform",
 			}
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = enabled,
