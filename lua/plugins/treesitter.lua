@@ -2,14 +2,15 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
+			local enabled = {
+				"gomod",
+				"gosum",
+			}
 			require("nvim-treesitter.configs").setup({
+				ensure_installed = enabled,
 				highlight = {
 					enable = true,
 					disable = function(lang, buf)
-						local enabled = {
-							"gomod",
-							"gosum",
-						}
 						for _, enable in pairs(enabled) do
 							if lang == enable then
 								return false
