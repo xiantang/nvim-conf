@@ -6,6 +6,7 @@ return {
 				"gomod",
 				"gosum",
 				"norg",
+				"python",
 			}
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = enabled,
