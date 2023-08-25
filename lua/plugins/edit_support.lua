@@ -34,13 +34,6 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.cursorword",
-		version = "*",
-		config = function()
-			require("mini.cursorword").setup()
-		end,
-	},
-	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",
 		config = function()
