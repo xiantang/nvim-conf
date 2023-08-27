@@ -83,5 +83,5 @@ function _G.smart_ctrl_e()
 	end
 end
 
--- vim.keymap.set("i", "<C-e>", "v:lua.smart_ctrl_e()", { expr = true, noremap = true, replace_keycodes = false })
+vim.keymap.set("i", "<C-e>", "<esc>A", { noremap = true })
 vim.keymap.set("i", "<C-a>", "<esc>I", { noremap = true })
