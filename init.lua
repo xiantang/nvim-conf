@@ -94,6 +94,7 @@ local dict = {
 	stirng = "string",
 	ture = "true",
 	fucntion = "function",
+	reutrn = "return",
 }
 
 for k, v in pairs(dict) do
