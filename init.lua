@@ -81,10 +81,10 @@ vim.cmd.colorscheme("darcula-dark")
 vim.cmd.cnoreabbrev([[git Git]])
 vim.cmd.cnoreabbrev([[gp Git push]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
-function fix_it_when_its_wrong(wrong, right)
+local function fix_it_when_its_wrong(wrong, right)
 	-- syntax keyword WordError wrong
 	vim.cmd.abbreviate(wrong, right)
-	cmd = string.format("syntax keyword SpellBad %s", wrong)
+	local cmd = string.format("syntax keyword SpellBad %s", wrong)
 	vim.cmd(cmd)
 end
 
