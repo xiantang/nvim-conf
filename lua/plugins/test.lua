@@ -19,6 +19,7 @@ return {
 	let test#neovim#term_position = "vert"
 	let test#go#gotest#options = '-fullpath'
 	let test#neovim#term_position = "vert botright 51"
+  let g:asyncrun_open = 8
 			]])
 		end,
 	},
