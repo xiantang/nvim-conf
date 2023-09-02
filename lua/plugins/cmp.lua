@@ -18,7 +18,6 @@ return {
 			if cmp == nil then
 				return
 			end
-			local lspkind = require("lspkind")
 			require("keyword").setup()
 
 			local feedkey = function(key, mode)
@@ -57,9 +56,35 @@ return {
 				-- show source name in menu
 				formatting = {
 					format = function(entry, vim_item)
-						-- if you have lspkind installed, you can use it like
-						-- in the following line:
-						vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = "symbol_text" })
+						local kind_icons = {
+							Text = "",
+							Method = "󰆧",
+							Function = "󰊕",
+							Constructor = "",
+							Field = "󰇽",
+							Variable = "󰂡",
+							Class = "󰠱",
+							Interface = "",
+							Module = "",
+							Property = "󰜢",
+							Unit = "",
+							Value = "󰎠",
+							Enum = "",
+							Keyword = "󰌋",
+							Snippet = "",
+							Color = "󰏘",
+							File = "󰈙",
+							Reference = "",
+							Folder = "󰉋",
+							EnumMember = "",
+							Constant = "󰏿",
+							Struct = "",
+							Event = "",
+							Operator = "󰆕",
+							TypeParameter = "󰅲",
+						}
+
+						vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
 						vim_item.menu = menu[entry.source.name]
 						if entry.source.name == "cmp_tabnine" then
 							local detail = (entry.completion_item.labelDetails or {}).detail
