@@ -3,6 +3,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
 			local enabled = {
+				"lua",
 				"vim",
 				"gomod",
 				"gosum",
