@@ -2,6 +2,7 @@ return {
 	{
 		"tzachar/cmp-tabnine",
 		build = "./install.sh",
+		event = "VeryLazy",
 		dev = true,
 		dependencies = "hrsh7th/nvim-cmp",
 	},
