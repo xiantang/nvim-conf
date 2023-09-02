@@ -54,6 +54,8 @@ return {
 			saga.init_lsp_saga({
 				code_action_lightbulb = {
 					enabled = false,
+					virtual_text = false,
+					sign = false,
 				},
 				finder_icons = {
 					def = "󰆧  ",
