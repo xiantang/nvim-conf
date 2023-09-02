@@ -36,7 +36,7 @@ return {
 			"j-hui/fidget.nvim",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"glepnir/lspsaga.nvim",
+			"xiantang/lspsaga.nvim",
 			-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
 			"folke/neodev.nvim",
 		},
@@ -46,7 +46,20 @@ return {
 	},
 	{ "williamboman/mason.nvim", event = "VeryLazy" },
 	{ "williamboman/mason-lspconfig.nvim", event = "VeryLazy" },
-	{ "glepnir/lspsaga.nvim", commit = "b7b4777", event = "VeryLazy" },
+	{
+		"xiantang/lspsaga.nvim",
+		event = "VeryLazy",
+		config = function()
+			local saga = require("lspsaga")
+			saga.init_lsp_saga({
+				finder_icons = {
+					def = "󰆧  ",
+					ref = "  ",
+					link = "󰆧  ",
+				},
+			})
+		end,
+	},
 	{
 		event = "VeryLazy",
 		"j-hui/fidget.nvim",
