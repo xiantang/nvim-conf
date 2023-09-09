@@ -18,8 +18,6 @@ set clipboard=unnamed
 set encoding=utf-8
 set wildoptions-=pum
 set sessionoptions="blank"
-set listchars=tab:>-
-set list
 " nnoremap <Enter> <Nop>
 nnoremap <C-D> <C-D>zz
 nnoremap <C-U> <C-U>zz
