@@ -1,9 +1,4 @@
 -- vim.cmd([[
--- set softtabstop=4
--- set tabstop=4
--- set shiftwidth=4
--- set expandtab
--- set smartindent
 -- ]])
 local opts = { noremap = true, silent = true }
 

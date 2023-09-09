@@ -2,7 +2,12 @@ let mapleader = " "
 let maplocalleader = " "
 set nu rnu hidden autoindent modifiable smartcase autoread 
 set splitright noswapfile hlsearch autoindent
-set smartindent equalalways ignorecase expandtab
+set smartindent equalalways ignorecase
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
 highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=steelblue
 set wcm=9
