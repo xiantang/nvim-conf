@@ -101,7 +101,7 @@ let g:currentmode={
        \ 'c'  : 'Command ',
        \}
 
-set statusline=%{toupper(g:currentmode[mode()])}%f\ %h%m%r\ %=%-14.(%l,%c%V%)\ %y\ %P
+set statusline=%{toupper(g:currentmode[mode()])}%f\ %h%m%r\ %=%-14.(%l,%c%V%)\ %P\ %y
 let g:asyncrun_open = 6
 command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
