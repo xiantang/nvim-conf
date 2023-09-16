@@ -6,7 +6,7 @@
   },
   "log error": {
     "prefix": "loge",
-    "body": "logutils.Logger().WithField(\"$1\",$2).Error(\"$3\")",
+    "body": "log.Logger().WithError(err).Error(\"$3\")",
     "description": "log error"
   },
   "log context error": {
