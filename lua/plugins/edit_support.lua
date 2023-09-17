@@ -34,17 +34,21 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.cursorword",
-		version = "*",
-		config = function()
-			require("mini.cursorword").setup()
-		end,
+		"altermo/ultimate-autopair.nvim",
+		event = { "InsertEnter", "CmdlineEnter" },
+		branch = "v0.6",
+		opts = {
+			--Config goes here
+		},
 	},
 	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",
 		config = function()
-			require("nvim-autopairs").setup({})
+			require("nvim-autopairs").setup({
+				fast_wrap = {},
+				disable_filetype = { "TelescopePrompt", "vim", "sh" },
+			})
 		end,
 	},
 	{

@@ -3,6 +3,11 @@ let maplocalleader = " "
 set nu rnu hidden autoindent modifiable smartcase autoread 
 set splitright noswapfile hlsearch autoindent
 set smartindent equalalways ignorecase
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
 highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=steelblue
 set wcm=9
@@ -13,16 +18,11 @@ set spellsuggest=best,9
 set spelloptions=camel
 set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
-set guicursor+=n-v-c:blinkon0
-set guicursor+=i:blinkwait10
-set guicursor+=i:ver1
-set guicursor+=a:blinkon1
 set mouse=a
 set clipboard=unnamed
 set encoding=utf-8
 set wildoptions-=pum
 set sessionoptions="blank"
-
 " nnoremap <Enter> <Nop>
 nnoremap <C-D> <C-D>zz
 nnoremap <C-U> <C-U>zz
@@ -101,4 +101,9 @@ let g:currentmode={
        \ 'c'  : 'Command ',
        \}
 
-set statusline=%{toupper(g:currentmode[mode()])}%f\ %h%m%r\ %=%-14.(%l,%c%V%)\ %y\ %P
+set statusline=%{toupper(g:currentmode[mode()])}%f\ %h%m%r\ %=%-14.(%l,%c%V%)\ %P\ %y
+let g:asyncrun_open = 6
+command! Cnext try | cnext | catch | cfirst | catch | endtry
+command! Cprev try | cprev | catch | clast | catch | endtry
+command! Lnext try | lnext | catch | lfirst | catch | endtry
+command! Lprev try | lprev | catch | llast | catch | endtry

@@ -2,6 +2,8 @@ return {
 	{
 		"tzachar/cmp-tabnine",
 		build = "./install.sh",
+		event = "VeryLazy",
+		dev = true,
 		dependencies = "hrsh7th/nvim-cmp",
 	},
 	{
@@ -17,7 +19,6 @@ return {
 			if cmp == nil then
 				return
 			end
-			local lspkind = require("lspkind")
 			require("keyword").setup()
 
 			local feedkey = function(key, mode)
@@ -29,6 +30,7 @@ return {
 			tabnine:setup({
 				max_lines = 1000,
 				max_num_results = 1,
+				min_percent = 10,
 				sort = true,
 				run_on_every_keystroke = true,
 				snippet_placeholder = "..",
@@ -55,9 +57,35 @@ return {
 				-- show source name in menu
 				formatting = {
 					format = function(entry, vim_item)
-						-- if you have lspkind installed, you can use it like
-						-- in the following line:
-						vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = "symbol_text" })
+						local kind_icons = {
+							Text = "",
+							Method = "󰆧",
+							Function = "󰊕",
+							Constructor = "",
+							Field = "󰇽",
+							Variable = "󰂡",
+							Class = "󰠱",
+							Interface = "",
+							Module = "",
+							Property = "󰜢",
+							Unit = "",
+							Value = "󰎠",
+							Enum = "",
+							Keyword = "󰌋",
+							Snippet = "",
+							Color = "󰏘",
+							File = "󰈙",
+							Reference = "",
+							Folder = "󰉋",
+							EnumMember = "",
+							Constant = "󰏿",
+							Struct = "",
+							Event = "",
+							Operator = "󰆕",
+							TypeParameter = "󰅲",
+						}
+
+						vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
 						vim_item.menu = menu[entry.source.name]
 						if entry.source.name == "cmp_tabnine" then
 							local detail = (entry.completion_item.labelDetails or {}).detail
@@ -76,7 +104,7 @@ return {
 					end,
 				},
 				matching = {
-					disallow_fuzzy_matching = true,
+					disallow_fuzzy_matching = false,
 					disallow_fullfuzzy_matching = true,
 					disallow_partial_fuzzy_matching = false,
 					disallow_partial_matching = false,
@@ -184,7 +212,7 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
-			"ray-x/cmp-buffer",
+			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-vsnip",
 			"saadparwaiz1/cmp_luasnip",

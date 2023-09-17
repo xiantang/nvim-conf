@@ -1,9 +1,4 @@
 -- vim.cmd([[
--- set softtabstop=4
--- set tabstop=4
--- set shiftwidth=4
--- set expandtab
--- set smartindent
 -- ]])
 local opts = { noremap = true, silent = true }
 
@@ -11,8 +6,9 @@ vim.keymap.set("v", "y", "ygv<esc>", opts)
 
 -- nnoremap <c-c> :cp<CR>
 -- nnoremap <c-n> :cn<CR>
-vim.keymap.set("n", "<c-p>", ":cp<CR>", opts)
-vim.keymap.set("n", "<c-n>", ":cn<CR>", opts)
+vim.keymap.set("n", "<c-p>", ":Cprev<CR>", opts)
+vim.keymap.set("n", "<c-n>", ":Cnext<CR>", opts)
+vim.keymap.set("n", "<c-q>", ":cclose<CR>", opts)
 -- because hhkb layout backtick is hard to press
 vim.keymap.set("n", "o", "o", opts)
 vim.keymap.set("n", "c", "c", opts)
@@ -83,5 +79,5 @@ function _G.smart_ctrl_e()
 	end
 end
 
--- vim.keymap.set("i", "<C-e>", "v:lua.smart_ctrl_e()", { expr = true, noremap = true, replace_keycodes = false })
+vim.keymap.set("i", "<C-e>", "<esc>A", { noremap = true })
 vim.keymap.set("i", "<C-a>", "<esc>I", { noremap = true })

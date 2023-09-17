@@ -14,6 +14,7 @@ au BufWinEnter NvimTree setlocal rnu
 au VimEnter * :clearjumps
 au BufWritePre *.tfvars lua vim.lsp.buf.format()
 au BufWritePre *.tf lua vim.lsp.buf.format()
+au User GnuPG setl textwidth=72
 ]])
 
 vim.api.nvim_create_autocmd("BufWritePre", {
