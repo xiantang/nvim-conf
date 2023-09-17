@@ -11,11 +11,6 @@ return {
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 			-- { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "lsp_references" },
 			{ "<leader>tb", "<cmd>Telescope git_branches<CR>", desc = "Git git_branches" },
-			{
-				"<C-e>",
-				":lua project_picker(require('telescope.themes').get_dropdown{})<CR>",
-				desc = "jumping between project",
-			},
 			{ "<Leader>p", ":Telescope find_files<CR>", {} },
 			-- { "<Leader>rs", ":Telescope resume<CR>", {} },
 			{ "<Leader>o", ":Telescope lsp_document_symbols<CR>", {} },
