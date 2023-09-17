@@ -1,5 +1,8 @@
 return {
 	{
+		"jamessan/vim-gnupg",
+	},
+	{
 		"tzachar/highlight-undo.nvim",
 		config = function()
 			require("highlight-undo").setup({
