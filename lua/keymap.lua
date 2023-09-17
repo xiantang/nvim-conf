@@ -78,6 +78,3 @@ function _G.smart_ctrl_e()
 		return t("<esc>A")
 	end
 end
-
-vim.keymap.set("i", "<C-e>", "<esc>A", { noremap = true })
-vim.keymap.set("i", "<C-a>", "<esc>I", { noremap = true })

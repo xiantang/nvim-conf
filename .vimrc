@@ -30,6 +30,8 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 noremap {   {zz
 noremap }   }zz
+imap <C-a> <Home>
+imap <C-e> <End>
 nnoremap <silent><expr> j v:count > 0 ? "m'" . v:count . "j" : 'gj'
 nnoremap <silent><expr> k v:count > 0 ? "m'" . v:count . "k" : 'gk'
 if !has('nvim')
