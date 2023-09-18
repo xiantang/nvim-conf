@@ -79,7 +79,7 @@ local on_attach = function(client, bufnr)
 	-- -- coode action for extract function or variable
 	-- buf_set_keymap("v", "ga", "cmd>lua vim.lsp.bug.code_action()<CR>", opts)
 	buf_set_keymap("v", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
-	buf_set_keymap("n", "K", "<cmd>Lspsaga peek_definition<CR>", opts)
+	buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 	function impl()
 		local filters = {
 			".*/circle/.*", -- 示
