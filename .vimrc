@@ -111,3 +111,14 @@ command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
 command! Lnext try | lnext | catch | lfirst | catch | endtry
 command! Lprev try | lprev | catch | llast | catch | endtry
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+nnoremap <silent> <C-q> :call ToggleQuickFix()<cr>
+nnoremap <c-p>   :Cprev<CR>
+nnoremap <c-n>   :Cnext<CR>
+

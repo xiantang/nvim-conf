@@ -6,9 +6,6 @@ vim.keymap.set("v", "y", "ygv<esc>", opts)
 
 -- nnoremap <c-c> :cp<CR>
 -- nnoremap <c-n> :cn<CR>
-vim.keymap.set("n", "<c-p>", ":Cprev<CR>", opts)
-vim.keymap.set("n", "<c-n>", ":Cnext<CR>", opts)
-vim.keymap.set("n", "<c-q>", ":cclose<CR>", opts)
 -- because hhkb layout backtick is hard to press
 vim.keymap.set("n", "o", "o", opts)
 vim.keymap.set("n", "c", "c", opts)
