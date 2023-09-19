@@ -7,6 +7,7 @@ au FileType * set formatoptions-=cro
 au FileType nerdtree setlocal relativenumber
 au CursorHold * checktime
 au BufRead,BufNewFile *.jq setfiletype jq
+au BufRead,BufNewFile *.http setfiletype http
 au BufNewFile,BufRead *.template setfiletype gotmpl
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime

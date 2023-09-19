@@ -1,6 +1,11 @@
 return {
 	{
 		"rest-nvim/rest.nvim",
+		keys = {
+			{ ",x", "<Plug>RestNvim", desc = "execute request" },
+			{ ",p", "<Plug>RestNvimPreview", desc = "preview curl" },
+		},
+		lazy = false,
 		config = function()
 			require("rest-nvim").setup({
 				-- Open request results in a horizontal split

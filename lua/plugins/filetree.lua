@@ -57,7 +57,10 @@ return {
 						},
 					},
 				},
-				filters = {},
+				filters = {
+					dotfiles = false,
+					ignore = false,
+				},
 			})
 			require("nvim-tree.view").View.winopts.number = true
 			require("nvim-tree.view").View.winopts.relativenumber = true
