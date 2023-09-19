@@ -16,6 +16,7 @@ vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>", opts)
 vim.keymap.set("n", "<C-Right>", ":vertical resize -5<CR>", opts)
 vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", opts)
+vim.keymap.set("n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
 
 -- termkey
 vim.keymap.set("n", "<C-;>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
@@ -36,7 +37,6 @@ vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
 -- test
 vim.keymap.set("n", "<Leader>tt", ":TestNearest -v<CR>", { desc = "TestNearest", silent = true, noremap = true })
 vim.keymap.set("n", "<Leader>tf", ":GoTestFile<CR>", { desc = "GoTestFile", silent = true, noremap = true })
-vim.keymap.set("n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
 vim.keymap.set(
 	"n",
 	"<Leader>uv",
