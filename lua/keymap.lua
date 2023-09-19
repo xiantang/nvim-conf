@@ -16,7 +16,7 @@ vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>", opts)
 vim.keymap.set("n", "<C-Right>", ":vertical resize -5<CR>", opts)
 vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", opts)
-vim.keymap.set("n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
+vim.keymap.set("n", "<leader>db", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
 
 -- termkey
 vim.keymap.set("n", "<C-;>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
