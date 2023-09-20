@@ -2,8 +2,8 @@ return {
 	{
 		"rest-nvim/rest.nvim",
 		keys = {
-			{ ",x", "<Plug>RestNvim", desc = "execute request" },
-			{ ",p", "<Plug>RestNvimPreview", desc = "preview curl" },
+			{ ",x", ":lua require('rest-nvim').run()<CR>", desc = "execute request" },
+			{ ",p", ":lua require('rest-nvim').run(true)<CR>", desc = "preview curl" },
 		},
 		lazy = false,
 		config = function()
