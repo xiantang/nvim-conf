@@ -81,8 +81,10 @@ return {
 			-- check operation system
 			local is_mac = vim.fn.has("mac") == 1
 			if is_mac then
-				local secret = require("secret")
-				vim.g.fugitive_gitlab_domains = { secret.GITALB_URL }
+				local secret, lfs = pcall(require, "secret")
+				if secret then
+					vim.g.fugitive_gitlab_domains = { secret.GITALB_URL }
+				end
 			end
 		end,
 	},
