@@ -169,7 +169,7 @@ require("mason").setup({
 })
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		"awk-language-server",
+		"awk_ls",
 		"sumneko_lua",
 		"sqlls",
 		"jsonls",
