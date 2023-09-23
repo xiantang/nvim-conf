@@ -3,6 +3,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
 			local enabled = {
+				"ruby",
 				"lua",
 				"vim",
 				"gomod",
@@ -17,6 +18,7 @@ return {
 				"json",
 			}
 			require("nvim-treesitter.configs").setup({
+				ensure_installed = enabled,
 				highlight = {
 					enable = true,
 					disable = function(lang, buf)

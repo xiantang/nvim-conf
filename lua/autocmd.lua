@@ -4,6 +4,7 @@ au VimResized * wincmd =
 au BufEnter leetcode.cn_*.txt set filetype=go
 au BufEnter *.conf set filetype=config
 au FileType * set formatoptions-=cro
+au FileType Brewfile set filetype=ruby
 au FileType nerdtree setlocal relativenumber
 au CursorHold * checktime
 au BufRead,BufNewFile *.jq setfiletype jq
