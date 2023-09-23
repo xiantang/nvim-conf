@@ -2,6 +2,9 @@ return {
 	{
 		"tzachar/cmp-tabnine",
 		build = "./install.sh",
+		enabled = function()
+			return vim.fn.has("mac") == 1
+		end,
 		event = "VeryLazy",
 		dev = true,
 		dependencies = "hrsh7th/nvim-cmp",
