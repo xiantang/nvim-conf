@@ -1,6 +1,55 @@
 return {
 	{
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			local enabled = {
+				"ruby",
+				"lua",
+				"vim",
+				"gomod",
+				"gosum",
+				"norg",
+				"python",
+				"yaml",
+				"make",
+				"gitignore",
+				"http",
+				"terraform",
+				"sql",
+				"json",
+			}
+			local path = "/usr/local/lib/nvim/parser"
+			vim.opt.runtimepath:append(path)
+
+			require("nvim-treesitter.configs").setup({
+
+--				parser_install_dir = path,
+
+				ensure_installed = enabled,
+				highlight = {
+					enable = true,
+					disable = function(lang, buf)
+						local max_filesize = 100 * 1024 -- 100 KB
+						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+						if ok and stats and stats.size > max_filesize then
+							return true
+						end
+						for _, enable in pairs(enabled) do
+							if lang == enable then
+								return false
+							end
+						end
+						return true
+					end,
+				},
+			})
+		end,
+	},
+	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				parser_install_dir = "/opt/homebrew/Cellar/neovim/0.9.2/lib/nvim/parser",
@@ -42,48 +91,6 @@ return {
 							["[d"] = "@conditional.outer",
 						},
 					},
-				},
-			})
-		end,
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		config = function()
-			local enabled = {
-				"lua",
-				"vim",
-				"gomod",
-				"gosum",
-				"norg",
-				"python",
-				"yaml",
-				"make",
-				"gitignore",
-				"http",
-				"terraform",
-				"sql",
-				"json",
-			}
-			local path = "/usr/local/lib/nvim/parser"
-			vim.opt.runtimepath:append(path)
-
-			require("nvim-treesitter.configs").setup({
-				parser_install_dir = path,
-				highlight = {
-					enable = true,
-					disable = function(lang, buf)
-						local max_filesize = 100 * 1024 -- 100 KB
-						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-						if ok and stats and stats.size > max_filesize then
-							return true
-						end
-						for _, enable in pairs(enabled) do
-							if lang == enable then
-								return false
-							end
-						end
-						return true
-					end,
 				},
 			})
 		end,

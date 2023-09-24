@@ -51,31 +51,31 @@ require("lazy").setup("plugins", {
 	},
 })
 
-local function status_line()
-	-- file full path
-	-- file directory
-	local get_filename = function(path)
-		local filename_with_relative_path = vim.fn.substitute(path, vim.fn.getcwd() .. "/", "", "")
-		local filename = filename_with_relative_path:match("([^/]+)$")
-
-		local is_empty = function(str)
-			return str == nil or str == ""
-		end
-		if is_empty(filename) then
-			return " %f"
-		end
-
-		return filename
-	end
-
-	local filename = get_filename(vim.fn.expand("%"))
-	local file_type = " %y"
-
-	return string.format("%s %s", file_type, filename)
-end
+-- local function status_line()
+-- 	-- file full path
+-- 	-- file directory
+-- 	local get_filename = function(path)
+-- 		local filename_with_relative_path = vim.fn.substitute(path, vim.fn.getcwd() .. "/", "", "")
+-- 		local filename = filename_with_relative_path:match("([^/]+)$")
+--
+-- 		local is_empty = function(str)
+-- 			return str == nil or str == ""
+-- 		end
+-- 		if is_empty(filename) then
+-- 			return " %f"
+-- 		end
+--
+-- 		return filename
+-- 	end
+--
+-- 	local filename = get_filename(vim.fn.expand("%"))
+-- 	local file_type = " %y"
+--
+-- 	return string.format("%s %s", file_type, filename)
+-- end
 
 -- vim.opt.statusline = status_line()
-vim.opt.winbar = status_line()
+-- vim.opt.winbar = status_line()
 
 vim.cmd.colorscheme("darcula-dark")
 vim.cmd.cnoreabbrev([[git Git]])

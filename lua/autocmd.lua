@@ -3,8 +3,10 @@ au TermOpen * setlocal nobuflisted
 au VimResized * wincmd =
 au BufEnter leetcode.cn_*.txt set filetype=go
 au BufEnter *.conf set filetype=config
-au FileType * set formatoptions-=cro
-au FileType nerdtree setlocal relativenumber
+au BufEnter * set formatoptions-=cro
+au BufEnter Brewfile set filetype=ruby
+au BufEnter .zpreztorc set filetype=zsh
+au BufEnter nerdtree setlocal relativenumber
 au CursorHold * checktime
 au BufRead,BufNewFile *.jq setfiletype jq
 au BufRead,BufNewFile *.http setfiletype http

@@ -50,7 +50,7 @@ return {
 				},
 				current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
 				sign_priority = 6,
-				update_debounce = 100,
+				update_debounce = 101,
 				status_formatter = nil, -- Use default
 				max_file_length = 40000, -- Disable if file is longer than this (in lines)
 				preview_config = {
@@ -81,8 +81,10 @@ return {
 			-- check operation system
 			local is_mac = vim.fn.has("mac") == 1
 			if is_mac then
-				local secret = require("secret")
-				vim.g.fugitive_gitlab_domains = { secret.GITALB_URL }
+				local secret, lfs = pcall(require, "secret")
+				if secret then
+					vim.g.fugitive_gitlab_domains = { secret.GITALB_URL }
+				end
 			end
 		end,
 	},
