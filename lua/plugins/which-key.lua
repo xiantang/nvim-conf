@@ -5,6 +5,7 @@ return {
 			"<space>",
 			"z",
 			"g",
+			",",
 		},
 		config = function()
 			vim.o.timeout = true

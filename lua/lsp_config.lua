@@ -79,7 +79,7 @@ local on_attach = function(client, bufnr)
 	-- -- coode action for extract function or variable
 	-- buf_set_keymap("v", "ga", "cmd>lua vim.lsp.bug.code_action()<CR>", opts)
 	buf_set_keymap("v", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
-	buf_set_keymap("n", "K", "<cmd>Lspsaga peek_definition<CR>", opts)
+	buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 	function impl()
 		local filters = {
 			".*/circle/.*", -- 示
@@ -229,7 +229,7 @@ nvim_lsp.lua_ls.setup({
 				checkThirdParty = false,
 				-- Make the server aware of Neovim runtime files
 				library = {
-					vim.api.nvim_get_runtime_file("", true),
+					-- vim.api.nvim_get_runtime_file("", true),
 					"/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/",
 					vim.fn.expand("~/lualib/share/lua/5.4"),
 					vim.fn.expand("~/lualib/lib/luarocks/rocks-5.4"),

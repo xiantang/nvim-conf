@@ -13,11 +13,18 @@ return {
 				"yaml",
 				"make",
 				"gitignore",
+				"http",
 				"terraform",
 				"sql",
 				"json",
 			}
+			local path = "/usr/local/lib/nvim/parser"
+			vim.opt.runtimepath:append(path)
+
 			require("nvim-treesitter.configs").setup({
+
+--				parser_install_dir = path,
+
 				ensure_installed = enabled,
 				highlight = {
 					enable = true,

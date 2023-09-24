@@ -6,9 +6,6 @@ vim.keymap.set("v", "y", "ygv<esc>", opts)
 
 -- nnoremap <c-c> :cp<CR>
 -- nnoremap <c-n> :cn<CR>
-vim.keymap.set("n", "<c-p>", ":Cprev<CR>", opts)
-vim.keymap.set("n", "<c-n>", ":Cnext<CR>", opts)
-vim.keymap.set("n", "<c-q>", ":cclose<CR>", opts)
 -- because hhkb layout backtick is hard to press
 vim.keymap.set("n", "o", "o", opts)
 vim.keymap.set("n", "c", "c", opts)
@@ -19,6 +16,7 @@ vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>", opts)
 vim.keymap.set("n", "<C-Right>", ":vertical resize -5<CR>", opts)
 vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", opts)
+vim.keymap.set("n", "<leader>db", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
 
 -- termkey
 vim.keymap.set("n", "<C-;>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
@@ -78,6 +76,3 @@ function _G.smart_ctrl_e()
 		return t("<esc>A")
 	end
 end
-
-vim.keymap.set("i", "<C-e>", "<esc>A", { noremap = true })
-vim.keymap.set("i", "<C-a>", "<esc>I", { noremap = true })
