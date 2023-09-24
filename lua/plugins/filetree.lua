@@ -104,6 +104,22 @@ return {
 			-- create a cmd for this
 			vim.cmd("command NerdSmartLocated lua NerdSmartLocated()")
 			require("nvim-tree").filesystem_watchers = true
+			local api = require("nvim-tree.api")
+			api.events.subscribe(api.events.Event.FileCreated, function(file)
+				vim.cmd("edit " .. file.fname)
+				-- get file type
+				local ext = vim.fn.fnamemodify(file.fname, ":e")
+				-- if file type is golang
+				if ext == "go" then
+					local folder = vim.fn.fnamemodify(file.fname, ":h")
+					local pkg = folder:match("([^/]+)/?$")
+					local cmd = string.format('call setline(1, "package %s")', pkg)
+					vim.cmd(cmd)
+				end
+
+				-- get last folder name as package
+				-- fill into template
+			end)
 		end,
 	},
 	{
