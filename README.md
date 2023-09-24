@@ -1,5 +1,4 @@
-# nvim-conf/
-<img width="1512" alt="image" src="https://user-images.githubusercontent.com/34479567/237651867-d817d17d-1620-42e2-8972-d6b0af108edd.png">
+# nvim-conf
 
 <a href="https://dotfyle.com/xiantang/nvim-conf"><img src="https://dotfyle.com/xiantang/nvim-conf/badges/plugins?style=flat" /></a>
 <a href="https://dotfyle.com/xiantang/nvim-conf"><img src="https://dotfyle.com/xiantang/nvim-conf/badges/leaderkey?style=flat" /></a>
@@ -26,14 +25,8 @@ NVIM_APPNAME=xiantang/nvim-conf/ nvim
 
 ## Plugins
 
-### code-runner
-
-+ [michaelb/sniprun](https://dotfyle.com/plugins/michaelb/sniprun)
 ### colorscheme
 
-+ [RRethy/nvim-base16](https://dotfyle.com/plugins/RRethy/nvim-base16)
-+ [catppuccin/nvim](https://dotfyle.com/plugins/catppuccin/nvim)
-+ [sainnhe/sonokai](https://dotfyle.com/plugins/sainnhe/sonokai)
 + [xiantang/darcula-dark.nvim](https://dotfyle.com/plugins/xiantang/darcula-dark.nvim)
 ### comment
 
@@ -41,18 +34,14 @@ NVIM_APPNAME=xiantang/nvim-conf/ nvim
 ### completion
 
 + [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
-### cursorline
-
-+ [echasnovski/mini.cursorword](https://dotfyle.com/plugins/echasnovski/mini.cursorword)
 ### debugging
 
 + [rcarriga/nvim-dap-ui](https://dotfyle.com/plugins/rcarriga/nvim-dap-ui)
 + [mfussenegger/nvim-dap](https://dotfyle.com/plugins/mfussenegger/nvim-dap)
 ### editing-support
 
-+ [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
-+ [folke/zen-mode.nvim](https://dotfyle.com/plugins/folke/zen-mode.nvim)
 + [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
++ [altermo/ultimate-autopair.nvim](https://dotfyle.com/plugins/altermo/ultimate-autopair.nvim)
 + [keaising/im-select.nvim](https://dotfyle.com/plugins/keaising/im-select.nvim)
 ### file-explorer
 
@@ -71,18 +60,15 @@ NVIM_APPNAME=xiantang/nvim-conf/ nvim
 + [ray-x/go.nvim](https://dotfyle.com/plugins/ray-x/go.nvim)
 ### indent
 
-+ [echasnovski/mini.indentscope](https://dotfyle.com/plugins/echasnovski/mini.indentscope)
 + [lukas-reineke/indent-blankline.nvim](https://dotfyle.com/plugins/lukas-reineke/indent-blankline.nvim)
 ### keybinding
 
 + [folke/which-key.nvim](https://dotfyle.com/plugins/folke/which-key.nvim)
 ### lsp
 
-+ [simrat39/symbols-outline.nvim](https://dotfyle.com/plugins/simrat39/symbols-outline.nvim)
-+ [onsails/lspkind.nvim](https://dotfyle.com/plugins/onsails/lspkind.nvim)
 + [jose-elias-alvarez/null-ls.nvim](https://dotfyle.com/plugins/jose-elias-alvarez/null-ls.nvim)
++ [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
 + [j-hui/fidget.nvim](https://dotfyle.com/plugins/j-hui/fidget.nvim)
-+ [glepnir/lspsaga.nvim](https://dotfyle.com/plugins/glepnir/lspsaga.nvim)
 ### lsp-installer
 
 + [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
@@ -107,9 +93,6 @@ NVIM_APPNAME=xiantang/nvim-conf/ nvim
 ### snippet
 
 + [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
-### statusline
-
-+ [nvim-lualine/lualine.nvim](https://dotfyle.com/plugins/nvim-lualine/lualine.nvim)
 ### syntax
 
 + [kylechui/nvim-surround](https://dotfyle.com/plugins/kylechui/nvim-surround)
@@ -119,7 +102,7 @@ NVIM_APPNAME=xiantang/nvim-conf/ nvim
 + [numToStr/Navigator.nvim](https://dotfyle.com/plugins/numToStr/Navigator.nvim)
 ### utility
 
-+ [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
++ [echasnovski/mini.nvim](https://dotfyle.com/plugins/echasnovski/mini.nvim)
 ## Language Servers
 
 + awk_ls
