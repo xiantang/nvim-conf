@@ -65,14 +65,14 @@ return {
 			})
 		end,
 	},
-	{
-		event = "VeryLazy",
-		"j-hui/fidget.nvim",
-		tag = "legacy",
-		config = function()
-			require("fidget").setup()
-		end,
-	},
+	-- {
+	-- 	event = "VeryLazy",
+	-- 	"j-hui/fidget.nvim",
+	-- 	tag = "legacy",
+	-- 	config = function()
+	-- 		require("fidget").setup()
+	-- 	end,
+	-- },
 	{
 		"ray-x/go.nvim",
 		event = "VeryLazy",

@@ -1,3 +1,4 @@
+local safeRequire = require("lib").safeRequire
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- use Bold
@@ -22,8 +23,8 @@ set.termguicolors = true
 set.sts = 2
 set.sw = 2
 
-require("autocmd")
-require("keymap")
+safeRequire("autocmd")
+safeRequire("keymap")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -38,7 +39,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins", {
+safeRequire("lazy").setup("plugins", {
 	dev = {
 		path = "~/sidepro/",
 		patterns = {}, -- For example {"folke"}
@@ -95,6 +96,7 @@ local dict = {
 	ture = "true",
 	fucntion = "function",
 	reutrn = "return",
+	ehco = "echo",
 }
 
 for k, v in pairs(dict) do

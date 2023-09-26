@@ -202,6 +202,9 @@ return {
 				}),
 			})
 
+			cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
+				sources = cmp.config.sources({ { name = "vim-dadbod-completion" } }),
+			})
 			cmp.setup.filetype("markdown", {
 				sources = cmp.config.sources({
 					{ name = "buffer", max_item_count = 3 },

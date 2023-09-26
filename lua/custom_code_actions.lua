@@ -1,10 +1,11 @@
-local null_ls = require("null-ls")
+local safeRequire = require("lib").safeRequire
+local null_ls = safeRequire("null-ls")
 local vim = vim
 
-local parsers = require("nvim-treesitter.parsers")
+local parsers = safeRequire("nvim-treesitter.parsers")
 
 -- use treesitter to find the start of the current function
-local ts_utils = require("nvim-treesitter.ts_utils")
+local ts_utils = safeRequire("nvim-treesitter.ts_utils")
 
 function get_function_start()
 	local current_node = ts_utils.get_node_at_cursor()

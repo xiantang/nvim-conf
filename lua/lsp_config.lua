@@ -1,5 +1,7 @@
+local safeRequire = require("lib").safeRequire
+local nvim_lsp = safeRequire("lspconfig")
+
 vim.lsp.set_log_level("off")
-local nvim_lsp = require("lspconfig")
 
 -- get function name in body of golang function
 function _G.get_cur_go_func_name()
@@ -157,17 +159,17 @@ function gofumpt(timeoutms)
 	vim.cmd(command)
 end
 
-local lsp_configs = require("lspconfig/configs")
+local lsp_configs = safeRequire("lspconfig/configs")
 
 -- set up lspconfig
-require("mason").setup({
+safeRequire("mason").setup({
 	ui = {
 		icons = {
 			package_installed = "✓",
 		},
 	},
 })
-require("mason-lspconfig").setup({
+safeRequire("mason-lspconfig").setup({
 	ensure_installed = {
 		"awk_ls",
 		"lua_ls",
@@ -196,10 +198,10 @@ local common_servers = {
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+capabilities = safeRequire("cmp_nvim_lsp").default_capabilities(capabilities)
 local clangdCap = vim.lsp.protocol.make_client_capabilities()
 clangdCap.offsetEncoding = { "utf-16" }
-require("lspconfig").clangd.setup({ capabilities = clangdCap, on_attach = on_attach })
+safeRequire("lspconfig").clangd.setup({ capabilities = clangdCap, on_attach = on_attach })
 for _, server in pairs(common_servers) do
 	-- https://www.reddit.com/r/neovim/comments/mm1h0t/lsp_diagnostics_remain_stuck_can_someone_please/
 	nvim_lsp[server].setup({

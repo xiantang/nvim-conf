@@ -1,5 +1,6 @@
-local dap = require("dap")
-require("dapui").setup({
+local safeRequire = require("lib").safeRequire
+local dap = safeRequire("dap")
+safeRequire("dapui").setup({
 	icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
 	mappings = {
 		-- Use a table to apply multiple mappings
@@ -75,7 +76,7 @@ dap.defaults.fallback.console = "internalConsole"
 
 dap.listeners.after["event_initialized"]["key_map"] = function()
 	-- close nerd tree
-	require("dapui").open()
+	safeRequire("dapui").open()
 	vim.api.nvim_set_keymap("n", "c", '<cmd>lua require"dap".continue()<CR>', { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("n", "n", '<cmd>lua require"dap".step_over()<CR> | zz', { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("n", "s", '<cmd>lua require"dap".step_into()<CR> | zz', { noremap = true, silent = true })
@@ -86,7 +87,7 @@ dap.listeners.after["event_initialized"]["key_map"] = function()
 end
 
 function defer()
-	require("dapui").close()
+	safeRequire("dapui").close()
 	-- rollback to default keymap
 	-- nvim_del_keymap
 	-- source keymap.lua
@@ -144,7 +145,7 @@ local prev_function_name = ""
 
 -- < Retrieve the name of the function the cursor is in.
 function _G.function_surrounding_cursor()
-	local ts_utils = require("nvim-treesitter.ts_utils")
+	local ts_utils = safeRequire("nvim-treesitter.ts_utils")
 	local current_node = ts_utils.get_node_at_cursor()
 
 	if not current_node then
@@ -201,7 +202,7 @@ local prev_class_node = nil
 local prev_class_name = ""
 
 function _G.class_surrounding_cursor()
-	local ts_utils = require("nvim-treesitter.ts_utils")
+	local ts_utils = safeRequire("nvim-treesitter.ts_utils")
 	local current_node = ts_utils.get_node_at_cursor()
 
 	if not current_node then

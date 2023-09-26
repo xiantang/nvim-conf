@@ -2,6 +2,8 @@ vim.cmd([[
 au TermOpen * setlocal nobuflisted
 au VimResized * wincmd =
 au BufEnter leetcode.cn_*.txt set filetype=go
+" https://github.com/fatih/vim-go/issues/1757
+au filetype qf wincmd J
 au BufEnter *.conf set filetype=config
 au BufEnter * set formatoptions-=cro
 au BufEnter Brewfile set filetype=ruby
@@ -15,6 +17,7 @@ au BufNewFile,BufRead */ssh/config  setf sshconfig
 au CursorHold,CursorHoldI * checktime
 au BufWinEnter NvimTree setlocal rnu
 au VimEnter * :clearjumps
+autocmd FileType dbout setlocal nofoldenable
 au BufWritePre *.tfvars lua vim.lsp.buf.format()
 au BufWritePre *.tf lua vim.lsp.buf.format()
 au User GnuPG setl textwidth=72
