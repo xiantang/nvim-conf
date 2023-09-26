@@ -8,6 +8,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
+set signcolumn=yes
 highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=steelblue
 set wcm=9
