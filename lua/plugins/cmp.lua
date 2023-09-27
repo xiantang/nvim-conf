@@ -128,7 +128,11 @@ return {
 				},
 
 				-- https://www.reddit.com/r/neovim/comments/t7jl7p/cmp_autocomplete_in_golang_does_not_autoselect/
+				-- https://github.com/hrsh7th/nvim-cmp/issues/1621
 				preselect = cmp.PreselectMode.None,
+				completion = {
+					completeopt = "menu,menuone,noinsert", -- remove default noselect
+				},
 				snippet = {
 					expand = function(args)
 						vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
