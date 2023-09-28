@@ -1,5 +1,5 @@
 local lru_lib = require("lru")
-local lru = lru_lib.new(10, _, function(key, value)
+local lru = lru_lib.new(20, _, function(key, value)
 	local name = vim.api.nvim_buf_get_name(key)
 	vim.api.nvim_buf_delete(key, { force = false, unload = false })
 end)
