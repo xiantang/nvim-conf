@@ -1,7 +1,6 @@
 local lru_lib = require("lru")
 local lru = lru_lib.new(10, _, function(key, value)
 	local name = vim.api.nvim_buf_get_name(key)
-	print(string.format("delete buffer %s", name))
 	vim.api.nvim_buf_delete(key, { force = false, unload = false })
 end)
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
@@ -13,14 +12,14 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 			return x.bufnr > y.bufnr
 		end)
 		for _, buf in pairs(openBuffers) do
-			lru.set(_, buf.bufnr, buf.name, _)
+			lru.set(_, buf.bufnr, 1, _)
 		end
 	end,
 })
 vim.api.nvim_create_autocmd({ "BufAdd" }, {
 	pattern = { "*" },
 	callback = function(params)
-		lru.set(_, params.buf, params.name, _)
+		lru.set(_, params.buf, 1, _)
 	end,
 })
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
