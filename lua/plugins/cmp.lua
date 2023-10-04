@@ -150,6 +150,13 @@ return {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
+					["<C-j>"] = cmp.mapping(function(fallback)
+						if vim.fn["vsnip#available"](1) == 1 then
+							feedkey("<Plug>(vsnip-expand)", "")
+						else
+							cmp.confirm()
+						end
+					end, { "i", "s" }),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
@@ -158,7 +165,7 @@ return {
 						elseif vim.fn["vsnip#available"](1) == 1 then
 							feedkey("<Plug>(vsnip-expand-or-jump)", "")
 						else
-							fallback()
+							cmp.confirm()
 						end
 					end, { "i", "s" }),
 					["<S-Tab>"] = cmp.mapping(function(fallback)
