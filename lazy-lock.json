@@ -14,7 +14,6 @@
   "cmp-vsnip": { "branch": "main", "commit": "989a8a73c44e926199bfd05fa7a516d51f2d2752" },
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
   "conflict-marker.vim": { "branch": "master", "commit": "11a4d42244755505b66b15cd4496a150432eb5e3" },
-  "darcula-dark.nvim": { "branch": "main", "commit": "cd0891aaa3d361fc41cf7698f0f9bf35a9648d1f" },
   "eyeliner.nvim": { "branch": "main", "commit": "02f59335bbab955de33f93d2e8c53417a06cfc2f" },
   "fidget.nvim": { "branch": "main", "commit": "0ba1e16d07627532b6cae915cc992ecac249fb97" },
   "firenvim": { "branch": "master", "commit": "3c4babfa0a561d1dc3640a902e67ca0b8af70927" },
@@ -76,5 +75,6 @@
   "vim-vsnip": { "branch": "master", "commit": "7753ba9c10429c29d25abfd11b4c60b76718c438" },
   "vim-vsnip-integ": { "branch": "master", "commit": "1914e72cf3de70df7f5dde476cd299aba2440aef" },
   "vim-wakatime": { "branch": "master", "commit": "515dbcc2278a9279a19de838fa29fc5078e34e56" },
-  "which-key.nvim": { "branch": "main", "commit": "e4fa445065a2bb0bbc3cca85346b67817f28e83e" }
+  "which-key.nvim": { "branch": "main", "commit": "e4fa445065a2bb0bbc3cca85346b67817f28e83e" },
+  "wildfire.nvim": { "branch": "master", "commit": "1729faca1c6ae34520a6e531983a3737d3654ee1" }
 }
