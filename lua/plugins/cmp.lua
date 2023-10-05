@@ -150,6 +150,11 @@ return {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
+					["<CR>"] = cmp.mapping(function(fallback)
+						if cmp.visible() ~= true then
+							fallback()
+						end
+					end, { "i", "s" }),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
