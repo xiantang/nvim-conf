@@ -53,8 +53,18 @@ return {
 				path = "[Path]",
 				cmp_tabnine = "[TabNine]",
 			}
+			local confirmed = cmp.mapping.confirm({
+				-- https://github.com/golang/go/issues/40871
+				-- https://github.com/hrsh7th/nvim-cmp/issues/706#issuecomment-1006260085
+				behavior = cmp.ConfirmBehavior.Replace,
+				select = true,
+			})
+
 			cmp.setup({
 				-- show source name in menu
+				experimental = {
+					ghost_text = true,
+				},
 				formatting = {
 					format = function(entry, vim_item)
 						local kind_icons = {
@@ -144,12 +154,8 @@ return {
 					["<C-d>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-j>"] = cmp.mapping.confirm({
-						-- https://github.com/golang/go/issues/40871
-						-- https://github.com/hrsh7th/nvim-cmp/issues/706#issuecomment-1006260085
-						behavior = cmp.ConfirmBehavior.Replace,
-						select = true,
-					}),
+					["<C-j>"] = confirmed,
+					["<C-e>"] = confirmed,
 					["<CR>"] = cmp.mapping(function(fallback)
 						if cmp.visible() ~= true then
 							fallback()

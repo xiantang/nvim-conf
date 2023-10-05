@@ -30,7 +30,7 @@ return {
 					keymaps = {
 						-- init_selection = "v",
 						node_incremental = "v",
-						-- node_decremental = "<BS>",
+						node_decremental = "<BS>",
 					},
 				},
 				ensure_installed = enabled,
