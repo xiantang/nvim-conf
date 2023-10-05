@@ -144,19 +144,12 @@ return {
 					["<C-d>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
-					["<CR>"] = cmp.mapping.confirm({
+					["<C-j>"] = cmp.mapping.confirm({
 						-- https://github.com/golang/go/issues/40871
 						-- https://github.com/hrsh7th/nvim-cmp/issues/706#issuecomment-1006260085
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
-					["<C-j>"] = cmp.mapping(function(fallback)
-						if vim.fn["vsnip#available"](1) == 1 then
-							feedkey("<Plug>(vsnip-expand)", "")
-						else
-							cmp.confirm()
-						end
-					end, { "i", "s" }),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()

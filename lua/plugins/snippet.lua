@@ -21,8 +21,8 @@ return {
 		"hrsh7th/vim-vsnip",
 		config = function()
 			vim.cmd([[
-			  imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-			  smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+			  imap <expr> <C-k>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-k>'
+			  smap <expr> <C-k>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-k>'
 				let g:vsnip_filetypes = {}
 				let g:vsnip_filetypes.go = ['go']
 				let g:vsnip_filetypes.lua = ['lua']
