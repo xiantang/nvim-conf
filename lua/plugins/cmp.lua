@@ -124,9 +124,9 @@ return {
 					comparators = {
 						cmp.config.compare.exact,
 						require("cmp_tabnine.compare"), -- compare.score_offset, -- not good at all
+						cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
 						cmp.config.compare.locality,
 						cmp.config.compare.recently_used,
-						cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
 						cmp.config.compare.offset,
 						cmp.config.compare.order,
 						-- compare.scopes, -- what?
