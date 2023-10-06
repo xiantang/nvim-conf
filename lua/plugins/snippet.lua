@@ -13,6 +13,8 @@ return {
 			vim.cmd([[
 			  imap <expr> <C-k>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-k>'
 			  smap <expr> <C-k>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-k>'
+				imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+				smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 				let g:vsnip_filetypes = {}
 				let g:vsnip_filetypes.go = ['go']
 				let g:vsnip_filetypes.lua = ['lua']
