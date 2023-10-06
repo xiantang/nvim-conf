@@ -1,4 +1,29 @@
 {
+  "map declaration": {
+    "prefix": "map",
+    "body": "map[${1:type}]${2:type}",
+    "description": "Snippet for a map"
+  },
+  "test function": {
+    "prefix": "tf",
+    "body": "func Test$1(t *testing.T) {\n\t$0\n}",
+    "description": "Snippet for Test function"
+  },
+  "make(...)": {
+    "prefix": "make",
+    "body": "make(${1:type}, ${2:0})",
+    "description": "Snippet for make statement"
+  },
+  "if statement": {
+    "prefix": "if",
+    "body": "if ${1:condition} {\n\t$0\n}",
+    "description": "Snippet for if statement"
+  },
+  "else branch": {
+    "prefix": "el",
+    "body": "else {\n\t$0\n}",
+    "description": "Snippet for else branch"
+  },
   "log info": {
     "prefix": "logi",
     "body": "logutils.Logger().WithField(\"$1\",$2).Info(\"$3\")",
@@ -24,13 +49,8 @@
     "body": "logutils.Logger().WithCtx($1).WithField(\"$2\",$3).Debug(\"$4\")",
     "description": "log context debug"
   },
-  "if error Wrap": {
-    "prefix": "iferr",
-    "body": "if err := $1; err != nil {\n\treturn  errors.Wrap(err, \"$2\")\n}",
-    "description": "if error Wrap"
-  },
   "Use the statement before the if condition": {
-    "prefix": "iferrf",
+    "prefix": "ife",
     "body": "if err := $1; err != nil {\n\treturn  errors.Wrapf(err, \"$2\", $3)\n}",
     "description": "Use the statement before the if condition"
   },
@@ -55,4 +75,3 @@
     "description": "Snippet for struct gorm tag"
   }
 }
-

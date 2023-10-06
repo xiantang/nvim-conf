@@ -19,7 +19,6 @@ return {
 			if cmp == nil then
 				return
 			end
-			require("keyword").setup()
 
 			local feedkey = function(key, mode)
 				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
@@ -123,9 +122,9 @@ return {
 				sorting = {
 					priority_weight = 2.0,
 					comparators = {
+						cmp.config.compare.exact,
 						require("cmp_tabnine.compare"), -- compare.score_offset, -- not good at all
 						cmp.config.compare.locality,
-						cmp.config.compare.exact,
 						cmp.config.compare.recently_used,
 						cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
 						cmp.config.compare.offset,
@@ -184,10 +183,10 @@ return {
 				}),
 
 				sources = cmp.config.sources({
+					{ name = "vsnip" },
 					{ name = "nvim_lua" },
 					{ name = "cmp_tabnine", max_item_count = 1 },
 					{ name = "nvim_lsp" },
-					{ name = "keyword" },
 				}, { { name = "neorg" } }, {
 					{ name = "buffer", max_item_count = 3 },
 					{ name = "path", max_item_count = 3, keyword_length = 3 },
