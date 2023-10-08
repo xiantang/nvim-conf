@@ -123,7 +123,8 @@ return {
 					priority_weight = 2.0,
 					comparators = {
 						cmp.config.compare.exact,
-						require("cmp_tabnine.compare"), -- compare.score_offset, -- not good at all
+						cmp.config.compare.kind,
+						-- require("cmp_tabnine.compare"), -- compare.score_offset, -- not good at all
 						cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
 						cmp.config.compare.locality,
 						cmp.config.compare.recently_used,
@@ -131,7 +132,6 @@ return {
 						cmp.config.compare.order,
 						-- compare.scopes, -- what?
 						-- compare.sort_text,
-						-- compare.kind,
 						-- compare.length, -- useless
 					},
 				},
