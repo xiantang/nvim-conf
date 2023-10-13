@@ -2,7 +2,7 @@ return {
 	{
 		"rmagatti/auto-session",
 		config = function()
-			vim.o.sessionoptions = "curdir,winsize"
+			vim.o.sessionoptions = "buffers,curdir,winsize"
 			require("auto-session").setup({
 				log_level = "error",
 				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
