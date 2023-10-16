@@ -71,7 +71,7 @@
   },
   "Use the statement before the if condition": {
     "prefix": "ife",
-    "body": "if err := $1; err != nil {\n\treturn  errors.Wrapf(err, \"$2\", $3)\n}",
+    "body": "if err != nil {\n\treturn err\n}",
     "description": "Use the statement before the if condition"
   },
   "struct": {
