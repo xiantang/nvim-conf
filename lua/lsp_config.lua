@@ -211,6 +211,7 @@ local common_servers = {
 	"tsserver",
 	"yamlls",
 	"terraformls",
+	"rnix",
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
