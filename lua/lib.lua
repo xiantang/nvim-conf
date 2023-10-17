@@ -5,6 +5,6 @@ function M.safeRequire(module)
 	if success then
 		return loadedModule
 	end
-	vim.cmd.echo("Error loading " .. module)
+	return nil
 end
 return M

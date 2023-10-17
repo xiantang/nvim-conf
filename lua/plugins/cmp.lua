@@ -1,6 +1,9 @@
 return {
 	{
 		"tzachar/cmp-tabnine",
+		enabled = function()
+			return vim.fn.has("mac") == true
+		end,
 		build = "./install.sh",
 		event = "VeryLazy",
 		dev = true,
@@ -24,22 +27,25 @@ return {
 				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 			end
 			local luasnip = require("luasnip")
-			local tabnine = require("cmp_tabnine.config")
 
-			tabnine:setup({
-				max_lines = 1000,
-				max_num_results = 1,
-				min_percent = 10,
-				sort = true,
-				run_on_every_keystroke = true,
-				snippet_placeholder = "..",
-				ignored_file_types = {
-					-- default is not to ignore
-					-- uncomment to ignore in lua:
-					-- lua = true
-				},
-				show_prediction_strength = false,
-			})
+			local safeRequire = require("lib").safeRequire
+			local has_tabnine, tabnine = pcall(require, "cmp_tabnine.config")
+			if has_tabnine then
+				tabnine:setup({
+					max_lines = 1000,
+					max_num_results = 1,
+					min_percent = 10,
+					sort = true,
+					run_on_every_keystroke = true,
+					snippet_placeholder = "..",
+					ignored_file_types = {
+						-- default is not to ignore
+						-- uncomment to ignore in lua:
+						-- lua = true
+					},
+					show_prediction_strength = false,
+				})
+			end
 
 			local menu = {
 				buffer = "[buffer]",
@@ -123,7 +129,7 @@ return {
 					priority_weight = 2.0,
 					comparators = {
 						cmp.config.compare.exact,
-						require("cmp_tabnine.compare"), -- compare.score_offset, -- not good at all
+						safeRequire("cmp_tabnine.compare"),
 						cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
 						cmp.config.compare.locality,
 						cmp.config.compare.recently_used,
