@@ -6,6 +6,7 @@ return {
 				"ruby",
 				"lua",
 				"vim",
+				"bash",
 				"gomod",
 				"gosum",
 				"norg",
