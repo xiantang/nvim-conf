@@ -186,7 +186,7 @@ safeRequire("mason").setup({
 })
 safeRequire("mason-lspconfig").setup({
 	ensure_installed = {
-		"awk_ls",
+		-- "awk_ls",
 		-- "lua_ls",
 		"sqlls",
 		"jsonls",
@@ -200,7 +200,7 @@ safeRequire("mason-lspconfig").setup({
 
 local common_servers = {
 	-- "ocamllsp",
-	"awk_ls",
+	-- "awk_ls",
 	"sqlls",
 	"jqls",
 	"jsonls",
