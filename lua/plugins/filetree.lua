@@ -3,7 +3,7 @@ return {
 		"nvim-tree/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeOpen", "NerdSmartLocated" },
 		keys = {
-			{ "<leader>l", ":lua NerdSmartLocated()<CR>", desc = "smart location" },
+			{ "<leader>l", ":NvimTreeFindFile<CR>", desc = "smart location" },
 			{ "<leader>t", ":NvimTreeToggle<CR>", desc = "toggle" },
 		},
 		version = "*",
