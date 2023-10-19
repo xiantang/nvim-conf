@@ -130,8 +130,8 @@ return {
 					comparators = {
 						cmp.config.compare.exact,
 						safeRequire("cmp_tabnine.compare"),
-						cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
 						cmp.config.compare.locality,
+						cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
 						cmp.config.compare.recently_used,
 						cmp.config.compare.kind,
 						cmp.config.compare.offset,
