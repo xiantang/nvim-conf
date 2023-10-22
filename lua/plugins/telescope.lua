@@ -42,10 +42,9 @@ return {
 					buffers = {
 						theme = "dropdown",
 						previewer = false,
-						sort_lastused = true,
+						sort_mru = true,
 						show_all_buffers = true,
 						ignore_current_buffer = true,
-						sort_mru = true,
 						mappings = {
 							n = {
 								["dd"] = "delete_buffer",
