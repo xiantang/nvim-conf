@@ -173,7 +173,7 @@ return {
 						elseif vim.fn["vsnip#available"](1) == 1 then
 							feedkey("<Plug>(vsnip-expand-or-jump)", "")
 						else
-							feedkey()
+							fallback()
 						end
 					end, { "i", "s" }),
 					["<S-Tab>"] = cmp.mapping(function(fallback)
