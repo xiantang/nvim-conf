@@ -3,8 +3,8 @@ return {
 		"nvim-tree/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeOpen", "NerdSmartLocated" },
 		keys = {
-			{ "<leader>l", ":NvimTreeFindFile<CR>", desc = "smart location" },
-			{ "<leader>t", ":NvimTreeToggle<CR>", desc = "toggle" },
+			-- { "<leader>l", ":NvimTreeFindFile<CR>", desc = "smart location" },
+			-- { "<leader>t", ":NvimTreeToggle<CR>", desc = "toggle" },
 		},
 		version = "*",
 		dependencies = {
@@ -129,7 +129,12 @@ return {
 		"stevearc/oil.nvim",
 		opts = {},
 		-- Optional dependencies
+		lazy = false,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+		keys = {
+			{ "-", ":Oil<CR>", desc = "oil" },
+			{ "_", ':lua require("oil").open(vim.fn.getcwd())<CR>', desc = "oil" },
+		},
 		config = function()
 			local fm = require("oil").setup({
 
@@ -156,7 +161,8 @@ return {
 					["_"] = "actions.open_cwd",
 					["`"] = "actions.cd",
 					["~"] = "actions.tcd",
-					["g."] = "actions.toggle_hidden",
+					["gx"] = "actions.open_external",
+					["gs"] = "actions.change_sort",
 				},
 				use_default_keymaps = false,
 			})

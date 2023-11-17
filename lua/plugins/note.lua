@@ -13,6 +13,10 @@ return {
 				["core.keybinds"] = {
 					config = {
 						default_keybinds = false,
+						hook = function(keybinds)
+							keybinds.remap_event("norg", "i", "<M-CR>", "core.itero.next-iteration")
+							keybinds.remap_event("norg", "n", "<M-CR>", "core.itero.next-iteration")
+						end,
 					},
 				},
 				["core.defaults"] = {}, -- Loads default behaviour

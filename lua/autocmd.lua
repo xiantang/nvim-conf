@@ -18,6 +18,7 @@ au CursorHold,CursorHoldI * checktime
 au BufWinEnter NvimTree setlocal rnu
 au VimEnter * :clearjumps
 autocmd FileType dbout setlocal nofoldenable
+au InsertLeave,VimEnter  * :silent exec "!sudo mac im-select com.apple.keylayout.ABC"
 au BufWritePre *.tfvars lua vim.lsp.buf.format()
 au BufWritePre *.tf lua vim.lsp.buf.format()
 au User GnuPG setl textwidth=72

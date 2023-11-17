@@ -7,6 +7,7 @@ return {
 				"lua",
 				"vim",
 				"bash",
+				"go",
 				"gomod",
 				"gosum",
 				"norg",

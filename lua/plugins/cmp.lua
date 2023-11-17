@@ -204,14 +204,6 @@ return {
 				},
 			})
 
-			cmp.setup.filetype("norg", {
-				sources = cmp.config.sources({
-					{ name = "luasnip" },
-					{ name = "buffer", keyword_length = 3 },
-					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
-				}),
-			})
-
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources({
 					{ name = "luasnip" },
@@ -222,13 +214,6 @@ return {
 
 			cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
 				sources = cmp.config.sources({ { name = "vim-dadbod-completion" } }),
-			})
-			cmp.setup.filetype("markdown", {
-				sources = cmp.config.sources({
-					{ name = "buffer", max_item_count = 3 },
-					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
-					{ name = "path" },
-				}),
 			})
 		end,
 		dependencies = {
