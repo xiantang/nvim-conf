@@ -1,5 +1,16 @@
 return {
 	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		---@type Flash.Config
+		opts = {},
+  -- stylua: ignore
+  keys = {
+		{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+  },
+	},
+	{
 		"tzachar/cmp-tabnine",
 		enabled = function()
 			return vim.fn.has("mac") == true
@@ -194,7 +205,6 @@ return {
 					{ name = "nvim_lsp" },
 				}, { { name = "neorg" } }, {
 					{ name = "buffer", max_item_count = 3 },
-					{ name = "path", max_item_count = 3, keyword_length = 3 },
 				}),
 			})
 
@@ -228,6 +238,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "buffer", max_item_count = 3 },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
+					{ name = "path" },
 				}),
 			})
 		end,
