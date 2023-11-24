@@ -38,7 +38,7 @@ return {
 			-- these are "extra", change them as you like
 			vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 			vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-			vim.keymap.set("n", "<Tab>", "za")
+			-- vim.keymap.set("n", "<Tab>", "za")
 
 			-- Option 3: treesitter as a main provider instead
 			-- Only depend on `nvim-treesitter/queries/filetype/folds.scm`,
