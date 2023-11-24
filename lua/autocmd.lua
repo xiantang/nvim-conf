@@ -42,18 +42,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		end
 	end,
 })
-
 -- auto refresh nvim tree when commit and push code
-vim.api.nvim_create_autocmd({
-	"BufWritePost",
-}, {
+vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = { "fugitive" },
 	callback = function()
 		vim.cmd("silent! :NvimTreeRefresh")
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = { "*" },
 	callback = function()
 		vim.highlight.on_yank({
