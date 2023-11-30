@@ -7,7 +7,6 @@ return {
 			{ "<C-k>", "<CMD>NavigatorUp<CR>", {} },
 			{ "<C-j>", "<CMD>NavigatorDown<CR>", {} },
 		},
-		event = "VeryLazy",
 		-- master
 		config = function()
 			require("Navigator").setup({})

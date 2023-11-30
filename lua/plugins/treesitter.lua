@@ -17,6 +17,7 @@ return {
 				"gitignore",
 				"http",
 				"terraform",
+				"thrift",
 				"sql",
 				"json",
 			}

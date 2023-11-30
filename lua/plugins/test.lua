@@ -3,8 +3,11 @@ return {
 		"skywind3000/asyncrun.vim",
 	},
 	{
-		event = "VeryLazy",
 		"vim-test/vim-test",
+		keys = {
+			"<Leader>tt",
+			"<Leader>tf",
+		},
 		dependencies = {
 			"tpope/vim-dispatch",
 		},

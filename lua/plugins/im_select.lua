@@ -1,6 +1,6 @@
 return {
 	{
-		event = "VeryLazy",
+		event = { "InsertEnter", "BufEnter" },
 		"keaising/im-select.nvim",
 		config = function()
 			-- check is macos

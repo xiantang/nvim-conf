@@ -1,8 +1,8 @@
 return {
-	{ "romainl/vim-cool", event = "VeryLazy" },
+	{ "romainl/vim-cool", event = "CursorMoved" },
 	{
 		"segeljakt/vim-silicon",
-		event = "VeryLazy",
+		cmd = "Silicon",
 		config = function()
 			vim.cmd([[
 			 let g:silicon={}
@@ -20,15 +20,15 @@ return {
 	},
 	{
 		"folke/neodev.nvim",
-		event = "VeryLazy",
+		ft = "lua",
 		config = function()
 			require("neodev").setup({})
 		end,
 	},
-	{ "vim-scripts/ReplaceWithRegister", event = "VeryLazy" },
+	{ "vim-scripts/ReplaceWithRegister", keys = "gr" },
 	{
 		"numToStr/Comment.nvim",
-		event = "VeryLazy",
+		keys = { { "gb", mode = { "n", "v" } }, { "gc", mode = { "n", "v" } } },
 		config = function()
 			require("Comment").setup()
 		end,

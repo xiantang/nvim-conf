@@ -1,11 +1,10 @@
 return {
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	-- { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
-		dependencies = {
-			"nvim-telescope/telescope-fzf-native.nvim",
-		},
+		tag = "0.1.4",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		keys = {
 			{ "<leader>b", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
@@ -96,7 +95,6 @@ return {
 					},
 				},
 			})
-			require("telescope").load_extension("fzf")
 
 			project_picker = function(opts)
 				local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
@@ -156,7 +154,4 @@ return {
 			end
 		end,
 	},
-	{ "junegunn/fzf", event = "VeryLazy" },
-	{ "junegunn/fzf.vim", event = "VeryLazy" },
-	{ "nvim-lua/plenary.nvim", event = "VeryLazy" },
 }

@@ -1,6 +1,6 @@
 return {
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		event = "VeryLazy",
 		config = function()
 			local null_ls = require("null-ls")
@@ -9,7 +9,7 @@ return {
 				sources = {
 					null_ls.builtins.formatting.shfmt,
 					null_ls.builtins.formatting.nginx_beautifier,
-					null_ls.builtins.formatting.gofumpt,
+					-- null_ls.builtins.formatting.gofumpt,
 					null_ls.builtins.code_actions.shellcheck,
 					null_ls.builtins.formatting.stylua,
 					-- for python
@@ -45,8 +45,8 @@ return {
 			require("lsp_config")
 		end,
 	},
-	{ "williamboman/mason.nvim", event = "VeryLazy" },
-	{ "williamboman/mason-lspconfig.nvim", event = "VeryLazy" },
+	{ "williamboman/mason.nvim", cmd = { "Mason", "MasonInstall" } },
+	{ "williamboman/mason-lspconfig.nvim", cmd = { "Mason", "MasonInstall" } },
 	{
 		"xiantang/lspsaga.nvim",
 		event = "VeryLazy",
@@ -76,7 +76,7 @@ return {
 	},
 	{
 		"ray-x/go.nvim",
-		event = "VeryLazy",
+		ft = "go",
 		config = function()
 			require("go").setup({
 				-- https://github.com/ray-x/go.nvim/issues/113

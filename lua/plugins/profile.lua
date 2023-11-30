@@ -2,7 +2,7 @@ return {
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{
 		"stevearc/profile.nvim",
-		event = "VeryLazy",
+		cmd = "Profile",
 		config = function()
 			-- override variable  as white
 			-- for method caller
