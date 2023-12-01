@@ -1,7 +1,7 @@
 return {
 	{
 		"nvimtools/none-ls.nvim",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		config = function()
 			local null_ls = require("null-ls")
 			-- require("custom_code_actions")
@@ -9,7 +9,7 @@ return {
 				sources = {
 					null_ls.builtins.formatting.shfmt,
 					null_ls.builtins.formatting.nginx_beautifier,
-					-- null_ls.builtins.formatting.gofumpt,
+					null_ls.builtins.formatting.gofumpt,
 					null_ls.builtins.code_actions.shellcheck,
 					null_ls.builtins.formatting.stylua,
 					-- for python
@@ -23,21 +23,13 @@ return {
 		end,
 	},
 	{
-		"folke/neodev.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("neodev").setup({})
-		end,
-	},
-	{
 		"neovim/nvim-lspconfig",
-		event = "BufRead",
+		event = { "BufReadPre", "BufNewFile" },
 		-- use commit
 		dependencies = {
 			"j-hui/fidget.nvim",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"xiantang/lspsaga.nvim",
 			-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
 			"folke/neodev.nvim",
 		},
@@ -49,7 +41,7 @@ return {
 	{ "williamboman/mason-lspconfig.nvim", cmd = { "Mason", "MasonInstall" } },
 	{
 		"xiantang/lspsaga.nvim",
-		event = "VeryLazy",
+		cmd = "Lspsaga",
 		config = function()
 			local saga = require("lspsaga")
 			saga.init_lsp_saga({
@@ -67,7 +59,7 @@ return {
 		end,
 	},
 	{
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		"j-hui/fidget.nvim",
 		tag = "legacy",
 		config = function()

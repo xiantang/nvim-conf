@@ -5,7 +5,6 @@ return {
 			{ ",x", ":lua require('rest-nvim').run()<CR>", desc = "execute request" },
 			{ ",p", ":lua require('rest-nvim').run(true)<CR>", desc = "preview curl" },
 		},
-		lazy = false,
 		config = function()
 			require("rest-nvim").setup({
 				-- Open request results in a horizontal split

@@ -1,7 +1,7 @@
 return {
 	{
 		"kylechui/nvim-surround",
-		keys = "ys",
+		keys = { "ys", "ds" },
 		config = function()
 			require("nvim-surround").setup({
 				-- Configuration here, or leave empty to use defaults
@@ -11,6 +11,7 @@ return {
 
 	{
 		"echasnovski/mini.nvim",
+		lazy = false,
 		version = "*",
 		config = function()
 			require("mini.ai").setup()

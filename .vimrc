@@ -12,7 +12,7 @@ set signcolumn=yes
 highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=steelblue
 set wcm=9
-set spell
+set nospell
 set fillchars+=diff:╱
 set spelllang=en,cjk
 set spellsuggest=best,9
@@ -121,3 +121,15 @@ nnoremap <silent> <C-q> :call ToggleQuickFix()<cr>
 nnoremap <c-p>   :Cprev<CR>
 nnoremap <c-n>   :Cnext<CR>
 
+let g:myLang = 0
+let g:myLangList = ['nospell', 'en_gb']
+function! MySpellLang()
+  "loop through languages
+  if g:myLang == 0 | setlocal nospell | endif
+  if g:myLang == 1 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
+  if g:myLang == 2 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
+  echomsg 'language:' g:myLangList[g:myLang]
+  let g:myLang = g:myLang + 1
+  if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
+endfunction
+map <F6> :<C-U>call MySpellLang()<CR>

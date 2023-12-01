@@ -5,13 +5,12 @@ return {
 			return vim.fn.has("mac") == true
 		end,
 		build = "./install.sh",
-		event = "VeryLazy",
 		dev = true,
 		dependencies = "hrsh7th/nvim-cmp",
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter", "CmdlineEnter" },
+		event = { "InsertEnter" },
 		config = function()
 			-- nvim-cmp setup
 			local cmp = require("cmp")

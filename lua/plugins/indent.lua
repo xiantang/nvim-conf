@@ -9,6 +9,6 @@ return {
 				space_char_blankline = " ",
 			})
 		end,
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 	},
 }

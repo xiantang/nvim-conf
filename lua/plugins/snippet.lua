@@ -1,6 +1,7 @@
 return {
 	{
 		"hrsh7th/vim-vsnip-integ",
+		event = "InsertEnter",
 	},
 	{
 		"L3MON4D3/LuaSnip",
@@ -9,6 +10,7 @@ return {
 	},
 	{
 		"hrsh7th/vim-vsnip",
+		event = "InsertEnter",
 		config = function()
 			vim.cmd([[
 			  imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'

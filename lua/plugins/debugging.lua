@@ -1,14 +1,16 @@
 return {
 	{
 		"leoluz/nvim-dap-go",
-		event = "VeryLazy",
+		lazy = true,
 		config = function()
 			require("dap-go").setup()
 		end,
 	},
-	{ "rcarriga/nvim-dap-ui", event = "VeryLazy" },
+	{ "rcarriga/nvim-dap-ui", lazy = true },
 	{
-		event = "VeryLazy",
+		keys = {
+			{ "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>' },
+		},
 		"mfussenegger/nvim-dap",
 		config = function()
 			require("nvim-dap-virtual-text").setup()
@@ -20,5 +22,6 @@ return {
 	},
 	{
 		"theHamsta/nvim-dap-virtual-text",
+		lazy = true,
 	},
 }

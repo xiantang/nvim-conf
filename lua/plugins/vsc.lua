@@ -1,7 +1,7 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		commit = "addd6e174a85fc1c4007ab0b65d77e6555b417bf",
 		config = function()
 			require("gitsigns").setup({
@@ -67,16 +67,16 @@ return {
 			})
 		end,
 	},
-	{ "tpope/vim-rhubarb", event = "VeryLazy" },
+	{ "tpope/vim-rhubarb", cmd = "GBrowser" },
 	{
-		event = "VeryLazy",
 		"tpope/vim-fugitive",
 		config = function() end,
 		cmd = { "G", "Git" },
 	},
 	{
 		"shumphrey/fugitive-gitlab.vim",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+
 		config = function()
 			-- check operation system
 			local is_mac = vim.fn.has("mac") == 1
@@ -91,7 +91,7 @@ return {
 	-- git related
 	{
 		"rhysd/conflict-marker.vim",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		config = function()
 			vim.cmd([[
       let g:conflict_marker_highlight_group = ''
