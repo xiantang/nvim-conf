@@ -11,8 +11,8 @@ return {
 		end,
 	},
 	{
-		event = "BufReadPost",
 		"andymass/vim-matchup",
+		keys = { "%", "g%" },
 		config = function()
 			-- may set any options here
 			vim.g.matchup_matchparen_offscreen = { method = "scrolloff" }
