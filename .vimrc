@@ -13,7 +13,6 @@ highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=steelblue
 set wcm=9
 set nospell
-set fillchars+=diff:╱
 set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set mouse=a
