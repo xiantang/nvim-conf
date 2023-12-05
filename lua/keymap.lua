@@ -25,7 +25,6 @@ vim.keymap.set("n", "z=", "1z=", opts)
 vim.keymap.set("n", "<Leader>gs", ":Git<CR>", opts)
 vim.keymap.set("n", "<Leader>gb", ":Git blame<CR>", opts)
 vim.keymap.set("n", "<Leader>gl", ":Gllog -- %<CR>", opts)
-vim.keymap.set("n", "<Leader>ss", ":source ~/.config/nvim/init.vim<CR>", opts)
 -- we can use s and v to split
 vim.keymap.set("n", "<Leader>s", ":sp<CR>", { desc = "[S]plit window" })
 vim.keymap.set("n", "<Leader>v", ":vsp<CR>", { desc = "[V]ertically [S]plit window" })
