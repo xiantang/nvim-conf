@@ -51,6 +51,11 @@ return {
 						},
 						-- ignore current file
 					},
+					live_grep = {
+						additional_args = function(opts)
+							return { "--hidden" }
+						end,
+					},
 					find_files = {
 						hidden = true,
 						--ignore git files

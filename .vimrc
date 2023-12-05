@@ -14,9 +14,6 @@ highlight iCursor guifg=white guibg=steelblue
 set wcm=9
 set nospell
 set fillchars+=diff:╱
-set spelllang=en,cjk
-set spellsuggest=best,9
-set spelloptions=camel
 set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set mouse=a
@@ -122,7 +119,7 @@ nnoremap <c-p>   :Cprev<CR>
 nnoremap <c-n>   :Cnext<CR>
 
 let g:myLang = 0
-let g:myLangList = [ 'en_gb','nospell']
+let g:myLangList = ['en_gb','nospell']
 function! MySpellLang()
   "loop through languages
   if g:myLang == 0 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
