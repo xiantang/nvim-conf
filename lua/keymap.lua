@@ -18,9 +18,6 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize -5<CR>", opts)
 vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", opts)
 vim.keymap.set("n", "<leader>db", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
 
--- termkey
-vim.keymap.set("n", "<C-;>", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
-vim.keymap.set("t", "<C-;>", "<C-\\><C-n><Cmd>exe v:count1 . 'ToggleTerm'<CR>", opts)
 vim.keymap.set("n", "<C-Down>", ":resize -5<CR>", opts)
 vim.keymap.set("n", "0", "^", opts)
 vim.keymap.set("n", "ZZ", ":wq<CR>", opts)
@@ -32,7 +29,6 @@ vim.keymap.set("n", "<Leader>ss", ":source ~/.config/nvim/init.vim<CR>", opts)
 -- we can use s and v to split
 vim.keymap.set("n", "<Leader>s", ":sp<CR>", { desc = "[S]plit window" })
 vim.keymap.set("n", "<Leader>v", ":vsp<CR>", { desc = "[V]ertically [S]plit window" })
-vim.keymap.set("n", "<Leader>w", ":w<CR>", opts)
 vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
 -- test
 vim.keymap.set("n", "<Leader>tt", ":TestNearest -v<CR>", { desc = "TestNearest", silent = true, noremap = true })
@@ -45,7 +41,6 @@ vim.keymap.set(
 )
 -- vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', opts)
 -- vim.keymap.set("n", "tt", ":GenReturn<CR>0", opts)
-vim.keymap.set("n", "K", "k", opts)
 vim.keymap.set("n", "ZZ", ":wqa<CR>", opts)
 
 vim.cmd([[
@@ -59,7 +54,6 @@ cnoremap <D-v> <c-r>+
 ]])
 
 vim.cmd([[
-nnoremap <leader>sv :source $MYVIMRC<CR>
 tnoremap <D-v> <C-\><C-n>"+p
 tnoremap <Esc> <C-\><C-n>
 ]])
