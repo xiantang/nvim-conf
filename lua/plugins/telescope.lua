@@ -100,63 +100,6 @@ return {
 					},
 				},
 			})
-
-			project_picker = function(opts)
-				local bookmarks = vim.fn.readfile(vim.env.HOME .. "/.NERDTreeBookmarks")
-				local choices = {}
-				local pro_to_path = {}
-
-				-- make a map key is the project name, value is the path
-				for i, bookmark in ipairs(bookmarks) do
-					local project_name = vim.split(bookmark, " ")[1]
-					local path = vim.split(bookmark, " ")[2]
-					if path ~= nil then
-						pro_to_path[project_name] = path
-						table.insert(choices, project_name)
-					end
-				end
-				opts = opts or {}
-				pickers
-					.new(opts, {
-						prompt_title = "Jump Between Projects",
-						finder = finders.new_table({
-							results = choices,
-						}),
-						sorter = conf.generic_sorter(opts),
-						attach_mappings = function(prompt_bufnr, map)
-							actions.select_default:replace(function()
-								actions.close(prompt_bufnr)
-								local project = action_state.get_selected_entry()
-								-- print(vim.inspect(selection))
-								require("telescope.builtin").find_files({
-									-- exclude png files
-									file_ignore_patterns = { "*.png", "*.ttf", ".git" },
-									search_dirs = { pro_to_path[project.value] },
-									-- relative path
-									path_display = { "smart" },
-									-- show hidden files
-									hidden = true,
-									attach_mappings = function(buf, m)
-										actions.select_default:replace(function()
-											actions.close(buf)
-											local selected = action_state.get_selected_entry()
-											if project.value == selected.value then
-												vim.cmd("NERDTree " .. selected.value)
-												return
-											end
-											vim.cmd("e " .. selected.value)
-											vim.cmd("NerdSmartLocated")
-											vim.cmd("wincmd p")
-										end)
-										return true
-									end,
-								})
-							end)
-							return true
-						end,
-					})
-					:find()
-			end
 		end,
 	},
 }
