@@ -58,6 +58,10 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		keys = {
+			{ "[[" },
+			{ "]]" },
+		},
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
