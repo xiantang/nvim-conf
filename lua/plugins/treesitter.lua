@@ -6,6 +6,7 @@ return {
 		},
 		config = function()
 			local enabled = {
+				"java",
 				"ruby",
 				"lua",
 				"vim",

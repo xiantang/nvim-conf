@@ -67,24 +67,21 @@ return {
 			})
 		end,
 	},
-	{ "tpope/vim-rhubarb", cmd = "GBrowser" },
+	{ "tpope/vim-rhubarb" },
 	{
 		"tpope/vim-fugitive",
 		config = function() end,
-		cmd = { "G", "Git" },
+		-- cmd = { "G", "Git" },
 	},
 	{
 		"shumphrey/fugitive-gitlab.vim",
-		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+		-- event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 
 		config = function()
 			-- check operation system
-			local is_mac = vim.fn.has("mac") == 1
-			if is_mac then
-				local secret, lfs = pcall(require, "secret")
-				if secret then
-					vim.g.fugitive_gitlab_domains = { secret.GITALB_URL }
-				end
+			local ok, secret = pcall(require, "secret")
+			if ok then
+				vim.g.fugitive_gitlab_domains = { secret.GITALB_URL }
 			end
 		end,
 	},
