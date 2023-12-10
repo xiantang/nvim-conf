@@ -1,0 +1,47 @@
+[Metrics(v3)] metrics new writer error: metrics sdk can not get agent socket path, all metrics would be dropped
+参数说明
+   --disable_upgrade          禁止自动升级 (default: false)
+   --boe                      使用 BOE 环境 (default: false)
+   --ppe                      使用 PPE 环境 (default: false)
+   --faas                     进入 FaaS 环境容器 (default: false)
+   --cron                     进入 CronJob 环境容器 (default: false)
+   --notebook                 进入 NoteBook 环境容器 (default: false)
+   --mlx                      进入 MLX 环境容器 (default: false)
+   --tlb_k8s                  进入 TLB Kubernetes 容器 (default: false)
+   --bytegraph                进入 ByteGraph 容器 (default: false)
+   --arnold                   进入 Arnold 环境容器 (default: false)
+   --bernard                  进入 Bernard 环境容器 (default: false)
+   --essql                    进入 ES SQL 查询环境 (default: false)
+   --byte_ide                 进入 ByteIDE 环境容器 (default: false)
+   --codebase_ci              进入 Codebase CI 环境容器 (default: false)
+   --yarn                     进入 Yarn 环境容器 (default: false)
+   --megatron                 进入 Megatron 环境容器 (default: false)
+   --prj value                选择 NoteBook 项目(名称或ID)
+   --psm value                进入哪个服务的 Shell
+   --first                    如果匹配到多个容器，直接进入第一个容器中 (default: false)
+   --ip value                 按 IP 匹配容器
+   --pod value                按 PodName 匹配容器
+   --container_type value     按 Container Type 匹配容器
+   --service_id value         按 Service ID 匹配容器
+   --app_id value             按 App ID 匹配容器
+   --strict                   是否使用严格模式匹配 PSM (default: false)
+   --env_tag value            按 Env Tag 匹配容器
+   --zone value               按 Zone 匹配集群
+   --cluster value            按 Cluster 匹配集群
+   --site value               选择不同的 Site 机架/区域(sinf)
+   --idc value                选择不同的 IDC 机房
+   --merge_request value      输入 Codebase Merge Request 链接
+   --command value, -c value  进入容器后执行命令
+   --command_timeout value    进入容器后执行命令后，多少 ms 后退出，为 0 则不退出 (default: 0)
+   --root                     以 root 身份进入容器 (default: false)
+   --help, -h                 Show Help (default: false)
+
+stty -echo
+mkdir -p /tmp/kill-webshell/; echo "pkill -9 -P $$; sleep 3; pkill -9 -s $$; rm /tmp/kill-webshell/containerd-e9cd2e03780d4a2ff658f977651667d9db2e992ea6d1bb08ada43bce5901a2a1" > /tmp/kill-webshell/containerd-e9cd2e03780d4a2ff658f977651667d9db2e992ea6d1bb08ada43bce5901a2a1;[[ -z "$ZSH" ]] && export TERM=linux || export TERM=xterm-256color
+source /opt/tiger/tce/tce_tools/bin/tce_cd
+[[ -e "/usr/bin/third_party_cd" ]] && source /usr/bin/third_party_cd || true
+stty echo; clear;history -c;
+dp-77fae5f455-c76495874-8zbb8(data.galaxy.facade@EU-TTP:prod):/# stty -echo
+dp-77fae5f455-c76495874-8zbb8(data.galaxy.facade@EU-TTP:prod):/# dp-77fae5f455-c76495874-8zbb8(data.galaxy.facade@EU-TTP:prod):/# dp-77fae5f455-c76495874-8zbb8(data.galaxy.facade@EU-TTP:prod):facade# dp-77fae5f455-c76495874-8zbb8(data.galaxy.facade@EU-TTP:prod):facade# [H[Jdp-77fae5f455-c76495874-8zbb8(data.galaxy.facade@EU-TTP:prod):facade# pwd
+/opt/tiger/facade
+dp-77fae5f455-c76495874-8zbb8(data.galaxy.facade@EU-TTP:prod):facade# 
