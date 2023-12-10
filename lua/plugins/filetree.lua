@@ -52,7 +52,6 @@ return {
 						if not entry then
 							return
 						end
-						print(window_handle)
 						vim.api.nvim_win_call(window_handle, function()
 							vim.cmd.vsplit({ args = { entry.path } })
 						end)
