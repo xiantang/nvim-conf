@@ -53,6 +53,7 @@ return {
 							return
 						end
 						vim.api.nvim_win_call(window_handle, function()
+							mini_files.close()
 							vim.cmd.vsplit({ args = { entry.path } })
 						end)
 					end, {
