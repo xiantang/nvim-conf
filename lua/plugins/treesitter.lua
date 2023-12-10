@@ -1,6 +1,9 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"RRethy/nvim-treesitter-textsubjects",
+		},
 		config = function()
 			local enabled = {
 				"ruby",
@@ -28,12 +31,20 @@ return {
 
 				-- parser_install_dir = path,
 
-				incremental_selection = {
-					enable = false,
+				-- will cause panic so I disable it
+				-- incremental_selection = {
+				-- 	enable = false,
+				-- 	keymaps = {
+				-- 		-- init_selection = "v",
+				-- 		node_incremental = "v",
+				-- 		node_decremental = "<BS>",
+				-- 	},
+				-- },
+				textsubjects = {
+					enable = true,
+					prev_selection = "<BS>", -- (Optional) keymap to select the previous selection
 					keymaps = {
-						-- init_selection = "v",
-						node_incremental = "v",
-						node_decremental = "<BS>",
+						["v"] = "textsubjects-smart",
 					},
 				},
 				ensure_installed = enabled,
