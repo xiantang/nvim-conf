@@ -19,7 +19,15 @@ set mouse=a
 
 lang en_US.UTF-8
 set clipboard+=unnamedplus
-if system('uname -s') == "Linux\n"
+function! IsNixOS()
+    let l:uname_output = system('uname -a')
+    if l:uname_output =~ 'NixOS'
+        return 1
+    else
+        return 0
+    endif
+endfunction
+if IsNixOS()
   set clipboard+=unnamedplus
   let g:clipboard = {
             \   'name': 'yank',
