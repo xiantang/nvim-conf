@@ -16,7 +16,26 @@ set nospell
 set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set mouse=a
-set clipboard=unnamed
+
+set clipboard+=unnamedplus
+if system('uname -s') == "Linux\n"
+  set clipboard+=unnamedplus
+  let g:clipboard = {
+            \   'name': 'yank',
+            \   'copy': {
+            \      '+': 'sudo mac pbcopy',
+            \      '*': 'sudo mac pbcopy',
+            \    },
+            \   'paste': {
+            \      '+': 'sudo mac pbpaste',
+            \      '*': 'sudo mac pbpaste',
+            \   },
+            \   'cache_enabled': 0,
+            \ }
+  else
+   set clipboard=unnamed
+endif
+
 set encoding=utf-8
 set wildoptions-=pum
 set sessionoptions="blank"
