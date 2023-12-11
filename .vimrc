@@ -17,6 +17,7 @@ set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set mouse=a
 
+lang en_US.UTF-8
 set clipboard+=unnamedplus
 if system('uname -s') == "Linux\n"
   set clipboard+=unnamedplus
