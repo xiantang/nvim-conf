@@ -29,6 +29,7 @@ function! IsNixOS()
 endfunction
 if IsNixOS()
   set clipboard+=unnamedplus
+  let g:netrw_browsex_viewer ='sudo mac open'
   let g:clipboard = {
             \   'name': 'yank',
             \   'copy': {
