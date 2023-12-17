@@ -6,6 +6,10 @@ return {
 			"z",
 			"g",
 			",",
+			'"',
+			"'",
+			"@",
+			{ "<C-R>", mode = "i" },
 		},
 		config = function()
 			vim.o.timeout = true
