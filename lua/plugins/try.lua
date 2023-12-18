@@ -1,6 +1,10 @@
 return {
 	{
 		enabled = false,
+		"nvim-pack/nvim-spectre",
+	},
+	{
+		enabled = false,
 		"RRethy/vim-illuminate",
 		config = function()
 			-- default configuration
