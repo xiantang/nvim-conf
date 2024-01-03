@@ -41,6 +41,7 @@ vim.keymap.set(
 -- vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', opts)
 -- vim.keymap.set("n", "tt", ":GenReturn<CR>0", opts)
 vim.keymap.set("n", "ZZ", ":wqa<CR>", opts)
+vim.keymap.set("n", "gp", "`[v`]", opts)
 
 vim.cmd([[
 "ctrl A to  move to line start when in command mode like in iterm2

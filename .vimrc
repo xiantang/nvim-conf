@@ -52,6 +52,8 @@ set sessionoptions="blank"
 " nnoremap <Enter> <Nop>
 nnoremap <C-D> <C-D>zz
 nnoremap <C-U> <C-U>zz
+nnoremap <C-i> <C-i>zz
+nnoremap <C-o> <C-o>zz
 noremap {   {zz
 noremap }   }zz
 imap <C-a> <Home>

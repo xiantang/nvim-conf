@@ -192,7 +192,7 @@ return {
 					{ name = "cmp_tabnine", max_item_count = 1 },
 					{ name = "nvim_lsp" },
 				}, { { name = "neorg" } }, {
-					{ name = "buffer", max_item_count = 3 },
+					{ name = "buffer" },
 				}),
 			})
 
@@ -206,7 +206,7 @@ return {
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources({
 					{ name = "luasnip" },
-					{ name = "buffer", keyword_length = 3 },
+					{ name = "buffer" },
 					{ name = "dictionary", priority = 10, max_item_count = 5, keyword_length = 3 },
 				}),
 			})

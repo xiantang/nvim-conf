@@ -1,5 +1,8 @@
 return {
 	{
+		"danilamihailov/vim-tips-wiki",
+	},
+	{
 		"nvim-neorg/neorg",
 		build = ":Neorg sync-parsers",
 		ft = "norg",
