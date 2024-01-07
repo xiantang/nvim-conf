@@ -34,7 +34,7 @@
   "neorg": { "branch": "main", "commit": "f296a22864bbac0d94ad00fa18cc8231dbeaa1e3" },
   "none-ls.nvim": { "branch": "main", "commit": "3a4826687da4310af379515086d71faca4d21288" },
   "nvim-autopairs": { "branch": "master", "commit": "7747bbae60074acf0b9e3a4c13950be7a2dff444" },
-  "nvim-cmp": { "branch": "main", "commit": "51f1e11a89ec701221877532ee1a23557d291dd5" },
+  "nvim-cmp": { "branch": "main", "commit": "538e37ba87284942c1d76ed38dd497e54e65b891" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" },
   "nvim-dap": { "branch": "master", "commit": "56118cee6af15cb9ddba9d080880949d8eeb0c9f" },
   "nvim-dap-go": { "branch": "main", "commit": "cdf604a5703838f65fdee7c198f6cb59b563ef6f" },
