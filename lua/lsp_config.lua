@@ -35,9 +35,6 @@ local lsp_formatting = function(bufnr)
 	})
 end
 
--- if you want to set up formatting on save, you can use this as a callback
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
 local on_attach = function(client, bufnr)
 	vim.cmd("syntax on")
 	if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
@@ -48,16 +45,6 @@ local on_attach = function(client, bufnr)
 			range = true,
 		}
 	end
-	-- if client.supports_method("textDocument/formatting") then
-	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		group = augroup,
-		buffer = bufnr,
-		callback = function()
-			lsp_formatting(bufnr)
-		end,
-	})
-	-- end
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -82,33 +69,6 @@ local on_attach = function(client, bufnr)
 	-- buf_set_keymap("v", "ga", "cmd>lua vim.lsp.bug.code_action()<CR>", opts)
 	buf_set_keymap("v", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 	buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-	function impl()
-		local filters = {
-			".*/circle/.*", -- 示
-		}
-		local function on_list(options)
-			local filtered_itmers = {}
-
-			for _, item in ipairs(options.items) do
-				local skip = false
-				for _, filter in ipairs(filters) do
-					if vim.fn.match(item.filename, filter) ~= -1 then
-						skip = true
-						break
-					end
-				end
-				if not skip then
-					table.insert(filtered_itmers, item)
-				end
-			end
-			vim.fn.setqflist({}, " ", {
-				items = filtered_itmers,
-			})
-			vim.cmd("botright copen")
-		end
-		vim.lsp.buf.implementation({ on_list = on_list })
-	end
-	buf_set_keymap("n", "<space>gi", ":lua impl()<CR>", opts)
 	buf_set_keymap("n", "<space>dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
 	buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 	buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
@@ -116,20 +76,10 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	buf_set_keymap("n", "<space>rn", "<cmd>Lspsaga rename<CR>", opts)
 	buf_set_keymap("n", "<space>gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
-	buf_set_keymap("n", "<Leader>fr", ":lua vim.lsp.buf.references()<CR>", opts)
-	-- buf_set_keymap('n', '<space>f', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
+	buf_set_keymap("n", "<Leader>f", ":lua vim.lsp.buf.format()<CR>", opts)
 	-- if current buff end with _test.go, then set keymap for error
 	local buf_name = vim.api.nvim_buf_get_name(bufnr)
 	buf_set_keymap("n", "<space>ge", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-
-	-- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-	-- Set some keybinds conditional on server capabilities
-	if client.server_capabilities.document_formatting then
-		buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-	elseif client.server_capabilities.document_range_formatting then
-		buf_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-	end
 
 	-- Set autocommands conditional on server_capabilities
 	if client.server_capabilities.document_highlight then

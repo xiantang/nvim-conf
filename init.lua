@@ -102,6 +102,5 @@ local dict = {
 for k, v in pairs(dict) do
 	fix_it_when_its_wrong(k, v)
 end
-
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true

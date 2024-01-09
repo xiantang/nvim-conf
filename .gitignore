@@ -5,3 +5,4 @@ spell/en.utf-8.spl
 sessions/*
 lua/secret.lua
 macros.json.tmp
+bd.lua

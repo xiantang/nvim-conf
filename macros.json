@@ -1,1 +1,19 @@
-{"macros": []}
+{
+  "macros": [
+    {
+      "name": "goto_function_name",
+      "raw": "MFtbJEYoYg==",
+      "content": "0[[$F(b"
+    },
+    {
+      "name": "grep",
+      "raw": "eWl3OmiAa2JncmVwISAtUiAiXDwSIlw+gPwERSAuDYD8BEs=",
+      "content": "yiw:h<BS>grep!<Space>-R<Space>\"\\<lt><C-R>\"\\><C-E><Space>.<CR><C-K>"
+    },
+    {
+      "name": "snake_to_camel_case",
+      "raw": "dml3G2JpDRtlYQ0bazpzL19cKC5cKS9cVVwxL2cNa0p4Sng=",
+      "content": "viw<Esc>bi<CR><Esc>ea<CR><Esc>k:s/_\\(.\\)/\\U\\1/g<CR>kJxJx"
+    }
+  ]
+}

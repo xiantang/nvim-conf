@@ -52,10 +52,10 @@ return {
 		end,
 	},
 	{
-		"nmac427/guess-indent.nvim",
-		event = { "InsertEnter" },
-		config = function()
-			require("guess-indent").setup({})
-		end,
+		"tpope/vim-sleuth",
+		-- event = { "InsertEnter" },
+		-- config = function()
+		-- 	require("guess-indent").setup({})
+		-- end,
 	},
 }

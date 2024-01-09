@@ -1,6 +1,6 @@
 return {
 	{
-		"numToStr/Navigator.nvim",
+		"xiantang/Navigator.nvim",
 		keys = {
 			{ "<C-l>", "<CMD>NavigatorRight<CR>", {} },
 			{ "<C-h>", "<CMD>NavigatorLeft<CR>", {} },
