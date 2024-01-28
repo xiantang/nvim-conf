@@ -70,10 +70,6 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		keys = {
-			{ "[[" },
-			{ "]]" },
-		},
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
@@ -120,6 +116,10 @@ return {
 					},
 				},
 			})
+
+			vim.cmd([[
+       noremap [f  :TSGDFunctionName<CR>
+			]])
 		end,
 	},
 }

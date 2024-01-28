@@ -148,8 +148,7 @@ nnoremap <silent> <C-q> :call ToggleQuickFix()<cr>
 nnoremap <c-p>   :Cprev<CR>
 nnoremap <c-n>   :Cnext<CR>
 
-" edit macro
-nnoremap <leader>mm :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+
 let g:myLang = 0
 let g:myLangList = ['en_gb','nospell']
 function! MySpellLang()
@@ -162,3 +161,9 @@ function! MySpellLang()
   if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
 endfunction
 map <F6> :<C-U>call MySpellLang()<CR>
+
+" edit macro
+nnoremap <leader>mm :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+" macro https://zhuanlan.zhihu.com/p/351086064
+command TSGDFunctionName norm k[[f(b 
+
