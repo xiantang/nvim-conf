@@ -24,12 +24,12 @@ au BufEnter * set formatoptions-=cro
 au BufEnter Brewfile set filetype=ruby
 au BufEnter .zpreztorc set filetype=zsh
 au BufEnter nerdtree setlocal relativenumber
-au CursorHold * checktime
+" au CursorHold * checktime
+" au CursorHold,CursorHoldI * checktime
 au BufRead,BufNewFile *.jq setfiletype jq
 au BufRead,BufNewFile *.http setfiletype http
 au BufNewFile,BufRead *.template setfiletype gotmpl
 au BufNewFile,BufRead */ssh/config  setf sshconfig
-au CursorHold,CursorHoldI * checktime
 au BufWinEnter NvimTree setlocal rnu
 au VimEnter * :clearjumps
 autocmd FileType dbout setlocal nofoldenable
