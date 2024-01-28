@@ -119,6 +119,7 @@ return {
 
 			vim.cmd([[
        noremap [f  :TSGDFunctionName<CR>
+       noremap ]f  :TSNXFunctionName<CR>
 			]])
 		end,
 	},
