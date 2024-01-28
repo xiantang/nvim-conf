@@ -165,6 +165,6 @@ map <F6> :<C-U>call MySpellLang()<CR>
 " edit macro
 nnoremap <leader>mm :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 " macro https://zhuanlan.zhihu.com/p/351086064
-command TSGDFunctionName norm 0[[$F(b 
-command TSNXFunctionName norm 0]]$F(b 
+command TSGDFunctionName norm 0[[$F(bzz
+command TSNXFunctionName norm 0]]$F(bzz
 
