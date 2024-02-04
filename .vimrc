@@ -147,6 +147,7 @@ endfunction
 nnoremap <silent> <C-q> :call ToggleQuickFix()<cr>
 nnoremap <c-p>   :Cprev<CR>
 nnoremap <c-n>   :Cnext<CR>
+nnoremap <c-t>   :on<CR><C-W>v<C-W>s<C-w>h
 
 
 let g:myLang = 0
