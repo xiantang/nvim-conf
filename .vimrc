@@ -1,6 +1,7 @@
 let mapleader = " "
 let maplocalleader = " "
 set nu rnu hidden autoindent modifiable smartcase autoread 
+set laststatus=3
 set splitright noswapfile hlsearch autoindent
 set smartindent equalalways ignorecase
 set softtabstop=4
