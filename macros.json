@@ -12,8 +12,8 @@
     },
     {
       "name": "snake_to_camel_case",
-      "raw": "dml3G2JpDRtlYQ0bazpzL19cKC5cKS9cVVwxL2cNa0p4Sng=",
-      "content": "viw<Esc>bi<CR><Esc>ea<CR><Esc>k:s/_\\(.\\)/\\U\\1/g<CR>kJxJx"
+      "raw": "eWl3bW1vEiIbOhtWOnMvX1woLlwpL1xVXDEvZw1kYXdrSmBtdml3cA==",
+      "content": "yiwmmo<C-R>\"<Esc>:<Esc>V:s/_\\(.\\)/\\U\\1/g<CR>dawkJ`mviwp"
     }
   ]
 }
