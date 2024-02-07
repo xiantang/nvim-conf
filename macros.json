@@ -14,6 +14,11 @@
       "name": "snake_to_camel_case",
       "raw": "eWl3bW1vEiIbOhtWOnMvX1woLlwpL1xVXDEvZw1kYXdrSmBtdml3cA==",
       "content": "yiwmmo<C-R>\"<Esc>:<Esc>V:s/_\\(.\\)/\\U\\1/g<CR>dawkJ`mviwp"
+    },
+    {
+      "name": "remove_function_call",
+      "raw": "eXltbVBEYG15aWFrcGpkZGts",
+      "content": "yymmPD`myiakpjddkl"
     }
   ]
 }
