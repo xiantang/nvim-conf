@@ -192,7 +192,6 @@ return {
 					{ name = "cmp_tabnine", max_item_count = 1 },
 					{ name = "nvim_lsp" },
 				}, { { name = "neorg" } }, {
-					{ name = "buffer" },
 				}),
 			})
 
