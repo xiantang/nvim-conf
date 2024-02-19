@@ -121,7 +121,6 @@ return {
 					},
 				},
 			})
-			require("lspconfig").pyright.setup({})
 			require("lspconfig").sqlls.setup({})
 			require("lspconfig").jqls.setup({})
 			require("lspconfig").pyright.setup({})
