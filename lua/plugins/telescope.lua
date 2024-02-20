@@ -10,7 +10,6 @@ return {
 			-- { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "lsp_references" },
 			{ "<leader>tb", "<cmd>Telescope git_branches<CR>", desc = "Git git_branches" },
 			{ "<Leader>p", ":Telescope find_files<CR>", {} },
-			{ "<Leader>m", ":Telescope marks<CR>", {} },
 			{ "<Leader>rs", ":Telescope resume<CR>", {} },
 			{ "<Leader>o", ":Telescope lsp_document_symbols<CR>", {} },
 			{ "<Leader>P", ":Telescope live_grep<CR>", {} },
