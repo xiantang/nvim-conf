@@ -1,6 +1,10 @@
 return {
 	{
 		"xiantang/nvim-macros",
+		dev = true,
+		keys = {
+			{ "<Leader>ms", ":Telescope macros select<CR>", {} },
+		},
 		cmd = { "MacroSave", "MacroYank", "MacroSelect", "MacroDelete" },
 		keys = {
 			{ "<Leader>ms", ":Telescope macros select<CR>", {} },

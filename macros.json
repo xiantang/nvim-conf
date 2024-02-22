@@ -19,6 +19,11 @@
       "name": "remove_function_call",
       "raw": "eXltbVBEYG15aWFrcGpkZGts",
       "content": "yymmPD`myiakpjddkl"
+    },
+    {
+      "name": "telescope_find_by_current_word",
+      "raw": "eWl3OlRlbGVzY29wZSBsaXZlX2dyZXANXGISIlxiCg==",
+      "content": "yiw:Telescope<Space>live_grep<CR>\\b<C-R>\"\\b"
     }
   ]
 }

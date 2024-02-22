@@ -136,10 +136,6 @@ noremap <Leader>b :ls<CR>:b<space>
 set statusline=%{toupper(g:currentmode[mode()])}%f\ %h%m%r\ %{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 let g:asyncrun_open = 6
-command! Cnext try | cnext | catch | cfirst | catch | endtry
-command! Cprev try | cprev | catch | clast | catch | endtry
-command! Lnext try | lnext | catch | lfirst | catch | endtry
-command! Lprev try | lprev | catch | llast | catch | endtry
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
         copen
@@ -148,8 +144,8 @@ function! ToggleQuickFix()
     endif
 endfunction
 nnoremap <silent> <C-q> :call ToggleQuickFix()<cr>
-nnoremap <c-p>   :Cprev<CR>
-nnoremap <c-n>   :Cnext<CR>
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprevious<CR>
 nnoremap <c-t>   :on<CR><C-W>v<C-W>s<C-w>h
 
 
