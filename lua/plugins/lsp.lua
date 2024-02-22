@@ -1,148 +1,5 @@
 return {
 	{
-		"tzachar/cmp-tabnine",
-		enabled = function()
-			return vim.fn.has("mac") == true
-		end,
-		build = "./install.sh",
-		dev = true,
-		dependencies = "hrsh7th/nvim-cmp",
-	},
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
-		config = function()
-			local lsp_zero = require("lsp-zero")
-			lsp_zero.extend_lspconfig()
-
-			lsp_zero.on_attach(function(client, bufnr)
-				if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
-					local semantic = client.config.capabilities.textDocument.semanticTokens
-					client.server_capabilities.semanticTokensProvider = {
-						full = true,
-						legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
-						range = true,
-					}
-				end
-				local function buf_set_keymap(...)
-					vim.api.nvim_buf_set_keymap(bufnr, ...)
-				end
-
-				local function buf_set_option(...)
-					vim.api.nvim_buf_set_option(bufnr, ...)
-				end
-
-				buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-				-- cousor hold for 3 seconds, show signature helper
-				-- silent
-				-- vim.api.nvim_command([[autocmd CursorHold  <buffer> lua vim.lsp.buf.hover() ]])
-				-- Mappings.
-				local opts = { noremap = true, silent = true }
-				buf_set_keymap("n", "<Enter>", "<Nop>", opts)
-				buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-				buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-				-- buf_set_keymap("n", "gv", "<cmd>Lspsaga peek_definition<CR>", opts)
-				buf_set_keymap("n", "<Leader>ga", "<cmd>Lspsaga code_action<CR>", opts)
-				-- -- coode action for extract function or variable
-				-- buf_set_keymap("v", "ga", "cmd>lua vim.lsp.bug.code_action()<CR>", opts)
-				buf_set_keymap("v", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
-				buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-				buf_set_keymap("n", "<space>dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
-				buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-				buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-				buf_set_keymap(
-					"n",
-					"<space>wl",
-					"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-					opts
-				)
-				buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-				buf_set_keymap("n", "<space>rn", "<cmd>Lspsaga rename<CR>", opts)
-				buf_set_keymap("n", "<space>gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
-				buf_set_keymap("n", "<Leader>f", ":lua vim.lsp.buf.format()<CR>", opts)
-				-- if current buff end with _test.go, then set keymap for error
-				local buf_name = vim.api.nvim_buf_get_name(bufnr)
-				buf_set_keymap("n", "<space>ge", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-
-				-- Set autocommands conditional on server_capabilities
-			end)
-			require("lspconfig").lua_ls.setup({
-				settings = {
-					Lua = {
-						runtime = {
-							-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-							version = "LuaJIT",
-						},
-						diagnostics = {
-							-- Get the language server to recognize the `vim` global
-							globals = { "vim", "hs" },
-						},
-						workspace = {
-							checkThirdParty = false,
-							-- Make the server aware of Neovim runtime files
-							library = {
-								-- vim.api.nvim_get_runtime_file("", true),
-								"/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/",
-								vim.fn.expand("~/lualib/share/lua/5.4"),
-								vim.fn.expand("~/lualib/lib/luarocks/rocks-5.4"),
-								"/opt/homebrew/opt/openresty/lualib",
-							},
-						},
-						completion = {
-							callSnippet = "Replace",
-						},
-						-- Do not send telemetry data containing a randomized but unique identifier
-						telemetry = {
-							enable = false,
-						},
-					},
-				},
-			})
-			require("lspconfig").gopls.setup({
-				cmd = { "gopls" },
-				-- for postfix snippets and analyzers
-				flags = {
-					allow_incremental_sync = false,
-					debounce_text_changes = 500,
-				},
-				settings = {
-					gopls = {
-						-- PAINPOINT
-						usePlaceholders = true,
-						semanticTokens = true,
-						experimentalPostfixCompletions = true,
-						analyses = {
-							unusedparams = true,
-							shadow = true,
-						},
-						-- use gopls build by myself https://github.com/xiantang/tools
-						-- staticcheck = true,
-					},
-				},
-			})
-			require("lspconfig").sqlls.setup({})
-			require("lspconfig").jqls.setup({})
-			require("lspconfig").pyright.setup({})
-			require("lspconfig").bashls.setup({})
-			require("lspconfig").vimls.setup({})
-			require("lspconfig").tsserver.setup({})
-			require("lspconfig").yamlls.setup({})
-			require("lspconfig").terraformls.setup({})
-			require("lspconfig").rnix.setup({})
-		end,
-	},
-	{
-		"neovim/nvim-lspconfig",
-		-- use commit
-		dependencies = {
-			"j-hui/fidget.nvim",
-			-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-			"folke/neodev.nvim",
-		},
-	},
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{
 		"nvimtools/none-ls.nvim",
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		config = function()
@@ -163,6 +20,61 @@ return {
 					null_ls.builtins.formatting.nixfmt,
 				},
 				debug = true,
+			})
+		end,
+	},
+	{
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
+		-- use commit
+		dependencies = {
+			"j-hui/fidget.nvim",
+			-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+			"folke/neodev.nvim",
+		},
+		config = function()
+			require("lsp_config")
+		end,
+	},
+	{
+		"williamboman/mason.nvim",
+		cmd = { "Mason", "MasonInstall" },
+		config = function()
+			local safeRequire = require("lib").safeRequire
+			local is_mac = vim.fn.has("mac") == 1
+			if is_mac == 0 then
+				local mason_registry = require("mason-registry")
+				mason_registry:on("package:install:success", function(pkg)
+					pkg:get_receipt():if_present(function(receipt)
+						for _, rel_path in pairs(receipt.links.bin) do
+							local bin_abs_path = pkg:get_install_path() .. "/extension/server/bin/" .. rel_path
+							os.execute(
+								'patchelf --set-interpreter "$(patchelf --print-interpreter $(grep -oE \\/nix\\/store\\/[a-z0-9]+-neovim-unwrapped-[0-9]+\\.[0-9]+\\.[0-9]+\\/bin\\/nvim $(which nvim)))" '
+									.. bin_abs_path
+							)
+						end
+					end)
+				end)
+			end
+			safeRequire("mason").setup({
+				ui = {
+					icons = {
+						package_installed = "✓",
+					},
+				},
+			})
+			safeRequire("mason-lspconfig").setup({
+				ensure_installed = {
+					-- "awk_ls",
+					-- "lua_ls",
+					"sqlls",
+					"jsonls",
+					"pyright",
+					"dockerls",
+					"bashls",
+					"vimls",
+					"yamlls",
+				},
 			})
 		end,
 	},
