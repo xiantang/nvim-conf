@@ -21,7 +21,7 @@ return {
 						type = "go",
 						name = "Debug Package (with args)",
 						request = "launch",
-						program = "${fileDirname}",
+						program = "${workspaceFolder}",
 						args = get_arguments,
 					},
 				},

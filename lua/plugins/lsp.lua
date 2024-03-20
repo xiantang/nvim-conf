@@ -9,7 +9,7 @@ return {
 				sources = {
 					null_ls.builtins.formatting.shfmt,
 					null_ls.builtins.formatting.nginx_beautifier,
-					null_ls.builtins.formatting.gofumpt,
+					null_ls.builtins.formatting.gofmt,
 					null_ls.builtins.formatting.goimports,
 					null_ls.builtins.code_actions.shellcheck,
 					null_ls.builtins.formatting.stylua,
@@ -21,6 +21,19 @@ return {
 				},
 				debug = true,
 			})
+		end,
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
+		opts = {
+			floating_window = false, -- virtual hint enable
+			hint_prefix = " ",
+			hint_scheme = "TSConstructor",
+			floating_window_above_cur_line = true,
+		},
+		config = function(_, opts)
+			require("lsp_signature").setup(opts)
 		end,
 	},
 	{

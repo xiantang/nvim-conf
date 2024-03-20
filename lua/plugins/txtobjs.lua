@@ -8,17 +8,4 @@ return {
 			})
 		end,
 	},
-
-	{
-		"echasnovski/mini.ai",
-		version = "*",
-		keys = {
-			"c",
-			"d",
-			"y",
-		},
-		config = function()
-			require("mini.ai").setup()
-		end,
-	},
 }

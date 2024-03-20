@@ -16,7 +16,19 @@ return {
 			local cmp = require("cmp")
 			-- https://github.com/hrsh7th/nvim-cmp/wiki/Advanced-techniques#add-parentheses-after-selecting-function-or-method-item
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+			cmp.event:on("confirm_done", function(ops)
+				local kind = ops.entry.cache.entries.get_completion_item.kind
+				-- 9 means cmp_kind is  module
+				if kind == 9 then
+					local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+					vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "." })
+					vim.api.nvim_win_set_cursor(0, { row, col + 1 })
+				else
+					if kind == 3 or kind == 2 then
+						cmp_autopairs.on_confirm_done()(ops)
+					end
+				end
+			end)
 
 			if cmp == nil then
 				return
@@ -167,8 +179,8 @@ return {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
-						-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-						-- they way you will only jump inside the snippet region
+							-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+							-- they way you will only jump inside the snippet region
 						elseif vim.fn["vsnip#available"](1) == 1 then
 							feedkey("<Plug>(vsnip-expand-or-jump)", "")
 						else
@@ -191,8 +203,7 @@ return {
 					{ name = "nvim_lua" },
 					{ name = "cmp_tabnine", max_item_count = 1 },
 					{ name = "nvim_lsp" },
-				}, { { name = "neorg" } }, {
-				}),
+				}, { { name = "neorg" } }, {}),
 			})
 
 			cmp.setup.cmdline({ "/", "?" }, {

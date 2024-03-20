@@ -26,7 +26,6 @@ return {
 			-- vim.opt.runtimepath:append(path)
 
 			require("nvim-treesitter.configs").setup({
-
 				-- parser_install_dir = path,
 
 				-- will cause panic so I disable it
@@ -67,6 +66,17 @@ return {
 			require("nvim-treesitter.configs").setup({
 				parser_install_dir = "/opt/homebrew/Cellar/neovim/0.9.2/lib/nvim/parser",
 				textobjects = {
+					select = {
+						enable = true,
+
+						keymaps = {
+							-- You can use the capture groups defined in textobjects.scm
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["ia"] = "@parameter.inner",
+							["aa"] = "@parameter.outer",
+						},
+					},
 					move = {
 						enable = true,
 						set_jumps = true, -- whether to set jumps in the jumplist

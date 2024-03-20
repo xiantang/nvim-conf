@@ -2,7 +2,6 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-		commit = "addd6e174a85fc1c4007ab0b65d77e6555b417bf",
 		config = function()
 			require("gitsigns").setup({
 				signs = {

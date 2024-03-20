@@ -16,7 +16,7 @@ set wcm=9
 set nospell
 set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
-set mouse=a
+set mouse=
 
 lang en_US.UTF-8
 set clipboard+=unnamedplus
@@ -120,19 +120,43 @@ nnoremap <leader>P :Rg<cr>
 endif
 noremap <Leader>b :ls<CR>:b<space>
 
- let g:currentmode={
-       \ 'n'  : 'NORMAL ',
-       \ 'v'  : 'VISUAL ',
-       \ 'V'  : 'V·Line ',
-       \ 's'  : 'SNIPET ',
-       \ 't'  : 'TEST ',
-       \ "\<C-V>" : 'V·Block ',
-       \ 'i'  : 'INSERT ',
-       \ 'R'  : 'R ',
-       \ 'Rv' : 'V·Replace ',
-       \ 'c'  : 'Command ',
-       \}
-
+let g:currentmode={
+\ 'n'        : 'NORMAL ',
+\ 'no'       : 'OP-Pending ',
+\ 'nov'      : 'OP-Pending Charwise ',
+\ 'noV'      : 'OP-Pending Linewise ',
+\ 'noCTRL-V' : 'OP-Pending Blockwise ',
+\ 'niI'      : 'Normal Insert ',
+\ 'niR'      : 'Normal Replace ',
+\ 'niV'      : 'Normal Virtual Replace ',
+\ 'nt'       : 'Normal Terminal ',
+\ 'ntT'      : 'Normal Terminal ',
+\ 'v'        : 'VISUAL ',
+\ 'vs'       : 'Visual Select ',
+\ 'V'        : 'V·Line ',
+\ 'Vs'       : 'Visual Line Select ',
+\ 'CTRL-V'   : 'V·Block ',
+\ 'CTRL-Vs'  : 'Visual Block Select ',
+\ 's'        : 'Select ',
+\ 'S'        : 'Select Line ',
+\ 'CTRL-S'   : 'Select Block ',
+\ 'i'        : 'INSERT ',
+\ 'ic'       : 'Insert Completion ',
+\ 'ix'       : 'Insert Completion Ctrl-X ',
+\ 'R'        : 'Replace ',
+\ 'Rc'       : 'Replace Completion ',
+\ 'Rx'       : 'Replace Completion Ctrl-X ',
+\ 'Rv'       : 'V·Replace ',
+\ 'Rvc'      : 'Virtual Replace Completion ',
+\ 'Rvx'      : 'Virtual Replace Ctrl-X ',
+\ 'c'        : 'Command-Line ',
+\ 'cv'       : 'Ex Mode ',
+\ 'r'        : 'Hit-Enter ',
+\ 'rm'       : '-- More -- ',
+\ 'r?'       : 'Confirm ',
+\ '!'        : 'Shell ',
+\ 't'        : 'Terminal ',
+\}
 set statusline=%{toupper(g:currentmode[mode()])}%f\ %h%m%r\ %{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 let g:asyncrun_open = 6

@@ -21,20 +21,6 @@ function _G.get_cur_go_func_name()
 	return string.match(line_str, "func%s+([%w_]+)")
 end
 
--- Avoiding LSP formatting conflicts https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts#neovim-08
-local lsp_formatting = function(bufnr)
-	vim.lsp.buf.format({
-		filter = function(client)
-			-- apply whatever logic you want (in this example, we'll only use null-ls)
-			if client.name == "null-ls" or client.name == "awk_ls" then
-				return true
-			end
-			return false
-		end,
-		bufnr = bufnr,
-	})
-end
-
 local on_attach = function(client, bufnr)
 	vim.cmd("syntax on")
 	if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
@@ -52,6 +38,27 @@ local on_attach = function(client, bufnr)
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
+	-- Avoiding LSP formatting conflicts https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts#neovim-08
+	local lsp_formatting = function(bufnr)
+		vim.lsp.buf.format({
+			filter = function(client)
+				-- apply whatever logic you want (in this example, we'll only use null-ls)
+				if client.name == "null-ls" or client.name == "awk_ls" then
+					return true
+				end
+				return false
+			end,
+			bufnr = bufnr,
+		})
+	end
+	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = augroup,
+		buffer = bufnr,
+		callback = function()
+			lsp_formatting(bufnr)
+		end,
+	})
 
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -169,9 +176,6 @@ nvim_lsp.lua_ls.setup({
 					"/opt/homebrew/opt/openresty/lualib",
 				},
 			},
-			completion = {
-				callSnippet = "Replace",
-			},
 			-- Do not send telemetry data containing a randomized but unique identifier
 			telemetry = {
 				enable = false,
@@ -191,7 +195,7 @@ nvim_lsp.gopls.setup({
 	settings = {
 		gopls = {
 			-- PAINPOINT
-			usePlaceholders = true,
+			usePlaceholders = false,
 			semanticTokens = true,
 			experimentalPostfixCompletions = true,
 			analyses = {
