@@ -35,7 +35,7 @@ au VimEnter * :clearjumps
 autocmd FileType dbout setlocal nofoldenable
 au InsertLeave,VimEnter  * :silent exec "!sudo mac im-select com.apple.keylayout.ABC"
 au User GnuPG setl textwidth=72
-autocmd VimLeavePre * :redir >> messages.txt | silent messages | redir END
+autocmd VimLeavePre * :redir >> ~/.config/nvim/messages.txt | silent messages | redir END
 ]])
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = { "*.go" },
