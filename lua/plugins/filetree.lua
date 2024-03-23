@@ -3,12 +3,12 @@ return {
 		keys = {
 			{
 				"<Leader>l",
-				require("filetree").location,
+				require("lib").location,
 				desc = "smart location",
 			},
 			{
 				"-",
-				require("filetree").location,
+				require("lib").location,
 				desc = "current",
 			},
 			{
