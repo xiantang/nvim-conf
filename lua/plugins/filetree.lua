@@ -3,12 +3,12 @@ return {
 		keys = {
 			{
 				"<Leader>l",
-				":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>:lua MiniFiles.reveal_cwd()<CR>",
+				require("filetree").location,
 				desc = "smart location",
 			},
 			{
 				"-",
-				":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>:lua MiniFiles.reveal_cwd()<CR>",
+				require("filetree").location,
 				desc = "current",
 			},
 			{
