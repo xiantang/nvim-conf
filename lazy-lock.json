@@ -27,7 +27,7 @@
   "lspsaga.nvim": { "branch": "main", "commit": "d2329a23b2e3052be87d83499c36be885cd54ea1" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "610f5919fe633ac872239a0ab786572059f0d91d" },
   "mason.nvim": { "branch": "main", "commit": "c43eeb5614a09dc17c03a7fb49de2e05de203924" },
-  "mini.files": { "branch": "main", "commit": "7139ec84b01fc439ed418690c4a9e07a9f70a8d5" },
+  "mini.files": { "branch": "main", "commit": "fca93a4eb3d7aa240239d56b48f1dc400f53ff67" },
   "neodev.nvim": { "branch": "main", "commit": "6498a07601702349c31909005bb333003e4687d4" },
   "neorg": { "branch": "main", "commit": "f296a22864bbac0d94ad00fa18cc8231dbeaa1e3" },
   "none-ls.nvim": { "branch": "main", "commit": "3a4826687da4310af379515086d71faca4d21288" },
@@ -68,7 +68,6 @@
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "vim-startuptime": { "branch": "master", "commit": "cb4c112b9e0f224236ee4eab6bf5153406b3f88b" },
   "vim-test": { "branch": "master", "commit": "155342d6c8137a8a5dfbdbfca2de831643b2e006" },
-  "vim-tips-wiki": { "branch": "master", "commit": "02b9c34bea465bdc79dfb5144270ae6dd098376a" },
   "vim-vsnip": { "branch": "master", "commit": "7753ba9c10429c29d25abfd11b4c60b76718c438" },
   "vim-vsnip-integ": { "branch": "master", "commit": "1914e72cf3de70df7f5dde476cd299aba2440aef" }
 }
