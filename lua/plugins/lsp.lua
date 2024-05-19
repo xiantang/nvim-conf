@@ -93,23 +93,29 @@ return {
 	},
 	{ "williamboman/mason-lspconfig.nvim", lazy = true },
 	{
-		"xiantang/lspsaga.nvim",
-		cmd = "Lspsaga",
+		"nvimdev/lspsaga.nvim",
 		config = function()
-			local saga = require("lspsaga")
-			saga.init_lsp_saga({
+			require("lspsaga").setup({
 				code_action_lightbulb = {
 					enabled = false,
 					virtual_text = false,
 					sign = false,
 				},
-				finder_icons = {
-					def = "󰆧  ",
-					ref = "  ",
-					link = "󰆧  ",
+				finder = {
+					max_height = 0.6,
+					keys = {
+						toggle_or_open = "<CR>",
+					},
+				},
+				lightbulb = {
+					enable = false,
 				},
 			})
 		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter", -- optional
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
 	},
 	{
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
