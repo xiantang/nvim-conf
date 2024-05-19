@@ -99,6 +99,10 @@ return {
 				symbol_in_winbar = {
 					enable = false,
 				},
+				beacon = {
+					enable = true,
+					frequency = 20,
+				},
 				code_action_lightbulb = {
 					enabled = false,
 					virtual_text = false,
