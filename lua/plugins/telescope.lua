@@ -1,5 +1,5 @@
 return {
-	-- { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
@@ -37,6 +37,10 @@ return {
 					},
 				},
 				pickers = {
+					find_files = {
+						file_ignore_patterns = { "node_modules/", ".git/", ".venv/" },
+						hidden = true,
+					},
 					buffers = {
 						theme = "dropdown",
 						previewer = false,
@@ -57,6 +61,7 @@ return {
 					},
 				},
 			})
+			require("telescope").load_extension("fzf")
 			vim.api.nvim_create_autocmd("WinLeave", {
 				callback = function()
 					if vim.bo.ft == "TelescopePrompt" and vim.fn.mode() == "i" then

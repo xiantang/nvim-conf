@@ -17,7 +17,7 @@ return {
 				desc = "oil",
 			},
 		},
-		"echasnovski/mini.files",
+		"xiantang/mini.files",
 		config = function()
 			require("mini.files").setup({
 				mappings = {

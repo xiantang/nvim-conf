@@ -121,6 +121,7 @@ return {
 	},
 	{
 		"ray-x/go.nvim",
+		enabled = false,
 		ft = "go",
 		config = function()
 			require("go").setup({
@@ -130,5 +131,5 @@ return {
 		end,
 	},
 
-	{ "ray-x/guihua.lua", event = "VeryLazy" },
+	{ "ray-x/guihua.lua", event = "VeryLazy", enabled = false },
 }

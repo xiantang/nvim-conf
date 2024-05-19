@@ -17,6 +17,7 @@ vim.g.list_of_normal_keys = { "h", "j", "k", "l", "-", "+", "<UP>", "<DOWN>", "<
 vim.g.list_of_visual_keys = { "h", "j", "k", "l", "-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" }
 vim.g.list_of_insert_keys = { "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" }
 vim.g.list_of_disabled_keys = {}
+vim.opt.conceallevel = 2
 local set = vim.o
 set.ts = 2
 set.termguicolors = true

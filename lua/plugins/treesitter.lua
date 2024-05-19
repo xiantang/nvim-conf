@@ -9,6 +9,7 @@ return {
 				"vim",
 				"bash",
 				"go",
+				"markdown",
 				"gomod",
 				"gosum",
 				"norg",
@@ -30,7 +31,7 @@ return {
 
 				-- will cause panic so I disable it
 				incremental_selection = {
-					enable = true,
+					enable = false,
 					keymaps = {
 						init_selection = false,
 						node_incremental = "v",
@@ -41,7 +42,7 @@ return {
 				highlight = {
 					enable = true,
 					disable = function(lang, buf)
-						local max_filesize = 100 * 1024 -- 100 KB
+						local max_filesize = 50 * 1024 -- 50 KB
 						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
 						if ok and stats and stats.size > max_filesize then
 							return true
@@ -64,7 +65,7 @@ return {
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				parser_install_dir = "/opt/homebrew/Cellar/neovim/0.9.2/lib/nvim/parser",
+				-- parser_install_dir = "/opt/homebrew/Cellar/neovim/0.9.2/lib/nvim/parser",
 				textobjects = {
 					select = {
 						enable = true,

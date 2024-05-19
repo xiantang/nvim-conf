@@ -120,45 +120,6 @@ nnoremap <leader>P :Rg<cr>
 endif
 noremap <Leader>b :ls<CR>:b<space>
 
-let g:currentmode={
-\ 'n'        : 'NORMAL ',
-\ 'no'       : 'OP-Pending ',
-\ 'nov'      : 'OP-Pending Charwise ',
-\ 'noV'      : 'OP-Pending Linewise ',
-\ 'noCTRL-V' : 'OP-Pending Blockwise ',
-\ 'niI'      : 'Normal Insert ',
-\ 'niR'      : 'Normal Replace ',
-\ 'niV'      : 'Normal Virtual Replace ',
-\ 'nt'       : 'Normal Terminal ',
-\ 'ntT'      : 'Normal Terminal ',
-\ 'v'        : 'VISUAL ',
-\ 'vs'       : 'Visual Select ',
-\ 'V'        : 'V·Line ',
-\ 'Vs'       : 'Visual Line Select ',
-\ 'CTRL-V'   : 'V·Block ',
-\ 'CTRL-Vs'  : 'Visual Block Select ',
-\ 's'        : 'Select ',
-\ 'S'        : 'Select Line ',
-\ 'CTRL-S'   : 'Select Block ',
-\ 'i'        : 'INSERT ',
-\ 'ic'       : 'Insert Completion ',
-\ 'ix'       : 'Insert Completion Ctrl-X ',
-\ 'R'        : 'Replace ',
-\ 'Rc'       : 'Replace Completion ',
-\ 'Rx'       : 'Replace Completion Ctrl-X ',
-\ 'Rv'       : 'V·Replace ',
-\ 'Rvc'      : 'Virtual Replace Completion ',
-\ 'Rvx'      : 'Virtual Replace Ctrl-X ',
-\ 'c'        : 'Command-Line ',
-\ 'cv'       : 'Ex Mode ',
-\ 'r'        : 'Hit-Enter ',
-\ 'rm'       : '-- More -- ',
-\ 'r?'       : 'Confirm ',
-\ '!'        : 'Shell ',
-\ 't'        : 'Terminal ',
-\}
-set statusline=%{toupper(g:currentmode[mode()])}%f\ %h%m%r\ %{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
-
 let g:asyncrun_open = 6
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
@@ -171,6 +132,7 @@ nnoremap <silent> <C-q> :call ToggleQuickFix()<cr>
 nnoremap ]q :cnext<CR>
 nnoremap [q :cprevious<CR>
 nnoremap <c-t>   :on<CR><C-W>v<C-W>s<C-w>h
+iabbrev :w <nop>
 
 
 let g:myLang = 0
@@ -192,3 +154,15 @@ nnoremap <leader>mm :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v
 command TSGDFunctionName norm 0[[$F(bzz
 command TSNXFunctionName norm 0]]$F(bzz
 command BufOnly :%bd|e#
+let g:gitgutter_sign_added = '│'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '_'
+let g:gitgutter_sign_removed_first_line = '‾'
+" let g:gitgutter_sign_removed_above_and_below = '{'
+" let g:gitgutter_sign_modified_removed = 'ww'
+set updatetime=100
+
+onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
+onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
+xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
+xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>

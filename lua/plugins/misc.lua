@@ -1,21 +1,49 @@
 return {
 	{
-		"xiantang/nvim-macros",
-		dev = true,
-		keys = {
-			{ "<Leader>ms", ":Telescope macros select<CR>", {} },
-		},
-		cmd = { "MacroSave", "MacroYank", "MacroSelect", "MacroDelete" },
-		keys = {
-			{ "<Leader>ms", ":Telescope macros select<CR>", {} },
-		},
-		dev = true,
-		opts = {
-			json_file_path = vim.fs.normalize(vim.fn.stdpath("config") .. "/macros.json"), -- Location where the macros will be stored
-			default_macro_register = "a", -- Use as default register for :MacroYank and :MacroSave and :MacroSelect Raw functions
-			json_formatter = "jq", -- can be "none" | "jq" | "yq" used to pretty print the json file (jq or yq must be installed!)
-		},
-		dependencies = { "nvim-telescope/telescope.nvim" },
+		"robitx/gp.nvim",
+		config = function()
+			require("gp").setup({
+				hooks = {
+					Explain = function(gp, params)
+						local template = "I have the following code from {{filename}}:\n\n"
+							.. "```{{filetype}}\n{{selection}}\n```\n\n"
+							.. "Please respond by explaining the code above."
+						local agent = gp.get_chat_agent()
+						gp.Prompt(params, gp.Target.popup, nil, agent.model, template, agent.system_prompt)
+					end,
+					Translator = function(gp, params)
+						local agent = gp.get_command_agent()
+						local chat_system_prompt = "You are a Translator, please translate between English and Chinese."
+						gp.cmd.ChatNew(params, agent.model, chat_system_prompt)
+					end,
+					CodeReview = function(gp, params)
+						local template = "I have the following code from {{filename}}:\n\n"
+							.. "```{{filetype}}\n{{selection}}\n```\n\n"
+							.. "Please analyze for code smells and suggest improvements."
+						local agent = gp.get_chat_agent()
+						gp.Prompt(params, gp.Target.enew("markdown"), nil, agent.model, template, agent.system_prompt)
+					end,
+					UnitTests = function(gp, params)
+						local args = params.args
+						local template = "I have the following code from {{filename}}:\n\n"
+							.. "```{{filetype}}\n{{selection}}\n```\n\n"
+							.. "Please respond by writing for the code above. by using mockey.Mock. writing a UT for this funtion "
+							.. args
+						local agent = gp.get_command_agent()
+						gp.Prompt(params, gp.Target.enew, nil, agent.model, template, agent.system_prompt)
+					end,
+				},
+			})
+			local function keymapOptions(desc)
+				return {
+					noremap = true,
+					silent = true,
+					nowait = true,
+					desc = "GPT prompt " .. desc,
+				}
+			end
+			vim.keymap.set({ "n", "i" }, "<C-g>t", "<cmd>GpChatToggle<cr>", keymapOptions("Toggle Chat"))
+		end,
 	},
 	{
 		"jamessan/vim-gnupg",
@@ -23,6 +51,7 @@ return {
 	},
 	{
 		"tzachar/highlight-undo.nvim",
+		enabled = false,
 		keys = {
 			"u",
 			"<C-r>",

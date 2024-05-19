@@ -1,8 +1,31 @@
 local safeRequire = require("lib").safeRequire
 local nvim_lsp = safeRequire("lspconfig")
 
-vim.lsp.set_log_level("off")
+vim.lsp.set_log_level("ERROR")
 
+-- fallback if lsp exit suddenly
+vim.api.nvim_create_autocmd("LspDetach", {
+	callback = function(args)
+		-- print("detaching LSP..")
+		local bufname = vim.fn.bufname(args.buf)
+		-- if bufname:match("%.go$") then
+		-- print("bufname " .. bufname)
+		-- print("restarting LSP..")
+		vim.cmd("LspStart")
+		-- end
+	end,
+})
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			-- apply whatever logic you want (in this example, we'll only use null-ls)
+			return client.name == "null-ls"
+		end,
+		bufnr = bufnr,
+	})
+end
+-- if you want to set up formatting on save, you can use this as a callback
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 -- get function name in body of golang function
 function _G.get_cur_go_func_name()
 	-- get current line number
@@ -38,27 +61,19 @@ local on_attach = function(client, bufnr)
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
-	-- Avoiding LSP formatting conflicts https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts#neovim-08
-	local lsp_formatting = function(bufnr)
-		vim.lsp.buf.format({
-			filter = function(client)
-				-- apply whatever logic you want (in this example, we'll only use null-ls)
-				if client.name == "null-ls" or client.name == "awk_ls" then
-					return true
-				end
-				return false
+
+	-- add to your shared on_attach callback
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = bufnr,
+			callback = function()
+				lsp_formatting(bufnr)
 			end,
-			bufnr = bufnr,
 		})
 	end
-	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		group = augroup,
-		buffer = bufnr,
-		callback = function()
-			lsp_formatting(bufnr)
-		end,
-	})
+	-- end
 
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 

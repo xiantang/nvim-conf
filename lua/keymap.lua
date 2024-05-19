@@ -29,17 +29,6 @@ vim.keymap.set("n", "<Leader>gl", ":Gllog -- %<CR>", opts)
 vim.keymap.set("n", "<Leader>s", ":sp<CR>", { desc = "[S]plit window" })
 vim.keymap.set("n", "<Leader>v", ":vsp<CR>", { desc = "[V]ertically [S]plit window" })
 vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
--- test
-vim.keymap.set("n", "<Leader>tt", ":TestNearest -v<CR>", { desc = "TestNearest", silent = true, noremap = true })
-vim.keymap.set("n", "<Leader>tf", ":GoTestFile<CR>", { desc = "GoTestFile", silent = true, noremap = true })
-vim.keymap.set(
-	"n",
-	"<Leader>uv",
-	":TestVisit<CR>",
-	{ desc = "Go to last visit test file", silent = true, noremap = true }
-)
--- vim.keymap.set("n", "<Leader>de", ':lua require"dap".toggle_breakpoint()<CR>', opts)
--- vim.keymap.set("n", "tt", ":GenReturn<CR>0", opts)
 vim.keymap.set("n", "ZZ", ":wqa<CR>", opts)
 vim.keymap.set("n", "gp", "`[v`]", opts)
 

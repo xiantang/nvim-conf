@@ -18,7 +18,6 @@ au TermOpen * setlocal nobuflisted
 au WinResized * wincmd =
 au BufEnter leetcode.cn_*.txt set filetype=go
 " https://github.com/fatih/vim-go/issues/1757
-au filetype qf wincmd J
 au BufEnter *.conf set filetype=config
 au BufEnter * set formatoptions-=cro
 au BufEnter Brewfile set filetype=ruby
@@ -53,13 +52,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 				end
 			end
 		end
-	end,
-})
--- auto refresh nvim tree when commit and push code
-vim.api.nvim_create_autocmd("BufWritePost", {
-	pattern = { "fugitive" },
-	callback = function()
-		vim.cmd("silent! :NvimTreeRefresh")
 	end,
 })
 
