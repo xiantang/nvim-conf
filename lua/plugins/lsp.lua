@@ -96,6 +96,9 @@ return {
 		"nvimdev/lspsaga.nvim",
 		config = function()
 			require("lspsaga").setup({
+				symbol_in_winbar = {
+					enable = false,
+				},
 				code_action_lightbulb = {
 					enabled = false,
 					virtual_text = false,
