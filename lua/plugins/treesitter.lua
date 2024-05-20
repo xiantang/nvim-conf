@@ -117,11 +117,71 @@ return {
 					},
 				},
 			})
+			local function goto_prev_function()
+				local ts = vim.treesitter
+				local queries = require("nvim-treesitter.query")
+				local filetype = vim.api.nvim_buf_get_option(0, "ft")
+				local lang = require("nvim-treesitter.parsers").ft_to_lang(filetype)
 
-			vim.cmd([[
-       noremap [f  :TSGDFunctionName<CR>
-       noremap ]f  :TSNXFunctionName<CR>
-			]])
+				-- 定义Treesitter查询
+				local go_query = [[
+	    (function_declaration
+		name: (identifier) @function_name)
+	    (method_declaration
+		name: (field_identifier) @function_name)
+			        ]]
+				local query = [[
+	    (function_declaration
+		name: (identifier) @function_name)
+				]]
+
+				-- 获取当前buffer的Treesitter语法树
+				local parser = ts.get_parser(0, lang)
+				local tree = parser:parse()[1]
+				local root = tree:root()
+				-- 获取查询对象
+				if lang == "go" then
+					query = go_query
+				end
+				local query_obj = vim.treesitter.query.parse(lang, query)
+
+				-- 执行查询
+				local matches = {}
+				for pattern, match, metadata in query_obj:iter_matches(root, 0) do
+					for id, node in pairs(match) do
+						local name = query_obj.captures[id]
+						if name == "function_name" then
+							table.insert(matches, node)
+						end
+					end
+				end
+				-- 如果找到匹配项，则移动光标到函数名处
+				if #matches > 0 then
+					local closest_function = nil
+					local closest_distance = nil
+					local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+
+					for _, function_name_node in ipairs(matches) do
+						local start_row, start_col, _, _ = function_name_node:range()
+						if start_row < row or (start_row == row and start_col < col) then
+							local distance = row - start_row
+							if closest_distance == nil or distance < closest_distance then
+								closest_distance = distance
+								closest_function = function_name_node
+							end
+						end
+					end
+
+					if closest_function then
+						local start_row, start_col, _, _ = closest_function:range()
+						vim.api.nvim_win_set_cursor(0, { start_row + 1, start_col })
+					end
+				end
+			end
+
+			vim.keymap.set("n", "[f", function()
+				goto_prev_function()
+			end, { noremap = true, silent = true })
 		end,
 	},
 }
