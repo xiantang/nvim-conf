@@ -117,7 +117,7 @@ return {
 					},
 				},
 			})
-			local function goto_prev_function()
+			local function goto_function(direction)
 				local ts = vim.treesitter
 				local queries = require("nvim-treesitter.query")
 				local filetype = vim.api.nvim_buf_get_option(0, "ft")
@@ -125,20 +125,21 @@ return {
 
 				-- 定义Treesitter查询
 				local go_query = [[
-	    (function_declaration
-		name: (identifier) @function_name)
-	    (method_declaration
-		name: (field_identifier) @function_name)
-			        ]]
+    (function_declaration
+        name: (identifier) @function_name)
+    (method_declaration
+        name: (field_identifier) @function_name)
+    ]]
 				local query = [[
-	    (function_declaration
-		name: (identifier) @function_name)
-				]]
+    (function_declaration
+        name: (identifier) @function_name)
+    ]]
 
 				-- 获取当前buffer的Treesitter语法树
 				local parser = ts.get_parser(0, lang)
 				local tree = parser:parse()[1]
 				local root = tree:root()
+
 				-- 获取查询对象
 				if lang == "go" then
 					query = go_query
@@ -155,6 +156,7 @@ return {
 						end
 					end
 				end
+
 				-- 如果找到匹配项，则移动光标到函数名处
 				if #matches > 0 then
 					local closest_function = nil
@@ -163,8 +165,14 @@ return {
 
 					for _, function_name_node in ipairs(matches) do
 						local start_row, start_col, _, _ = function_name_node:range()
-						if start_row < row or (start_row == row and start_col < col) then
-							local distance = row - start_row
+						local distance = math.abs(start_row - row)
+
+						if direction == "prev" and (start_row < row or (start_row == row and start_col < col)) then
+							if closest_distance == nil or distance < closest_distance then
+								closest_distance = distance
+								closest_function = function_name_node
+							end
+						elseif direction == "next" and (start_row > row or (start_row == row and start_col > col)) then
 							if closest_distance == nil or distance < closest_distance then
 								closest_distance = distance
 								closest_function = function_name_node
@@ -179,9 +187,17 @@ return {
 				end
 			end
 
-			vim.keymap.set("n", "[f", function()
-				goto_prev_function()
-			end, { noremap = true, silent = true })
+			local function goto_prev_function()
+				goto_function("prev")
+			end
+
+			local function goto_next_function()
+				goto_function("next")
+			end
+
+			-- 绑定键映射
+			vim.keymap.set("n", "[f", goto_prev_function, { noremap = true, silent = true })
+			vim.keymap.set("n", "]f", goto_next_function, { noremap = true, silent = true })
 		end,
 	},
 }
