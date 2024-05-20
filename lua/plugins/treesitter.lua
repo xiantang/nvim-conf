@@ -167,12 +167,20 @@ return {
 						local start_row, start_col, _, _ = function_name_node:range()
 						local distance = math.abs(start_row - row)
 
-						if direction == "prev" and (start_row < row or (start_row == row and start_col < col)) then
+						if
+							distance ~= 1
+							and direction == "prev"
+							and (start_row < row or (start_row == row and start_col < col))
+						then
 							if closest_distance == nil or distance < closest_distance then
 								closest_distance = distance
 								closest_function = function_name_node
 							end
-						elseif direction == "next" and (start_row > row or (start_row == row and start_col > col)) then
+						elseif
+							distance ~= 1
+							and direction == "next"
+							and (start_row > row or (start_row == row and start_col > col))
+						then
 							if closest_distance == nil or distance < closest_distance then
 								closest_distance = distance
 								closest_function = function_name_node
