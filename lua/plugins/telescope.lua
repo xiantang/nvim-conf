@@ -58,6 +58,7 @@ return {
 						additional_args = function(opts)
 							return { "--hidden" }
 						end,
+						file_ignore_patterns = { "node_modules", ".git" },
 					},
 				},
 			})
