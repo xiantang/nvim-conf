@@ -18,12 +18,23 @@ return {
 			vim.g.matchup_matchparen_offscreen = { method = "scrolloff" }
 		end,
 	},
+	-- {
+	-- 	"folke/neodev.nvim",
+	-- 	ft = "lua",
+	-- 	config = function()
+	-- 		require("neodev").setup({})
+	-- 	end,
+	-- },
 	{
-		"folke/neodev.nvim",
-		ft = "lua",
-		config = function()
-			require("neodev").setup({})
-		end,
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+			},
+		},
 	},
 	{ "vim-scripts/ReplaceWithRegister", keys = "gr" },
 	{

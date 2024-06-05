@@ -43,7 +43,7 @@ return {
 		dependencies = {
 			"j-hui/fidget.nvim",
 			-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-			"folke/neodev.nvim",
+			-- "folke/neodev.nvim",
 		},
 		config = function()
 			require("lsp_config")
