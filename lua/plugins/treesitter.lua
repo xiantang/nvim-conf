@@ -31,7 +31,7 @@ return {
 
 				-- will cause panic so I disable it
 				incremental_selection = {
-					enable = false,
+					enable = true,
 					keymaps = {
 						init_selection = false,
 						node_incremental = "v",
@@ -189,6 +189,8 @@ return {
 					end
 
 					if closest_function then
+						vim.cmd("normal! m`")
+
 						local start_row, start_col, _, _ = closest_function:range()
 						vim.api.nvim_win_set_cursor(0, { start_row + 1, start_col })
 						vim.api.nvim_feedkeys("zz", "n", false)
