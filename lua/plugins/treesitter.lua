@@ -9,6 +9,7 @@ return {
 				"vim",
 				"bash",
 				"go",
+				"ssh_config",
 				"markdown",
 				"gomod",
 				"gosum",

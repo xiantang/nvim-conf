@@ -28,6 +28,7 @@ au BufEnter nerdtree setlocal relativenumber
 au BufRead,BufNewFile *.jq setfiletype jq
 au BufRead,BufNewFile *.http setfiletype http
 au BufNewFile,BufRead *.template setfiletype gotmpl
+au BufNewFile,BufRead sshconfig setfiletype sshconfig
 au BufNewFile,BufRead */ssh/config  setf sshconfig
 au BufWinEnter NvimTree setlocal rnu
 au VimEnter * :clearjumps
