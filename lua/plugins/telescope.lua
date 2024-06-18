@@ -13,7 +13,6 @@ return {
 			{ "<Leader>rs", ":Telescope resume<CR>", {} },
 			{ "<Leader>o", ":Telescope lsp_document_symbols<CR>", {} },
 			{ "<Leader>P", ":Telescope live_grep<CR>", {} },
-			{ "<C-e>" },
 			-- {
 			-- 	"<Leader>b",
 			-- 	":lua require('telescope.builtin').buffers()<CR>",
@@ -24,6 +23,7 @@ return {
 		config = function()
 			local pickers = require("telescope.pickers")
 			local finders = require("telescope.finders")
+			local previewers = require("telescope.previewers")
 			local conf = require("telescope.config").values
 			local actions = require("telescope.actions")
 			local action_state = require("telescope.actions.state")
@@ -64,30 +64,6 @@ return {
 				},
 			})
 			require("telescope").load_extension("fzf")
-			local git_diff = function(opts)
-				opts = opts or {}
-				list = vim.fn.systemlist("git diff --name-only master")
-				vim.print(list)
-				pickers
-					.new(opts, {
-						prompt_title = "git diff",
-						finder = finders.new_table({ results = list }),
-						attach_mappings = function(prompt_bufnr, map)
-							actions.select_default:replace(function(prompt_bufnr)
-								local action_set = require("telescope.actions.set")
-								action_set.select(prompt_bufnr, "default")
-								vim.cmd("normal! g;")
-							end)
-							return true
-						end,
-						sorter = conf.generic_sorter(opts),
-					})
-					:find()
-			end
-			local opts = { noremap = true, silent = true }
-
-			vim.keymap.set("n", "<C-e>", git_diff, opts)
-
 			vim.api.nvim_create_autocmd("WinLeave", {
 				callback = function()
 					if vim.bo.ft == "TelescopePrompt" and vim.fn.mode() == "i" then
@@ -99,6 +75,23 @@ return {
 					end
 				end,
 			})
+		end,
+	},
+
+	{
+		"nvim-telescope/telescope-frecency.nvim",
+		keys = {
+			{ "<C-e>", ":Telescope frecency workspace=CWD<CR>", {} },
+			-- {
+			-- 	"<Leader>b",
+			-- 	":lua require('telescope.builtin').buffers()<CR>",
+			-- 	silent = true,
+			-- 	desc = "buffers",
+			-- },
+		},
+
+		config = function()
+			require("telescope").load_extension("frecency")
 		end,
 	},
 }
