@@ -82,12 +82,6 @@ return {
 		"nvim-telescope/telescope-frecency.nvim",
 		keys = {
 			{ "<C-e>", ":Telescope frecency workspace=CWD<CR>", {} },
-			-- {
-			-- 	"<Leader>b",
-			-- 	":lua require('telescope.builtin').buffers()<CR>",
-			-- 	silent = true,
-			-- 	desc = "buffers",
-			-- },
 		},
 
 		config = function()
