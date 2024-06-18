@@ -29,6 +29,17 @@ return {
 			local action_state = require("telescope.actions.state")
 			require("telescope").setup({
 				extensions = {
+					frecency = {
+						show_scores = true,
+						show_unindexed = true,
+						ignore_patterns = {
+							"*/.git/*",
+							"*/tmp/*",
+							"*/lua-language-server/*",
+						},
+						workspace_scan_cmd = "LUA",
+						disable_devicons = false,
+					},
 					fzf = {
 						fuzzy = true, -- false will only do exact matching
 						override_generic_sorter = true, -- override the generic sorter
