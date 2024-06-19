@@ -32,12 +32,6 @@ return {
 					frecency = {
 						show_scores = true,
 						show_unindexed = true,
-						ignore_patterns = {
-							"*/.git/*",
-							"*/tmp/*",
-							"*/lua-language-server/*",
-						},
-						workspace_scan_cmd = "LUA",
 						disable_devicons = false,
 					},
 					fzf = {
