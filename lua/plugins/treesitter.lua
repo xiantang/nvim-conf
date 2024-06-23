@@ -24,6 +24,7 @@ return {
 				"thrift",
 				"sql",
 				"json",
+				"markdown",
 			}
 			-- local path = "/usr/local/lib/nvim/parser"
 			-- vim.opt.runtimepath:append(path)

@@ -11,6 +11,7 @@ if vim.g.neovide then
 	vim.o.guifont = "FiraCode Nerd Font Mono:h15"
 end
 vim.g.hardtime_default_on = 1
+vim.opt.conceallevel = 1
 vim.g.hardtime_maxcount = 2
 vim.g.hardtime_timeout = 700
 vim.g.list_of_normal_keys = { "h", "j", "k", "l", "-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>" }
