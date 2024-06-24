@@ -1,4 +1,5 @@
 return {
+	{ "kevinhwang91/nvim-bqf", ft = "qf" },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
