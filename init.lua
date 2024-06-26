@@ -82,6 +82,7 @@ safeRequire("lazy").setup("plugins", {
 vim.cmd.colorscheme("darcula-dark")
 vim.cmd.cnoreabbrev([[git Git]])
 vim.cmd.cnoreabbrev([[gp Git push]])
+vim.cmd.cnoreabbrev([[w' w]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
 local function fix_it_when_its_wrong(wrong, right)
 	-- syntax keyword WordError wrong
