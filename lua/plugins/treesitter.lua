@@ -84,6 +84,7 @@ return {
 					parent = node:parent()
 				end
 				if not parent then
+					vim.cmd("normal! gv")
 					return
 				end
 
