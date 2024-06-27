@@ -33,7 +33,7 @@ return {
 
 				-- will cause panic so I disable it
 				incremental_selection = {
-					enable = true,
+					enable = false,
 					keymaps = {
 						init_selection = false,
 						node_incremental = "v",
@@ -58,6 +58,62 @@ return {
 					end,
 				},
 			})
+
+			local ts_utils = require("nvim-treesitter.ts_utils")
+
+			local node_list = {}
+			local current_index = nil
+
+			function start_select()
+				node_list = {}
+				current_index = nil
+				local node = ts_utils.get_node_at_cursor()
+				if not node then
+					return
+				end
+				table.insert(node_list, node)
+				current_index = 1
+				local start_row, start_col, end_row, end_col = node:range()
+				vim.fn.setpos(".", { 0, start_row + 1, start_col + 1, 0 })
+				vim.cmd("normal! v")
+				vim.fn.setpos(".", { 0, end_row + 1, end_col, 0 })
+			end
+
+			function select_parent_node()
+				local node = ts_utils.get_node_at_cursor()
+				if current_index then
+					node = node_list[current_index]
+				end
+
+				local parent = node:parent()
+				if not parent then
+					return
+				end
+
+				table.insert(node_list, parent)
+				current_index = current_index + 1
+				local start_row, start_col, end_row, end_col = parent:range()
+				vim.fn.setpos(".", { 0, start_row + 1, start_col + 1, 0 })
+				vim.cmd("normal! v")
+				vim.fn.setpos(".", { 0, end_row + 1, end_col, 0 })
+			end
+
+			function restore_last_selection()
+				if not current_index or current_index <= 1 then
+					return
+				end
+
+				current_index = current_index - 1
+				local node = node_list[current_index]
+				local start_row, start_col, end_row, end_col = node:range()
+				vim.fn.setpos(".", { 0, start_row + 1, start_col + 1, 0 })
+				vim.cmd("normal! v")
+				vim.fn.setpos(".", { 0, end_row + 1, end_col, 0 })
+			end
+
+			vim.api.nvim_set_keymap("n", "v", ":lua start_select()<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("v", "v", ":lua select_parent_node()<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("v", "<BS>", ":lua restore_last_selection()<CR>", { noremap = true, silent = true })
 		end,
 	},
 	{
