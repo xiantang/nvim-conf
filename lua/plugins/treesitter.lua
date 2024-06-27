@@ -73,20 +73,19 @@ return {
 				end
 				table.insert(node_list, node)
 				current_index = 1
-				local start_row, start_col, end_row, end_col = node:range()
-				vim.fn.setpos(".", { 0, start_row + 1, start_col + 1, 0 })
 				vim.cmd("normal! v")
-				vim.fn.setpos(".", { 0, end_row + 1, end_col, 0 })
 			end
 
 			function select_parent_node()
-				local node = ts_utils.get_node_at_cursor()
-				if current_index then
-					node = node_list[current_index]
+				if current_index == nil then
+					print("Selection not initialized!")
+					return
 				end
 
+				local node = node_list[current_index]
 				local parent = node:parent()
 				if not parent then
+					print("No parent node found!")
 					return
 				end
 
@@ -100,6 +99,7 @@ return {
 
 			function restore_last_selection()
 				if not current_index or current_index <= 1 then
+					print("No previous selection found!")
 					return
 				end
 
