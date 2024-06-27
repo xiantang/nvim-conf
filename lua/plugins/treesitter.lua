@@ -35,7 +35,7 @@ return {
 				incremental_selection = {
 					enable = false,
 					keymaps = {
-						init_selection = false,
+						init_selection = true,
 						node_incremental = "v",
 						node_decremental = "<BS>",
 					},
@@ -67,19 +67,17 @@ return {
 			function start_select()
 				node_list = {}
 				current_index = nil
-				local node = ts_utils.get_node_at_cursor()
-				if not node then
-					return
-				end
-				table.insert(node_list, node)
-				current_index = 1
 				vim.cmd("normal! v")
 			end
 
 			function select_parent_node()
 				if current_index == nil then
-					print("Selection not initialized!")
-					return
+					local node = ts_utils.get_node_at_cursor()
+					if not node then
+						return
+					end
+					table.insert(node_list, node)
+					current_index = 1
 				end
 
 				local node = node_list[current_index]
