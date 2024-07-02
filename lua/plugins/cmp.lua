@@ -1,11 +1,11 @@
 return {
 	{
 		"tzachar/cmp-tabnine",
-		enabled = function()
-			return vim.fn.has("mac") == true
-		end,
+		-- enabled = function()
+		-- 	return vim.fn.has("mac") == true
+		-- end,
 		build = "./install.sh",
-		dev = true,
+		-- dev = true,
 		dependencies = "hrsh7th/nvim-cmp",
 	},
 	{
@@ -201,7 +201,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "vsnip" },
 					{ name = "nvim_lua" },
-					{ name = "cmp_tabnine", max_item_count = 1 },
+					{ name = "cmp_tabnine" },
 					{ name = "nvim_lsp" },
 				}, { { name = "neorg" } }, {}),
 			})
