@@ -1,5 +1,19 @@
 return {
 	{
+		"github/copilot.vim",
+		config = function()
+			vim.cmd([[
+	let g:copilot_filetypes = {
+	\ '*': v:false,
+	\ 'lua': v:true,
+	\ 'markdown': v:true,
+	\ }
+	imap <silent><script><expr> <C-e> copilot#Accept("\<CR>")
+        let g:copilot_no_tab_map = v:true
+			]])
+		end,
+	},
+	{
 		"robitx/gp.nvim",
 		config = function()
 			require("gp").setup({
