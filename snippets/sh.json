@@ -1,8 +1,8 @@
 {
-  "for_in": {
-    "prefix": "forr",
-    "body": "for ${1:VAR} in ${0:LIST}\ndo\n\techo \"\\$${1:VAR}\"\ndone\n",
-    "description": "for loop in list"
+  "while_read_lines_from_variable": {
+      "prefix": "whilereadvar",
+      "body": "while IFS= read -r ${1:line}; do\n    echo \"\\$${1:line}\"\ndone <<< \"\\$${2:the_list}\"",
+      "description": "while read loop to process lines from a variable"
   },
   "for_i": {
     "prefix": "fori",
