@@ -12,3 +12,10 @@ snippet forr "for loop through array elements"
 	for ${1:item} in "\${${2:array}[@]}"; do
 	    echo "\$${1:item}"
 	done
+
+snippet <<e "when assigning multi-line string to a shell variable"
+	<<EOF
+		${1:text}
+	EOF
+snippet sets "Set strict mode"
+	set -euo pipefail

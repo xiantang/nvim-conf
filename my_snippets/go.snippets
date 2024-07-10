@@ -39,20 +39,30 @@ snippet el "Snippet for else branch"
 	    ${0}
 	}
 
-snippet logi "log info"
-	logutils.Logger().WithField("${1}",${2}).Info("${3}")
+snippet sw "switch"
+	switch ${1:var} {
+	case ${2:value1}:
+		${3}
+	case ${4:value2}:
+		${5}
+	default:
+		${0}
+	}
 
-snippet loge "log error"
-	log.Logger().WithError(err).Error("${3}")
-
-snippet logce "log context error"
-	logutils.Logger().WithCtx(${1}).WithError(err).WithField("${2}",${3}).Error("${4}")
-
-snippet logci "log context info"
-	logutils.Logger().WithCtx(${1}).WithField("${2}",${3}).Info("${4}")
-
-snippet logcd "log context debug"
-	logutils.Logger().WithCtx(${1}).WithField("${2}",${3}).Debug("${4}")
+# snippet logi "log info"
+# 	logutils.Logger().WithField("${1}",${2}).Info("${3}")
+#
+# snippet loge "log error"
+# 	log.Logger().WithError(err).Error("${3}")
+#
+# snippet logce "log context error"
+# 	logutils.Logger().WithCtx(${1}).WithError(err).WithField("${2}",${3}).Error("${4}")
+#
+# snippet logci "log context info"
+# 	logutils.Logger().WithCtx(${1}).WithField("${2}",${3}).Info("${4}")
+#
+# snippet logcd "log context debug"
+# 	logutils.Logger().WithCtx(${1}).WithField("${2}",${3}).Debug("${4}")
 
 snippet ife "Use the statement before the if condition"
 	if err != nil {
