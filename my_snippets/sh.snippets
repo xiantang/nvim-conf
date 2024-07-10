@@ -1,0 +1,14 @@
+snippet whilereadvar "while read loop to process lines from a variable"
+	while IFS= read -r ${1:line}; do
+	    echo "\$${1:line}"
+	done <<< "\$${2:the_list}"
+
+snippet fori "An index-based iteration for loop"
+	for ((${1:i} = 0; ${1:i} < ${0:10}; ${1:i}++)); do
+	    echo "\$${1:i}"
+	done
+
+snippet forr "for loop through array elements"
+	for ${1:item} in "\${${2:array}[@]}"; do
+	    echo "\$${1:item}"
+	done

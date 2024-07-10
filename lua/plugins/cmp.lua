@@ -160,7 +160,8 @@ return {
 				},
 				snippet = {
 					expand = function(args)
-						vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+						-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+						require("luasnip").lsp_expand(args.body)
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
@@ -181,6 +182,8 @@ return {
 							cmp.select_next_item()
 							-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
 							-- they way you will only jump inside the snippet region
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
 						elseif vim.fn["vsnip#available"](1) == 1 then
 							feedkey("<Plug>(vsnip-expand-or-jump)", "")
 						else
@@ -199,7 +202,7 @@ return {
 				}),
 
 				sources = cmp.config.sources({
-					{ name = "vsnip" },
+					{ name = "luasnip" },
 					{ name = "nvim_lua" },
 					{ name = "cmp_tabnine" },
 					{ name = "nvim_lsp" },

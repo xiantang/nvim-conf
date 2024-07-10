@@ -1,0 +1,25 @@
+snippet iferr "if error Wrap"
+	if err := ${1}; err != nil {
+		return errors.Wrap(err, "${2}")
+	}
+
+snippet iferrf "Use the statement before the if condition"
+	if err := ${1}; err != nil {
+		return errors.Wrapf(err, "${2}", ${3})
+	}
+
+snippet stru "struct"
+	type ${1} struct {
+		${2}
+	}
+
+snippet inter "interface"
+	type ${1} interface {
+		${2}
+	}
+
+snippet sli "slice literal"
+	${1} := []${2}{${3}}
+
+snippet gorm "gorm tag"
+	\`gorm:"${1}"\`
