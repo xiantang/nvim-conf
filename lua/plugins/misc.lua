@@ -7,6 +7,7 @@ return {
 	\ '*': v:false,
 	\ 'lua': v:true,
 	\ 'markdown': v:true,
+	\ 'snippets': v:true,
 	\ }
 	imap <silent><script><expr> <C-e> copilot#Accept("\<CR>")
         let g:copilot_no_tab_map = v:true
