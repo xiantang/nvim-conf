@@ -21,8 +21,10 @@ return {
 				-- 9 means cmp_kind is  module
 				if kind == 9 then
 					local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-					vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "." })
-					vim.api.nvim_win_set_cursor(0, { row, col + 1 })
+					-- fist line will be `package abc`
+					if row > 1 then
+						vim.api.nvim_put({ "." }, "c", true, true)
+					end
 				else
 					if kind == 3 or kind == 2 then
 						cmp_autopairs.on_confirm_done()(ops)
