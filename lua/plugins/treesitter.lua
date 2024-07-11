@@ -71,6 +71,24 @@ return {
 				vim.cmd("normal! v")
 			end
 
+			function find_expand_node(node)
+				local start_row, start_col, end_row, end_col = node:range()
+				local parent = node:parent()
+				if parent == nil then
+					return nil
+				end
+				local parent_start_row, parent_start_col, parent_end_row, parent_end_col = parent:range()
+				if
+					start_row == parent_start_row
+					and start_col == parent_start_col
+					and end_row == parent_end_row
+					and end_col == parent_end_col
+				then
+					return find_expand_node(parent)
+				end
+				return parent
+			end
+
 			function select_parent_node()
 				if current_index == nil then
 					return
@@ -81,7 +99,7 @@ return {
 				if node == nil then
 					parent = ts_utils.get_node_at_cursor()
 				else
-					parent = node:parent()
+					parent = find_expand_node(node)
 				end
 				if not parent then
 					vim.cmd("normal! gv")
