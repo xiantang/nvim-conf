@@ -75,3 +75,13 @@ snippet mockr "mock and return"
 
 snippet mockt "mock and To"
 		mockey.Mock(${1:text}).To(${2:text}).Build()
+
+snippet sw
+	switch ${1:var} {
+	case ${2:value1}:
+		${3}
+	case ${4:value2}:
+		${5}
+	default:
+		${6}
+	}

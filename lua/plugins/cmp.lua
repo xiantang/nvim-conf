@@ -23,7 +23,7 @@ return {
 					local row, col = unpack(vim.api.nvim_win_get_cursor(0))
 					-- fist line will be `package abc`
 					if row > 1 then
-						vim.api.nvim_put({ "." }, "c", true, true)
+						vim.api.nvim_put({ "." }, "c", false, true)
 					end
 				else
 					if kind == 3 or kind == 2 then
