@@ -84,6 +84,12 @@ vim.cmd.cnoreabbrev([[git Git]])
 vim.cmd.cnoreabbrev([[gp Git push]])
 vim.cmd.cnoreabbrev([[w' w]])
 vim.cmd.cnoreabbrev([[Gbrowse GBrowse]])
+vim.cmd([[
+nnoremap $ g$
+nnoremap 0 g0
+nnoremap <expr> j v:count > 1 ? "j" : "gj"
+nnoremap <expr> k v:count > 1 ? "k" : "gk"
+]])
 local function fix_it_when_its_wrong(wrong, right)
 	-- syntax keyword WordError wrong
 	vim.cmd.abbreviate(wrong, right)
