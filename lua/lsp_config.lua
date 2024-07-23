@@ -83,8 +83,8 @@ local on_attach = function(client, bufnr)
 	-- Mappings.
 	local opts = { noremap = true, silent = true }
 	buf_set_keymap("n", "<Enter>", "<Nop>", opts)
-	buf_set_keymap("n", "gD", "<cmd>Lspsaga goto_type_definition<CR>", opts)
-	buf_set_keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 	-- buf_set_keymap("n", "gv", "<cmd>Lspsaga peek_definition<CR>", opts)
 	buf_set_keymap("n", "<Leader>ga", "<cmd>Lspsaga code_action<CR>", opts)
 	-- -- coode action for extract function or variable
@@ -152,10 +152,10 @@ local common_servers = {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = safeRequire("cmp_nvim_lsp").default_capabilities(capabilities)
-capabilities.textDocument.foldingRange = {
-	dynamicRegistration = false,
-	lineFoldingOnly = true,
-}
+-- capabilities.textDocument.foldingRange = {
+-- 	dynamicRegistration = false,
+-- 	lineFoldingOnly = true,
+-- }
 for _, server in pairs(common_servers) do
 	-- https://www.reddit.com/r/neovim/comments/mm1h0t/lsp_diagnostics_remain_stuck_can_someone_please/
 	nvim_lsp[server].setup({

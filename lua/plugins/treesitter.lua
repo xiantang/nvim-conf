@@ -130,14 +130,7 @@ return {
 			vim.api.nvim_set_keymap("n", "v", ":lua start_select()<CR>", { noremap = true, silent = true })
 			vim.api.nvim_set_keymap("v", "v", ":lua select_parent_node()<CR>", { noremap = true, silent = true })
 			vim.api.nvim_set_keymap("v", "<BS>", ":lua restore_last_selection()<CR>", { noremap = true, silent = true })
-		end,
-	},
-	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-		config = function()
+
 			require("nvim-treesitter.configs").setup({
 				-- parser_install_dir = "/opt/homebrew/Cellar/neovim/0.9.2/lib/nvim/parser",
 				textobjects = {

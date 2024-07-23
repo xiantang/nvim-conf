@@ -1,7 +1,6 @@
 return {
 	{
 		"kevinhwang91/nvim-ufo",
-		event = { "BufReadPost" },
 		config = function()
 			local handler = function(virtText, lnum, endLnum, width, truncate)
 				local newVirtText = {}
