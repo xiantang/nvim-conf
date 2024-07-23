@@ -8,37 +8,23 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local Path = require("plenary.path")
 
--- 存储书签的表
 M.bookmarks = {}
--- 存储 extmark 的表
 M.extmarks = {}
--- 创建 namespace
 M.namespace = vim.api.nvim_create_namespace("bookmarks")
 
--- 获取当前项目的根目录
-local function get_project_root()
-	local current_file = vim.fn.expand("%:p")
-	local current_dir = vim.fn.fnamemodify(current_file, ":h")
-	local git_dir = vim.fn.finddir(".git", current_dir .. ";")
-	return git_dir and vim.fn.fnamemodify(git_dir, ":h") or current_dir
-end
-
--- 获取书签文件路径
 local function get_bookmark_file()
-	local project_root = get_project_root()
+	local project_root = vim.fn.getcwd()
 	local project_name = vim.fn.fnamemodify(project_root, ":t")
 	local cache_dir = vim.fn.stdpath("cache")
 	return Path:new(cache_dir, "nvim_bookmarks", project_name .. "_bookmarks.json")
 end
 
--- 保存书签到文件
 local function save_bookmarks()
 	local bookmark_file = get_bookmark_file()
 	bookmark_file:parent():mkdir({ parents = true, exists_ok = true })
 	bookmark_file:write(vim.fn.json_encode(M.bookmarks), "w")
 end
 
--- 从文件加载书签
 local function load_bookmarks()
 	local bookmark_file = get_bookmark_file()
 	if bookmark_file:exists() then
@@ -49,28 +35,34 @@ local function load_bookmarks()
 	end
 end
 
--- 更新 virtual text
+local function set_extmark(bufnr, line, note)
+	local id = vim.api.nvim_buf_set_extmark(bufnr, M.namespace, line - 1, -1, {
+		virt_text = { { "🔖 " .. note, "Comment" } },
+		virt_text_pos = "eol",
+	})
+	table.insert(M.extmarks, { id = id, bufnr = bufnr })
+end
+
 local function update_virtual_text()
 	-- 清除所有旧的 extmarks
 	for _, extmark in pairs(M.extmarks) do
-		vim.api.nvim_buf_del_extmark(extmark.bufnr, M.namespace, extmark.id)
+		pcall(vim.api.nvim_buf_del_extmark, extmark.bufnr, M.namespace, extmark.id)
 	end
 	M.extmarks = {}
 
-	-- 为每个书签添加新的 virtual text
-	for key, bookmark in pairs(M.bookmarks) do
-		local bufnr = vim.fn.bufnr(bookmark.file)
-		if bufnr ~= -1 then
-			local id = vim.api.nvim_buf_set_extmark(bufnr, M.namespace, bookmark.line - 1, -1, {
-				virt_text = { { "🔖 " .. bookmark.note, "Comment" } },
-				virt_text_pos = "eol",
-			})
-			table.insert(M.extmarks, { id = id, bufnr = bufnr })
+	-- 为每个打开的缓冲区添加新的 virtual text
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_is_loaded(buf) then
+			local file = vim.api.nvim_buf_get_name(buf)
+			for _, bookmark in pairs(M.bookmarks) do
+				if bookmark.file == file then
+					set_extmark(buf, bookmark.line, bookmark.note)
+				end
+			end
 		end
 	end
 end
 
--- 添加或删除书签
 function M.toggle_bookmark()
 	load_bookmarks()
 	local file = vim.fn.expand("%:p")
@@ -78,20 +70,16 @@ function M.toggle_bookmark()
 	local key = file .. ":" .. line
 
 	if M.bookmarks[key] then
-		-- 如果书签存在，删除它
 		M.bookmarks[key] = nil
-		save_bookmarks()
-		update_virtual_text()
 	else
-		-- 如果书签不存在，添加它
 		vim.ui.input({ prompt = "Enter bookmark note: " }, function(note)
 			if note then
 				M.bookmarks[key] = { file = file, line = line, note = note }
-				save_bookmarks()
-				update_virtual_text()
 			end
 		end)
 	end
+	save_bookmarks()
+	update_virtual_text()
 end
 
 local bookmark_previewer = function(opts)
@@ -110,13 +98,9 @@ local bookmark_previewer = function(opts)
 				winid = self.state.winid,
 				callback = function(bufnr)
 					local lineNumber = entry.lnum
-					-- 读取文件内容
-					local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-					-- 设置光标位置到目标行
-					vim.api.nvim_win_set_cursor(self.state.winid, { lineNumber, 0 })
-					-- 高亮目标行
+					vim.api.nvim_buf_clear_namespace(bufnr, -1, 0, -1)
 					vim.api.nvim_buf_add_highlight(bufnr, -1, "TelescopePreviewLine", lineNumber - 1, 0, -1)
-					-- 确保目标行在预览窗口的中间
+					vim.api.nvim_win_set_cursor(self.state.winid, { lineNumber, 0 })
 					vim.api.nvim_win_call(self.state.winid, function()
 						vim.cmd("normal! zz")
 					end)
@@ -124,6 +108,33 @@ local bookmark_previewer = function(opts)
 			})
 		end,
 	})
+end
+
+function M.apply_buffer_virtual_text()
+	for _, extmark in pairs(M.extmarks) do
+		pcall(vim.api.nvim_buf_del_extmark, extmark.bufnr, M.namespace, extmark.id)
+	end
+
+	local current_file = vim.fn.expand("%:p")
+	local bufnr = vim.api.nvim_get_current_buf()
+
+	-- 获取当前缓冲区的所有 extmarks
+	local existing_extmarks = vim.api.nvim_buf_get_extmarks(bufnr, M.namespace, 0, -1, { details = true })
+	local extmark_lines = {}
+
+	-- 创建一个查找表，用于快速检查行是否已有 extmark
+	for _, extmark in ipairs(existing_extmarks) do
+		extmark_lines[extmark[2] + 1] = true -- extmark 行号从 0 开始，所以要 +1
+	end
+
+	for _, bookmark in pairs(M.bookmarks) do
+		if bookmark.file == current_file then
+			-- 检查该行是否已经有 extmark
+			if not extmark_lines[bookmark.line] then
+				set_extmark(bufnr, bookmark.line, bookmark.note)
+			end
+		end
+	end
 end
 
 function M.list_bookmarks()
@@ -134,7 +145,7 @@ function M.list_bookmarks()
 			file = bookmark.file,
 			line = bookmark.line,
 			note = bookmark.note,
-			display = string.format("%s:%d - %s", bookmark.file, bookmark.line, bookmark.note),
+			display = string.format("%s - %s:%d", bookmark.note, bookmark.file, bookmark.line),
 		})
 	end
 
@@ -149,7 +160,7 @@ function M.list_bookmarks()
 						display = entry.display,
 						ordinal = entry.display,
 						filename = entry.file,
-						lnum = entry.line,
+						lnum = tonumber(entry.line),
 					}
 				end,
 			}),
@@ -174,35 +185,32 @@ function M.list_bookmarks()
 		:find()
 end
 
--- 初始化
 function M.setup()
 	load_bookmarks()
 	update_virtual_text()
 
-	-- 设置自动命令以在缓冲区更改时更新 virtual text
+	--abc
 	vim.cmd([[
         augroup Bookmarks
             autocmd!
-            autocmd BufEnter * lua require('bookmarks').update_virtual_text()
+            autocmd BufRead * lua require('bookmarks').apply_buffer_virtual_text()
+            autocmd BufEnter * lua require('bookmarks').apply_buffer_virtual_text()
+            autocmd BufWritePost * lua require('bookmarks').apply_buffer_virtual_text()
         augroup END
     ]])
+
+	vim.api.nvim_set_keymap(
+		"n",
+		"<leader>mm",
+		'<cmd>lua require("bookmarks").toggle_bookmark()<CR>',
+		{ noremap = true, silent = true }
+	)
+	vim.api.nvim_set_keymap(
+		"n",
+		"<leader>ml",
+		'<cmd>lua require("bookmarks").list_bookmarks()<CR>',
+		{ noremap = true, silent = true }
+	)
 end
-
--- 设置键映射
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>mm",
-	'<cmd>lua require("bookmarks").toggle_bookmark()<CR>',
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>ml",
-	'<cmd>lua require("bookmarks").list_bookmarks()<CR>',
-	{ noremap = true, silent = true }
-)
-
--- 导出 update_virtual_text 函数
-M.update_virtual_text = update_virtual_text
 
 return M
