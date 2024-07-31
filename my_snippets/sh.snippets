@@ -19,3 +19,10 @@ snippet <<e "when assigning multi-line string to a shell variable"
 	EOF
 snippet sets "Set strict mode"
 	set -euo pipefail
+
+snippet forn "loop n to m numbers"
+	for i in {${1:start}..${2:end}}
+	do
+	 echo "$i"
+	done
+	

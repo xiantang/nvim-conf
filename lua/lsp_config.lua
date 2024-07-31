@@ -214,6 +214,7 @@ nvim_lsp.gopls.setup({
 			usePlaceholders = false,
 			semanticTokens = true,
 			experimentalPostfixCompletions = true,
+			buildFlags = { "-tags=integration until core" },
 			analyses = {
 				unusedparams = true,
 				shadow = true,
