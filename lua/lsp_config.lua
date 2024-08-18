@@ -85,11 +85,9 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<Enter>", "<Nop>", opts)
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-	-- buf_set_keymap("n", "gv", "<cmd>Lspsaga peek_definition<CR>", opts)
-	buf_set_keymap("n", "<Leader>ga", "<cmd>Lspsaga code_action<CR>", opts)
 	-- -- coode action for extract function or variable
-	-- buf_set_keymap("v", "ga", "cmd>lua vim.lsp.bug.code_action()<CR>", opts)
-	buf_set_keymap("v", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
+	buf_set_keymap("v", "<Leader>ga", "<cmd>Lspsaga code_action<CR>", opts)
+	buf_set_keymap("n", "<Leader>ga", "<cmd>Lspsaga code_action<CR>", opts)
 	buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 	buf_set_keymap("n", "<space>dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
 	buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
@@ -102,7 +100,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<Leader>f", ":lua vim.lsp.buf.format()<CR>", opts)
 	-- if current buff end with _test.go, then set keymap for error
 	local buf_name = vim.api.nvim_buf_get_name(bufnr)
-	buf_set_keymap("n", "<space>ge", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+	buf_set_keymap("n", "<space>ge", "<cmd>lua  vim.diagnostic.goto_next()<CR>", opts)
 
 	-- Set autocommands conditional on server_capabilities
 	if client.server_capabilities.document_highlight then

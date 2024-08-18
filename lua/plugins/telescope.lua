@@ -28,6 +28,18 @@ return {
 			local actions = require("telescope.actions")
 			local action_state = require("telescope.actions.state")
 			require("telescope").setup({
+				defaults = {
+					mappings = {
+						n = {
+							["p"] = function(prompt_bufnr)
+								local current_picker = action_state.get_current_picker(prompt_bufnr)
+								local text = vim.fn.getreg("+"):gsub("\n", "") -- which register depends on clipboard option
+								current_picker:set_prompt(text, false)
+								current_picker:set_prompt(text, false)
+							end,
+						},
+					},
+				},
 				extensions = {
 					frecency = {
 						show_scores = true,

@@ -278,4 +278,11 @@ return {
 			vim.keymap.set("n", "]f", goto_next_function, { noremap = true, silent = true })
 		end,
 	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function() end,
+	},
 }

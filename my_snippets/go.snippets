@@ -2,10 +2,7 @@ snippet func "Snippet for function declaration"
 	func ${1}(${2}) ${3} {
 	    ${0}
 	}
-
-snippet for "Snippet for a pure for loop"
-	for ${1} {
-	    ${0}
+snippet for "Snippet for a pure for loop" for ${1} { ${0}
 	}
 
 snippet fori "Snippet for a for loop"
@@ -85,3 +82,31 @@ snippet sw
 	default:
 		${6}
 	}
+
+snippet tfpost
+	func Test${1:Name}(t *testing.T) {
+
+		router := testfunctions.SetupRouter()
+
+		mockey.PatchConvey("Test${1:Name}", t, func() {
+
+			// req and resp body
+			req:= ${2:YourRequest}{
+			}
+			resp := ${3:YourResponse}{}
+
+			// mock code
+			{
+						mocktcc.UsingDefaultValue()
+			}
+
+			code, err := router.DoPost("${4:url}", req, &resp)
+			if err != nil {
+				t.Error(err)
+			}
+
+			// assert
+			assert.Equal(t, 200, code)
+		})
+	}
+
