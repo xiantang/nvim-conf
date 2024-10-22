@@ -88,6 +88,8 @@ local on_attach = function(client, bufnr)
 	-- -- coode action for extract function or variable
 	buf_set_keymap("v", "<Leader>ga", "<cmd>Lspsaga code_action<CR>", opts)
 	buf_set_keymap("n", "<Leader>ga", "<cmd>Lspsaga code_action<CR>", opts)
+	-- buf_set_keymap("v", "ga", "cmd>lua vim.lsp.bug.code_action()<CR>", opts)
+	-- buf_set_keymap("v", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 	buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 	buf_set_keymap("n", "<space>dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
 	buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)

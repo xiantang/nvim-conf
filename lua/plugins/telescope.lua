@@ -94,15 +94,4 @@ return {
 			})
 		end,
 	},
-
-	{
-		"nvim-telescope/telescope-frecency.nvim",
-		keys = {
-			{ "<C-e>", ":Telescope frecency workspace=CWD<CR>", {} },
-		},
-
-		config = function()
-			require("telescope").load_extension("frecency")
-		end,
-	},
 }
