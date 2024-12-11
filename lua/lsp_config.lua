@@ -213,7 +213,7 @@ nvim_lsp.gopls.setup({
 		gopls = {
 			-- PAINPOINT
 			usePlaceholders = false,
-			semanticTokens = true,
+			-- semanticTokens = true,
 			experimentalPostfixCompletions = true,
 			analyses = {
 				unusedparams = true,
