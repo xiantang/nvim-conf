@@ -83,13 +83,14 @@ local on_attach = function(client, bufnr)
 	-- Mappings.
 	local opts = { noremap = true, silent = true }
 	buf_set_keymap("n", "<Enter>", "<Nop>", opts)
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-	-- -- coode action for extract function or variable
-	buf_set_keymap("v", "<Leader>ga", "<cmd>Lspsaga code_action<CR>", opts)
+	buf_set_keymap("n", "gD", "<cmd>Lspsaga goto_type_definition<CR>", opts)
+	buf_set_keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
+	buf_set_keymap("n", "<Leader>gd", "<cmd>vsplit|Lspsaga goto_definition<CR>", opts)
+	-- buf_set_keymap("n", "gv", "<cmd>Lspsaga peek_definition<CR>", opts)
 	buf_set_keymap("n", "<Leader>ga", "<cmd>Lspsaga code_action<CR>", opts)
+	-- -- coode action for extract function or variable
 	-- buf_set_keymap("v", "ga", "cmd>lua vim.lsp.bug.code_action()<CR>", opts)
-	-- buf_set_keymap("v", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
+	buf_set_keymap("v", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 	buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 	buf_set_keymap("n", "<space>dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
 	buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
@@ -102,7 +103,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<Leader>f", ":lua vim.lsp.buf.format()<CR>", opts)
 	-- if current buff end with _test.go, then set keymap for error
 	local buf_name = vim.api.nvim_buf_get_name(bufnr)
-	buf_set_keymap("n", "<space>ge", "<cmd>lua  vim.diagnostic.goto_next()<CR>", opts)
+	buf_set_keymap("n", "<space>ge", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 
 	-- Set autocommands conditional on server_capabilities
 	if client.server_capabilities.document_highlight then
@@ -151,11 +152,11 @@ local common_servers = {
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = safeRequire("cmp_nvim_lsp").default_capabilities(capabilities)
--- capabilities.textDocument.foldingRange = {
--- 	dynamicRegistration = false,
--- 	lineFoldingOnly = true,
--- }
+capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
 for _, server in pairs(common_servers) do
 	-- https://www.reddit.com/r/neovim/comments/mm1h0t/lsp_diagnostics_remain_stuck_can_someone_please/
 	nvim_lsp[server].setup({
@@ -214,7 +215,6 @@ nvim_lsp.gopls.setup({
 			usePlaceholders = false,
 			semanticTokens = true,
 			experimentalPostfixCompletions = true,
-			buildFlags = { "-tags=integration until core" },
 			analyses = {
 				unusedparams = true,
 				shadow = true,

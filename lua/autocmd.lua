@@ -15,7 +15,7 @@ endfunction
 let g:undotree_WindowLayout = 3
 au BufEnter * call Undotree_record()
 au TermOpen * setlocal nobuflisted
-au WinResized * wincmd =
+"au WinResized * wincmd =
 au BufEnter leetcode.cn_*.txt set filetype=go
 " https://github.com/fatih/vim-go/issues/1757
 au BufEnter *.conf set filetype=config
