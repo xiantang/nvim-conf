@@ -85,6 +85,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<Enter>", "<Nop>", opts)
 	buf_set_keymap("n", "gD", "<cmd>Lspsaga goto_type_definition<CR>", opts)
 	buf_set_keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
+	buf_set_keymap("n", "<Leader>gd", "<cmd>vsplit|Lspsaga goto_definition<CR>", opts)
 	-- buf_set_keymap("n", "gv", "<cmd>Lspsaga peek_definition<CR>", opts)
 	buf_set_keymap("n", "<Leader>ga", "<cmd>Lspsaga code_action<CR>", opts)
 	-- -- coode action for extract function or variable
@@ -150,8 +151,7 @@ local common_servers = {
 	"rnix",
 }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = safeRequire("cmp_nvim_lsp").default_capabilities(capabilities)
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
@@ -212,7 +212,7 @@ nvim_lsp.gopls.setup({
 		gopls = {
 			-- PAINPOINT
 			usePlaceholders = false,
-			semanticTokens = true,
+			-- semanticTokens = true,
 			experimentalPostfixCompletions = true,
 			analyses = {
 				unusedparams = true,

@@ -61,8 +61,6 @@ imap <C-a> <Home>
 imap <C-e> <End>
 " nnoremap <silent><expr> j v:count > 0 ? "m'" . v:count . "j" : 'gj'
 " nnoremap <silent><expr> k v:count > 0 ? "m'" . v:count . "k" : 'gk'
-nnoremap <expr> j v:count > 1 ? "j" : "gj"
-nnoremap <expr> k v:count > 1 ? "k" : "gk"
 if !has('nvim')
 syntax on
 let g:netrw_bufsettings = 'noma nomod rnu nobl nowrap ro' 
