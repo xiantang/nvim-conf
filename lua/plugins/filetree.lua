@@ -33,18 +33,6 @@ return {
 					trim_left = "<",
 					trim_right = ">",
 				},
-				windows = {
-					-- Maximum number of windows to show side by side
-					max_number = math.huge,
-					-- Whether to show preview of file/directory under cursor
-					preview = true,
-					-- Width of focused window
-					width_focus = 50,
-					-- Width of non-focused window
-					width_nofocus = 50,
-					-- Width of preview window
-					width_preview = 50,
-				},
 			})
 			local window_handle
 			local mini_files = require("mini.files")
