@@ -13,32 +13,33 @@ return {
 			require("luasnip.loaders.from_snipmate").lazy_load({
 				paths = { vim.fn.expand("~/.config/nvim/my_snippets") },
 			})
+
+			local ls = require("luasnip")
+			vim.api.nvim_create_autocmd("CursorMovedI", {
+				pattern = "*",
+				callback = function(ev)
+					if not ls.session or not ls.session.current_nodes[ev.buf] or ls.session.jump_active then
+						return
+					end
+
+					local current_node = ls.session.current_nodes[ev.buf]
+					local current_start, current_end = current_node:get_buf_position()
+					current_start[1] = current_start[1] + 1 -- (1, 0) indexed
+					current_end[1] = current_end[1] + 1 -- (1, 0) indexed
+					local cursor = vim.api.nvim_win_get_cursor(0)
+
+					if
+						cursor[1] < current_start[1]
+						or cursor[1] > current_end[1]
+						or cursor[2] < current_start[2]
+						or cursor[2] > current_end[2]
+					then
+						ls.unlink_current()
+					end
+				end,
+			})
 		end,
 
 		event = "InsertEnter",
-	},
-	{
-		"hrsh7th/vim-vsnip",
-		event = "InsertEnter",
-		config = function()
-			vim.cmd([[
-			  imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-			  smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-				imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-				smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-				let g:vsnip_filetypes = {}
-				let g:vsnip_filetypes.go = ['go']
-				let g:vsnip_filetypes.lua = ['lua']
-				let g:vsnip_filetypes.python = ['python']
-				let g:vsnip_filetypes.sh = ['sh']
-				let g:vsnip_filetypes.json = ['json']
-				let g:vsnip_filetypes.markdown = ['markdown']
-				let g:vsnip_filetypes.gitcommit = ['gitcommit']
-				let g:vsnip_filetypes.sql = ['sql']
-				" let g:vsnip_filetypes.norg = ['norg']
-				let g:vsnip_filetypes.c = ['c']
-				let g:vsnip_snippet_dir = '~/.config/nvim/snippets'
-			]])
-		end,
 	},
 }
