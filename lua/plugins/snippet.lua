@@ -1,9 +1,5 @@
 return {
 	{
-		"hrsh7th/vim-vsnip-integ",
-		event = "InsertEnter",
-	},
-	{
 		"L3MON4D3/LuaSnip",
 		config = function()
 			require("luasnip.loaders.from_vscode").load({
