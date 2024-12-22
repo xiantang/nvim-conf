@@ -1,72 +1,94 @@
 return {
 	{
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		lazy = false,
 		keys = {
 			{
 				"<Leader>l",
-				require("lib").location,
+				":NvimTreeFindFile <CR>",
 				desc = "smart location",
 			},
 			{
-				"-",
-				require("lib").location,
-				desc = "current",
-			},
-			{
-				"_",
-				":lua MiniFiles.open()<CR>",
-				desc = "oil",
+				"<Leader>t",
+				":NvimTreeToggle <CR>",
 			},
 		},
-		"xiantang/mini.files",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
 		config = function()
-			require("mini.files").setup({
-				mappings = {
-					close = "q",
-					go_in = "l",
-					go_in_plus = "<CR>",
-					go_out = "h",
-					go_out_plus = "H",
-					reset = "<BS>",
-					reveal_cwd = "@",
-					show_help = "g?",
-					synchronize = "=",
-					trim_left = "<",
-					trim_right = ">",
-				},
-			})
-			local window_handle
-			local mini_files = require("mini.files")
-
-			local group = vim.api.nvim_create_augroup("mini.files", { clear = true })
-			vim.api.nvim_create_autocmd("User", {
-				pattern = "MiniFilesBufferCreate",
-				desc = "define commands/keymaps for mini.files",
-				group = group,
-				callback = function(args)
-					window_handle = vim.api.nvim_get_current_win()
-					-- mini_files.open(vim.api.nvim_buf_get_name(0))
-					local buf_id = args.data.buf_id
-					vim.keymap.set("n", "s", function()
-						local entry = mini_files.get_fs_entry()
-						if not entry then
-							return
-						end
-						vim.api.nvim_win_call(window_handle, function()
-							mini_files.close()
-							vim.cmd.vsplit({ args = { entry.path } })
-						end)
-					end, {
-						buffer = buf_id,
-						desc = "open from mini.files in vertical split",
-					})
-				end,
-			})
-			vim.api.nvim_create_autocmd("User", {
-				pattern = "MiniFilesActionRename",
-				callback = function(event)
-					Snacks.rename.on_rename_file(event.data.from, event.data.to)
-				end,
-			})
+			require("nvim-tree").setup({})
 		end,
 	},
+	-- {
+	-- 	keys = {
+	-- 		{
+	-- 			"<Leader>l",
+	-- 			require("lib").location,
+	-- 			desc = "smart location",
+	-- 		},
+	-- 		{
+	-- 			"-",
+	-- 			require("lib").location,
+	-- 			desc = "current",
+	-- 		},
+	-- 		{
+	-- 			"_",
+	-- 			":lua MiniFiles.open()<CR>",
+	-- 			desc = "oil",
+	-- 		},
+	-- 	},
+	-- 	"xiantang/mini.files",
+	-- 	config = function()
+	-- 		require("mini.files").setup({
+	-- 			mappings = {
+	-- 				close = "q",
+	-- 				go_in = "l",
+	-- 				go_in_plus = "<CR>",
+	-- 				go_out = "h",
+	-- 				go_out_plus = "H",
+	-- 				reset = "<BS>",
+	-- 				reveal_cwd = "@",
+	-- 				show_help = "g?",
+	-- 				synchronize = "=",
+	-- 				trim_left = "<",
+	-- 				trim_right = ">",
+	-- 			},
+	-- 		})
+	-- 		local window_handle
+	-- 		local mini_files = require("mini.files")
+	--
+	-- 		local group = vim.api.nvim_create_augroup("mini.files", { clear = true })
+	-- 		vim.api.nvim_create_autocmd("User", {
+	-- 			pattern = "MiniFilesBufferCreate",
+	-- 			desc = "define commands/keymaps for mini.files",
+	-- 			group = group,
+	-- 			callback = function(args)
+	-- 				window_handle = vim.api.nvim_get_current_win()
+	-- 				-- mini_files.open(vim.api.nvim_buf_get_name(0))
+	-- 				local buf_id = args.data.buf_id
+	-- 				vim.keymap.set("n", "s", function()
+	-- 					local entry = mini_files.get_fs_entry()
+	-- 					if not entry then
+	-- 						return
+	-- 					end
+	-- 					vim.api.nvim_win_call(window_handle, function()
+	-- 						mini_files.close()
+	-- 						vim.cmd.vsplit({ args = { entry.path } })
+	-- 					end)
+	-- 				end, {
+	-- 					buffer = buf_id,
+	-- 					desc = "open from mini.files in vertical split",
+	-- 				})
+	-- 			end,
+	-- 		})
+	-- 		vim.api.nvim_create_autocmd("User", {
+	-- 			pattern = "MiniFilesActionRename",
+	-- 			callback = function(event)
+	-- 				Snacks.rename.on_rename_file(event.data.from, event.data.to)
+	-- 			end,
+	-- 		})
+	-- 	end,
+	-- },
 }
