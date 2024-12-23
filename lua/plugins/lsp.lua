@@ -100,7 +100,7 @@ return {
 					enable = false,
 				},
 				beacon = {
-					enable = true,
+					enable = false,
 					frequency = 20,
 				},
 				code_action_lightbulb = {
