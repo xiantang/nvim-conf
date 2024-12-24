@@ -66,8 +66,17 @@ return {
 			-- default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, via `opts_extend`
 
-			-- experimental auto-brackets support
-			-- completion = { accept = { auto_brackets = { enabled = true } } },
+			completion = {
+				menu = {
+					border = 'rounded',
+				},
+				documentation = {
+					auto_show = true,
+					window = {
+						border = 'rounded'
+					},
+				},
+			},
 
 			accept = {
 				auto_brackets = {
