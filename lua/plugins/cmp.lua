@@ -30,6 +30,9 @@ return {
 					require("luasnip").jump(direction)
 				end,
 			},
+			sources = {
+				cmdline = {},
+			},
 			-- sources = {
 			-- 	default = { "lsp", "path", "buffer", "luasnip" },
 			-- },
@@ -69,6 +72,9 @@ return {
 			completion = {
 				menu = {
 					border = 'rounded',
+					auto_show = function()
+						return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false and vim.bo.filetype ~= "TelescopePrompt"
+					end,
 				},
 				documentation = {
 					auto_show = true,
