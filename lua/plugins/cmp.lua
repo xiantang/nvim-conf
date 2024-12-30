@@ -78,11 +78,11 @@ return {
 				},
 			},
 
-			accept = {
-				auto_brackets = {
-					enabled = true,
-				},
-			},
+			-- accept = {
+			-- 	auto_brackets = {
+			-- 		enabled = true,
+			-- 	},
+			-- },
 
 			-- experimental signature help support
 			-- signature = { enabled = true }
