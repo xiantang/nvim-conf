@@ -4,6 +4,11 @@
     "body": "func $1($2) $3 {\n\t$0\n}",
     "description": "Snippet for function declaration"
   },
+  "len statement": {
+    "prefix": "len",
+    "body": "len($1)",
+    "description": "Snippet for len statement"
+  },
   "for statement": {
     "prefix": "for",
     "body": "for ${1}{\n\t$0\n}",

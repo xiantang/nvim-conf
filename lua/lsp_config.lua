@@ -4,7 +4,7 @@ local nvim_lsp = safeRequire("lspconfig")
 vim.lsp.set_log_level("ERROR")
 
 -- fallback if lsp exit suddenly
-vim.api.nvim_create_autocmd("LspDetach", {
+--[[ vim.api.nvim_create_autocmd("LspDetach", {
 	callback = function(args)
 		-- print("detaching LSP..")
 		local bufname = vim.fn.bufname(args.buf)
@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("LspDetach", {
 		vim.cmd("LspStart")
 		-- end
 	end,
-})
+}) ]]
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
