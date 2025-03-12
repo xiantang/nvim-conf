@@ -20,21 +20,26 @@ return {
 				desc =
 				"Toggle CodeCompanion Chat"
 			},
-			-- { "ga", "<cmd>CodeCompanionChat Add<cr>", mode = "v", desc = "Add to CodeCompanion Chat" },
+			{ "<leader>ga", "<cmd>CodeCompanionChat Add<cr>", mode = "v", desc = "Add to CodeCompanion Chat" },
+		},
+		cmd = {
+			"CodeCompanionActions",
+			"CodeCompanionChat",
+			"CodeCompanion",
 		},
 		opts = {
 			--Refer to: https://github.com/olimorris/codecompanion.nvim/blob/main/lua/codecompanion/config.lua
 			adapters = {
-				copilot = function()
-					return require("codecompanion.adapters").extend("copilot", {
+				claude = function()
+					return require("codecompanion.adapters").extend("anthropic", {
 						schema = {
 							model = {
-								default = "claude-3-7-sonnet-20250219",
+								default = "claude-3-5-sonnet-20241022",
 							},
 						},
 					})
 				end,
-				anthropic = function()
+				claude_thinking = function()
 					return require("codecompanion.adapters").extend("anthropic", {
 						schema = {
 							model = {
@@ -51,12 +56,11 @@ return {
 						local find_json_start = string.find(data, "{") or 1
 						return string.sub(data, find_json_start)
 					end
-					return require("codecompanion.adapters").extend("openai_compatible", {
+					return require("codecompanion.adapters").extend("deepseek", {
 						env = {
-							url = os.getenv("API_URL"),
 							api_key = os.getenv("API_KEY"),
-							chat_url = os.getenv("CHAT_URL"),
 						},
+						url = os.getenv("DEEPSEEK_URL"),
 						handlers = {
 							chat_output = function(self, data)
 								local output = {}
@@ -105,19 +109,6 @@ return {
 							model = {
 								default = "ep-20250213150255-bllkt", -- define llm model to be used
 							},
-							temperature = {
-								order = 2,
-								mapping = "parameters",
-								type = "number",
-								optional = true,
-								default = 0.0,
-								desc =
-								"What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.",
-								validate = function(n)
-									return n >= 0 and n <= 2,
-											"Must be between 0 and 2"
-								end,
-							},
 						},
 					})
 				end,
@@ -131,7 +122,7 @@ return {
 				--NOTE: Change the adapter as required
 				chat = {
 					-- adapter = "my_openai",
-					adapter = "anthropic",
+					adapter = "claude_thinking",
 					slash_commands = {
 						["buffer"] = {
 							opts = {
@@ -155,10 +146,10 @@ return {
 						},
 					},
 				},
-			},
-			inline = {
-				-- adapter = "my_openai"
-				adapter = "anthropic",
+				inline = {
+					-- adapter = "my_openai"
+					adapter = "deepseek",
+				},
 			},
 			opts = {
 				log_level = "DEBUG",

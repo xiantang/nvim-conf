@@ -17,6 +17,7 @@ return {
 		---@type blink.cmp.Config
 		opts = {
 			snippets = {
+				preset = 'luasnip',
 				expand = function(snippet)
 					require("luasnip").lsp_expand(snippet)
 				end,
@@ -29,9 +30,6 @@ return {
 				jump = function(direction)
 					require("luasnip").jump(direction)
 				end,
-			},
-			sources = {
-				cmdline = {},
 			},
 			-- sources = {
 			-- 	default = { "lsp", "path", "buffer", "luasnip" },
