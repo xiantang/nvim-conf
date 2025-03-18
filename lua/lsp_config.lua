@@ -220,6 +220,7 @@ nvim_lsp.gopls.setup({
 			},
 			-- use gopls build by myself https://github.com/xiantang/tools
 			-- staticcheck = true,
+			expandWorkspaceToModule = true,
 		},
 	},
 	on_attach = on_attach,
