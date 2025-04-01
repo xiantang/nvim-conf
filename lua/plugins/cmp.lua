@@ -6,7 +6,7 @@ return {
 		-- dependencies = "rafamadriz/friendly-snippets",
 
 		-- use a release tag to download pre-built binaries
-		version = "v0.*",
+		tag = "v1.0.0",
 		dependencies = "L3MON4D3/LuaSnip",
 		-- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 		-- build = 'cargo build --release',
