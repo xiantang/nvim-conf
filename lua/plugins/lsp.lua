@@ -11,7 +11,7 @@ return {
 					null_ls.builtins.formatting.nginx_beautifier,
 					null_ls.builtins.formatting.gofmt,
 					null_ls.builtins.formatting.goimports,
-					null_ls.builtins.code_actions.shellcheck,
+					-- null_ls.builtins.code_actions.shellcheck,
 					-- null_ls.builtins.formatting.stylua,
 					-- for python
 					null_ls.builtins.formatting.black,
