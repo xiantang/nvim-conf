@@ -18,6 +18,7 @@ return {
 		config = function()
 			require("mcphub").setup(
 				{
+					auto_approve = true,
 					extensions = {
 						codecompanion = {
 							-- Show the mcp tool result in the chat buffer
@@ -72,6 +73,15 @@ return {
 						schema = {
 							model = {
 								default = "claude-3-7-sonnet-20250219",
+							},
+						},
+					})
+				end,
+				gemini = function()
+					return require("codecompanion.adapters").extend("gemini", {
+						schema = {
+							model = {
+								default = "gemini-2.5-pro-exp-03-25",
 							},
 						},
 					})
@@ -159,7 +169,7 @@ return {
 						}
 					},
 					-- adapter = "my_openai",
-					adapter = "claude_thinking",
+					adapter = "gemini",
 					slash_commands = {
 						["buffer"] = {
 							opts = {
