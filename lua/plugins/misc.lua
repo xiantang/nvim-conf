@@ -9,12 +9,24 @@ return {
 			"nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
 		},
 		-- comment the following line to ensure hub will be ready at the earliest
-		cmd = "MCPHub",              -- lazy load by default
+		cmd = "MCPHub",                        -- lazy load by default
 		build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
 		-- uncomment this if you don't want mcp-hub to be available globally or can't use -g
 		-- build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
 		config = function()
-			require("mcphub").setup()
+			require("mcphub").setup(
+				{
+					extensions = {
+						codecompanion = {
+							-- Show the mcp tool result in the chat buffer
+							-- NOTE:if the result is markdown with headers, content after the headers wont be sent by codecompanion
+							show_result_in_chat = true,
+							make_vars = true,    -- make chat #variables from MCP server resources
+							make_slash_commands = true, -- make /slash_commands from MCP server prompts
+						},
+					}
+				}
+			)
 		end,
 	},
 	{
@@ -42,6 +54,17 @@ return {
 			"CodeCompanion",
 		},
 		opts = {
+			strategies = {
+				chat = {
+					tools = {
+						["mcp"] = {
+							-- calling it in a function would prevent mcphub from being loaded before it's needed
+							callback = function() return require("mcphub.extensions.codecompanion") end,
+							description = "Call tools and resources from the MCP Servers",
+						}
+					}
+				}
+			},
 			--Refer to: https://github.com/olimorris/codecompanion.nvim/blob/main/lua/codecompanion/config.lua
 			adapters = {
 				claude = function()
@@ -87,7 +110,7 @@ return {
 									if ok and json.choices and #json.choices > 0 then
 										local choice = json.choices[1]
 										local delta = (self.opts and self.opts.stream) and
-										    choice.delta or choice.message
+												choice.delta or choice.message
 
 										if delta then
 											if delta.role then
@@ -101,13 +124,13 @@ return {
 											-- ADD THINKING OUTPUT
 											if delta.reasoning_content then
 												output.content = delta
-												    .reasoning_content
+														.reasoning_content
 											end
 
 											if delta.content then
 												output.content = output
-												    .content .. delta
-												    .content
+														.content .. delta
+														.content
 											end
 
 											return {
@@ -179,14 +202,14 @@ return {
 		lazy = false,
 		config = function()
 			require("tabout").setup({
-				tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable
+				tabkey = "<Tab>",         -- key to trigger tabout, set to an empty string to disable
 				backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
-				act_as_tab = true, -- shift content if tab out is not possible
+				act_as_tab = true,        -- shift content if tab out is not possible
 				act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-				default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+				default_tab = "<C-t>",    -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
 				default_shift_tab = "<C-d>", -- reverse shift default action,
-				enable_backwards = true, -- well ...
-				completion = false, -- if the tabkey is used in a completion pum
+				enable_backwards = true,  -- well ...
+				completion = false,       -- if the tabkey is used in a completion pum
 				tabouts = {
 					{ open = "'", close = "'" },
 					{ open = '"', close = '"' },
@@ -203,7 +226,7 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 			"L3MON4D3/LuaSnip",
 		},
-		opt = true, -- Set this to true if the plugin is optional
+		opt = true,            -- Set this to true if the plugin is optional
 		event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
 		priority = 1000,
 	},
