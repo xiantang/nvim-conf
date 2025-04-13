@@ -11,8 +11,8 @@ return {
 		-- comment the following line to ensure hub will be ready at the earliest
 		cmd = "MCPHub",                        -- lazy load by default
 		lazy = false,
-		tag = "v4.0.0",
-		build = "npm install -g mcp-hub@1.8.0", -- Installs required mcp-hub npm module
+		tag = "v4.2.0",
+		build = "npm install -g mcp-hub@1.8.1", -- Installs required mcp-hub npm module
 		-- uncomment this if you don't want mcp-hub to be available globally or can't use -g
 		-- build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
 		config = function()
