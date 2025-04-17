@@ -169,7 +169,7 @@ return {
 						}
 					},
 					-- adapter = "my_openai",
-					adapter = "gemini",
+					adapter = "claude_thinking",
 					slash_commands = {
 						["buffer"] = {
 							opts = {

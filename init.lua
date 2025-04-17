@@ -1,3 +1,8 @@
+if vim.fn.has("nvim-0.11") == 1 then
+  vim.keymap.del({ "n" }, "grn")
+  vim.keymap.del({ "n", "x" }, "gra")
+  vim.keymap.del({ "n" }, "gri")
+end
 if vim.env.PROF then
 	-- example for lazy.nvim
 	-- change this to the correct path for your plugin manager
