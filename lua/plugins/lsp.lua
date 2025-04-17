@@ -93,38 +93,6 @@ return {
 	},
 	{ "williamboman/mason-lspconfig.nvim", lazy = true },
 	{
-		"nvimdev/lspsaga.nvim",
-		config = function()
-			require("lspsaga").setup({
-				symbol_in_winbar = {
-					enable = false,
-				},
-				beacon = {
-					enable = false,
-					frequency = 20,
-				},
-				code_action_lightbulb = {
-					enabled = false,
-					virtual_text = false,
-					sign = false,
-				},
-				finder = {
-					max_height = 0.6,
-					keys = {
-						toggle_or_open = "<CR>",
-					},
-				},
-				lightbulb = {
-					enable = false,
-				},
-			})
-		end,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter", -- optional
-			"nvim-tree/nvim-web-devicons", -- optional
-		},
-	},
-	{
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		"j-hui/fidget.nvim",
 		config = function()
