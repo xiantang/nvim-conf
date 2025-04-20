@@ -144,7 +144,7 @@ local common_servers = {
 	"pyright",
 	"bashls",
 	"vimls",
-	"tsserver",
+	"ts_ls",
 	"yamlls",
 	"terraformls",
 	"rnix",

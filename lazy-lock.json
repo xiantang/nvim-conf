@@ -6,7 +6,7 @@
   "asyncrun.vim": { "branch": "master", "commit": "42385d54b8546c163b946fd50eed2103ef7993c9" },
   "auto-session": { "branch": "main", "commit": "0a1318557c03845f2e0dde347bc54507d1d8c34d" },
   "blink.cmp": { "branch": "main", "commit": "cb5e346d9e0efa7a3eee7fd4da0b690c48d2a98e" },
-  "codecompanion.nvim": { "branch": "main", "commit": "9654cb31f10c9eda3e777d03d32b29df606ab0fe" },
+  "codecompanion.nvim": { "branch": "main", "commit": "071f738ac152690b5518612dfbd17e1249ad819a" },
   "codeverse.vim": { "branch": "feat-support-linux-arm64", "commit": "27bd25ccdc7d9f04c90c8395b3e9d8c2de02f24c" },
   "conflict-marker.vim": { "branch": "master", "commit": "11a4d42244755505b66b15cd4496a150432eb5e3" },
   "darcula-dark.nvim": { "branch": "main", "commit": "eefebe3ead37889fa23aa61162e85ac62d672f80" },
