@@ -4,12 +4,25 @@ vim.g.codecompanion_auto_tool_mode = true
 
 return {
 	{
+		"m4xshen/hardtime.nvim",
+		lazy = false,
+		dependencies = { "MunifTanjim/nui.nvim" },
+		opts = {
+			restricted_keys = {
+				["h"] = false,
+				["j"] = false,
+				["k"] = false,
+				["l"] = false,
+			},
+		},
+	},
+	{
 		"ravitemer/mcphub.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
 		},
 		-- comment the following line to ensure hub will be ready at the earliest
-		cmd = "MCPHub",                        -- lazy load by default
+		cmd = "MCPHub", -- lazy load by default
 		lazy = false,
 		tag = "v4.2.0",
 		build = "npm install -g mcp-hub@1.8.1", -- Installs required mcp-hub npm module
