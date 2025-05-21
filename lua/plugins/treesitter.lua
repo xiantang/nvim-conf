@@ -43,19 +43,6 @@ return {
 				ensure_installed = enabled,
 				highlight = {
 					enable = true,
-					disable = function(lang, buf)
-						local max_filesize = 50 * 1024 -- 50 KB
-						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-						if ok and stats and stats.size > max_filesize then
-							return true
-						end
-						for _, enable in pairs(enabled) do
-							if lang == enable then
-								return false
-							end
-						end
-						return true
-					end,
 				},
 			})
 
@@ -79,10 +66,10 @@ return {
 				end
 				local parent_start_row, parent_start_col, parent_end_row, parent_end_col = parent:range()
 				if
-					start_row == parent_start_row
-					and start_col == parent_start_col
-					and end_row == parent_end_row
-					and end_col == parent_end_col
+						start_row == parent_start_row
+						and start_col == parent_start_col
+						and end_row == parent_end_row
+						and end_col == parent_end_col
 				then
 					return find_expand_node(parent)
 				end
@@ -190,77 +177,89 @@ return {
 				local filetype = vim.api.nvim_buf_get_option(0, "ft")
 				local lang = require("nvim-treesitter.parsers").ft_to_lang(filetype)
 
-				-- 定义Treesitter查询
+				-- Define Treesitter query
 				local go_query = [[
-    (function_declaration
-        name: (identifier) @function_name)
-    (method_declaration
-        name: (field_identifier) @function_name)
+        (function_declaration
+            name: (identifier) @function_name)
+        (method_declaration
+            name: (field_identifier) @function_name)
     ]]
 				local query = [[
-    (function_declaration
-        name: (identifier) @function_name)
+        (function_declaration
+            name: (identifier) @function_name)
     ]]
 
-				-- 获取当前buffer的Treesitter语法树
+				-- Get current buffer's Treesitter syntax tree
 				local parser = ts.get_parser(0, lang)
-				local tree = parser:parse()[1]
-				local root = tree:root()
+				if not parser then return end
 
-				-- 获取查询对象
+				local tree = parser:parse()[1]
+				if not tree then return end
+
+				local root = tree:root()
+				if not root then return end
+
+				-- Get query object
 				if lang == "go" then
 					query = go_query
 				end
 				local query_obj = vim.treesitter.query.parse(lang, query)
+				if not query_obj then return end
 
-				-- 执行查询
+				-- Execute query
 				local matches = {}
-				for pattern, match, metadata in query_obj:iter_matches(root, 0) do
-					for id, node in pairs(match) do
-						local name = query_obj.captures[id]
-						if name == "function_name" then
+				for id, node in query_obj:iter_captures(root, 0) do
+					local name = query_obj.captures[id]
+					if name == "function_name" and node then
+						-- Check if the node has a valid range
+						local ok, _ = pcall(function() return node:range() end)
+						if ok then
 							table.insert(matches, node)
 						end
 					end
 				end
 
-				-- 如果找到匹配项，则移动光标到函数名处
+				-- If matches found, move cursor to function name
 				if #matches > 0 then
 					local closest_function = nil
 					local closest_distance = nil
 					local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+					row = row - 1 -- Convert to 0-indexed
 
 					for _, function_name_node in ipairs(matches) do
-						local start_row, start_col, _, _ = function_name_node:range()
-						local distance = math.abs(start_row - row)
+						local ok, sr, sc = pcall(function()
+							local start_row, start_col, _, _ = function_name_node:range()
+							return start_row, start_col
+						end)
 
-						if
-							distance ~= 1
-							and direction == "prev"
-							and (start_row < row or (start_row == row and start_col < col))
-						then
-							if closest_distance == nil or distance < closest_distance then
-								closest_distance = distance
-								closest_function = function_name_node
-							end
-						elseif
-							distance ~= 1
-							and direction == "next"
-							and (start_row > row or (start_row == row and start_col > col))
-						then
-							if closest_distance == nil or distance < closest_distance then
-								closest_distance = distance
-								closest_function = function_name_node
+						if ok and sr ~= nil then
+							local distance = math.abs(sr - row)
+
+							if direction == "prev" and (sr < row or (sr == row and sc < col)) then
+								if closest_distance == nil or distance < closest_distance then
+									closest_distance = distance
+									closest_function = function_name_node
+								end
+							elseif direction == "next" and (sr > row or (sr == row and sc > col)) then
+								if closest_distance == nil or distance < closest_distance then
+									closest_distance = distance
+									closest_function = function_name_node
+								end
 							end
 						end
 					end
 
 					if closest_function then
-						vim.cmd("normal! m`")
+						local ok, sr, sc = pcall(function()
+							local start_row, start_col, _, _ = closest_function:range()
+							return start_row, start_col
+						end)
 
-						local start_row, start_col, _, _ = closest_function:range()
-						vim.api.nvim_win_set_cursor(0, { start_row + 1, start_col })
-						vim.api.nvim_feedkeys("zz", "n", false)
+						if ok and sr ~= nil then
+							vim.cmd("normal! m`")
+							vim.api.nvim_win_set_cursor(0, { sr + 1, sc })
+							vim.api.nvim_feedkeys("zz", "n", false)
+						end
 					end
 				end
 			end
@@ -283,6 +282,7 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
-		config = function() end,
+		config = function()
+		end,
 	},
 }

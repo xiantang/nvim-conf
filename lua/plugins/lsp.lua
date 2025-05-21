@@ -8,10 +8,10 @@ return {
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.shfmt,
-					null_ls.builtins.formatting.nginx_beautifier,
+					-- null_ls.builtins.formatting.nginx_beautifier,
 					null_ls.builtins.formatting.gofmt,
 					null_ls.builtins.formatting.goimports,
-					null_ls.builtins.code_actions.shellcheck,
+					-- null_ls.builtins.code_actions.shellcheck,
 					-- null_ls.builtins.formatting.stylua,
 					-- for python
 					null_ls.builtins.formatting.black,
@@ -92,38 +92,6 @@ return {
 		end,
 	},
 	{ "williamboman/mason-lspconfig.nvim", lazy = true },
-	{
-		"nvimdev/lspsaga.nvim",
-		config = function()
-			require("lspsaga").setup({
-				symbol_in_winbar = {
-					enable = false,
-				},
-				beacon = {
-					enable = false,
-					frequency = 20,
-				},
-				code_action_lightbulb = {
-					enabled = false,
-					virtual_text = false,
-					sign = false,
-				},
-				finder = {
-					max_height = 0.6,
-					keys = {
-						toggle_or_open = "<CR>",
-					},
-				},
-				lightbulb = {
-					enable = false,
-				},
-			})
-		end,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter", -- optional
-			"nvim-tree/nvim-web-devicons", -- optional
-		},
-	},
 	{
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		"j-hui/fidget.nvim",

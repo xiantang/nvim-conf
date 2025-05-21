@@ -6,7 +6,7 @@ return {
 		-- dependencies = "rafamadriz/friendly-snippets",
 
 		-- use a release tag to download pre-built binaries
-		tag = "v1.0.0",
+		tag = "v1.1.1",
 		dependencies = "L3MON4D3/LuaSnip",
 		-- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 		-- build = 'cargo build --release',
@@ -34,6 +34,10 @@ return {
 			-- sources = {
 			-- 	default = { "lsp", "path", "buffer", "luasnip" },
 			-- },
+
+			cmdline = {
+				enabled = true,
+			},
 			-- 'default' for mappings similar to built-in completion
 			-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
 			-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept

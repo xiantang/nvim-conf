@@ -83,27 +83,26 @@ local on_attach = function(client, bufnr)
 	-- Mappings.
 	local opts = { noremap = true, silent = true }
 	buf_set_keymap("n", "<Enter>", "<Nop>", opts)
-	buf_set_keymap("n", "gD", "<cmd>Lspsaga goto_type_definition<CR>", opts)
-	buf_set_keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
-	buf_set_keymap("n", "<Leader>gd", "<cmd>vsplit|Lspsaga goto_definition<CR>", opts)
-	-- buf_set_keymap("n", "gv", "<cmd>Lspsaga peek_definition<CR>", opts)
-	-- buf_set_keymap("n", "<Leader>ga", "<cmd>Lspsaga code_action<CR>", opts)
+	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+	buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	buf_set_keymap("n", "<Leader>gd", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", opts)
+	-- buf_set_keymap("n", "gv", "<cmd>lua vim.lsp.buf.peek_definition()<CR>", opts) -- Note: Native LSP doesn't have peek_definition
+	-- buf_set_keymap("n", "<Leader>ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	-- -- coode action for extract function or variable
-	-- buf_set_keymap("v", "ga", "cmd>lua vim.lsp.bug.code_action()<CR>", opts)
+	-- buf_set_keymap("v", "ga", "<cmd>lua vim.lsp.bug.code_action()<CR>", opts)
 	-- buf_set_keymap("v", "ga", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
-	buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	buf_set_keymap("n", "<space>dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
 	buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 	buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 	buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-	buf_set_keymap("n", "<space>rn", "<cmd>Lspsaga rename<CR>", opts)
-	-- buf_set_keymap("n", "<space>gr", "<cmd>Lspsaga finder<CR>", opts)
+	buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	vim.keymap.set("n", "<space>gr", vim.lsp.buf.references, opts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 	buf_set_keymap("n", "<Leader>f", ":lua vim.lsp.buf.format()<CR>", opts)
 	-- if current buff end with _test.go, then set keymap for error
 	local buf_name = vim.api.nvim_buf_get_name(bufnr)
-	buf_set_keymap("n", "<space>ge", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+	buf_set_keymap("n", "<space>ge", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 
 	-- Set autocommands conditional on server_capabilities
 	if client.server_capabilities.document_highlight then
@@ -145,7 +144,7 @@ local common_servers = {
 	"pyright",
 	"bashls",
 	"vimls",
-	"tsserver",
+	"ts_ls",
 	"yamlls",
 	"terraformls",
 	"rnix",

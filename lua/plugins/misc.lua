@@ -4,6 +4,35 @@ vim.g.codecompanion_auto_tool_mode = true
 
 return {
 	{
+		"ravitemer/mcphub.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+		},
+		-- comment the following line to ensure hub will be ready at the earliest
+		cmd = "MCPHub", -- lazy load by default
+		lazy = false,
+		tag = "v4.2.0",
+		build = "npm install -g mcp-hub@1.8.1", -- Installs required mcp-hub npm module
+		-- uncomment this if you don't want mcp-hub to be available globally or can't use -g
+		-- build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
+		config = function()
+			require("mcphub").setup(
+				{
+					auto_approve = true,
+					extensions = {
+						codecompanion = {
+							-- Show the mcp tool result in the chat buffer
+							-- NOTE:if the result is markdown with headers, content after the headers wont be sent by codecompanion
+							show_result_in_chat = true,
+							make_vars = true,    -- make chat #variables from MCP server resources
+							make_slash_commands = true, -- make /slash_commands from MCP server prompts
+						},
+					}
+				}
+			)
+		end,
+	},
+	{
 		"olimorris/codecompanion.nvim",
 		keys = {
 			{
@@ -44,6 +73,15 @@ return {
 						schema = {
 							model = {
 								default = "claude-3-7-sonnet-20250219",
+							},
+						},
+					})
+				end,
+				gemini = function()
+					return require("codecompanion.adapters").extend("gemini", {
+						schema = {
+							model = {
+								default = "gemini-2.5-pro-exp-03-25",
 							},
 						},
 					})
@@ -121,6 +159,15 @@ return {
 			strategies = {
 				--NOTE: Change the adapter as required
 				chat = {
+					tools = {
+						["mcp"] = {
+							-- Prevent mcphub from loading before needed
+							callback = function()
+								return require("mcphub.extensions.codecompanion")
+							end,
+							description = "Call tools and resources from the MCP Servers"
+						}
+					},
 					-- adapter = "my_openai",
 					adapter = "claude_thinking",
 					slash_commands = {
