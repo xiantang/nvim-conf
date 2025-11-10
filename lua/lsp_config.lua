@@ -155,6 +155,10 @@ capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
 }
+capabilities.workspace = capabilities.workspace or {}
+capabilities.workspace.workspaceFolders = true
+capabilities.workspace.didChangeWatchedFiles = capabilities.workspace.didChangeWatchedFiles or {}
+capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 for _, server in pairs(common_servers) do
 	-- https://www.reddit.com/r/neovim/comments/mm1h0t/lsp_diagnostics_remain_stuck_can_someone_please/
 	nvim_lsp[server].setup({
