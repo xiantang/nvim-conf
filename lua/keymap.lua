@@ -7,10 +7,10 @@ vim.keymap.set("v", "y", "ygv<esc>", opts)
 -- nnoremap <c-c> :cp<CR>
 -- nnoremap <c-n> :cn<CR>
 -- because hhkb layout backtick is hard to press
-vim.keymap.set("n", "o", "o", opts)
-vim.keymap.set("n", "c", "c", opts)
-vim.keymap.set("n", "r", "r", opts)
-vim.keymap.set("n", "q", "q", opts)
+-- vim.keymap.set("n", "o", "o", opts)
+-- vim.keymap.set("n", "c", "c", opts)
+-- vim.keymap.set("n", "r", "r", opts)
+-- vim.keymap.set("n", "q", "q", opts)
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "<C-Left>", ":vertical resize +5<CR>", opts)
