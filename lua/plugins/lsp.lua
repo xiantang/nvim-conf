@@ -87,6 +87,7 @@ return {
 					"bashls",
 					"vimls",
 					"yamlls",
+					"ts_ls",
 				},
 			})
 		end,

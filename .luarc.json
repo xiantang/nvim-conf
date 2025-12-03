@@ -2,13 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
   "Lua.completion.autoRequire": false,
   "Lua.diagnostics.disable": [
-    "unused-local"
+    "unused-local",
+        "missing-fields"
   ],
   "Lua.diagnostics.globals": [
     "vim",
     "defer",
     "gofumpt",
-    "core"
+    "core",
+        "require"
   ],
   "Lua.workspace.checkThirdParty": false
 }
