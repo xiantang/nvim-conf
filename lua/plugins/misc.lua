@@ -55,11 +55,80 @@ return {
 				end,
 				desc = "zen mode",
 			},
+			{
+				"<leader>b",
+				function()
+					Snacks.picker.buffers()
+				end,
+				desc = "Switch Buffer",
+			},
+			{
+				"<leader>fh",
+				function()
+					Snacks.picker.help()
+				end,
+				desc = "Help tags",
+			},
+			{
+				"<leader>tb",
+				function()
+					Snacks.picker.git_branches()
+				end,
+				desc = "Git branches",
+			},
+			{
+				"<Leader>p",
+				function()
+					Snacks.picker.files()
+				end,
+				desc = "Find files",
+			},
+			{
+				"<Leader>rs",
+				function()
+					Snacks.picker.resume()
+				end,
+				desc = "Resume picker",
+			},
+			{
+				"<Leader>o",
+				function()
+					Snacks.picker.lsp_symbols()
+				end,
+				desc = "Document symbols",
+			},
+			{
+				"<Leader>P",
+				function()
+					Snacks.picker.grep()
+				end,
+				desc = "Live grep",
+			},
 		},
 		opts = {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
+			picker = {
+				sources = {
+					files = {
+						hidden = true,
+						ignored = false,
+						exclude = { ".git/*", "node_modules/*", ".venv/*" },
+					},
+					grep = {
+						hidden = true,
+						ignored = false,
+						exclude = { ".git/*", "node_modules/*", ".venv/*" },
+					},
+					buffers = {
+						hidden = true,
+						unloaded = true,
+						current = false,
+						sort_lastused = true,
+					},
+				},
+			},
 			indent = {
 				-- your indent configuration comes here
 				-- or leave it empty to use the default settings
