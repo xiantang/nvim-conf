@@ -16,6 +16,7 @@ return {
 		config = function()
 			-- setup must be called before loading
 			require("darcula").setup({
+				---@diagnostic disable-next-line: assign-type-mismatch
 				opt = {
 					integrations = {
 						telescope = false,
