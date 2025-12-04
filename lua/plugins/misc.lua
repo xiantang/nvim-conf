@@ -3,6 +3,7 @@ vim.cmd([[cab cc CodeCompanion]])
 vim.g.codecompanion_auto_tool_mode = true
 
 return {
+	{ "nvim-lua/plenary.nvim" },
 	{
 		"abecodes/tabout.nvim",
 		lazy = false,
