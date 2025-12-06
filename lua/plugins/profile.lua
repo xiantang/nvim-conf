@@ -3,21 +3,21 @@ return {
 		"folke/snacks.nvim",
 		keys = {
 			{
-				"<leader>pp",
+				"<leader>up",
 				function()
 					Snacks.toggle.profiler():toggle()
 				end,
 				desc = "Toggle Profiler",
 			},
 			{
-				"<leader>ph",
+				"<leader>uh",
 				function()
 					Snacks.toggle.profiler_highlights():toggle()
 				end,
 				desc = "Toggle Profiler Highlights",
 			},
 			{
-				"<leader>ps",
+				"<leader>us",
 				function()
 					Snacks.profiler.scratch()
 				end,
