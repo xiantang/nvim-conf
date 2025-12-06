@@ -7,3 +7,4 @@ lua/secret.lua
 messages.txt
 macros.json.tmp
 bd.lua
+snacks.nvim

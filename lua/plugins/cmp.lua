@@ -35,6 +35,11 @@ return {
 			-- 	default = { "lsp", "path", "buffer", "luasnip" },
 			-- },
 
+			fuzzy = {
+				-- The rust binary in my environment is out of date; force Lua to avoid version mismatches
+				implementation = "lua",
+			},
+
 			cmdline = {
 				enabled = true,
 			},

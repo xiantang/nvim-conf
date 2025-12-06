@@ -54,7 +54,8 @@ return {
 				"luukvbaal/statuscol.nvim",
 				config = function()
 					local builtin = require("statuscol.builtin")
-					require("statuscol").setup({
+					local statuscol = require("statuscol")
+					statuscol.setup({
 						relculright = true,
 						segments = {
 							{ text = { "%s" }, click = "v:lua.ScSa" },
@@ -62,6 +63,12 @@ return {
 							{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
 						},
 					})
+					-- Some setups still reference the old global StatusCol(), so provide a fallback to avoid nil errors.
+					if not _G.StatusCol then
+						_G.StatusCol = function()
+							return statuscol.get_statuscol_string()
+						end
+					end
 				end,
 			},
 		},

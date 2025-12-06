@@ -12,7 +12,7 @@ return {
 					null_ls.builtins.formatting.gofmt,
 					null_ls.builtins.formatting.goimports,
 					-- null_ls.builtins.code_actions.shellcheck,
-					-- null_ls.builtins.formatting.stylua,
+					null_ls.builtins.formatting.stylua,
 					-- for python
 					null_ls.builtins.formatting.black,
 					null_ls.builtins.formatting.isort,
@@ -41,7 +41,6 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		-- use commit
 		dependencies = {
-			"j-hui/fidget.nvim",
 			-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
 			-- "folke/neodev.nvim",
 		},
@@ -93,13 +92,6 @@ return {
 		end,
 	},
 	{ "williamboman/mason-lspconfig.nvim", lazy = true },
-	{
-		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup()
-		end,
-	},
 	{
 		"ray-x/go.nvim",
 		enabled = false,
