@@ -41,6 +41,16 @@ return {
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
+		init = function()
+			-- Override Fugitive's GBrowse to funnel through snacks.gitbrowse
+			vim.api.nvim_create_user_command("GBrowse", function(cmd)
+				Snacks.gitbrowse({
+					what = cmd.args ~= "" and cmd.args or "permalink",
+					line_start = cmd.range ~= 0 and cmd.line1 or nil,
+					line_end = cmd.range ~= 0 and cmd.line2 or nil,
+				})
+			end, { range = true, nargs = "?", desc = "Git Browse (permalink)", force = true })
+		end,
 		keys = {
 			{
 				"<leader>.",
@@ -105,6 +115,14 @@ return {
 				end,
 				desc = "Live grep",
 			},
+			{
+				"<leader>gB",
+				function()
+					Snacks.gitbrowse({ what = "permalink" })
+				end,
+				mode = { "n", "v" },
+				desc = "Git Browse (permalink)",
+			},
 		},
 		opts = {
 			-- your configuration comes here
@@ -140,6 +158,9 @@ return {
 			quickfile = { enabled = true },
 			statuscolumn = { enabled = true },
 			words = { enabled = false },
+			gitbrowse = {
+				what = "permalink",
+			},
 		},
 	},
 	{
