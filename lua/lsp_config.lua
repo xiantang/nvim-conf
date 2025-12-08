@@ -1,7 +1,9 @@
-local safeRequire = require("lib").safeRequire
-local nvim_lsp = safeRequire("lspconfig")
-
 vim.lsp.set_log_level("ERROR")
+
+if not (vim.lsp and vim.lsp.config and vim.lsp.enable) then
+	vim.notify("vim.lsp.config/enable is missing (requires Neovim >= 0.11)", vim.log.levels.ERROR)
+	return
+end
 
 -- fallback if lsp exit suddenly
 --[[ vim.api.nvim_create_autocmd("LspDetach", {
@@ -132,8 +134,6 @@ function gofumpt(timeoutms)
 	vim.cmd(command)
 end
 
-local lsp_configs = safeRequire("lspconfig/configs")
-
 -- set up lspconfig
 
 local common_servers = {
@@ -159,21 +159,25 @@ capabilities.workspace = capabilities.workspace or {}
 capabilities.workspace.workspaceFolders = true
 capabilities.workspace.didChangeWatchedFiles = capabilities.workspace.didChangeWatchedFiles or {}
 capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
-for _, server in pairs(common_servers) do
-	-- https://www.reddit.com/r/neovim/comments/mm1h0t/lsp_diagnostics_remain_stuck_can_someone_please/
-	nvim_lsp[server].setup({
+local function setup_server(server, opts)
+	local config = vim.tbl_deep_extend("force", {
 		flags = {
 			allow_incremental_sync = false,
 			debounce_text_changes = 500,
 		},
 		on_attach = on_attach,
 		capabilities = capabilities,
-	})
+	}, opts or {})
+
+	vim.lsp.config(server, config)
+	vim.lsp.enable(server)
 end
 
-nvim_lsp.lua_ls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
+for _, server in ipairs(common_servers) do
+	setup_server(server)
+end
+
+setup_server("lua_ls", {
 	settings = {
 		Lua = {
 			runtime = {
@@ -203,14 +207,8 @@ nvim_lsp.lua_ls.setup({
 	},
 })
 
-nvim_lsp.gopls.setup({
+setup_server("gopls", {
 	cmd = { "gopls" },
-	-- for postfix snippets and analyzers
-	flags = {
-		allow_incremental_sync = false,
-		debounce_text_changes = 500,
-	},
-	capabilities = capabilities,
 	settings = {
 		gopls = {
 			-- PAINPOINT
@@ -226,7 +224,6 @@ nvim_lsp.gopls.setup({
 			expandWorkspaceToModule = true,
 		},
 	},
-	on_attach = on_attach,
 })
 
 vim.api.nvim_create_user_command("LspCapabilities", function()
