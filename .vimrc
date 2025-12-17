@@ -18,7 +18,7 @@ set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set mouse=
 
-lang en_US.UTF-8
+"lang en_US.UTF-8
 set clipboard+=unnamedplus
 function! IsNixOS()
     let l:uname_output = system('uname -a')

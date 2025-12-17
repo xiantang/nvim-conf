@@ -1,11 +1,41 @@
-FROM debian:sid-20211220
+FROM debian:bookworm-slim
 
 # Set image locale.
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV TZ=Aisa/Singapore
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV TZ=Asia/Singapore
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get -y install curl fzf ripgrep tree git xclip python3 python3-venv python3-pip nodejs npm tzdata ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config zip unzip sqlite3 libsqlite3-dev
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        curl \
+        fzf \
+        ripgrep \
+        tree \
+        git \
+        xclip \
+        python3 \
+        python3-venv \
+        python3-pip \
+        nodejs \
+        npm \
+        tzdata \
+        ninja-build \
+        gettext \
+        libtool \
+        libtool-bin \
+        autoconf \
+        automake \
+        make \
+        cmake \
+        g++ \
+        pkg-config \
+        zip \
+        unzip \
+        sqlite3 \
+        libsqlite3-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # Create a Python virtual environment
 RUN python3 -m venv /venv
