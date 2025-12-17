@@ -3,20 +3,70 @@ vim.cmd([[cab cc CodeCompanion]])
 vim.g.codecompanion_auto_tool_mode = true
 
 return {
+	{
+		"esmuellert/vscode-diff.nvim",
+		dependencies = { "MunifTanjim/nui.nvim" },
+		keys = {
+			{ "<Leader>d", ":CodeDiff<CR>" },
+		},
+		cmd = "CodeDiff",
+		config = function()
+			require("vscode-diff").setup({
+				-- Highlight configuration
+				highlights = {
+					-- Line-level: accepts highlight group names or hex colors (e.g., "#2ea043")
+					line_insert = "DiffAdd", -- Line-level insertions
+					line_delete = "DiffDelete", -- Line-level deletions
+
+					-- Character-level: accepts highlight group names or hex colors
+					-- If specified, these override char_brightness calculation
+					char_insert = nil, -- Character-level insertions (nil = auto-derive)
+					char_delete = nil, -- Character-level deletions (nil = auto-derive)
+
+					-- Brightness multiplier (only used when char_insert/char_delete are nil)
+					-- nil = auto-detect based on background (1.4 for dark, 0.92 for light)
+					char_brightness = nil, -- Auto-adjust based on your colorscheme
+				},
+
+				-- Diff view behavior
+				diff = {
+					disable_inlay_hints = true, -- Disable inlay hints in diff windows for cleaner view
+					max_computation_time_ms = 5000, -- Maximum time for diff computation (VSCode default)
+				},
+
+				-- Keymaps in diff view
+				keymaps = {
+					view = {
+						quit = "q", -- Close diff tab
+						toggle_explorer = "<leader>b", -- Toggle explorer visibility (explorer mode only)
+						next_hunk = "]c", -- Jump to next change
+						prev_hunk = "[c", -- Jump to previous change
+						next_file = "]f", -- Next file in explorer mode
+						prev_file = "[f", -- Previous file in explorer mode
+					},
+					explorer = {
+						select = "<CR>", -- Open diff for selected file
+						hover = "K", -- Show file diff preview
+						refresh = "R", -- Refresh git status
+					},
+				},
+			})
+		end,
+	},
 	{ "nvim-lua/plenary.nvim" },
 	{
 		"abecodes/tabout.nvim",
 		lazy = false,
 		config = function()
 			require("tabout").setup({
-				tabkey = "<Tab>",         -- key to trigger tabout, set to an empty string to disable
+				tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable
 				backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
-				act_as_tab = true,        -- shift content if tab out is not possible
+				act_as_tab = true, -- shift content if tab out is not possible
 				act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-				default_tab = "<C-t>",    -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+				default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
 				default_shift_tab = "<C-d>", -- reverse shift default action,
-				enable_backwards = true,  -- well ...
-				completion = false,       -- if the tabkey is used in a completion pum
+				enable_backwards = true, -- well ...
+				completion = false, -- if the tabkey is used in a completion pum
 				tabouts = {
 					{ open = "'", close = "'" },
 					{ open = '"', close = '"' },
@@ -33,7 +83,7 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 			"L3MON4D3/LuaSnip",
 		},
-		opt = true,            -- Set this to true if the plugin is optional
+		opt = true, -- Set this to true if the plugin is optional
 		event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
 		priority = 1000,
 	},
