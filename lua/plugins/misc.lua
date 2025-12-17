@@ -14,18 +14,11 @@ return {
 			require("vscode-diff").setup({
 				-- Highlight configuration
 				highlights = {
-					-- Line-level: accepts highlight group names or hex colors (e.g., "#2ea043")
-					line_insert = "DiffAdd", -- Line-level insertions
-					line_delete = "DiffDelete", -- Line-level deletions
-
-					-- Character-level: accepts highlight group names or hex colors
-					-- If specified, these override char_brightness calculation
-					char_insert = nil, -- Character-level insertions (nil = auto-derive)
-					char_delete = nil, -- Character-level deletions (nil = auto-derive)
-
-					-- Brightness multiplier (only used when char_insert/char_delete are nil)
-					-- nil = auto-detect based on background (1.4 for dark, 0.92 for light)
-					char_brightness = nil, -- Auto-adjust based on your colorscheme
+					line_insert = "#334043",
+					line_delete = "#473145",
+					char_insert = "#465d60",
+					char_delete = "#473144",
+					char_brightness = 1.4,
 				},
 
 				-- Diff view behavior
