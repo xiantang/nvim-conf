@@ -17,7 +17,7 @@ return {
 		---@type blink.cmp.Config
 		opts = {
 			snippets = {
-				preset = 'luasnip',
+				preset = "luasnip",
 				expand = function(snippet)
 					require("luasnip").lsp_expand(snippet)
 				end,
@@ -78,15 +78,17 @@ return {
 
 			completion = {
 				menu = {
-					border = 'rounded',
+					border = "rounded",
 					auto_show = function()
-						return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false and vim.bo.filetype ~= "TelescopePrompt"
+						return vim.bo.buftype ~= "prompt"
+							and vim.b.completion ~= false
+							and vim.bo.filetype ~= "TelescopePrompt"
 					end,
 				},
 				documentation = {
 					auto_show = true,
 					window = {
-						border = 'rounded'
+						border = "rounded",
 					},
 				},
 			},
