@@ -85,14 +85,31 @@ return {
 		priority = 1000,
 		lazy = false,
 		init = function()
-			-- Override Fugitive's GBrowse to funnel through snacks.gitbrowse
-			vim.api.nvim_create_user_command("GBrowse", function(cmd)
-				Snacks.gitbrowse({
-					what = cmd.args ~= "" and cmd.args or "permalink",
-					line_start = cmd.range ~= 0 and cmd.line1 or nil,
-					line_end = cmd.range ~= 0 and cmd.line2 or nil,
-				})
-			end, { range = true, nargs = "?", desc = "Git Browse (permalink)", force = true })
+			local function setup_gbrowse()
+				-- Override Fugitive's GBrowse to funnel through snacks.gitbrowse
+				vim.api.nvim_create_user_command("GBrowse", function(cmd)
+					local opts = {
+						what = cmd.args ~= "" and cmd.args or "permalink",
+						line_start = cmd.range ~= 0 and cmd.line1 or nil,
+						line_end = cmd.range ~= 0 and cmd.line2 or nil,
+					}
+
+					if cmd.bang then
+						opts.open = function(url)
+							vim.fn.setreg("+", url)
+							vim.notify("Copied Git URL to clipboard", vim.log.levels.INFO)
+						end
+					end
+
+					Snacks.gitbrowse(opts)
+				end, { range = true, nargs = "?", bang = true, desc = "Git Browse (permalink)", force = true })
+			end
+
+			setup_gbrowse()
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "VeryLazy",
+				callback = setup_gbrowse,
+			})
 
 			-- LSP progress notifications via Snacks' notifier
 			local progress = vim.defaulttable()
@@ -205,7 +222,20 @@ return {
 			{
 				"<leader>gB",
 				function()
-					Snacks.gitbrowse({ what = "permalink" })
+					local mode = vim.fn.mode()
+					local is_visual = mode == "v" or mode == "V" or mode == "\22"
+					local opts = { what = "permalink" }
+
+					if is_visual then
+						opts.line_start = vim.fn.line("'<")
+						opts.line_end = vim.fn.line("'>")
+						opts.open = function(url)
+							vim.fn.setreg("+", url)
+							vim.notify("Copied Git URL to clipboard", vim.log.levels.INFO)
+						end
+					end
+
+					Snacks.gitbrowse(opts)
 				end,
 				mode = { "n", "v" },
 				desc = "Git Browse (permalink)",
@@ -247,6 +277,20 @@ return {
 			words = { enabled = false },
 			gitbrowse = {
 				what = "permalink",
+				url_patterns = (function()
+					local ok, secret = pcall(require, "secret")
+					local domain = ok and secret.GITALB_URL
+					local patterns = {
+						[domain] = {
+							branch = "/tree/{branch}?ref_type=commits",
+							file = "/blob/{branch}/{file}?ref_type=commits#L{line_start}-{line_end}",
+							permalink = "/blob/{commit}/{file}?ref_type=commits#L{line_start}-{line_end}",
+							commit = "/commit/{commit}?ref_type=commits",
+						},
+					}
+
+					return patterns
+				end)(),
 			},
 			notifier = {
 				enabled = true,
