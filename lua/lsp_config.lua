@@ -1,4 +1,4 @@
-vim.lsp.set_log_level("ERROR")
+-- vim.lsp.set_log_level("ERROR")
 
 if not (vim.lsp and vim.lsp.config and vim.lsp.enable) then
 	vim.notify("vim.lsp.config/enable is missing (requires Neovim >= 0.11)", vim.log.levels.ERROR)
