@@ -19,7 +19,6 @@ vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", opts)
 vim.keymap.set("n", "<leader>db", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
 
 vim.keymap.set("n", "<C-Down>", ":resize -5<CR>", opts)
-vim.keymap.set("n", "0", "^", opts)
 vim.keymap.set("n", "ZZ", ":wq<CR>", opts)
 vim.keymap.set("n", "z=", "1z=", opts)
 vim.keymap.set("n", "<Leader>gs", ":Git<CR>", opts)
@@ -28,7 +27,6 @@ vim.keymap.set("n", "<Leader>gl", ":Gllog -- %<CR>", opts)
 -- we can use s and v to split
 vim.keymap.set("n", "<Leader>s", ":sp<CR>", { desc = "[S]plit window" })
 vim.keymap.set("n", "<Leader>v", ":vsp<CR>", { desc = "[V]ertically [S]plit window" })
-vim.keymap.set("n", " <Leader>r", ":GoRename<CR>", opts)
 vim.keymap.set("n", "ZZ", ":wqa<CR>", opts)
 vim.keymap.set("n", "gp", "`[v`]", opts)
 
