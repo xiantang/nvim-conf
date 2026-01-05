@@ -66,10 +66,10 @@ return {
 				end
 				local parent_start_row, parent_start_col, parent_end_row, parent_end_col = parent:range()
 				if
-						start_row == parent_start_row
-						and start_col == parent_start_col
-						and end_row == parent_end_row
-						and end_col == parent_end_col
+					start_row == parent_start_row
+					and start_col == parent_start_col
+					and end_row == parent_end_row
+					and end_col == parent_end_col
 				then
 					return find_expand_node(parent)
 				end
@@ -191,20 +191,28 @@ return {
 
 				-- Get current buffer's Treesitter syntax tree
 				local parser = ts.get_parser(0, lang)
-				if not parser then return end
+				if not parser then
+					return
+				end
 
 				local tree = parser:parse()[1]
-				if not tree then return end
+				if not tree then
+					return
+				end
 
 				local root = tree:root()
-				if not root then return end
+				if not root then
+					return
+				end
 
 				-- Get query object
 				if lang == "go" then
 					query = go_query
 				end
 				local query_obj = vim.treesitter.query.parse(lang, query)
-				if not query_obj then return end
+				if not query_obj then
+					return
+				end
 
 				-- Execute query
 				local matches = {}
@@ -212,7 +220,9 @@ return {
 					local name = query_obj.captures[id]
 					if name == "function_name" and node then
 						-- Check if the node has a valid range
-						local ok, _ = pcall(function() return node:range() end)
+						local ok, _ = pcall(function()
+							return node:range()
+						end)
 						if ok then
 							table.insert(matches, node)
 						end
@@ -282,7 +292,6 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
-		config = function()
-		end,
+		config = function() end,
 	},
 }

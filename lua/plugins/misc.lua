@@ -23,21 +23,21 @@ return {
 			-- Required for `opts.events.reload`.
 			vim.o.autoread = true
 
-			-- Recommended/example keymaps.
-			vim.keymap.set({ "n", "x" }, "<C-a>", function()
+			-- Opencode keymaps (grouped under <leader>c to avoid conflicts with Vim defaults)
+			vim.keymap.set({ "n", "x" }, "<leader>ca", function()
 				require("opencode").ask("@this: ", { submit = true })
 			end, { desc = "Ask opencode" })
-			vim.keymap.set({ "n", "x" }, "<C-x>", function()
+			vim.keymap.set({ "n", "x" }, "<leader>cx", function()
 				require("opencode").select()
 			end, { desc = "Execute opencode action…" })
-			vim.keymap.set({ "n", "t" }, "<C-.>", function()
+			vim.keymap.set({ "n", "t" }, "<leader>ct", function()
 				require("opencode").toggle()
 			end, { desc = "Toggle opencode" })
 
-			vim.keymap.set({ "n", "x" }, "go", function()
+			vim.keymap.set({ "n", "x" }, "<leader>co", function()
 				return require("opencode").operator("@this ")
 			end, { expr = true, desc = "Add range to opencode" })
-			vim.keymap.set("n", "goo", function()
+			vim.keymap.set("n", "<leader>coo", function()
 				return require("opencode").operator("@this ") .. "_"
 			end, { expr = true, desc = "Add line to opencode" })
 
@@ -47,10 +47,6 @@ return {
 			vim.keymap.set("n", "<S-C-d>", function()
 				require("opencode").command("session.half.page.down")
 			end, { desc = "opencode half page down" })
-
-			-- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
-			vim.keymap.set("n", "+", "<C-a>", { desc = "Increment", noremap = true })
-			vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement", noremap = true })
 		end,
 	},
 	{
