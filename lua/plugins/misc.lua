@@ -32,7 +32,17 @@ return {
 			end, { desc = "Execute opencode action…" })
 			vim.keymap.set({ "n", "t" }, "<leader>ct", function()
 				require("opencode").toggle()
-			end, { desc = "Toggle opencode" })
+
+				vim.defer_fn(function()
+					local provider = require("opencode.config").provider
+					if provider and provider.name == "tmux" then
+						local pane_id = provider:get_pane_id()
+						if pane_id then
+							vim.fn.system("tmux select-pane -t " .. pane_id)
+						end
+					end
+				end, 50)
+			end, { desc = "Toggle opencode and focus" })
 
 			vim.keymap.set({ "n", "x" }, "<leader>co", function()
 				return require("opencode").operator("@this ")

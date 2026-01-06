@@ -20,9 +20,9 @@ return {
 		},
 		config = function()
 			require("nvim-tree").setup({
-				marks = {
-					enable_persistence = true,
-				}
+				bookmarks = {
+					persist = true,
+				},
 			})
 		end,
 	},
