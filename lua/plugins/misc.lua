@@ -57,6 +57,24 @@ return {
 			vim.keymap.set("n", "<S-C-d>", function()
 				require("opencode").command("session.half.page.down")
 			end, { desc = "opencode half page down" })
+
+			-- Handle `opencode` events
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "OpencodeEvent:*", -- Optionally filter event types
+				callback = function(args)
+					---@type opencode.cli.client.Event
+					local event = args.data.event
+					---@type number
+					local port = args.data.port
+
+					-- See the available event types and their properties
+					vim.notify(vim.inspect(event))
+					-- Do something useful
+					if event.type == "session.idle" then
+						vim.notify("`opencode` finished responding")
+					end
+				end,
+			})
 		end,
 	},
 	{
