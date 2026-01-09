@@ -68,7 +68,7 @@ return {
 					local port = args.data.port
 
 					-- See the available event types and their properties
-					vim.notify(vim.inspect(event))
+					-- vim.notify(vim.inspect(event))
 					-- Do something useful
 					if event.type == "session.idle" then
 						vim.notify("`opencode` finished responding")
