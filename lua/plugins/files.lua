@@ -1,9 +1,9 @@
 return {
 	{
-		"xiantang/nvim-tree.lua",
+		"nvim-tree/nvim-tree.lua",
 		version = "*",
 		lazy = false,
-		dev = true,
+		dev = false,
 		keys = {
 			{
 				"<Leader>l",
