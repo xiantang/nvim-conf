@@ -13,6 +13,7 @@ return {
 	},
 	{
 		"xiantang/darcula-dark.nvim",
+		dev = true,
 		config = function()
 			-- setup must be called before loading
 			require("darcula").setup({
