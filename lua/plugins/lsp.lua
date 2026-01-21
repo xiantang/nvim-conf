@@ -18,6 +18,7 @@ return {
 					null_ls.builtins.formatting.isort,
 					null_ls.builtins.diagnostics.hadolint,
 					null_ls.builtins.formatting.nixfmt,
+					null_ls.builtins.formatting.yamlfmt,
 				},
 				debug = true,
 			})
