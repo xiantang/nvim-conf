@@ -12,7 +12,13 @@ return {
 					null_ls.builtins.formatting.gofmt,
 					null_ls.builtins.formatting.goimports,
 					-- null_ls.builtins.code_actions.shellcheck,
-					null_ls.builtins.formatting.stylua,
+					null_ls.builtins.formatting.stylua.with({
+						-- Disable stylua for nvim-tree.lua project (uses EmmyLuaCodeStyle via lua_ls)
+						condition = function(utils)
+							return not utils.root_has_file({ ".luarc.json" })
+								or not vim.fn.getcwd():match("nvim%-tree%.lua")
+						end,
+					}),
 					-- for python
 					null_ls.builtins.formatting.black,
 					null_ls.builtins.formatting.isort,

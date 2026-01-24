@@ -18,9 +18,15 @@ end
 	end,
 }) ]]
 local lsp_formatting = function(bufnr)
+	local cwd = vim.fn.getcwd()
+	-- Use lua_ls for nvim-tree.lua project (EmmyLuaCodeStyle), otherwise use null-ls
+	local is_nvim_tree_project = cwd:match("nvim%-tree%.lua")
+
 	vim.lsp.buf.format({
 		filter = function(client)
-			-- apply whatever logic you want (in this example, we'll only use null-ls)
+			if is_nvim_tree_project and vim.bo[bufnr].filetype == "lua" then
+				return client.name == "lua_ls"
+			end
 			return client.name == "null-ls"
 		end,
 		bufnr = bufnr,
