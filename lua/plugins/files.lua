@@ -3,7 +3,7 @@ return {
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
 		lazy = false,
-		dev = false,
+		dev = true,
 		keys = {
 			{
 				"<Leader>l",
