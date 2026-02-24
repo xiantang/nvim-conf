@@ -160,11 +160,7 @@ local prev_function_name = ""
 
 -- < Retrieve the name of the function the cursor is in.
 function _G.function_surrounding_cursor()
-	local ts_utils = safeRequire("nvim-treesitter.ts_utils")
-	if not ts_utils then
-		return ""
-	end
-	local current_node = ts_utils.get_node_at_cursor()
+	local current_node = vim.treesitter.get_node()
 
 	if not current_node then
 		return ""
@@ -199,7 +195,7 @@ function _G.function_surrounding_cursor()
 			local type = child:type()
 
 			if type == "identifier" or type == "operator_name" then
-				return (ts_utils.get_node_text(child))[1]
+				return vim.treesitter.get_node_text(child, 0)
 			else
 				local name = find_name(child)
 
@@ -220,11 +216,7 @@ local prev_class_node = nil
 local prev_class_name = ""
 
 function _G.class_surrounding_cursor()
-	local ts_utils = safeRequire("nvim-treesitter.ts_utils")
-	if not ts_utils then
-		return ""
-	end
-	local current_node = ts_utils.get_node_at_cursor()
+	local current_node = vim.treesitter.get_node()
 
 	if not current_node then
 		return ""
@@ -259,7 +251,7 @@ function _G.class_surrounding_cursor()
 			local type = child:type()
 
 			if type == "identifier" or type == "operator_name" then
-				return (ts_utils.get_node_text(child))[1]
+				return vim.treesitter.get_node_text(child, 0)
 			else
 				local name = find_name(child)
 

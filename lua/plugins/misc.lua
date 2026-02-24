@@ -353,8 +353,13 @@ return {
 				what = "permalink",
 				url_patterns = (function()
 					local ok, secret = pcall(require, "secret")
-					local domain = ok and secret.GITALB_URL
-					local patterns = {
+					local domain = ok and type(secret.GITALB_URL) == "string" and secret.GITALB_URL or nil
+					if not domain or domain == "" then
+						return {}
+					end
+
+					domain = vim.pesc(domain)
+					return {
 						[domain] = {
 							branch = "/tree/{branch}?ref_type=commits",
 							file = "/blob/{branch}/{file}?ref_type=commits#L{line_start}-{line_end}",
@@ -362,8 +367,6 @@ return {
 							commit = "/commit/{commit}?ref_type=commits",
 						},
 					}
-
-					return patterns
 				end)(),
 			},
 			notifier = {
