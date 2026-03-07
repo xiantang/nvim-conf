@@ -5,6 +5,7 @@ vim.g.codecompanion_auto_tool_mode = true
 return {
 	{
 		"NickvanDyke/opencode.nvim",
+		tag = "v0.4.0",
 		dependencies = {
 			-- Recommended for `ask()` and `select()`.
 			-- Required for `snacks` provider.

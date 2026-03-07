@@ -167,10 +167,6 @@ capabilities.workspace.didChangeWatchedFiles = capabilities.workspace.didChangeW
 capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 local function setup_server(server, opts)
 	local config = vim.tbl_deep_extend("force", {
-		flags = {
-			allow_incremental_sync = false,
-			debounce_text_changes = 500,
-		},
 		on_attach = on_attach,
 		capabilities = capabilities,
 	}, opts or {})
@@ -215,6 +211,7 @@ setup_server("lua_ls", {
 
 setup_server("gopls", {
 	cmd = { "gopls" },
+	root_markers = { "go.work", "go.mod", ".git" },
 	settings = {
 		gopls = {
 			-- PAINPOINT
