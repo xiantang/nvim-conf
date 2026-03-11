@@ -31,9 +31,19 @@ return {
 					require("luasnip").jump(direction)
 				end,
 			},
-			-- sources = {
-			-- 	default = { "lsp", "path", "buffer", "luasnip" },
-			-- },
+			sources = {
+				default = { "lsp", "path", "buffer", "snippets" },
+				per_filetype = {
+					go = { "lsp", "path", "buffer", "snippets", "k8s_aliases" },
+				},
+				providers = {
+					k8s_aliases = {
+						name = "k8s",
+						module = "go-k8s-aliases",
+						score_offset = 3,
+					},
+				},
+			},
 
 			fuzzy = {
 				-- The rust binary in my environment is out of date; force Lua to avoid version mismatches

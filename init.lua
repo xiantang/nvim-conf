@@ -1,7 +1,7 @@
 if vim.fn.has("nvim-0.11") == 1 then
-  vim.keymap.del({ "n" }, "grn")
-  vim.keymap.del({ "n", "x" }, "gra")
-  vim.keymap.del({ "n" }, "gri")
+	vim.keymap.del({ "n" }, "grn")
+	vim.keymap.del({ "n", "x" }, "gra")
+	vim.keymap.del({ "n" }, "gri")
 end
 if vim.env.PROF then
 	-- example for lazy.nvim
@@ -71,7 +71,6 @@ safeRequire("lazy").setup("plugins", {
 	},
 })
 
-
 vim.cmd.colorscheme("darcula-dark")
 vim.cmd.cnoreabbrev([[git Git]])
 vim.cmd.cnoreabbrev([[gp Git push]])
@@ -110,19 +109,18 @@ vim.g.copilot_assume_mapped = true
 
 vim.opt.fillchars:append("diff:╱")
 
-
 -- Silence the specific position encoding message
 local notify_original = vim.notify
 vim.notify = function(msg, ...)
-  if
-    msg
-    and (
-      msg:match 'position_encoding param is required'
-      or msg:match 'Defaulting to position encoding of the first client'
-      or msg:match 'multiple different client offset_encodings'
-    )
-  then
-    return
-  end
-  return notify_original(msg, ...)
+	if
+		msg
+		and (
+			msg:match("position_encoding param is required")
+			or msg:match("Defaulting to position encoding of the first client")
+			or msg:match("multiple different client offset_encodings")
+		)
+	then
+		return
+	end
+	return notify_original(msg, ...)
 end
