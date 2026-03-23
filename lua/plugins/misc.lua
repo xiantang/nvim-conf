@@ -5,18 +5,98 @@ vim.g.codecompanion_auto_tool_mode = true
 return {
 	{
 		"NickvanDyke/opencode.nvim",
-		tag = "v0.4.0",
 		dependencies = {
 			-- Recommended for `ask()` and `select()`.
-			-- Required for `snacks` provider.
+			-- Required for `snacks` integrations.
 			---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
 			{ "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
 		},
 		config = function()
+			local tmux_state = { pane_id = nil }
+			local opencode_cmd = "opencode --port"
+			local fallback = require("opencode.terminal")
+
+			local function is_tmux_available()
+				return vim.env.TMUX ~= nil and vim.env.TMUX ~= "" and vim.fn.executable("tmux") == 1
+			end
+
+			local function tmux_pane_exists(pane_id)
+				if type(pane_id) ~= "string" or pane_id == "" then
+					return false
+				end
+				vim.fn.system({ "tmux", "list-panes", "-t", pane_id })
+				return vim.v.shell_error == 0
+			end
+
+			local function open_tmux()
+				if tmux_pane_exists(tmux_state.pane_id) then
+					return tmux_state.pane_id
+				end
+
+				local out = vim.fn.system({
+					"tmux",
+					"split-window",
+					"-d",
+					"-h",
+					"-P",
+					"-F",
+					"#{pane_id}",
+					opencode_cmd,
+				})
+				if vim.v.shell_error ~= 0 then
+					vim.notify(("tmux split failed: %s"):format(out), vim.log.levels.WARN)
+					tmux_state.pane_id = nil
+					return nil
+				end
+
+				local pane_id = vim.trim(out)
+				if pane_id == "" then
+					tmux_state.pane_id = nil
+					return nil
+				end
+
+				tmux_state.pane_id = pane_id
+				vim.fn.system({ "tmux", "set-option", "-t", pane_id, "-p", "allow-passthrough", "off" })
+
+				return pane_id
+			end
+
+			local function stop_tmux()
+				if tmux_pane_exists(tmux_state.pane_id) then
+					vim.fn.system({ "tmux", "kill-pane", "-t", tmux_state.pane_id })
+				end
+				tmux_state.pane_id = nil
+			end
+
 			---@type opencode.Opts
 			vim.g.opencode_opts = {
-				provider = {
-					enabled = "tmux",
+				server = {
+					start = function()
+						if not is_tmux_available() then
+							fallback.start(opencode_cmd)
+							return
+						end
+						open_tmux()
+					end,
+					stop = function()
+						if not is_tmux_available() then
+							fallback.stop()
+							return
+						end
+						stop_tmux()
+					end,
+					toggle = function()
+						if not is_tmux_available() then
+							fallback.toggle(opencode_cmd)
+							return
+						end
+
+						if tmux_pane_exists(tmux_state.pane_id) then
+							stop_tmux()
+						else
+							open_tmux()
+						end
+					end,
 				},
 				-- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition".
 			}
@@ -35,12 +115,8 @@ return {
 				require("opencode").toggle()
 
 				vim.defer_fn(function()
-					local provider = require("opencode.config").provider
-					if provider and provider.name == "tmux" then
-						local pane_id = provider:get_pane_id()
-						if pane_id then
-							vim.fn.system("tmux select-pane -t " .. pane_id)
-						end
+					if is_tmux_available() and tmux_pane_exists(tmux_state.pane_id) then
+						vim.fn.system({ "tmux", "select-pane", "-t", tmux_state.pane_id })
 					end
 				end, 50)
 			end, { desc = "Toggle opencode and focus" })
