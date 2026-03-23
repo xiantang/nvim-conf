@@ -19,12 +19,16 @@ end
 }) ]]
 local lsp_formatting = function(bufnr)
 	local cwd = vim.fn.getcwd()
+	local filetype = vim.bo[bufnr].filetype
 	-- Use lua_ls for nvim-tree.lua project (EmmyLuaCodeStyle), otherwise use null-ls
 	local is_nvim_tree_project = cwd:match("nvim%-tree%.lua")
 
 	vim.lsp.buf.format({
 		filter = function(client)
-			if is_nvim_tree_project and vim.bo[bufnr].filetype == "lua" then
+			if filetype == "go" then
+				return client.name == "gopls"
+			end
+			if is_nvim_tree_project and filetype == "lua" then
 				return client.name == "lua_ls"
 			end
 			return client.name == "null-ls"
@@ -53,15 +57,6 @@ function _G.get_cur_go_func_name()
 end
 
 local on_attach = function(client, bufnr)
-	vim.cmd("syntax on")
-	if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
-		local semantic = client.config.capabilities.textDocument.semanticTokens
-		client.server_capabilities.semanticTokensProvider = {
-			full = true,
-			legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
-			range = true,
-		}
-	end
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -108,12 +103,10 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>gr", vim.lsp.buf.references, opts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 	buf_set_keymap("n", "<Leader>f", ":lua vim.lsp.buf.format()<CR>", opts)
-	-- if current buff end with _test.go, then set keymap for error
-	local buf_name = vim.api.nvim_buf_get_name(bufnr)
 	buf_set_keymap("n", "<space>ge", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 
 	-- Set autocommands conditional on server_capabilities
-	if client.server_capabilities.document_highlight then
+	if client.name ~= "gopls" and client:supports_method("textDocument/documentHighlight") then
 		vim.api.nvim_exec(
 			[[
       hi LspReferenceRead cterm=bold ctermbg=DarkMagenta guibg=LightYellow
@@ -224,7 +217,7 @@ setup_server("gopls", {
 			},
 			-- use gopls build by myself https://github.com/xiantang/tools
 			-- staticcheck = true,
-			expandWorkspaceToModule = true,
+			expandWorkspaceToModule = false,
 		},
 	},
 })

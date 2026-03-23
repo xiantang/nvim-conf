@@ -26,7 +26,7 @@ return {
 					null_ls.builtins.formatting.nixfmt,
 					null_ls.builtins.formatting.yamlfmt,
 				},
-				debug = true,
+				debug = false,
 			})
 		end,
 	},

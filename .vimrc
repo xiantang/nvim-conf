@@ -158,7 +158,7 @@ let g:gitgutter_sign_removed = '_'
 let g:gitgutter_sign_removed_first_line = '‾'
 " let g:gitgutter_sign_removed_above_and_below = '{'
 " let g:gitgutter_sign_modified_removed = 'ww'
-set updatetime=100
+set updatetime=300
 
 onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
 onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
