@@ -34,14 +34,14 @@ return {
 			sources = {
 				default = { "lsp", "path", "buffer", "snippets" },
 				per_filetype = {
-					go = { "lsp", "path", "buffer", "snippets", "k8s_aliases" },
+					go = { "lsp", "path", "buffer", "snippets" },
 				},
 				providers = {
-					k8s_aliases = {
-						name = "k8s",
-						module = "go-k8s-aliases",
-						score_offset = 3,
-					},
+					-- k8s_aliases = {
+					-- 	name = "k8s",
+					-- 	module = "go-k8s-aliases",
+					-- 	score_offset = 3,
+					-- },
 				},
 			},
 
