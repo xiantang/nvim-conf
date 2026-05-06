@@ -4,6 +4,7 @@ return {
 		config = function()
 			vim.o.sessionoptions = "buffers,curdir,winsize,localoptions"
 			require("auto-session").setup({
+				auto_restore_enabled = false,
 				session_lens = {
 					load_on_setup = false,
 				},
