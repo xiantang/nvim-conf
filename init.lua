@@ -113,6 +113,19 @@ vim.g.copilot_assume_mapped = true
 
 vim.opt.fillchars:append("diff:╱")
 
+-- Guard against stale treesitter trees: async consumers (nvim-ufo, render-markdown,
+-- the highlighter) can hold nodes whose range outruns a buffer that shrank since the
+-- last parse, which makes nvim_buf_get_text throw "Index out of bounds". Treat those
+-- as empty text; the next parse renders the real content.
+local get_node_text_original = vim.treesitter.get_node_text
+vim.treesitter.get_node_text = function(node, source, opts)
+	local ok, text = pcall(get_node_text_original, node, source, opts)
+	if not ok then
+		return ""
+	end
+	return text
+end
+
 -- Silence the specific position encoding message
 local notify_original = vim.notify
 vim.notify = function(msg, ...)

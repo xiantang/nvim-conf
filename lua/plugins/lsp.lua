@@ -38,6 +38,18 @@ return {
 			hint_prefix = " ",
 			hint_scheme = "TSConstructor",
 			floating_window_above_cur_line = true,
+			-- terraform-ls answers with an error (instead of null) when asked
+			-- about a file it has not indexed yet -- e.g. one just written by
+			-- `terraform plan -generate-config-out`. Cosmetic and self-healing,
+			-- but lsp_signature print()s it over the statusline. Drop it.
+			ignore_error = function(err, ctx, _)
+				if err and err.code == -32098 then
+					return true
+				end
+				-- keep upstream's default: these two are noisy on errors
+				local client = ctx and ctx.client_id and vim.lsp.get_client_by_id(ctx.client_id)
+				return client ~= nil and vim.tbl_contains({ "rust-analyzer", "clangd" }, client.name)
+			end,
 		},
 		config = function(_, opts)
 			require("lsp_signature").setup(opts)

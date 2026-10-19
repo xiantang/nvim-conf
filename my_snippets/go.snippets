@@ -2,7 +2,9 @@ snippet func "Snippet for function declaration"
 	func ${1}(${2}) ${3} {
 	    ${0}
 	}
-snippet for "Snippet for a pure for loop" for ${1} { ${0}
+snippet for "Snippet for a pure for loop"
+	for ${1} {
+		${0}
 	}
 
 snippet fori "Snippet for a for loop"
@@ -110,3 +112,18 @@ snippet tfpost
 		})
 	}
 
+
+snippet const "const block"
+	const (
+		${1:Name} ${2:string} = ${3:"value"}
+		${0}
+	)
+
+snippet consts "single const"
+	const ${1:Name} ${2:=} ${3:value}
+
+snippet consti "const block with iota"
+	const (
+		${1:Name} ${2:int} = iota
+		${0}
+	)
