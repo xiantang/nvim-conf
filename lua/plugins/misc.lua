@@ -1,83 +1,4 @@
--- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
-vim.g.codecompanion_auto_tool_mode = true
-
 return {
-	{
-		"NickvanDyke/opencode.nvim",
-		tag = "v0.4.0",
-		dependencies = {
-			-- Recommended for `ask()` and `select()`.
-			-- Required for `snacks` provider.
-			---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
-			{ "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
-		},
-		config = function()
-			---@type opencode.Opts
-			vim.g.opencode_opts = {
-				provider = {
-					enabled = "tmux",
-				},
-				-- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition".
-			}
-
-			-- Required for `opts.events.reload`.
-			vim.o.autoread = true
-
-			-- Opencode keymaps (grouped under <leader>c to avoid conflicts with Vim defaults)
-			vim.keymap.set({ "n", "x" }, "<leader>ca", function()
-				require("opencode").ask("@this: ", { submit = true })
-			end, { desc = "Ask opencode" })
-			vim.keymap.set({ "n", "x" }, "<leader>cx", function()
-				require("opencode").select()
-			end, { desc = "Execute opencode action…" })
-			vim.keymap.set({ "n", "t" }, "<leader>ct", function()
-				require("opencode").toggle()
-
-				vim.defer_fn(function()
-					local provider = require("opencode.config").provider
-					if provider and provider.name == "tmux" then
-						local pane_id = provider:get_pane_id()
-						if pane_id then
-							vim.fn.system("tmux select-pane -t " .. pane_id)
-						end
-					end
-				end, 50)
-			end, { desc = "Toggle opencode and focus" })
-
-			vim.keymap.set({ "n", "x" }, "<leader>co", function()
-				return require("opencode").operator("@this ")
-			end, { expr = true, desc = "Add range to opencode" })
-			vim.keymap.set("n", "<leader>coo", function()
-				return require("opencode").operator("@this ") .. "_"
-			end, { expr = true, desc = "Add line to opencode" })
-
-			vim.keymap.set("n", "<S-C-u>", function()
-				require("opencode").command("session.half.page.up")
-			end, { desc = "opencode half page up" })
-			vim.keymap.set("n", "<S-C-d>", function()
-				require("opencode").command("session.half.page.down")
-			end, { desc = "opencode half page down" })
-
-			-- Handle `opencode` events
-			vim.api.nvim_create_autocmd("User", {
-				pattern = "OpencodeEvent:*", -- Optionally filter event types
-				callback = function(args)
-					---@type opencode.cli.client.Event
-					local event = args.data.event
-					---@type number
-					local port = args.data.port
-
-					-- See the available event types and their properties
-					-- vim.notify(vim.inspect(event))
-					-- Do something useful
-					if event.type == "session.idle" then
-						vim.notify("`opencode` finished responding")
-					end
-				end,
-			})
-		end,
-	},
 	{
 		"esmuellert/vscode-diff.nvim",
 		dependencies = { "MunifTanjim/nui.nvim" },
@@ -347,6 +268,7 @@ return {
 				enabled = false,
 			},
 			bigfile = { enabled = true },
+			input = {},
 			quickfile = { enabled = true },
 			statuscolumn = { enabled = true },
 			words = { enabled = false },

@@ -48,6 +48,10 @@ local im_switch = safeRequire("im_switch")
 if im_switch then
 	im_switch.setup()
 end
+local agent = safeRequire("agent")
+if agent then
+	agent.setup()
+end
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
